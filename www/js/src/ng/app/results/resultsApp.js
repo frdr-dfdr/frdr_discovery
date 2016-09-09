@@ -647,6 +647,7 @@ define(function (require) {
                     }();
 
                     console.log("---- ITEM ----")
+                    console.log("scope.r:", $scope.r)
                     console.log('source', source, 'rFields', rFields, 'hasFields', hasFields);
                     // set required / special field vals
                     $scope.r = {
