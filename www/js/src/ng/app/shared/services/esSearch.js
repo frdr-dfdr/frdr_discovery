@@ -84,8 +84,17 @@ define(function(require){
                             console.log('response:', response);
                         }
                         if (!response.data.hasOwnProperty("_gfacets")) { response.data["_gfacets"] = ""; }
+                        var resultSet = [];
+                        for (var item in response.data["_gmeta"]) {
+                            for (var o in item) {
+                                if (o.hasOwnProperty("content")) {
+                                    resultSet.push(o.content);
+                                }
+                            }
+
+                        }
                         var output = {
-                            results: response.data["_gmeta"],
+                            results: resultSet,
                             count  : response.data["_gstats"]["count"],
                             total  : response.data["_gstats"]["total"],
                             aggs   : response.data["_gfacets"]
