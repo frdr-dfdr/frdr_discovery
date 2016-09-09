@@ -426,7 +426,7 @@ define(function (require) {
                             searchCounter++;
                             $scope.rUpdating = false;
                             // fire facet queries
-                            facetService.newFacetQuery($scope.q);
+                            //facetService.newFacetQuery($scope.q);
                             // typedata for onebar viz
                             $scope.typeData = response.aggs.type;
                             // update results

@@ -1,15 +1,14 @@
-var website_base_url = 'https://open.library.ubc.ca';
-var prod_url = 'https://open.library.ubc.ca';
+var website_base_url = 'http://rdmtest1.computecanada.ca:8081/html/discovery-ui.html';
+var prod_url = 'http://rdmtest1.computecanada.ca:8081/html/discovery-ui.html';
 var website_env = 'dev';
 var js_base_url = '/js/build/';
 var elasticsearch_main = "oc";
-var search_api = "https://oc-index.library.ubc.ca";
-var search_api_endpoint = "";
+var search_api = "https://nrdr-search.sandbox.globuscs.info";
+var search_api_endpoint = "/v1/api";
 var search_api_search_endpoint = "/search";
 var iiif_api = "https://iiif.library.ubc.ca";
 var api_key = "e5fce533396c36ab4483df12bea1dd6a89e9209405af09db3f13a03d92fbdf89"; // this key is rate-limited.
 var app_version = "1.6.3";
-
 
 
 

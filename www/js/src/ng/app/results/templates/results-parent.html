@@ -14,12 +14,12 @@
                 class="dl-rich-thumb"
                 rich-thumb 
                 img-width="324" 
-                item-id="{[{ r._id }]}"
-                repo="{[{ r.repo }]}"
-                handle="{[{ r.repo }]}.{[{ r.nick }]}.{[{ r._id }]}"
-                html-title="{[{ r.title[0] }]}" 
-                type="{[{ r.type }]}" re
-                col-nick="{[{ r.nick }]}">
+                item-id="{[{ r.content.['http://dublincore.org/documents/dcmi-terms#source'] }]}"
+                repo="{[{ r.content.['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}"
+                handle="{[{ r.content.['http://dublincore.org/documents/dcmi-terms#source'] }]}"
+                html-title="{[{ r.content.['http://dublincore.org/documents/dcmi-terms#title'] }]}" 
+                type="dataset" re
+                col-nick="{[{ r.content.['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}">
                 
 
                 <div class="dl-rt-inner-top"></div>

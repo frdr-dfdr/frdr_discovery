@@ -146,6 +146,9 @@ define(function (require) {
         
         // GOOGLE ANALYTICS EVENT UTILITY
         utility.gaEvent = function(category, action, label){
+            
+            return true;
+
             try {
                 _gaTracker('secondTracker.send', {
                   hitType: 'event',
@@ -164,6 +167,9 @@ define(function (require) {
         };
 
         utility.gaPageview = function(loc) {
+
+            return true;
+            
             try {
                 _gaTracker('set', 'page', loc);
                 _gaTracker('send', 'pageview');
