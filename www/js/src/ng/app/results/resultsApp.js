@@ -631,7 +631,7 @@ define(function (require) {
 
                 function setR(rFields) {
 
-                    var source = $scope.r._source;
+                    //var source = $scope.r._source;
                     // normal terms scope
 
                     var hasFields = function () {
@@ -650,6 +650,7 @@ define(function (require) {
                     console.log("scope.r:", $scope.r)
                     console.log('source', source, 'rFields', rFields, 'hasFields', hasFields);
                     // set required / special field vals
+                    /*
                     $scope.r = {
                         // app vars
                         _id: $scope.r._id,
@@ -668,6 +669,8 @@ define(function (require) {
                         // details object (filled below)
                         detail: {}
                     };
+                    */
+
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
                     function parseDetails() {
