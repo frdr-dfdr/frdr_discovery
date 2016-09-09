@@ -670,7 +670,7 @@ define(function (require) {
                     };
                     */
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
-                    $scope.r.collection = "Collection: " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
+                    $scope.r.collection = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
