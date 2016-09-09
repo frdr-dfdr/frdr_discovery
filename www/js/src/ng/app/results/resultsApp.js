@@ -424,6 +424,7 @@ define(function (require) {
                         };
                         es.search(searchInput).then(function (response) {
                             console.log("Done search")
+                            console.log("App got results:", response)
                             searchCounter++;
                             $scope.rUpdating = false;
                             // fire facet queries
