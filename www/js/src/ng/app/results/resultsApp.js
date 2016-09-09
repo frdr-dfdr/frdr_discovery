@@ -769,10 +769,10 @@ define(function (require) {
                     }
                     function getInnerResults() {
                         // if empty query, then set compound to false because in-text searching is useless (hides the whole thing)
-                        if (query === '*') {
+                        //if (query === '*') {
                             $scope.r.compound = false;
                             return;
-                        }
+                        //}
 
                         var dashedId = $scope.r._id.replace(/\./g, "-");
                         var newHandle = $scope.r.repo + "." + $scope.r.nick + "." + dashedId;
