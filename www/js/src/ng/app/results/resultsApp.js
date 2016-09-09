@@ -648,7 +648,6 @@ define(function (require) {
 
                     console.log("---- ITEM ----")
                     console.log("scope.r:", $scope.r)
-                    console.log('source', source, 'rFields', rFields, 'hasFields', hasFields);
                     // set required / special field vals
                     /*
                     $scope.r = {
@@ -671,7 +670,7 @@ define(function (require) {
                     };
                     */
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
-                    $scope.r.collection = $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
+                    $scope.r.collection = "Collection: " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
