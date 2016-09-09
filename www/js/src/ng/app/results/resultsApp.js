@@ -423,25 +423,21 @@ define(function (require) {
                             body: response
                         };
                         es.search(searchInput).then(function (response) {
+                            console.log("Done search")
                             searchCounter++;
                             $scope.rUpdating = false;
                             // fire facet queries
                             //facetService.newFacetQuery($scope.q);
+                            console.log("Not running facet queries")
                             // typedata for onebar viz
                             $scope.typeData = response.aggs.type;
                             // update results
                             $scope.esr = {
                                 results: response.results
                             };
+                            console.log("Updated scope var esr to: "+$scope.esr )
                             $scope.total = response.total;
                             $scope.hidePages = false;
-                            // Do you feel lucky, punk?  -- if only 1 result, &lucky=1, go directly to item.
-                            if (lucky && lucky === true && $scope.total === 1) {
-                                if (website_env !== 'prod') {
-                                    console.log('DIRECT HIT!');
-                                }
-                                $scope.lucky = true;
-                            }
                             if (!$scope.terms) {
                                 $scope.terms = $scope.q || $scope.placeholder;
                             }
