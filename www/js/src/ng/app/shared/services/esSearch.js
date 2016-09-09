@@ -86,12 +86,8 @@ define(function(require){
                         if (!response.data.hasOwnProperty("_gfacets")) { response.data["_gfacets"] = ""; }
                         var resultSet = [];
                         for (var item in response.data["_gmeta"]) {
-                            console.log("Found item ", (resultSet.length + 1) );
-                            console.log("Item: ", response.data["_gmeta"][item])
                             for (var o in response.data["_gmeta"][item]) {
-                                console.log("Checking subobject for content: ");
                                 if (response.data["_gmeta"][item][o].hasOwnProperty("content")) {
-                                    console.log("Found content");
                                     resultSet.push(response.data["_gmeta"][item][o]["content"]);
                                 }
                             }

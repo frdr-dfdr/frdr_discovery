@@ -2,12 +2,12 @@
 <div ng-if="!max400" class="dl-r-lthumb dl-basic-thumb"
 	basic-thumb 
 	img-width="200"
-	item-id="{[{ r.content['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}"
-	repo="{[{ r.content['http://nrdr-ednr.ca/schema/1.0#origin.id']}]}"
-	handle="{[{ r.content['http://dublincore.org/documents/dcmi-terms#source'] }]}"
-	item-title="{[{ r.title }]}" 
+	item-id="{[{ r['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}"
+	repo="{[{ r['http://nrdr-ednr.ca/schema/1.0#origin.id']}]}"
+	handle="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}"
+	item-title="{[{ ['http://dublincore.org/documents/dcmi-terms#title'] }]}" 
 	type="dataset"
-	col-nick="{[{ r.content['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}">
+	col-nick="{[{ r['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}">
 </div>
 
 <div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
@@ -15,19 +15,19 @@
 <article class="dl-r-content">
 	<span class="dl-r-type-icon dataset"></span>
 
-	<h6><a link-out ng-href="{[{ r.content['http://dublincore.org/documents/dcmi-terms#source'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	<h6><a link-out ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
 	</h6>
 
 	<div class="dl-r-metadata-short">
 
-		<a ng-href="{[{ r.content['http://dublincore.org/documents/dcmi-terms#source'] }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
+		<a ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
 
 		<br />
 
-		<span ng-repeat="c in ::r.content['http://dublincore.org/documents/dcmi-terms#contributor.author'] track by $index">
-			<a href="" ng-click="addFilter('creator', r.content['http://dublincore.org/documents/dcmi-terms#contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
+		<span ng-repeat="c in ::r['http://dublincore.org/documents/dcmi-terms#contributor.author'] track by $index">
+			<a href="" ng-click="addFilter('creator', r['http://dublincore.org/documents/dcmi-terms#contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
 		</span>
-		<span class="dl-r-creator" ng-if="!r.content.['http://dublincore.org/documents/dcmi-terms#contributor.author'][0]" >[{{ 'ITEM_CREATOR_UNKNOWN' | translate }}]</span>  
+		<span class="dl-r-creator" ng-if="!r['http://dublincore.org/documents/dcmi-terms#contributor.author'][0]" >[{{ 'ITEM_CREATOR_UNKNOWN' | translate }}]</span>  
 
 		<!-- <a href="" ng-click="addFilter('sortDate', r.sortDate)" class="dl-r-date" ng-bind-html="::r.sortDate"></a> -->
 		&ensp;&mdash;&ensp;<span class="dl-r-date" ng-bind-html="::r.sortDate"></span>
@@ -51,7 +51,7 @@
 
 		<tr ng-if="!r.embargoed && r.description && r.description != '[unknown]'">
 			<td class="dl-r-label">{{ 'ITEM_DESCRIPTION' | translate }}</td>
-			<td class="dl-r-data" ng-bind-html="::r.content['http://dublincore.org/documents/dcmi-terms#description']"></td>
+			<td class="dl-r-data" ng-bind-html="::r['http://dublincore.org/documents/dcmi-terms#description']"></td>
 		</tr> 
 	</table>
 	<div class="dl-r-inner row-fluid" ng-if="r.compound && details">
