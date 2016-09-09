@@ -23,7 +23,9 @@ define(function (require) {
         $timeout(function(){  // timeout ensures vars are in place before thumbs load
             $scope.noThumb = false;
 
-            $scope.src = thumbService.thumbSrc($scope.width, $scope.repo, $scope.itemId, $scope.colNick, $scope.handle);
+            //$scope.src = thumbService.thumbSrc($scope.width, $scope.repo, $scope.itemId, $scope.colNick, $scope.handle);
+            $scope.src = $scope.imgSrc;
+            
             if(!$scope.src) { $scope.noThumb = true;}
             if($scope.itemId) {
                 collectionData.getTitle($scope.colNick).then(function(response){
@@ -92,7 +94,8 @@ define(function (require) {
                 type: "@type",
                 title: "@itemTitle",
                 repo: "@repo",
-                colNick: "@colNick"
+                colNick: "@colNick",
+                imgSrc: "@imgSrc"
             },
             transclude: true,
             controller: 'thumbnailsController',

@@ -670,6 +670,7 @@ define(function (require) {
                         detail: {}
                     };
                     */
+                    $scope.r.title = $scope.r['http://dublincore.org/documents/dcmi-terms#title'];
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
