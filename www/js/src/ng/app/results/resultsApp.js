@@ -435,7 +435,7 @@ define(function (require) {
                             $scope.esr = {
                                 results: response.results
                             };
-                            console.log("Updated scope var esr to: "+$scope.esr )
+                            console.log("Updated scope var esr to: ", $scope.esr )
                             $scope.total = response.total;
                             $scope.hidePages = false;
                             if (!$scope.terms) {
