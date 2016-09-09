@@ -74,7 +74,7 @@ define(function(require){
                 }
                 
                 return $http.get(
-                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&q='+encodeURIComponent(searchString.vars.query),
+                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(searchString.vars.query),
                     {
                         headers: headers
                     })
@@ -83,12 +83,12 @@ define(function(require){
                         if(website_env !== 'prod') {
                             console.log('response:', response);
                         }
-                        if (!response.hasOwnProperty("_gfacets")) { response["_gfacets"] = ""; }
+                        if (!response.data.hasOwnProperty("_gfacets")) { response.data["_gfacets"] = ""; }
                         var output = {
-                            results: response["_gmeta"],
-                            count  : response["_gstats.count"],
-                            total  : response["_gstats.total"],
-                            aggs   : response["_gfacets"]
+                            results: response.data["_gmeta"],
+                            count  : response.data["_gstats"]["count"],
+                            total  : response.data["_gstats"]["total"],
+                            aggs   : response.data["_gfacets"]
                         };
                         output.aggs.type = 'items';
                         // debugger;
