@@ -2,12 +2,12 @@
 <div ng-if="!max400" class="dl-r-lthumb dl-basic-thumb"
 	basic-thumb 
 	img-width="200"
-	item-id="{[{ r.content.['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}"
-	repo="{[{ r.content.['http://nrdr-ednr.ca/schema/1.0#origin.id']}]}"
-	handle="{[{ r.content.['http://dublincore.org/documents/dcmi-terms#source'] }]}"
+	item-id="{[{ r.content['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}"
+	repo="{[{ r.content['http://nrdr-ednr.ca/schema/1.0#origin.id']}]}"
+	handle="{[{ r.content['http://dublincore.org/documents/dcmi-terms#source'] }]}"
 	item-title="{[{ r.title }]}" 
 	type="dataset"
-	col-nick="{[{ r.content.['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}">
+	col-nick="{[{ r.content['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}">
 </div>
 
 <div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
@@ -15,17 +15,17 @@
 <article class="dl-r-content">
 	<span class="dl-r-type-icon dataset"></span>
 
-	<h6><a link-out ng-href="{[{ r.content.['http://dublincore.org/documents/dcmi-terms#source'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	<h6><a link-out ng-href="{[{ r.content['http://dublincore.org/documents/dcmi-terms#source'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
 	</h6>
 
 	<div class="dl-r-metadata-short">
 
-		<a ng-href="{[{ r.content.['http://dublincore.org/documents/dcmi-terms#source'] }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
+		<a ng-href="{[{ r.content['http://dublincore.org/documents/dcmi-terms#source'] }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
 
 		<br />
 
-		<span ng-repeat="c in ::r.content.['http://dublincore.org/documents/dcmi-terms#contributor.author'] track by $index">
-			<a href="" ng-click="addFilter('creator', r.content.['http://dublincore.org/documents/dcmi-terms#contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
+		<span ng-repeat="c in ::r.content['http://dublincore.org/documents/dcmi-terms#contributor.author'] track by $index">
+			<a href="" ng-click="addFilter('creator', r.content['http://dublincore.org/documents/dcmi-terms#contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
 		</span>
 		<span class="dl-r-creator" ng-if="!r.content.['http://dublincore.org/documents/dcmi-terms#contributor.author'][0]" >[{{ 'ITEM_CREATOR_UNKNOWN' | translate }}]</span>  
 

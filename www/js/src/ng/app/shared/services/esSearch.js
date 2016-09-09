@@ -83,12 +83,12 @@ define(function(require){
                         if(website_env !== 'prod') {
                             console.log('response:', response);
                         }
-                        if (!response.hasOwnProperty('_gfacets')) { response.['_gfacets'] = ""; }
+                        if (!response.hasOwnProperty("_gfacets")) { response["_gfacets"] = ""; }
                         var output = {
-                            results: response.['_gmeta'],
-                            count  : response.['_gstats.count'],
-                            total  : response.['_gstats.total'],
-                            aggs   : response.['_gfacets']
+                            results: response["_gmeta"],
+                            count  : response["_gstats.count"],
+                            total  : response["_gstats.total"],
+                            aggs   : response["_gfacets"]
                         };
                         output.aggs.type = 'items';
                         // debugger;
