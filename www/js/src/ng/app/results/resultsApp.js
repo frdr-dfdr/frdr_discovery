@@ -671,11 +671,12 @@ define(function (require) {
                     */
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
                     $scope.r.collection = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
+                    $scope.r.detail = {};
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
                     function parseDetails() {
-                        $scope.r.description = highlighter.highlight(source[rFields.description.map]);
+                        $scope.r.description = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#description']);
                         for (var i = 0; i < hasFields.length; i++) {
                             if (!$scope.r.hasOwnProperty(hasFields[i])) {
                                 // console.log(hasFields[i]);
