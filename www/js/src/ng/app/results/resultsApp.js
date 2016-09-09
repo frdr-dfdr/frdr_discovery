@@ -619,7 +619,7 @@ define(function (require) {
 
                 function setR(rFields) {
 
-                    var source = $scope.r._source;
+                    //var source = $scope.r._source;
                     // normal terms scope
 
                     var hasFields = function () {
@@ -635,7 +635,7 @@ define(function (require) {
                     }();
 
                     // set required / special field vals
-                    /* NRDR
+                    /*
                     $scope.r = {
                         // app vars
                         _id: $scope.r._id,
@@ -686,6 +686,8 @@ define(function (require) {
                         $scope.r.icon_url = "/img/sources/odc_80x80.png";
                     }
 
+=======
+>>>>>>> Debug
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
                     function parseDetails() {
