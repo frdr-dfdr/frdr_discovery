@@ -736,7 +736,7 @@ define(function (require) {
                     // get correct collection data and hyperlinks
                     collectionData.getTitle($scope.r.nick).then(function (response) {
                         // set collection name
-                        $scope.r.collection = (response && response.title) ? highlighter.highlight(response.title) : '[' + $scope.r.nick + ']';
+                        //$scope.r.collection = (response && response.title) ? highlighter.highlight(response.title) : '[' + $scope.r.nick + ']';
                         var nick = (response && response.nick) ? response.nick : $scope.r.nick;
                         // set item link
                         if ($scope.r.nick != nick) {
