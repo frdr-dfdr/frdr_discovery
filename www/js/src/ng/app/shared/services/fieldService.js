@@ -188,7 +188,7 @@ define(function(require){
                 fieldService.fields)){
                 return $http({
                         method: 'GET',
-                        url: search_api+search_api_endpoint+'/_fieldmap',
+                        url: fieldmap_url,
                         cache: true
                     }).success(function(response){
                         // console.log('FIELD MAPPINGS CALL', response);
