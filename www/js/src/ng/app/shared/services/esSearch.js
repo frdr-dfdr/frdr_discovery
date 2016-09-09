@@ -87,8 +87,9 @@ define(function(require){
                         var resultSet = [];
                         for (var item in response.data["_gmeta"]) {
                             console.log("Found item ", (resultSet.length + 1) );
+                            console.log("Item: ", item)
                             for (var o in item) {
-                                console.log("Checking subobject for content: ", o);
+                                console.log("Checking subobject for content: ");
                                 if (o.hasOwnProperty("content")) {
                                     console.log("Found content");
                                     resultSet.push(o.content);
