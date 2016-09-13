@@ -15,7 +15,7 @@ define(function(require){
                 'sortDate',  // needs special treatment: date hist object
                 'type',
                 'genre',
-                'subject',
+                'Keywords',
                 'creator',
                 'collection', // needs special treatment: field needs to be 'nick'
                 //'degree',
@@ -44,7 +44,7 @@ define(function(require){
                 'campus',
                 'affiliation',
                 'scholarlyLevel',
-                'subject',
+                'Keywords',
                 'geographicLocation',
                 'genre',
                 'title',
@@ -55,7 +55,7 @@ define(function(require){
             advSearchFields : [
                 'genre',
                 'geographicLocation',
-                'subject',
+                'Keywords',
                 'category',
                 'person',
                 'scholarlyLevel',

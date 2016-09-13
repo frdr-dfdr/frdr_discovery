@@ -99,12 +99,10 @@ define(function(require){
                             total  : response.data["_gstats"]["total"],
                             aggs   : response.data["_gfacets"]
                         };
-                        output.aggs.type = 'items';
                         // debugger;
                         if(website_env !== 'prod') {
                             // console.log('search output:', output);
                         }
-                        // s.output = output;   
                         return output;
                         // deferred.resolve(s.output);
                     },
