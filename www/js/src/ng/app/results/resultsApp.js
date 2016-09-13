@@ -671,7 +671,7 @@ define(function (require) {
                     $scope.r.sortDate = $scope.r['http://dublincore.org/documents/dcmi-terms#date'];
                     $scope.r.detail = {};
                     $scope.r.type = "dataset";
-                    $scope.r.saved: rExport.isSaved($scope.r._id);
+                    $scope.r.saved = rExport.isSaved($scope.r._id);
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
