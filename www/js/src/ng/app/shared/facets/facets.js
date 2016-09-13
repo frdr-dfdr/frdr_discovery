@@ -606,19 +606,26 @@ define(function(require) {
                 };
 
 
-                // set facet options
+                // set facet options 
                 setFacetOpts = function(aggInput){
+                    console.log("setFacetOpts() aggInput:", aggInput);
                     // set facets based on aggs output
-                    for (var f in aggInput) {
-                        facetService.facets[f].sum_left = aggInput[f].sum_other_doc_count;
-                        if (f === 'collection'){
-                            // handle collections
-                            collectionData.aggsSubsCols().then(function(d){
-                                facetService.facets.collection.buckets = makeColsData(aggInput.collection.buckets, d.data);
-                                // console.log('FACETcollections', facetService.facets.collection.buckets);
-                            });
-                        } else {
-                            facetService.facets[f].buckets = aggInput[f].buckets;
+                    for (var a in aggInput) {
+                        for (var k in aggInput[a] ) {
+                            if (facetService.facets.hasOwnProperty(k) ) {
+                                facetService.facets[k].sum_left = 0;
+                                for (var o in aggInput[a][k]) {
+                                    facetService.facets[k].sum_left += aggInput[a][k][o]['count'];
+                                    var b = {
+                                        'key' : k,
+                                        'title' : k,
+                                        'doc_count' : aggInput[a][k][o]['count']
+                                    };
+                                    facetService.facets[k].buckets.push(b);
+                                }
+                            } else {
+                                console.log("Cannot find a facet for: ", k)
+                            }
                         }
                     }
 
