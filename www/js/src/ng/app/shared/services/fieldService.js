@@ -14,7 +14,7 @@ define(function(require){
             facetFields : [
                 'sortDate',  // needs special treatment: date hist object
                 'type',
-                'genre',
+                // 'genre',
                 'Keywords',
                 'creator',
                 'Collection', // needs special treatment: field needs to be 'nick'
@@ -24,7 +24,7 @@ define(function(require){
                 //'affiliation',
                 // 'geographicLocation',
                 // 'category',
-                'language',
+                // 'language',
                 // 'peerReviewStatus',
                 // 'personOrCorporation',
                 // 'scholarlyLevel',
