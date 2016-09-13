@@ -428,8 +428,7 @@ define(function (require) {
                             searchCounter++;
                             $scope.rUpdating = false;
                             // fire facet queries
-                            //facetService.newFacetQuery($scope.q);
-                            console.log("Not running facet queries")
+                            facetService.newFacetQuery($scope.q);
                             // typedata for onebar viz
                             $scope.typeData = response.aggs.type;
                             // update results
@@ -672,8 +671,10 @@ define(function (require) {
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
                     $scope.r.collection = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
                     $scope.r.nick = $scope.r.collection;
+                    $scope.r.repo = $scope.r.collection;
                     $scope.r.sortDate = $scope.r['http://dublincore.org/documents/dcmi-terms#date'];
                     $scope.r.detail = {};
+                    $scope.r.type = "dataset";
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
@@ -739,7 +740,7 @@ define(function (require) {
                     // get correct collection data and hyperlinks
                     collectionData.getTitle($scope.r.nick).then(function (response) {
                         // set collection name
-                        //$scope.r.collection = (response && response.title) ? highlighter.highlight(response.title) : '[' + $scope.r.nick + ']';
+                        //f$scope.r.collection = (response && response.title) ? highlighter.highlight(response.title) : '[' + $scope.r.nick + ']';
                         var nick = (response && response.nick) ? response.nick : $scope.r.nick;
                         // set item link
                         if ($scope.r.nick != nick) {
