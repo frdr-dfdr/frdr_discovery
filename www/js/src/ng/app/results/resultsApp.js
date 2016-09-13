@@ -635,7 +635,7 @@ define(function (require) {
                     }();
 
                     // set required / special field vals
-                    /*
+                    /* NRDR
                     $scope.r = {
                         // app vars
                         _id: $scope.r._id,
@@ -685,9 +685,9 @@ define(function (require) {
                     if ($scope.r.icon_url == "http://open.canada.ca/data/static/img/leaves/fivestar.png") {
                         $scope.r.icon_url = "/img/sources/odc_80x80.png";
                     }
+                    $scope.r.type = "dataset";
+                    $scope.r.saved: rExport.isSaved($scope.r._id);
 
-=======
->>>>>>> Debug
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
                     function parseDetails() {

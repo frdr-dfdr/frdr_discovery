@@ -274,6 +274,7 @@ define(function(require) {
                         // NOTE: collections don't use normal filters:
                         // collections are filtered by changing es.input.searchIndex value
 
+                        /* NRDR
                         if($scope.ff.label === 'collection'){
                             $scope.activeFilterTitles = [];
                             for (var i = 0; i < searchString.vars.filter.collection.terms.length; i++) {
@@ -284,6 +285,7 @@ define(function(require) {
                             }
                             $scope.orderField = $scope.orderField === 'key' ? 'title' : $scope.orderField;
                         }
+                        */
                     }
                     moreCheck();
                 }
