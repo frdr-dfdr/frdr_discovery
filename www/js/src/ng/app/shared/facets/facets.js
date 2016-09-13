@@ -396,7 +396,6 @@ define(function(require) {
                 // LOAD MORE FACET OPTIONS
                 $scope.optsCount = facetService.optsCount;
 
-
                 $scope.loadMore = function() {
                     utility.gaEvent('facets', 'load_more', $scope.ff.label);
                     $scope.optsLoading = true;
