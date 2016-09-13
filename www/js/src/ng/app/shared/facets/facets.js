@@ -405,7 +405,6 @@ define(function(require) {
                     console.log($scope.orderField);
                     getFacetsData(searchOpts).then(function(response){
                     });
-
                 };
 
                 function moreCheck(){
