@@ -259,7 +259,6 @@ define(function(require) {
                             $scope.hide = true;
                         }
 
-
                         // console.log('selection', $scope.ff.selection);
                     } else {
                         $scope.activeFilters = searchString.vars.filter[$scope.ff.label].terms || [];
