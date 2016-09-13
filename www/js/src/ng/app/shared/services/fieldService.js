@@ -25,7 +25,7 @@ define(function(require){
                 //'affiliation',
                 // 'geographicLocation',
                 // 'category',
-                'language',
+                // 'language',
                 // 'peerReviewStatus',
                 // 'personOrCorporation',
                 // 'scholarlyLevel',
