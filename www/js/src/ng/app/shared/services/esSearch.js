@@ -36,9 +36,9 @@ define(function(require){
                     return doSearch();
                 });   
             // filtered by collection? if so, change the searchindex
-            } else if (searchString.vars.filter.collection.terms.length > 0) {
+            } else if (searchString.vars.filter.Collection.terms.length > 0) {
 
-                nicks = searchString.vars.filter.collection.terms;
+                nicks = searchString.vars.filter.Collection.terms;
                 // resolve aggregate collection nicks to full strings with collectionData service, then set index 
                 return collectionData.resolveAggs(nicks).then(function(response){
                     if(website_env !== 'prod') {

@@ -642,7 +642,7 @@ define(function (require) {
                     }();
 
                     // set required / special field vals
-                    /*
+                    /* NRDR
                     $scope.r = {
                         // app vars
                         _id: $scope.r._id,
@@ -662,6 +662,8 @@ define(function (require) {
                         detail: {}
                     };
                     */
+                    $scope.r._id = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
+                    $scope.r.handle = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
                     $scope.r.collection = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
                     $scope.r.nick = $scope.r.collection;
@@ -669,6 +671,7 @@ define(function (require) {
                     $scope.r.sortDate = $scope.r['http://dublincore.org/documents/dcmi-terms#date'];
                     $scope.r.detail = {};
                     $scope.r.type = "dataset";
+                    $scope.r.saved: rExport.isSaved($scope.r._id);
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
@@ -734,7 +737,6 @@ define(function (require) {
                     // get correct collection data and hyperlinks
                     collectionData.getTitle($scope.r.nick).then(function (response) {
                         // set collection name
-                        //f$scope.r.collection = (response && response.title) ? highlighter.highlight(response.title) : '[' + $scope.r.nick + ']';
                         var nick = (response && response.nick) ? response.nick : $scope.r.nick;
                         // set item link
                         if ($scope.r.nick != nick) {
@@ -744,17 +746,11 @@ define(function (require) {
                             $scope.r.itemLink = 'cIRcle/collections/' + nick + '/items/' + $scope.r._id;
                         }
                         else {
-                            //if(nick == 'bcbib') { nick = 'bcbooks'}
                             $scope.r.itemLink = 'collections/' + nick + '/items/' + $scope.r._id;
-                        }
-                        // if 'lucky', go directly to item
-                        if ($scope.lucky === true) {
-                            window.location = '/' + $scope.r.itemLink;
                         }
                         // if compound object, add search query string to url for viewer
                         if ($scope.r.compound) {
                             $scope.r.itemLink = $scope.r.itemLink.concat('#p0z-10000r0f:' + encodeURIComponent(searchString.vars.query));
-                            //console.log($scope.r.itemLink);
                         }
                         // set collection link
                         $scope.r.collectionLink = 'collections/' + nick;

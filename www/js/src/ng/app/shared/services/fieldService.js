@@ -17,7 +17,7 @@ define(function(require){
                 'genre',
                 'Keywords',
                 'creator',
-                'collection', // needs special treatment: field needs to be 'nick'
+                'Collection', // needs special treatment: field needs to be 'nick'
                 //'degree',
                 //'campus',
                 //'program',
@@ -38,7 +38,7 @@ define(function(require){
                 'sortDate',
                 'creator',
                 'type',
-                // 'collection', // not necessary: resolve nick instead
+                'Collection',
                 'program',
                 'degree',
                 'campus',
@@ -64,7 +64,7 @@ define(function(require){
                 'program',
                 'description',
                 'type',
-                'collection',
+                'Collection',
                 'creator',
                 'date',
                 'title',
@@ -145,7 +145,7 @@ define(function(require){
             fieldService.fields.nick = { map: 'ubc.internal.provenance.nick' };
             fieldService.fields.repo = { map: 'ubc.internal.repo' };
             fieldService.fields.sortDate = {
-                     map: 'ubc.date.sort', 
+                     map: 'Date',
                      label: 'Date'
                 };
             fieldService.fields.fullText = {
@@ -156,8 +156,10 @@ define(function(require){
                      map: 'Keywords', 
                      label: 'Keywords'
                 };
-            // replace labels for some fields
-            fieldService.fields.collection.label = "Collection";
+            fieldService.fields.Collection = {
+                     map: 'Collection', 
+                     label: 'Collection'
+                };
         }
         function makeFieldArrays(input){
             // set specific fields objects

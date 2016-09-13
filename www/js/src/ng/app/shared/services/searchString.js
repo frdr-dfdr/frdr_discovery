@@ -500,21 +500,12 @@ define(function (require) {
                 if (aggsArr[i] === 'sortDate') {
                     obj.sortDate = {
                         date_histogram: {
-                            field: "ubc.date.sort",
+                            field: "Date",
                             interval: "month",
                             format: "yyyy-MM-dd"
                         }
                     };
-                } else if (aggsArr[i] === 'collection') {
-                    obj[aggsArr[i]] = {
-                        terms: {
-                            field: fieldService.fields.nick.map,
-                            size: size,
-                            order: o
-                        }
-                    };
                 } else {
-                    // console.log(aggsArr[i], fieldService.fields);
                     obj[aggsArr[i]] = {
                         terms: {
                             field: fieldService.fields[aggsArr[i]].map + '.raw',
@@ -550,6 +541,8 @@ define(function (require) {
                         // console.log('newfilter', newFilter);
                         filters.push(newFilter);
                     }
+                    // console.log('newfilter', newFilter);
+                    filters.push(newFilter);
                 }
             }
 
