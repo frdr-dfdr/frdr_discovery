@@ -21,6 +21,7 @@ define(function(require){
 
             // specified searchIndex? if so, change the searchindex
             var nicks;
+            console.log("searchString:", searchString);
             if (input.searchIndex) {
 
                 nicks = input.searchIndex;

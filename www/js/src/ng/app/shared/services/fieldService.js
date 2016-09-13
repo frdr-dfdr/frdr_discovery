@@ -17,7 +17,7 @@ define(function(require){
                 'genre',
                 'Keywords',
                 'creator',
-                'Collection', // needs special treatment: field needs to be 'nick'
+                'collection', // needs special treatment: field needs to be 'nick'
                 //'degree',
                 //'campus',
                 //'program',
@@ -64,7 +64,7 @@ define(function(require){
                 'program',
                 'description',
                 'type',
-                'Collection',
+                'collection',
                 'creator',
                 'date',
                 'title',
