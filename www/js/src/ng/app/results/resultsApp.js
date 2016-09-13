@@ -429,8 +429,8 @@ define(function (require) {
                             $scope.rUpdating = false;
                             // fire facet queries
                             facetService.newFacetQuery($scope.q);
-                            // typedata for onebar viz
-                            $scope.typeData = response.aggs.type;
+                            // typedata for onebar used at top of search results
+                            $scope.typeData = "";
                             // update results
                             $scope.esr = {
                                 results: response.results
