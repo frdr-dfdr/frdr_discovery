@@ -73,9 +73,14 @@ define(function(require){
                 if(website_env !== 'prod') {
                     console.log('search input:', input);
                 }
+
+                var pagination = "";
+                if (input.hasOwnProperty('from') && input.from != "0") {
+                    pagination = "&from=" + input.from;
+                }
                 
                 return $http.get(
-                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(searchString.vars.query),
+                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(searchString.vars.query)+pagination,
                     {
                         headers: headers
                     })
