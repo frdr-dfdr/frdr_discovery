@@ -105,7 +105,6 @@ define(function(require) {
                     facetService.change();
                 };
 
-<<<<<<< b64464011823f3f360169e09659f564ff46e1538
                 facetService.makeFacetsObj().then(function(response){
                     $scope.f = $filter('orderObjectBy')(response, 'order');
                     // SPLIT-COLUMN "CHUNKED" FACETS VIEW (Theses / Advanced Search Pages)
@@ -131,22 +130,6 @@ define(function(require) {
             function($scope, $rootScope, searchString, es, $timeout, collectionData, facetService, datechart, utility, $translate) {
 
                 // NEW FACET QUERY
-=======
-        // GET FACET DATA
-        // facets elasticSearch call : searchString and esSearch promises are consolidated here: 
-        // takes options as input and returns response.aggs as a promise
-
-        var fIndex = false;
-            var getFacetsData;
-            getFacetsData = function (opts) {
-                console.log("Facet search; opts:", opts)
-                $scope.optsLoading = true;
-                if (opts.index) {
-                    fIndex = opts.index;
-                } else {
-                    fIndex = false;
-                }
->>>>>>> Debugging
 
                 var aggArr = new Array($scope.ff.label);
                 var searchOpts = {};  // container to cache search opts for refreshing this facet independently.
