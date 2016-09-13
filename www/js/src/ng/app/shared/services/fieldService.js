@@ -152,6 +152,10 @@ define(function(require){
                      map: 'ubc.transcript', 
                      label: 'Full Text'
                 };
+            fieldService.fields.Keywords = {
+                     map: 'Keywords', 
+                     label: 'Keywords'
+                };
             // replace labels for some fields
             fieldService.fields.collection.label = "Collection";
         }
