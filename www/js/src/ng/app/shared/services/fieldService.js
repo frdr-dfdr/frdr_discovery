@@ -15,6 +15,7 @@ define(function(require){
                 'sortDate',  // needs special treatment: date hist object
                 'type',
                 // 'genre',
+                'genre',
                 'Keywords',
                 'creator',
                 'Collection', // needs special treatment: field needs to be 'nick'

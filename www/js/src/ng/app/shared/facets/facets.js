@@ -434,8 +434,6 @@ define(function(require) {
             }])
 
 
-
-
         /************** FACETS DIRECTIVES *****************/
         .directive('facets', [ function() {
             return {
