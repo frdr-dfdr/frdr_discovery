@@ -528,10 +528,6 @@ define(function (require) {
                             $scope.rssLink = $scope.rssLink + "&" + key + "=" + encodeURIComponent(searchString.vars.filter[key].terms.join('~@~'));
                         }
                     });
-                    // do you feel lucky? (punk)  .. jump to first result
-                    if (locSearch.lucky && locSearch.lucky == 1) {
-                        lucky = true;
-                    }
                     // is this initiated by a search widget? log it.
                     if (locSearch.widgetquery) {
                         utility.gaEvent('search_results', 'widget_query', locSearch.widgetquery);
@@ -645,8 +641,6 @@ define(function (require) {
                         return arr;
                     }();
 
-                    console.log("---- ITEM ----")
-                    console.log("scope.r:", $scope.r)
                     // set required / special field vals
                     /*
                     $scope.r = {

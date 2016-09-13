@@ -21,7 +21,6 @@ define(function(require){
 
             // specified searchIndex? if so, change the searchindex
             var nicks;
-            console.log("searchString:", searchString);
             if (input.searchIndex) {
 
                 nicks = input.searchIndex;
@@ -110,7 +109,6 @@ define(function(require){
                             // console.log('search output:', output);
                         }
                         return output;
-                        // deferred.resolve(s.output);
                     },
                     function (error) {
                         console.trace('ES query error:', error);
