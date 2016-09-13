@@ -17,7 +17,7 @@ define(function(require){
                 'genre',
                 'Keywords',
                 'creator',
-                'collection', // needs special treatment: field needs to be 'nick'
+                'Collection', // needs special treatment: field needs to be 'nick'
                 //'degree',
                 //'campus',
                 //'program',
@@ -64,7 +64,7 @@ define(function(require){
                 'program',
                 'description',
                 'type',
-                'collection',
+                'Collection',
                 'creator',
                 'date',
                 'title',
@@ -138,7 +138,6 @@ define(function(require){
                 var key = input[f][0].sysmap;
                 fieldService.fields[key] = {
                     map: input[f][0].sysmap,
-                    // map: input[f][0].ocmap,
                     label: input[f][0].label
                 };
             }
@@ -155,7 +154,6 @@ define(function(require){
                 };
             // replace labels for some fields
             fieldService.fields.collection.label = "Collection";
-            // fieldService.genre.collection.label = "Genre";
         }
         function makeFieldArrays(input){
             // set specific fields objects
