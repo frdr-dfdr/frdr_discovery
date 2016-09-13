@@ -630,7 +630,6 @@ define(function(require) {
                     // check nicks from ES against collection data from DB and build collection data for facets
                     function makeColsData(colAggs, titles){
                         var collectionsData = [];
-
                         // console.log(colAggs, titles);
 
                         angular.forEach(colAggs, function(d,i){
