@@ -158,7 +158,7 @@ define(function(require){
                 };
             fieldService.fields.Collection = {
                      map: 'Collection', 
-                     label: 'Collection'
+                     label: 'Source'
                 };
         }
         function makeFieldArrays(input){
