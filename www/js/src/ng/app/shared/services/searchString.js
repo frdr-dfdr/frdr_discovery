@@ -351,25 +351,7 @@ define(function (require) {
                 }
             }
             // console.log('opts', opts, 'searchParams', searchParams, 'searchString.vars', searchString.vars);
-            return setFields(searchParams).then(function () {
-                console.log("SEARCH PARAMS: ", searchParams)
-                if (isAdvQuery(searchParams.query)) {
-                    var thisQuery = {
-                        query_string: {
-                            default_operator: 'AND',
-                            query: searchParams.query
-                        }
-                    };
-                    return makeTheString(thisQuery);
-                } else {
-                    return getDefaultQueryObj(searchParams.query).then(function (response) {
-                        // build bool query from external source
-                        var asString = JSON.stringify(response.filtered.query).replace(/REPLACE_ME/g, searchParams.query);
-                        var thisQuery = JSON.parse(asString);
-                        return makeTheString(thisQuery);
-                    });
-                }
-            });
+            return setFields(searchParams);
 
             // GET FIELD MAPPING DATA from field service, then set mappings for filters, aggs objects (PROMISE)
             function setFields() {

@@ -59,6 +59,7 @@ define(function(require){
 
             function doSearch(){
                 // support switching of headers for API Tool
+                console.log("SEARCH INPUT: ", input);
                 var headers = {
                             'X-Requested-With': 'XMLHttpRequest'
                         };
@@ -87,7 +88,7 @@ define(function(require){
                     }
                 }
                 // Handle other facets
-                
+
                 if (filters != "") {
                     filters = "&filters=Collection:" + filters.trim();
                 }
