@@ -59,7 +59,6 @@ define(function(require){
 
             function doSearch(){
                 // support switching of headers for API Tool
-                console.log("SEARCH INPUT: ", input);
                 var headers = {
                             'X-Requested-With': 'XMLHttpRequest'
                         };
@@ -71,7 +70,7 @@ define(function(require){
 
                 // if(!input.type) { input.type = 'object';}
                 if(website_env !== 'prod') {
-                    console.log('search input:', input);
+                    console.log('SEARCH INPUT:', input);
                 }
 
                 var pagination = "";
