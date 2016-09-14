@@ -89,7 +89,7 @@ define(function(require){
                 }
                 */
                 // Add filters for each facet
-                if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter")) {
+                if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter") && input["body"]["filter"] !== "omit" ) {
                     for (var filterField in input["body"]["filter"]) {
                         var filterItem = input["body"]["filter"][filterField];
                         if (filterItem["terms"].length > 0) {
