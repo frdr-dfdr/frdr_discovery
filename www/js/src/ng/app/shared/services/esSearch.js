@@ -80,16 +80,31 @@ define(function(require){
 
                 var filters = "";
                 // This code base splits out the collection facet; capture it here
+                /*
                 if (input.hasOwnProperty('searchIndex') && input.searchIndex != "" && input.searchIndex != "oc") {
                     var cols = input.searchIndex.split(",");
                     for (var c in cols) {
                         filters += ' "' + cols[c] + '"';
                     }
                 }
-                // Handle other facets
+                */
+                // Add filters for each facet
+                if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter")) {
+                    for (var filterField in input["body"]["filter"]) {
+                        var filterItem = input["body"]["filter"][filterField];
+                        if (filterItem["terms"].length > 0) {
+                            var thisFilter = "";
+                            foreach (var t in filterItem["terms"]) {
+                                thisFilter += ' "' + filterItem["terms"][t] + '"';
+                            }
+                            if (filters != "") { filters += ";"; }
+                            filters = filterField + ":" + thisFilter.trim();
+                        }
+                    }
+                }
 
                 if (filters != "") {
-                    filters = "&filters=Collection:" + filters.trim();
+                    filters = "&filters=" + filters.trim();
                 }
                 console.log("Filters: ",filters);
                 
