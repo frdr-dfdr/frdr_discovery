@@ -350,14 +350,9 @@ define(function (require) {
                     searchParams[attr] = searchString.vars[attr];
                 }
             }
+
             // console.log('opts', opts, 'searchParams', searchParams, 'searchString.vars', searchString.vars);
-
-            setFields(searchParams);
-            return searchParams;
-
-            /* NRDR
             return setFields(searchParams).then(function () {
-                console.log("SEARCH PARAMS: ", searchParams);
                 if (isAdvQuery(searchParams.query)) {
                     var thisQuery = {
                         query_string: {
@@ -365,17 +360,22 @@ define(function (require) {
                             query: searchParams.query
                         }
                     };
+                    /* NRDR
                     return makeTheString(thisQuery);
+                    */
+                    return searchParams;
                 } else {
+                    /* NRDR
                     return getDefaultQueryObj(searchParams.query).then(function (response) {
                         // build bool query from external source
                         var asString = JSON.stringify(response.filtered.query).replace(/REPLACE_ME/g, searchParams.query);
                         var thisQuery = JSON.parse(asString);
                         return makeTheString(thisQuery);
                     });
+                    */
+                    return searchParams;
                 }
             });
-            */
 
             // GET FIELD MAPPING DATA from field service, then set mappings for filters, aggs objects (PROMISE)
             function setFields() {
