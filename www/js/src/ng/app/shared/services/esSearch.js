@@ -79,7 +79,7 @@ define(function(require){
                 }
 
                 var filters = "";
-                if (input.hasOwnProperty('searchIndex') && input.searchIndex != "") {
+                if (input.hasOwnProperty('searchIndex') && input.searchIndex != "" && input.searchIndex != "oc") {
                     var cols = input.searchIndex.split(",");
                     for (var c in cols) {
                         filters += ' "' + cols[c] + '"';
