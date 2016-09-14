@@ -322,7 +322,6 @@ define(function (require) {
                         updateLocation();
                         try {
                             if ($(window).scrollTop() > 800) {
-                                console.log('to top of page')
                                 $(window).scrollTop(0);
                             }
                         } catch (e) {
@@ -433,7 +432,6 @@ define(function (require) {
                             $scope.esr = {
                                 results: response.results
                             };
-                            console.log("Updated scope var esr to: ", $scope.esr )
                             $scope.total = response.total;
                             $scope.hidePages = false;
                             if (!$scope.terms) {
@@ -496,9 +494,6 @@ define(function (require) {
 
                 // get URL string data
                 function getLocation(callback) {
-                    if (website_env !== 'prod') {
-                        console.log("getLocation");
-                    }
                     var locSearch = $location.search();
                     // get current page
                     $scope.currentPage = Number(locSearch.p) || 0;
