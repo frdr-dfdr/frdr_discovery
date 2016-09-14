@@ -411,7 +411,7 @@ define(function (require) {
                     highlighter.getTerms();
 
                     if (website_env !== 'prod') {
-                        console.log("searchString", searchString);
+                        //console.log("searchString", searchString);
                     }
 
                     //define search input, THEN do search
@@ -423,8 +423,6 @@ define(function (require) {
                             body: response
                         };
                         es.search(searchInput).then(function (response) {
-                            console.log("Done search")
-                            console.log("App got results:", response)
                             searchCounter++;
                             $scope.rUpdating = false;
                             // fire facet queries
@@ -774,7 +772,7 @@ define(function (require) {
                         var iiifUrl = iiif_api + '/viewer/excerpt.php?handle=' + newHandle + '&search=' + encodeURIComponent(query) + '&json';
                         $http.get(iiifUrl).then(function (response) {
                             if (website_env !== 'prod') {
-                                console.log('inner response', response.data);
+                                \\console.log('inner response', response.data);
                             }
 
                             if (!response.data) {

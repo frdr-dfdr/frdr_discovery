@@ -352,6 +352,7 @@ define(function (require) {
             }
             // console.log('opts', opts, 'searchParams', searchParams, 'searchString.vars', searchString.vars);
             return setFields(searchParams).then(function () {
+                console.log("SEARCH PARAMS: ", searchParams)
                 if (isAdvQuery(searchParams.query)) {
                     var thisQuery = {
                         query_string: {

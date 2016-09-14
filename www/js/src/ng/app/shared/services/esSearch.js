@@ -79,12 +79,15 @@ define(function(require){
                 }
 
                 var filters = "";
+                // This code base splits out the collection facet; capture it here
                 if (input.hasOwnProperty('searchIndex') && input.searchIndex != "" && input.searchIndex != "oc") {
                     var cols = input.searchIndex.split(",");
                     for (var c in cols) {
                         filters += ' "' + cols[c] + '"';
                     }
                 }
+                // Handle other facets
+                
                 if (filters != "") {
                     filters = "&filters=Collection:" + filters.trim();
                 }
