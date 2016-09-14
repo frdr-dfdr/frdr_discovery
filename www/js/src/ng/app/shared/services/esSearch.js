@@ -77,9 +77,20 @@ define(function(require){
                 if (input.hasOwnProperty('from') && input.from != "0") {
                     pagination = "&from=" + input.from;
                 }
+
+                var filters = "";
+                 if (input.hasOwnProperty('searchIndex') && input.searchIndex != "") {
+                    var cols = input.searchIndex.split(",");
+                    for (var c in cols) {
+                        filters += ' "' + cols[c] + '"';
+                    }
+                }
+                if (filters != "") {
+                    filters = "&filters=Collection:" + filters.trim();
+                }
                 
                 return $http.get(
-                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(searchString.vars.query)+pagination,
+                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(searchString.vars.query)+pagination+filters,
                     {
                         headers: headers
                     })
