@@ -94,7 +94,7 @@ define(function(require){
                         var filterItem = input["body"]["filter"][filterField];
                         if (filterItem["terms"].length > 0) {
                             var thisFilter = "";
-                            foreach (var t in filterItem["terms"]) {
+                            for (var t in filterItem["terms"]) {
                                 thisFilter += ' "' + filterItem["terms"][t] + '"';
                             }
                             if (filters != "") { filters += ";"; }
