@@ -349,6 +349,7 @@ define(function(require) {
                     // console.log('removeFilter:', term, title, index, $scope.activeFilters);
                 };
 
+
                 $scope.isFiltered = function(check){
                     if($scope.activeFilters.indexOf(check) === -1) {
                         return false;
@@ -388,6 +389,7 @@ define(function(require) {
                 $scope.toggle = function(){
                     if ($scope.isOpen === true){
                         facetService.facets[$scope.ff.label].open = false;
+
                     } else {
                         facetService.facets[$scope.ff.label].open = true;
                     }
