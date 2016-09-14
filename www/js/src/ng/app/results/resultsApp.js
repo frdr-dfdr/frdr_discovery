@@ -772,7 +772,7 @@ define(function (require) {
                         var iiifUrl = iiif_api + '/viewer/excerpt.php?handle=' + newHandle + '&search=' + encodeURIComponent(query) + '&json';
                         $http.get(iiifUrl).then(function (response) {
                             if (website_env !== 'prod') {
-                                \\console.log('inner response', response.data);
+                                //console.log('inner response', response.data);
                             }
 
                             if (!response.data) {
