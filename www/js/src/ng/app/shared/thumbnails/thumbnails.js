@@ -25,6 +25,7 @@ define(function (require) {
 
             //$scope.src = thumbService.thumbSrc($scope.width, $scope.repo, $scope.itemId, $scope.colNick, $scope.handle);
             $scope.src = $scope.imgSrc;
+            console.log("Thumb scope.src = ", $scope.src);
             
             if(!$scope.src) { $scope.noThumb = true;}
             if($scope.itemId) {
