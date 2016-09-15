@@ -25,7 +25,6 @@ define(function (require) {
 
             //$scope.src = thumbService.thumbSrc($scope.width, $scope.repo, $scope.itemId, $scope.colNick, $scope.handle);
             $scope.src = $scope.imgSrc;
-            console.log("Item scope: ", $scope);
             
             if(!$scope.src) { $scope.noThumb = true;}
             if($scope.itemId) {
@@ -119,7 +118,8 @@ define(function (require) {
                 title: "@itemTitle",
                 htmlTitle: "@htmlTitle",
                 repo: "@repo",
-                colNick: "@colNick"
+                colNick: "@colNick",
+                imgSrc: "@imgSrc"
             },
             transclude: true,
             controller: 'thumbnailsController',
