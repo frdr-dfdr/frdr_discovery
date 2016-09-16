@@ -33,7 +33,7 @@ define(function (require) {
             if ($scope.src == "https://circle-23jan2015.sites.olt.ubc.ca/files/2015/01/circle-logo-inverted.png") {
                 $scope.src = "https://rdmtest1.computecanada.ca/ubc_80x80.png";
             }
-            if ($scope.src == "https://rdmtest1.computecanada.ca/jspui/image/logo.png") {
+            if ($scope.src == "https://rdmtest1.computecanada.ca/jspui/image/logo.png") { 
                 $scope.src = "https://rdmtest1.computecanada.ca/frdr_80x80.png";
             }
             if ($scope.src == "http://images.scholarsportal.info/dataverse/logo.png") {
