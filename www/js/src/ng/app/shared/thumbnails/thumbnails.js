@@ -28,19 +28,19 @@ define(function (require) {
 
             // TEMPORARY FOR SC DEMO
             if ($scope.src == "http://static.lib.sfu.ca/clf2013/sfu-logo.png") {
-                $scope.src = "https://rdmtest1.computecanada.ca/sfu_80x80.png";
+                $scope.src = "/img/sources/sfu_80x80.png";
             }
             if ($scope.src == "https://circle-23jan2015.sites.olt.ubc.ca/files/2015/01/circle-logo-inverted.png") {
-                $scope.src = "https://rdmtest1.computecanada.ca/ubc_80x80.png";
+                $scope.src = "/img/sources/ubc_80x80.png";
             }
             if ($scope.src == "https://rdmtest1.computecanada.ca/jspui/image/logo.png") { 
-                $scope.src = "https://rdmtest1.computecanada.ca/frdr_80x80.png";
+                $scope.src = "/img/sources/frdr_80x80.png";
             }
             if ($scope.src == "http://images.scholarsportal.info/dataverse/logo.png") {
-                $scope.src = "https://rdmtest1.computecanada.ca/sp_80x80.png";
+                $scope.src = "/img/sources/sp_80x80.png";
             }
             if ($scope.src == "http://open.canada.ca/data/static/img/leaves/fivestar.png") {
-                $scope.src = "https://rdmtest1.computecanada.ca/odc_80x80.png";
+                $scope.src = "/img/sources/odc_80x80.png";
             }
 
             if(!$scope.src) { $scope.noThumb = true;}
