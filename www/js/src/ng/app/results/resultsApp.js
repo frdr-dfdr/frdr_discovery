@@ -663,8 +663,9 @@ define(function (require) {
                     $scope.r.repo = $scope.r.collection;
                     $scope.r.sortDate = $scope.r['http://dublincore.org/documents/dcmi-terms#date'];
                     $scope.r.detail = {};
-                    $scope.r.type = "dataset";
+                    $scope.r.type = "text";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
+                    $scope.r.icon_url = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
