@@ -294,6 +294,7 @@ define(function (require) {
                             saved: true,
                             title: $filter('stripHtmlTags')(r.title),
                             type: r.type,
+                            icon_url: r.icon_url,
                             link_item : website_base_url + '/' +r.itemLink,
                             link_collection : website_base_url + '/' + r.collectionLink,
                             repo: r.repo

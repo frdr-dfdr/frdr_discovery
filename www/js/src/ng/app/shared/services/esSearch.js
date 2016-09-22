@@ -118,6 +118,8 @@ define(function(require){
                         if(website_env !== 'prod') {
                             console.log('response:', response);
                         }
+
+                        // FRDR changes for Globus Search
                         if (!response.data.hasOwnProperty("_gfacets")) { response.data["_gfacets"] = ""; }
                         var resultSet = [];
                         for (var item in response.data["_gmeta"]) {
