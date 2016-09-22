@@ -655,6 +655,7 @@ define(function (require) {
                         detail: {}
                     };
                     */
+
                     $scope.r._id = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
                     $scope.r.handle = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
@@ -665,8 +666,25 @@ define(function (require) {
                     $scope.r.detail = {};
                     $scope.r.type = "text";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
-                    $scope.r.icon_url = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
                     $scope.r.creator = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
+
+                    $scope.r.icon_url = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
+                    // TEMPORARY FOR SC DEMO
+                    if ($scope.r.icon_url == "http://static.lib.sfu.ca/clf2013/sfu-logo.png") {
+                        $scope.r.icon_url = "/img/sources/sfu_80x80.png";
+                    }
+                    if ($scope.r.icon_url == "https://circle-23jan2015.sites.olt.ubc.ca/files/2015/01/circle-logo-inverted.png") {
+                        $scope.r.icon_url = "/img/sources/ubc_80x80.png";
+                    }
+                    if ($scope.r.icon_url == "https://rdmtest1.computecanada.ca/jspui/image/logo.png") { 
+                        $scope.r.icon_url = "/img/sources/frdr_80x80.png";
+                    }
+                    if ($scope.r.icon_url == "http://images.scholarsportal.info/dataverse/logo.png") {
+                        $scope.r.icon_url = "/img/sources/sp_80x80.png";
+                    }
+                    if ($scope.r.icon_url == "http://open.canada.ca/data/static/img/leaves/fivestar.png") {
+                        $scope.r.icon_url = "/img/sources/odc_80x80.png";
+                    }
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
