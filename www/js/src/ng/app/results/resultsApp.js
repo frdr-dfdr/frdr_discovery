@@ -668,7 +668,7 @@ define(function (require) {
                     $scope.r.saved = rExport.isSaved($scope.r._id);
                     $scope.r.creator = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
 
-                    $scope.r.icon_url = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
+                    $scope.r.icon_url = $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
                     // TEMPORARY FOR SC DEMO
                     if ($scope.r.icon_url == "http://static.lib.sfu.ca/clf2013/sfu-logo.png") {
                         $scope.r.icon_url = "/img/sources/sfu_80x80.png";
