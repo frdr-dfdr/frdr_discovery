@@ -625,8 +625,6 @@ define(function(require) {
                             } else {
                                 console.log("Cannot find a facet for: ", k)
                             }
-                        }
-                    }
 
                     // order type buckets
                     if (facetService.facets.type){
