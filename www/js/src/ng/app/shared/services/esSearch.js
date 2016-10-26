@@ -120,21 +120,21 @@ define(function(require){
                         }
 
                         // FRDR changes for Globus Search
-                        if (!response.data.hasOwnProperty("_gfacets")) { response.data["_gfacets"] = ""; }
+                        if (!response.data.hasOwnProperty("gfacets")) { response.data["gfacets"] = ""; }
                         var resultSet = [];
-                        for (var item in response.data["_gmeta"]) {
-                            for (var o in response.data["_gmeta"][item]) {
-                                if (response.data["_gmeta"][item][o].hasOwnProperty("content")) {
-                                    resultSet.push(response.data["_gmeta"][item][o]["content"]);
+                        for (var item in response.data["gmeta"]) {
+                            for (var o in response.data["gmeta"][item]) {
+                                if (response.data["gmeta"][item][o].hasOwnProperty("content")) {
+                                    resultSet.push(response.data["gmeta"][item][o]["content"]);
                                 }
                             }
 
                         }
                         var output = {
                             results: resultSet,
-                            count  : response.data["_gstats"]["count"],
-                            total  : response.data["_gstats"]["total"],
-                            aggs   : response.data["_gfacets"]
+                            count  : response.data["gstats"]["count"],
+                            total  : response.data["gstats"]["total"],
+                            aggs   : response.data["gfacets"]
                         };
                         // debugger;
                         if(website_env !== 'prod') {
