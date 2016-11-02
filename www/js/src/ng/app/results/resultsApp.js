@@ -845,7 +845,6 @@ define(function (require) {
         return {
             restrict: 'EA',
             templateUrl: templatePath + 'results-parent.html?version=' + app_version,
-            // link : link
         };
     })
 
@@ -879,6 +878,27 @@ define(function (require) {
                 templateUrl: templatePath + 'mainpage-search-options.html?version=' + app_version,
             };
         })
+        .directive('mainpageResultsHeader', function () {
+            return {
+                restrict: 'E',
+                templateUrl: templatePath + 'mainpage-results-header.html?version=' + app_version,
+            };
+        })
+
+        .directive('mainpageHeader', function () {
+            return {
+                restrict: 'E',
+                templateUrl: templatePath + 'mainpage-header.html?version=' + app_version,
+            };
+        })
+
+        .directive('mainpageSearchOptions', function () {
+            return {
+                restrict: 'E',
+                templateUrl: templatePath + 'mainpage-search-options.html?version=' + app_version,
+            };
+        })
+
         .directive('mainpageResultsHeader', function () {
             return {
                 restrict: 'E',
