@@ -92,7 +92,7 @@ node_modules/*
 
 # User Files #
 ##############
-
+www/js/config-vars.js
 config-site.ini
 www/img/thumbnails/*
 commit_log.txt
