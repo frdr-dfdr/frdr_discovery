@@ -131,20 +131,20 @@ define(function(require){
                         }
 
                         // Format the Globus search platform response to look like what UBC code expects
-                        var aggs = {};
+                        var aggsObject = {};
                         for (var i in response.data["gfacets"]) {
                             for (var p in response.data["gfacets"][i]) {
                                 if (p == "Publication Date") { q = "sortDate"; } else { q = p; }
-                                aggs[q]= {};
-                                aggs[q].doc_count_error_upper_bound = 0;
-                                aggs[q].sum_other_doc_count = 0;
-                                aggs[q].buckets = [];
+                                aggsObject[q]= {};
+                                aggsObject[q].doc_count_error_upper_bound = 0;
+                                aggsObject[q].sum_other_doc_count = 0;
+                                aggsObject[q].buckets = [];
                                 var bn = 0;
                                 for (var b in response.data["gfacets"][i][p]) {
-                                    aggs[q].buckets[bn]={};
-                                    aggs[q].buckets[bn].key = response.data["gfacets"][i][p][b]["value"];
-                                    aggs[q].buckets[bn].key_as_string = response.data["gfacets"][i][p][b]["value"];
-                                    aggs[q].buckets[bn].doc_count = response.data["gfacets"][i][p][b]["count"];
+                                    aggsObject[q].buckets[bn]={};
+                                    aggsObject[q].buckets[bn].key = response.data["gfacets"][i][p][b]["value"];
+                                    aggsObject[q].buckets[bn].key_as_string = response.data["gfacets"][i][p][b]["value"];
+                                    aggsObject[q].buckets[bn].doc_count = response.data["gfacets"][i][p][b]["count"];
                                     bn++;
                                 }
                             }
@@ -154,7 +154,7 @@ define(function(require){
                             results: resultSet,
                             count  : response.data["gstats"]["count"],
                             total  : response.data["gstats"]["total"],
-                            aggs   : response.data["gfacets"]
+                            aggs   : aggsObject
                         };
                         // debugger;
                         if(website_env !== 'prod') {

@@ -26,7 +26,7 @@ define(function(require) {
             'AFFILIATION': 'Affiliation',
             'CAMPUS': 'Campus',
             'CLEAR': 'Clear',
-            'COLLECTION': 'Collection',
+            'COLLECTION': 'Source',
             'CREATOR(S)': 'Creator(s)',
             'DATE RANGE': 'Date range',
             'DEGREE': 'Degree',
@@ -50,7 +50,7 @@ define(function(require) {
             'AFFILIATION': 'Affiliation',
             'CAMPUS': 'Campus',
             'CLEAR': 'Supprimer',
-            'COLLECTION': 'Collection',
+            'COLLECTION': 'Source',
             'CREATOR(S)': 'Créateur(s)',
             'DATE RANGE': 'Intervalle de dates',
             'DEGREE': 'Degré',
@@ -274,7 +274,6 @@ define(function(require) {
                         // NOTE: collections don't use normal filters:
                         // collections are filtered by changing es.input.searchIndex value
 
-                        /* NRDR
                         if($scope.ff.label === 'collection'){
                             $scope.activeFilterTitles = [];
                             for (var i = 0; i < searchString.vars.filter.collection.terms.length; i++) {
@@ -285,7 +284,6 @@ define(function(require) {
                             }
                             $scope.orderField = $scope.orderField === 'key' ? 'title' : $scope.orderField;
                         }
-                        */
                     }
                     moreCheck();
                 }
@@ -349,7 +347,6 @@ define(function(require) {
                     // console.log('removeFilter:', term, title, index, $scope.activeFilters);
                 };
 
-
                 $scope.isFiltered = function(check){
                     if($scope.activeFilters.indexOf(check) === -1) {
                         return false;
@@ -389,7 +386,6 @@ define(function(require) {
                 $scope.toggle = function(){
                     if ($scope.isOpen === true){
                         facetService.facets[$scope.ff.label].open = false;
-
                     } else {
                         facetService.facets[$scope.ff.label].open = true;
                     }
@@ -408,6 +404,7 @@ define(function(require) {
                     console.log($scope.orderField);
                     getFacetsData(searchOpts).then(function(response){
                     });
+
                 };
 
                 function moreCheck(){
@@ -435,6 +432,8 @@ define(function(require) {
                     facetService.change();
                 };
             }])
+
+
 
 
         /************** FACETS DIRECTIVES *****************/
@@ -626,6 +625,8 @@ define(function(require) {
                             } else {
                                 console.log("Cannot find a facet for: ", k)
                             }
+                        }
+                    }
 
                     // order type buckets
                     if (facetService.facets.type){
@@ -635,6 +636,7 @@ define(function(require) {
                     // check nicks from ES against collection data from DB and build collection data for facets
                     function makeColsData(colAggs, titles){
                         var collectionsData = [];
+
                         // console.log(colAggs, titles);
 
                         angular.forEach(colAggs, function(d,i){

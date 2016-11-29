@@ -619,7 +619,7 @@ define(function (require) {
 
                 function setR(rFields) {
 
-                    //var source = $scope.r._source;
+                    var source = $scope.r._source;
                     // normal terms scope
 
                     var hasFields = function () {
