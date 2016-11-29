@@ -348,10 +348,14 @@ define(function(require) {
                 };
 
                 $scope.isFiltered = function(check){
-                    if($scope.activeFilters.indexOf(check) === -1) {
-                        return false;
+                    if($scope.hasOwnProperty("activeFilters")) {
+                        if($scope.activeFilters.indexOf(check) === -1) {
+                            return false;
+                        } else {
+                            return true;
+                        }
                     } else {
-                        return true;
+                        return false;
                     }
                 };
 

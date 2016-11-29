@@ -146,11 +146,9 @@ define(function (require) {
         
         // GOOGLE ANALYTICS EVENT UTILITY
         utility.gaEvent = function(category, action, label){
-            
-            return true;
 
             try {
-                _gaTracker('secondTracker.send', {
+                _gaTracker('send', {
                   hitType: 'event',
                   eventCategory: category,
                   eventAction: action,
@@ -167,14 +165,10 @@ define(function (require) {
         };
 
         utility.gaPageview = function(loc) {
-
-            return true;
             
             try {
                 _gaTracker('set', 'page', loc);
                 _gaTracker('send', 'pageview');
-                _gaTracker('secondTracker.set', 'page', loc);
-                _gaTracker('secondTracker.send', 'pageview');
             } catch(e) {
                 if (website_env != 'prod') {
                     console.log('GA pageview', loc);
