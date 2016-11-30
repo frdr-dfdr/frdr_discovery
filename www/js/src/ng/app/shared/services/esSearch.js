@@ -142,7 +142,16 @@ define(function(require){
                                 var bn = 0;
                                 for (var b in response.data["gfacets"][i][p]) {
                                     aggsObject[q].buckets[bn]={};
-                                    aggsObject[q].buckets[bn].key = response.data["gfacets"][i][p][b]["value"];
+                                    if (q == "sortDate") {
+                                        var d = new Date(response.data["gfacets"][i][p][b]["value"]);
+                                        if (isNaN(d)) {
+                                            aggsObject[q].buckets[bn].key = new Date().getTime();
+                                        } else {
+                                            aggsObject[q].buckets[bn].key = d.getTime();
+                                        }
+                                    } else {
+                                        aggsObject[q].buckets[bn].key = response.data["gfacets"][i][p][b]["value"];
+                                    }
                                     aggsObject[q].buckets[bn].key_as_string = response.data["gfacets"][i][p][b]["value"];
                                     aggsObject[q].buckets[bn].doc_count = response.data["gfacets"][i][p][b]["count"];
                                     bn++;
