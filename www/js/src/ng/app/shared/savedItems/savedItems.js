@@ -263,6 +263,7 @@ define(function (require) {
                             return e._id !== r._id;
                         });
 
+                        /* FRDR
                         $http.defaults.headers.common[ "X-Requested-With" ] = 'XMLHttpRequest';
                         $http.post('/search/unstash', {
                                 id: r._id
@@ -275,6 +276,7 @@ define(function (require) {
                             error(function (data, status, headers, config) {
                                 console.log('failed');
                             });
+                        */
 
                         // console.log('item removed', rExport.saved);
 
@@ -295,7 +297,7 @@ define(function (require) {
                             title: $filter('stripHtmlTags')(r.title),
                             type: r.type,
                             icon_url: r.icon_url,
-                            link_item : website_base_url + '/' +r.itemLink,
+                            link_item : r.handle,
                             link_collection : website_base_url + '/' + r.collectionLink,
                             repo: r.repo
                         };
@@ -303,6 +305,7 @@ define(function (require) {
                         rExport.saved.push(saveR);
 
                         bool = true;
+                        /* FRDR
                         $http.defaults.headers.common[ "X-Requested-With" ] = 'XMLHttpRequest';
                         $http.post('/search/stash', {
                                 readings: saveR
@@ -314,6 +317,7 @@ define(function (require) {
                             error(function (data, status, headers, config) {
                                 console.log('failed');
                             });
+                        */
                         $cookieStore.put('savedItems', rExport.saved);
                         r.saved = true;
                         return bool;
@@ -324,6 +328,7 @@ define(function (require) {
                 rExport.clear = function () {
                     utility.gaEvent('saved_items', 'clear_saved');
                     rExport.saved = [];
+                    /* FRDR
                     $http.defaults.headers.common[ "X-Requested-With" ] = 'XMLHttpRequest';
                     $http.post('/search/unstash', {
                             id: '_all'
@@ -336,6 +341,7 @@ define(function (require) {
                         error(function (data, status, headers, config) {
                             console.log('failed');
                         });
+                    */
                     $cookieStore.put('savedItems', rExport.saved);
                 };
 
