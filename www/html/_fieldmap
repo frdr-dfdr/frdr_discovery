@@ -1,0 +1,355 @@
+{
+    "http_code": 200,
+    "api_code": 3000,
+    "api_text": "Ontology System Map",
+    "data": {
+        "AIPUUID": [{
+            "label": "AIP UUID",
+            "sysmap": "aipUUID"
+        }],
+        "Affiliation": [{
+            "label": "Affiliation",
+            "sysmap": "affiliation"
+        }],
+        "AggregatedSourceRepository": [{
+            "label": "Aggregated Source Repository",
+            "sysmap": "aggregatedSourceRepository"
+        }],
+        "AlternateTitle": [{
+            "label": "Alternate Title",
+            "sysmap": "alternateTitle"
+        }],
+        "Annotations": [{
+            "label": "Annotations",
+            "sysmap": "annotations"
+        }],
+        "Bottom": [{
+            "label": "Bottom",
+            "sysmap": "bottom"
+        }],
+        "Campus": [{
+            "label": "Campus",
+            "sysmap": "campus"
+        }],
+        "CatalogueNumber": [{
+            "label": "Catalogue Number",
+            "sysmap": "catalogueNumber"
+        }],
+        "CatalogueRecord": [{
+            "label": "Catalogue Record",
+            "sysmap": "catalogueRecord"
+        }],
+        "Category": [{
+            "label": "Category",
+            "sysmap": "category"
+        }],
+        "Citation": [{
+            "label": "Citation",
+            "sysmap": "citation"
+        }],
+        "CollectedBy": [{
+            "label": "Collected By",
+            "sysmap": "collectedBy"
+        }],
+        "Collection": [{
+            "label": "Collection",
+            "sysmap": "collection"
+        }],
+        "CollectionDescription": [{
+            "label": "Collection Description",
+            "sysmap": "collectionDescription"
+        }],
+        "CollectionTitle": [{
+            "label": "Collection Title",
+            "sysmap": "collectionTitle"
+        }],
+        "CollectorNumber": [{
+            "label": "Collector Number",
+            "sysmap": "collectorNumber"
+        }],
+        "Contents": [{
+            "label": "Contents",
+            "sysmap": "contents"
+        }],
+        "Contributor": [{
+            "label": "Contributor(s)",
+            "sysmap": "contributor"
+        }],
+        "CopyrightHolder": [{
+            "label": "Copyright Holder(s)",
+            "sysmap": "copyrightHolder"
+        }],
+        "Country": [{
+            "label": "Country",
+            "sysmap": "country"
+        }],
+        "Cover": [{
+            "label": "Cover",
+            "sysmap": "cover"
+        }],
+        "Creator": [{
+            "label": "Creator(s)",
+            "sysmap": "creator"
+        }],
+        "Credits": [{
+            "label": "Credits",
+            "sysmap": "credits"
+        }],
+        "Current": [{
+            "label": "Current",
+            "sysmap": "current"
+        }],
+        "Date": [{
+            "label": "Date",
+            "sysmap": "date"
+        }],
+        "DateAvailable": [{
+            "label": "Date Available",
+            "sysmap": "dateAvailable"
+        }],
+        "DateCreated": [{
+            "label": "Date Created",
+            "sysmap": "dateCreated"
+        }],
+        "DateIssued": [{
+            "label": "Date Issued",
+            "sysmap": "dateIssued"
+        }],
+        "Degree": [{
+            "label": "Degree",
+            "sysmap": "degree"
+        }],
+        "DegreeGrantor": [{
+            "label": "Degree Grantor",
+            "sysmap": "degreeGrantor"
+        }],
+        "DepthOfCapture": [{
+            "label": "Depth Of Capture",
+            "sysmap": "depthOfCapture"
+        }],
+        "DepthOfWater": [{
+            "label": "Depth Of Water",
+            "sysmap": "depthOfWater"
+        }],
+        "Description": [{
+            "label": "Description",
+            "sysmap": "description"
+        }],
+        "DigitalResourceOriginalRecord": [{
+            "label": "DigitalResourceOriginalRecord",
+            "sysmap": "digitalResourceOriginalRecord"
+        }],
+        "DistanceOffshore": [{
+            "label": "Distance Offshore",
+            "sysmap": "distanceOffshore"
+        }],
+        "Edition": [{
+            "label": "Edition",
+            "sysmap": "edition"
+        }],
+        "Episode": [{
+            "label": "Episode",
+            "sysmap": "episode"
+        }],
+        "Extent": [{
+            "label": "Extent",
+            "sysmap": "extent"
+        }],
+        "FileFormat": [{
+            "label": "Format",
+            "sysmap": "fileFormat"
+        }],
+        "FileUUID": [{
+            "label": "File UUID",
+            "sysmap": "fileUUID"
+        }],
+        "FullText": [{
+            "label": "FullText",
+            "sysmap": "fullText"
+        }],
+        "Genre": [{
+            "label": "Genre",
+            "sysmap": "genre"
+        }],
+        "GeographicLocation": [{
+            "label": "Geographic Location",
+            "sysmap": "geographicLocation"
+        }],
+        "GraduationDate": [{
+            "label": "Graduation Date",
+            "sysmap": "graduationDate"
+        }],
+        "GrantFundingAgency": [{
+            "label": "Grant Funding Agency",
+            "sysmap": "grantFundingAgency"
+        }],
+        "HasView": [{
+            "label": "Has View",
+            "sysmap": "hasView"
+        }],
+        "Identifier": [{
+            "label": "Identifier",
+            "sysmap": "identifier"
+        }],
+        "IsShownAt": [{
+            "label": "Is Shown At",
+            "sysmap": "isShownAt"
+        }],
+        "Language": [{
+            "label": "Language",
+            "sysmap": "language"
+        }],
+        "Latitude": [{
+            "label": "Latitude",
+            "sysmap": "latitude"
+        }],
+        "License": [{
+            "label": "License",
+            "sysmap": "license"
+        }],
+        "Locality": [{
+            "label": "Locality",
+            "sysmap": "locality"
+        }],
+        "Longitude": [{
+            "label": "Longitude",
+            "sysmap": "longitude"
+        }],
+        "Map": [{
+            "label": "Map",
+            "sysmap": "map"
+        }],
+        "MethodOfCapture": [{
+            "label": "Method Of Capture",
+            "sysmap": "methodOfCapture"
+        }],
+        "Notes": [{
+            "label": "Notes",
+            "sysmap": "notes"
+        }],
+        "OriginalPreserved": [{
+            "label": "Original Preserved",
+            "sysmap": "originalPreserved"
+        }],
+        "PeerReviewStatus": [{
+            "label": "Peer Review Status",
+            "sysmap": "peerReviewStatus"
+        }],
+        "PersonOrCorporation": [{
+            "label": "Person\/Corporation",
+            "sysmap": "personOrCorporation"
+        }],
+        "Program": [{
+            "label": "Program",
+            "sysmap": "program"
+        }],
+        "ProjectWebsite": [{
+            "label": "Project Website",
+            "sysmap": "projectWebsite"
+        }],
+        "Provider": [{
+            "label": "Provider",
+            "sysmap": "provider"
+        }],
+        "ProvinceOrState": [{
+            "label": "Province\/State",
+            "sysmap": "provinceOrState"
+        }],
+        "Publisher": [{
+            "label": "Publisher",
+            "sysmap": "publisher"
+        }],
+        "PublisherDOI": [{
+            "label": "Publisher DOI",
+            "sysmap": "publisherDOI"
+        }],
+        "RBSCLocation": [{
+            "label": "RBSCLocation",
+            "sysmap": "rbscLocation"
+        }],
+        "Reference": [{
+            "label": "Reference",
+            "sysmap": "reference"
+        }],
+        "Rights": [{
+            "label": "Rights",
+            "sysmap": "rights"
+        }],
+        "RightsURI": [{
+            "label": "Rights URI",
+            "sysmap": "rightsURI"
+        }],
+        "ScholarlyLevel": [{
+            "label": "Scholarly Level",
+            "sysmap": "scholarlyLevel"
+        }],
+        "Series": [{
+            "label": "Series",
+            "sysmap": "series"
+        }],
+        "Shore": [{
+            "label": "Shore",
+            "sysmap": "shore"
+        }],
+        "SortDate": [{
+            "label": "SortDate",
+            "sysmap": "sortDate"
+        }],
+        "Source": [{
+            "label": "Source",
+            "sysmap": "source"
+        }],
+        "StreamWidth": [{
+            "label": "Stream Width",
+            "sysmap": "streamWidth"
+        }],
+        "Subject": [{
+            "label": "Subject",
+            "sysmap": "subject"
+        }],
+        "Temperature": [{
+            "label": "Temperature",
+            "sysmap": "temperature"
+        }],
+        "Tide": [{
+            "label": "Tide",
+            "sysmap": "tide"
+        }],
+        "Time": [{
+            "label": "Time",
+            "sysmap": "time"
+        }],
+        "Title": [{
+            "label": "Title",
+            "sysmap": "title"
+        }],
+        "Translation": [{
+            "label": "Translation",
+            "sysmap": "translation"
+        }],
+        "Type": [{
+            "label": "Type",
+            "sysmap": "type"
+        }],
+        "URI": [{
+            "label": "URI",
+            "sysmap": "uri"
+        }],
+        "Vegetation": [{
+            "label": "Vegetation",
+            "sysmap": "vegetation"
+        }],
+        "Water": [{
+            "label": "Water",
+            "sysmap": "water"
+        }],
+        "Watershed": [{
+            "label": "Watershed",
+            "sysmap": "watershed"
+        }],
+        "version": [{
+            "label": "version",
+            "sysmap": "version"
+        }]
+    }
+}
