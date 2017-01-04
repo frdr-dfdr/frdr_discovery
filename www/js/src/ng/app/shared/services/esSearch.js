@@ -88,6 +88,9 @@ define(function(require){
                     }
                 }
                 */
+
+                var q = searchString.vars.query;
+
                 // Add filters for each facet
                 if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter") && input["body"]["filter"] !== "omit" ) {
                     for (var filterField in input["body"]["filter"]) {
@@ -100,16 +103,23 @@ define(function(require){
                             if (filters != "") { filters += ";"; }
                             filters = filterField + ":" + thisFilter.trim();
                         }
+                        if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
+                            var beginDate = new Date(filterItem.begin.key);
+                            var beginString = beginDate.getYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
+                            var endDate = new Date(filterItem.end.key);
+                            var endString = endDate.getYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+                            q = q + " AND Date:[" + beginString + " TO " + endString + "]";
+                        }
                     }
                 }
 
                 if (filters != "") {
                     filters = "&filters=" + filters.trim();
                 }
-                console.log("Filters: ",filters);
+                //console.log("Filters: ",filters);
                 
                 return $http.get(
-                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(searchString.vars.query)+pagination+filters,
+                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(q)+pagination+filters,
                     {
                         headers: headers
                     })
