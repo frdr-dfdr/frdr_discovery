@@ -178,7 +178,7 @@ define(function (require) {
     resultsApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['results-parent.html', 'results-list2.html', 'inner-results.html','mainpage-search-options.html','mainpage-results-header.html']);
+        tCache.getTemplates(['results-parent.html', 'results-list2.html', 'inner-results.html','mainpage-header.html','mainpage-search-options.html','mainpage-results-header.html']);
     }]);
 
 
@@ -676,7 +676,7 @@ define(function (require) {
                     if ($scope.r.icon_url == "https://circle-23jan2015.sites.olt.ubc.ca/files/2015/01/circle-logo-inverted.png") {
                         $scope.r.icon_url = "/img/sources/ubc_80x80.png";
                     }
-                    if ($scope.r.icon_url == "https://rdmtest1.computecanada.ca/jspui/image/logo.png") { 
+                    if ($scope.r.icon_url == "https://frdr-alpha.computecanada.ca/jspui/image/logo.png") { 
                         $scope.r.icon_url = "/img/sources/frdr_80x80.png";
                     }
                     if ($scope.r.icon_url == "http://images.scholarsportal.info/dataverse/logo.png") {
