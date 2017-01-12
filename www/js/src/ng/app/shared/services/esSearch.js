@@ -104,10 +104,17 @@ define(function(require){
                             filters = filterField + ":" + thisFilter.trim();
                         }
                         if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
-                            var beginDate = new Date(filterItem.begin.key);
-                            var beginString = beginDate.getYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
-                            var endDate = new Date(filterItem.end.key);
+                            var beginString = "0-0-0"; // Is this earliest date for which we have research data?
+                            var endDate = new Date();
                             var endString = endDate.getYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+                            if (filterItem.begin != "") {
+                                var beginDate = new Date(filterItem.begin.key);
+                                beginString = beginDate.getYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
+                            }
+                            if (filterItem.end != "") {
+                                endDate = new Date(filterItem.end.key);
+                                endString = endDate.getYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+                            }
                             q = q + " AND Date:[" + beginString + " TO " + endString + "]";
                         }
                     }
