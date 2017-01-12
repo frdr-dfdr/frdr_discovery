@@ -561,6 +561,10 @@ define(function(require) {
                         var fArray = (facetService.showOnly) ? facetService.showOnly : fieldService.facetFields;
                         var obj = {};
 
+                        setFacetDisplay = function(facetName) {
+                            $translate( obj[facetName].translateKey.toUpperCase() ).then(function(t) { obj[facetName].display = t; })
+                        };
+
                         for (var i = 0; i < fArray.length; i++){
                             if(fArray[i] === 'sortDate'){
                                 obj.sortDate = {
@@ -599,7 +603,7 @@ define(function(require) {
                                     sum_left: 0,
                                     sortField: facetService.defaultSort
                                 };
-                                $translate( obj[fArray[i]].translateKey.toUpperCase() ).then(function(t) { obj[fArray[i]].display = t; })
+                                setFacetDisplay(fArray[i]);
                             }
 
                             if (facetService.minimized) { obj[fArray[i]].open = false; }
