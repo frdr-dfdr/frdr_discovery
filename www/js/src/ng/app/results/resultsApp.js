@@ -903,20 +903,6 @@ define(function (require) {
             };
         })
 
-        .directive('mainpageSearchOptions', function () {
-            return {
-                restrict: 'E',
-                templateUrl: templatePath + 'mainpage-search-options.html?version=' + app_version,
-            };
-        })
-
-        .directive('mainpageResultsHeader', function () {
-            return {
-                restrict: 'E',
-                templateUrl: templatePath + 'mainpage-results-header.html?version=' + app_version,
-            };
-        })
-
         // INNER RESULTS DIRECTIVES
         .directive('innerResults', ["utility", function (utility) {
             return {
