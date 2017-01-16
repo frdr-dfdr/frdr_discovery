@@ -572,7 +572,7 @@ define(function(require) {
                                     label: 'sortDate',
                                     display: 'date range',
                                     translateKey: 'date range',
-                                    buckets: {},
+                                    buckets: [],
                                     selection: {
                                         begin: {},
                                         end: {}
@@ -598,7 +598,7 @@ define(function(require) {
                                     label: fArray[i],
                                     display: fieldService.fields[fArray[i]].label,
                                     translateKey: fieldService.fields[fArray[i]].label,
-                                    buckets : {},
+                                    buckets : [],
                                     open: false,
                                     sum_left: 0,
                                     sortField: facetService.defaultSort
@@ -615,25 +615,25 @@ define(function(require) {
                 };
 
 
+
                 // set facet options 
                 setFacetOpts = function(aggInput){
                     console.log("setFacetOpts() aggInput:", aggInput);
                     // set facets based on aggs output
-                    for (var a in aggInput) {
-                        for (var k in aggInput[a] ) {
-                            if (facetService.facets.hasOwnProperty(k) ) {
+                    for (var k in aggInput ) {
+                        if (facetService.facets.hasOwnProperty(k) ) {
+                            if (facetService.facets[k].buckets.length == 0) {
                                 facetService.facets[k].sum_left = 0;
-                                for (var o in aggInput[a][k]) {
-                                    facetService.facets[k].sum_left += aggInput[a][k][o]['count'];
+                                for (var o in aggInput[k].buckets) {
+                                    facetService.facets[k].sum_left += aggInput[k]['buckets'][o]['doc_count'];
                                     var b = {
-                                        'key' : k,
-                                        'title' : k,
-                                        'doc_count' : aggInput[a][k][o]['count']
+                                        'key' : aggInput[k]['buckets'][o]['key'],
+                                        'key_as_string' : aggInput[k]['buckets'][o]['key_as_string'],
+                                        'title' : aggInput[k]['buckets'][o]['key_as_string'],
+                                        'doc_count' : aggInput[k]['buckets'][o]['doc_count']
                                     };
                                     facetService.facets[k].buckets.push(b);
                                 }
-                            } else {
-                                console.log("Cannot find a facet for: ", k)
                             }
                         }
                     }

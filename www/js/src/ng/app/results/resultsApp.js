@@ -694,6 +694,9 @@ define(function (require) {
                     if ($scope.r.icon_url == "https://spectrum.library.concordia.ca/images/custom-logo.jpg") {
                         $scope.r.icon_url = "/img/sources/concordia_80x80.png";
                     }
+                    if ($scope.r.icon_url == "https://dataverse.library.ualberta.ca/dvn/resources/images/ua-lib-logo.png") {
+                        $scope.r.icon_url = "/img/sources/uofa_80x80.png";
+                    }
                     $scope.r.type = "dataset";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
 
