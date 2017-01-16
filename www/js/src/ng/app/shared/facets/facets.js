@@ -622,18 +622,17 @@ define(function(require) {
                     // set facets based on aggs output
                     for (var k in aggInput ) {
                         if (facetService.facets.hasOwnProperty(k) ) {
-                            if (facetService.facets[k].buckets.length == 0) {
-                                facetService.facets[k].sum_left = 0;
-                                for (var o in aggInput[k].buckets) {
-                                    facetService.facets[k].sum_left += aggInput[k]['buckets'][o]['doc_count'];
-                                    var b = {
-                                        'key' : aggInput[k]['buckets'][o]['key'],
-                                        'key_as_string' : aggInput[k]['buckets'][o]['key_as_string'],
-                                        'title' : aggInput[k]['buckets'][o]['key_as_string'],
-                                        'doc_count' : aggInput[k]['buckets'][o]['doc_count']
-                                    };
-                                    facetService.facets[k].buckets.push(b);
-                                }
+                            facetService.facets[k].buckets = [];
+                            facetService.facets[k].sum_left = 0;
+                            for (var o in aggInput[k].buckets) {
+                                facetService.facets[k].sum_left += aggInput[k]['buckets'][o]['doc_count'];
+                                var b = {
+                                    'key' : aggInput[k]['buckets'][o]['key'],
+                                    'key_as_string' : aggInput[k]['buckets'][o]['key_as_string'],
+                                    'title' : aggInput[k]['buckets'][o]['key_as_string'],
+                                    'doc_count' : aggInput[k]['buckets'][o]['doc_count']
+                                };
+                                facetService.facets[k].buckets.push(b);
                             }
                         }
                     }

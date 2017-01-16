@@ -104,7 +104,7 @@ define(function(require){
                             filters = filterField + ":" + thisFilter.trim();
                         }
                         if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
-                            var beginString = "0-0-0"; // Is this earliest date for which we have research data?
+                            var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
                             var endDate = new Date();
                             var endString = endDate.getYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
                             if (filterItem.begin != "") {
