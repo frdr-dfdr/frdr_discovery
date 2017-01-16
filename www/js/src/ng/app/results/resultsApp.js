@@ -691,7 +691,7 @@ define(function (require) {
                     if ($scope.r.icon_url == "http://open.canada.ca/data/static/img/leaves/fivestar.png") {
                         $scope.r.icon_url = "/img/sources/odc_80x80.png";
                     }
-                    if ($scope.r.icon_url == "https://spectrum.library.concordia.ca/images/custom-logo.jpg") {
+                    if ($scope.r.icon_url == "http://spectrum.library.concordia.ca/images/custom-logo.jpg") {
                         $scope.r.icon_url = "/img/sources/concordia_80x80.png";
                     }
                     if ($scope.r.icon_url == "https://dataverse.library.ualberta.ca/dvn/resources/images/ua-lib-logo.png") {

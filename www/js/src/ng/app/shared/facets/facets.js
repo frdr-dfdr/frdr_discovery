@@ -231,7 +231,6 @@ define(function(require) {
                 facetService.updateFilters(updateFilters);
                 function updateFilters(){
 
-                    console.trace('UPDATE FACET ', $scope.ff.label, 'translating: ', $scope.ff.translateKey.toUpperCase() );
                     // Re-translate the facet label
                     $translate( $scope.ff.translateKey.toUpperCase() ).then(function(t) { $scope.ff.display = t; })
 
