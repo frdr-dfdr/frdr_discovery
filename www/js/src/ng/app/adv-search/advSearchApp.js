@@ -103,10 +103,10 @@ define(function(require){
                         label: 'All fields',
                         map: 'all fields'
                     };
-                    fields.titleCombined = {
-                        label: "All title fields",
-                        map: "title combined"
-                    };
+                    //fields.titleCombined = {
+                    //    label: "All title fields",
+                    //    map: "title combined"
+                    //};
                     $scope.querySegments = [
                         {
                             track: querySegmentTracker,
