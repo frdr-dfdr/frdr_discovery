@@ -547,7 +547,7 @@ define(function (require) {
 
                     $translate('VIEW_OPTIONS_1').then(function(t) { $scope.rViewOptions[0]['label'] = t; })
                     $translate('VIEW_OPTIONS_2').then(function(t) { $scope.rViewOptions[1]['label'] = t; })
-                    $translate('VIEW_OPTIONS_3').then(function(t) { $scope.rViewOptions[2]['label'] = t; })
+                    //$translate('VIEW_OPTIONS_3').then(function(t) { $scope.rViewOptions[2]['label'] = t; })
                     $translate('SORT_OPTIONS_1').then(function(t) { $scope.rSortOptions[0]['label'] = t; })
                     $translate('SORT_OPTIONS_2').then(function(t) { $scope.rSortOptions[1]['label'] = t; })
                     $translate('SORT_OPTIONS_3').then(function(t) { $scope.rSortOptions[2]['label'] = t; })
