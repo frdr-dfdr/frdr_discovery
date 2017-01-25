@@ -44,6 +44,8 @@ define(function (require) {
                     else {
                         $scope.itemLink = 'collections/' + nick + '/items/' + $scope.itemId;
                     }
+                    // FRDR
+                    $scope.itemLink = $scope.imgLink;
 
                 },function(error){
                     console.log('UNABLE TO RESOLVE NICK', $scope.colNick);
@@ -65,19 +67,23 @@ define(function (require) {
                     else {
                         $scope.itemLink = 'collections/' + nick;
                     }
+                    // FRDR
+                    $scope.itemLink = $scope.imgLink;
                     //console.log($scope.itemLink);
                 },function(error){
                     console.log('UNABLE TO RESOLVE NICK', $scope.colNick);
                 });
             }
 
+            // FRDR
+            $scope.link = $scope.imgLink;
 
             if($scope.clickEvent){
                 $scope.imgClick = 'event';
-                $scope.link = '$scope.$parent.' + $scope.clickEvent;
+                //$scope.link = '$scope.$parent.' + $scope.clickEvent;
             } else {
-                $scope.link = thumbService.thumbLink( $scope.colNick, $scope.itemId );
-                // console.log("link!", $scope.link);
+                //$scope.link = thumbService.thumbLink( $scope.colNick, $scope.itemId );
+                //console.log("link!", $scope.link);
             }
 
         }, 0);
@@ -95,7 +101,8 @@ define(function (require) {
                 title: "@itemTitle",
                 repo: "@repo",
                 colNick: "@colNick",
-                imgSrc: "@imgSrc"
+                imgSrc: "@imgSrc",
+                imgLink: "@imgLink"
             },
             transclude: true,
             controller: 'thumbnailsController',

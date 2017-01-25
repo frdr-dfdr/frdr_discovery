@@ -8,6 +8,7 @@
 	item-title="{[{ r['http://dublincore.org/documents/dcmi-terms#title'] }]}" 
 	type="dataset"
 	img-src="{[{ r.icon_url }]}"
+	img-link="{[{ r.collection_url }]}"
 	col-nick="{[{ r['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}">
 </div>
 
@@ -15,12 +16,12 @@
 </div>
 <article class="dl-r-content">
 
-	<h6><a link-out ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	<h6><a link-out ng-href="{[{ r['collection_url'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
 	</h6>
 
 	<div class="dl-r-metadata-short">
 
-		<a ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
+		<span ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></span>
 
 		<br />
 

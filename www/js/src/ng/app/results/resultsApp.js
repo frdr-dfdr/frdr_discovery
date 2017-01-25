@@ -665,7 +665,7 @@ define(function (require) {
                     $scope.r._id = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
                     $scope.r.handle = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
-                    $scope.r.collection = " " + $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
+                    $scope.r.collection = $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
                     $scope.r.sortDate = $scope.r['http://dublincore.org/documents/dcmi-terms#date'];
@@ -678,24 +678,31 @@ define(function (require) {
                     // TEMPORARY FOR SC DEMO
                     if ($scope.r.icon_url == "http://static.lib.sfu.ca/clf2013/sfu-logo.png") {
                         $scope.r.icon_url = "/img/sources/sfu_80x80.png";
+			$scope.r.collection_url = "http://researchdata.sfu.ca/";
                     }
                     if ($scope.r.icon_url == "https://circle-23jan2015.sites.olt.ubc.ca/files/2015/01/circle-logo-inverted.png") {
                         $scope.r.icon_url = "/img/sources/ubc_80x80.png";
+			$scope.r.collection_url = "http://circle.ubc.ca/";
                     }
                     if ($scope.r.icon_url == "https://frdr-alpha.computecanada.ca/jspui/image/logo.png") { 
                         $scope.r.icon_url = "/img/sources/frdr_80x80.png";
+			$scope.r.collection_url = "http://frdr-alpha.computecanada.ca/";
                     }
                     if ($scope.r.icon_url == "http://images.scholarsportal.info/dataverse/logo.png") {
                         $scope.r.icon_url = "/img/sources/sp_80x80.png";
+			$scope.r.collection_url = "http://www.scholarsportal.info/";
                     }
                     if ($scope.r.icon_url == "http://open.canada.ca/data/static/img/leaves/fivestar.png") {
                         $scope.r.icon_url = "/img/sources/odc_80x80.png";
+			$scope.r.collection_url = "http://open.canada.ca";
                     }
                     if ($scope.r.icon_url == "http://spectrum.library.concordia.ca/images/custom-logo.jpg") {
                         $scope.r.icon_url = "/img/sources/concordia_80x80.png";
+			$scope.r.collection_url = "http://spectrum.library.concordia.ca";
                     }
                     if ($scope.r.icon_url == "https://dataverse.library.ualberta.ca/dvn/resources/images/ua-lib-logo.png") {
                         $scope.r.icon_url = "/img/sources/uofa_80x80.png";
+			$scope.r.collection_url = "https://dataverse.library.ualberta.ca";
                     }
                     $scope.r.type = "dataset";
                     $scope.r.saved = rExport.isSaved($scope.r._id);

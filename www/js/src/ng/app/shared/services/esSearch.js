@@ -89,44 +89,67 @@ define(function(require){
                 }
                 */
 
-                var q = searchString.vars.query;
+                var q = encodeURIComponent(searchString.vars.query);
 
-                // Add filters for each facet
-                if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter") && input["body"]["filter"] !== "omit" ) {
-                    for (var filterField in input["body"]["filter"]) {
-                        var filterItem = input["body"]["filter"][filterField];
-                        if (filterItem["terms"].length > 0) {
-                            var thisFilter = "";
-                            for (var t in filterItem["terms"]) {
-                                thisFilter += ' "' + filterItem["terms"][t] + '"';
-                            }
-                            if (filters != "") { filters += ";"; }
-                            filters = filterField + ":" + thisFilter.trim();
-                        }
-                        if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
-                            var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
-                            var endDate = new Date();
-                            var endString = endDate.getYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
-                            if (filterItem.begin != "") {
-                                var beginDate = new Date(filterItem.begin.key);
-                                beginString = beginDate.getYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
-                            }
-                            if (filterItem.end != "") {
-                                endDate = new Date(filterItem.end.key);
-                                endString = endDate.getYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
-                            }
-                            q = q + " AND Date:[" + beginString + " TO " + endString + "]";
-                        }
-                    }
-                }
+		// Add filters for each facet
+		if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter") && input["body"]["filter"] !== "omit" ) {
+			for (var filterField in input["body"]["filter"]) {
+				var filterItem = input["body"]["filter"][filterField];
+				if (filterItem["terms"].length > 0) {
+					var thisFilter = "";
+					for (var t in filterItem["terms"]) {
+						thisFilter += ' "' + encodeURIComponent(filterItem["terms"][t]) + '"';
+					}
+					if (filterField.toLowerCase() == "creator") {
+						filterField = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
+						q = q + " AND " + encodeURIComponent(filterField) + ":" + thisFilter;
+					} else {
+						if (filters != "") { filters += ";"; }
+						filters = encodeURIComponent(filterField) + ":" + thisFilter.trim();
+					}
+				}
+				if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
+					var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
+					var endDate = new Date();
+					var endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+					if (filterItem.begin != "") {
+						var beginDate = new Date(filterItem.begin.key);
+						beginString = beginDate.getFullYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
+					}
+					if (filterItem.end != "") {
+						endDate = new Date(filterItem.end.key);
+						endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+					}
+					q = q + " AND Date:[" + beginString + " TO " + endString + "]";
+				}
+			}
+		}
+
+		var facets = "";
+		if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggsArr")) {
+			for (var t=0; t <  input["body"]["aggsArr"].length; t++) {
+				if (facets != "") { facets = facets + ","; }
+				var simpleFacet = input["body"]["aggsArr"][t];
+				if (simpleFacet.toLowerCase() == "creator") {
+					facets = facets + 'http://dublincore.org/documents/dcmi-terms#contributor.author';
+				} else {
+					facets = facets + simpleFacet;
+				}
+			}
+		}
 
                 if (filters != "") {
                     filters = "&filters=" + filters.trim();
                 }
-                //console.log("Filters: ",filters);
-                
+
+		if (facets == "") {
+			facets = "publication";
+		}
+
+		var targetURL = search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets='+encodeURIComponent(facets)+'&q='+q+pagination+filters;
+                console.log("URL: " + targetURL);
                 return $http.get(
-                    search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets=publication&q='+encodeURIComponent(q)+pagination+filters,
+                    targetURL,
                     {
                         headers: headers
                     })
@@ -151,7 +174,11 @@ define(function(require){
                         var aggsObject = {};
                         for (var i in response.data["gfacets"]) {
                             for (var p in response.data["gfacets"][i]) {
-                                if (p == "Publication Date") { q = "sortDate"; } else { q = p; }
+                                if (p == "Publication Date") { 
+					q = "sortDate";
+				} else if (p == 'http://dublincore.org/documents/dcmi-terms#contributor.author') {
+					q = "creator";
+				} else { q = p; }
                                 aggsObject[q]= {};
                                 aggsObject[q].doc_count_error_upper_bound = 0;
                                 aggsObject[q].sum_other_doc_count = 0;
