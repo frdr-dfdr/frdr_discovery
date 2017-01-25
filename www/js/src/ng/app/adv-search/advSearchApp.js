@@ -304,7 +304,7 @@ define(function(require){
                         bool = ' ' + v.bool.selected + ' ';
                     }
                     if (v.fields.selected != 'all fields') {
-                        fields = v.fields.selected + ': ';
+                        fields = v.fields.selected + ':';
                     }
 
                     if (v.anyAll.selected === 'this exact phrase:'){
@@ -325,11 +325,11 @@ define(function(require){
                         keywords = keywords.replace(/"/g,'');
                         keywords = keywords.split(' ').join(' AND ');
                         if(v.fields.selected != 'all fields'){
-                            keywords = '('+ keywords + ')';
+                            //keywords = '('+ keywords + ')';
                         }
                     }
                     else if (v.anyAll.selected === 'any of these words:' && v.fields.selected != 'all fields') {
-                        keywords = '('+ keywords + ')';
+                        //keywords = '('+ keywords + ')';
                     }
 
                     
