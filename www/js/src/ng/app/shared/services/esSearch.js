@@ -93,6 +93,10 @@ define(function(require){
 
 		// Add filters for each facet
 		if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter") && input["body"]["filter"] !== "omit" ) {
+            var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
+            var endDate = new Date();
+            var endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+
 			for (var filterField in input["body"]["filter"]) {
 				var filterItem = input["body"]["filter"][filterField];
 				if (filterItem["terms"].length > 0) {
@@ -109,9 +113,6 @@ define(function(require){
 					}
 				}
 				if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
-					var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
-					var endDate = new Date();
-					var endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
 					if (filterItem.begin != "") {
 						var beginDate = new Date(filterItem.begin.key);
 						beginString = beginDate.getFullYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
@@ -120,9 +121,12 @@ define(function(require){
 						endDate = new Date(filterItem.end.key);
 						endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
 					}
-					q = q + " AND Date:[" + beginString + " TO " + endString + "]";
 				}
 			}
+
+            // Always wrap the original (possibly boolean) query with the date
+            // 2017-01-26: Space after the first parens is needed due to Globus search bug
+            q = "( "+ q + ") AND Date:[" + beginString + " TO " + endString + "]";
 		}
 
 		var facets = "";
