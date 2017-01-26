@@ -91,6 +91,10 @@
             "label": "Creator(s)",
             "sysmap": "creator"
         }],
+        "Author": [{
+            "label": "Author",
+            "sysmap": "author"
+        }],
         "Credits": [{
             "label": "Credits",
             "sysmap": "credits"

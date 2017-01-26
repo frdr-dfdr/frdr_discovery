@@ -116,7 +116,8 @@ define(function(require){
                                 selected: 'all fields'
                             }, anyAll: {
                                 opts: [ 'any of these words:', 'all of these words:', 'this exact phrase:'],
-                                selected: 'all of these words:'
+                                selected: 'any of these words:'
+                                //selected: 'all of these words:'
                             }, bool: {
                                 opts: [ 'AND', 'OR', 'NOT'],
                                 selected: 'AND'
@@ -304,11 +305,10 @@ define(function(require){
                         bool = ' ' + v.bool.selected + ' ';
                     }
                     if (v.fields.selected != 'all fields') {
-                        fields = v.fields.selected + ':';
+                        fields = v.fields.selected + ': ';
                     }
 
                     if (v.anyAll.selected === 'this exact phrase:'){
-
                         // escape lucene special characters - backslash seperate to prevent crazy loops.
                         if(keywords !== '*'){
                             v.keywords = v.keywords.replace('\\', '\\\\');
@@ -324,20 +324,22 @@ define(function(require){
                         // get rid of silly quotes.. 
                         keywords = keywords.replace(/"/g,'');
                         keywords = keywords.split(' ').join(' AND ');
-                        if(v.fields.selected != 'all fields'){
-                            //keywords = '('+ keywords + ')';
-                        }
+                        //if(v.fields.selected != 'all fields'){
+                            keywords = '('+ keywords + ')';
+                        //}
                     }
-                    else if (v.anyAll.selected === 'any of these words:' && v.fields.selected != 'all fields') {
-                        //keywords = '('+ keywords + ')';
+                    else if (v.anyAll.selected === 'any of these words:') {
+                        keywords = '('+ keywords + ')';
                     }
 
                     
-                    if(v.fields.selected === 'title combined'){
-                        qString += bool + '(title:' + keywords + ' OR alternateTitle:' + keywords + ')';  // hack to support combined title searching
-                    } else {
-                        qString += bool + fields + keywords;
-                    }
+                    //if(v.fields.selected === 'title combined'){
+                    //    qString += bool + '(title:' + keywords + ' OR alternateTitle:' + keywords + ')';  // hack to support combined title searching
+                    //} else {
+                    //    qString += bool + fields + keywords;
+                    //}
+
+                    qString += bool + fields + keywords;
                 });
 
 
