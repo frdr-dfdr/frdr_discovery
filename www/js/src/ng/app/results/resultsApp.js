@@ -85,7 +85,7 @@ define(function (require) {
             'LOAD_MORE': 'Load More',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
             'MAINPAGE_LOGO_LINK': 'https://frdr-alpha.computecanada.ca/jspui/?locale=en',
-            'MAINPAGE_LOGO_URL': '/img/sitelogo.png',
+            'MAINPAGE_LOGO_URL': '/img/sitelogo_en.png',
             'MAINPAGE_DESCRIPTION': 'A standalone version of the UBC Library Open Collections search results UI.',
             'MAINPAGE_HEADER': 'Research Discovery',
             'NO_RESULTS': 'No results found',
@@ -142,7 +142,7 @@ define(function (require) {
             'LOAD_MORE': 'Montre plus',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
             'MAINPAGE_LOGO_LINK': 'https://frdr-alpha.computecanada.ca/jspui/?locale=fr',
-            'MAINPAGE_LOGO_URL': '/img/sitelogo.png',
+            'MAINPAGE_LOGO_URL': '/img/sitelogo_fr.png',
             'MAINPAGE_DESCRIPTION': 'Une version autonome du UBC Library Open Collections résultats de recherche UI.',
             'MAINPAGE_HEADER': 'Découverte de la recherche',
             'NO_RESULTS': 'Aucun résultat trouvé',
@@ -675,34 +675,38 @@ define(function (require) {
                     $scope.r.creator = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
 
                     $scope.r.icon_url = $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
-                    // TEMPORARY FOR SC DEMO
+                    // TEMPORARY FOR DEMOS
                     if ($scope.r.icon_url == "http://static.lib.sfu.ca/clf2013/sfu-logo.png") {
                         $scope.r.icon_url = "/img/sources/sfu_80x80.png";
-			$scope.r.collection_url = "http://researchdata.sfu.ca/";
+                        $scope.r.collection_url = "http://researchdata.sfu.ca/";
                     }
                     if ($scope.r.icon_url == "https://circle-23jan2015.sites.olt.ubc.ca/files/2015/01/circle-logo-inverted.png") {
                         $scope.r.icon_url = "/img/sources/ubc_80x80.png";
-			$scope.r.collection_url = "http://circle.ubc.ca/";
+                        $scope.r.collection_url = "http://circle.ubc.ca/";
                     }
                     if ($scope.r.icon_url == "https://frdr-alpha.computecanada.ca/jspui/image/logo.png") { 
                         $scope.r.icon_url = "/img/sources/frdr_80x80.png";
-			$scope.r.collection_url = "http://frdr-alpha.computecanada.ca/";
+                        $scope.r.collection_url = "http://frdr-alpha.computecanada.ca/";
                     }
                     if ($scope.r.icon_url == "http://images.scholarsportal.info/dataverse/logo.png") {
                         $scope.r.icon_url = "/img/sources/sp_80x80.png";
-			$scope.r.collection_url = "http://www.scholarsportal.info/";
+                        $scope.r.collection_url = "http://www.scholarsportal.info/";
                     }
                     if ($scope.r.icon_url == "http://open.canada.ca/data/static/img/leaves/fivestar.png") {
                         $scope.r.icon_url = "/img/sources/odc_80x80.png";
-			$scope.r.collection_url = "http://open.canada.ca";
+                        $scope.r.collection_url = "http://open.canada.ca";
                     }
                     if ($scope.r.icon_url == "http://spectrum.library.concordia.ca/images/custom-logo.jpg") {
                         $scope.r.icon_url = "/img/sources/concordia_80x80.png";
-			$scope.r.collection_url = "http://spectrum.library.concordia.ca";
+                        $scope.r.collection_url = "http://spectrum.library.concordia.ca";
                     }
                     if ($scope.r.icon_url == "https://dataverse.library.ualberta.ca/dvn/resources/images/ua-lib-logo.png") {
                         $scope.r.icon_url = "/img/sources/uofa_80x80.png";
-			$scope.r.collection_url = "https://dataverse.library.ualberta.ca";
+                        $scope.r.collection_url = "https://dataverse.library.ualberta.ca";
+                    }
+                    if ($scope.r.icon_url == "https://digital.library.yorku.ca/YorkULogo_Hor_rgb-bootstrap_transparent.png") {
+                        $scope.r.icon_url = "/img/sources/york_80x80.png";
+                        $scope.r.collection_url = "https://digital.library.yorku.ca";
                     }
                     $scope.r.type = "dataset";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
