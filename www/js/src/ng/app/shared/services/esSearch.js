@@ -176,35 +176,33 @@ define(function(require){
 
                         // Format the Globus search platform response to look like what UBC code expects
                         var aggsObject = {};
-                        for (var i in response.data["gfacets"]) {
-                            for (var p in response.data["gfacets"][i]) {
-                                // Turn IRI facet names back into common names where needed
-                                if (p == "Publication Date") { 
-                                    q = "sortDate";
-                                } else if (p == 'http://dublincore.org/documents/dcmi-terms#contributor.author') {
-                                    q = "creator";
-                                } else { q = p; }
-                                aggsObject[q]= {};
-                                aggsObject[q].doc_count_error_upper_bound = 0;
-                                aggsObject[q].sum_other_doc_count = 0;
-                                aggsObject[q].buckets = [];
-                                var bn = 0;
-                                for (var b in response.data["gfacets"][i][p]) {
-                                    aggsObject[q].buckets[bn]={};
-                                    if (q == "sortDate") {
-                                        var d = new Date(response.data["gfacets"][i][p][b]["value"]);
-                                        if (isNaN(d)) {
-                                            aggsObject[q].buckets[bn].key = new Date().getTime();
-                                        } else {
-                                            aggsObject[q].buckets[bn].key = d.getTime();
-                                        }
+                        for (var facetName in response.data["gfacets"]) {
+                            // Turn facet names back into common names where needed
+                            if (facetName == "Publication Date") {
+                                q = "sortDate";
+                            } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#contributor.author') {
+                                q = "creator";
+                            } else { q = facetName; }
+                            aggsObject[q]= {};
+                            aggsObject[q].doc_count_error_upper_bound = 0;
+                            aggsObject[q].sum_other_doc_count = 0;
+                            aggsObject[q].buckets = [];
+                            var bn = 0;
+                            for (var b in response.data["gfacets"][facetName]) {
+                                aggsObject[q].buckets[bn]={};
+                                if (q == "sortDate") {
+                                    var d = new Date(response.data["gfacets"][facetName][b]["value"]);
+                                    if (isNaN(d)) {
+                                        aggsObject[q].buckets[bn].key = new Date().getTime();
                                     } else {
-                                        aggsObject[q].buckets[bn].key = response.data["gfacets"][i][p][b]["value"];
+                                        aggsObject[q].buckets[bn].key = d.getTime();
                                     }
-                                    aggsObject[q].buckets[bn].key_as_string = response.data["gfacets"][i][p][b]["value"];
-                                    aggsObject[q].buckets[bn].doc_count = response.data["gfacets"][i][p][b]["count"];
-                                    bn++;
+                                } else {
+                                    aggsObject[q].buckets[bn].key = response.data["gfacets"][facetName][b]["value"];
                                 }
+                                aggsObject[q].buckets[bn].key_as_string = response.data["gfacets"][facetName][b]["value"];
+                                aggsObject[q].buckets[bn].doc_count = response.data["gfacets"][facetName][b]["count"];
+                                bn++;
                             }
                         }
 
