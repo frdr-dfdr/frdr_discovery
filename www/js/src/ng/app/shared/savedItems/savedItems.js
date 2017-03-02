@@ -34,7 +34,7 @@ define(function (require) {
             'STASH_CLEAR': 'Clear stash',
             'STASH_DESC': 'Stashed items are stored temporarily. If you would like to refer to them at a later date, you should email, download, or print your list.',
             'STASH_IS_EMPTY': 'Your stash is empty.',
-            'STASH_IS_EMPTY_DESC': 'Click the <i class="fa fa-folder-o"></i> (folder icon) near a result to add it to your stash.',
+            'STASH_IS_EMPTY_DESC': 'Click the folder icon near a result to add it to your stash.',
             'STASH_MAIN_HEADER': 'Stashed Items',
         });
           
@@ -47,7 +47,7 @@ define(function (require) {
             'STASH_CLEAR': 'Vider votre cachette',
             'STASH_DESC': 'Articles a caché sont conservés temporairement. Si vous souhaitez vous référer à une date ultérieure, vous devez envoyer un courriel, télécharger ou imprimer votre liste.',
             'STASH_IS_EMPTY': 'Votre cachette est vide.',
-            'STASH_IS_EMPTY_DESC': 'Cliquez sur le <i class="fa fa-folder-o"></i> (icône de dossier) à proximité d\'un résultat pour l\'ajouter à votre cachette.',
+            'STASH_IS_EMPTY_DESC': 'Cliquez sur le icône de dossier à proximité d\'un résultat pour l\'ajouter à votre cachette.',
             'STASH_MAIN_HEADER': 'Articles a caché',
         });
 
