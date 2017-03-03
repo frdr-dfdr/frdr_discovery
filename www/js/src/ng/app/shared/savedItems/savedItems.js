@@ -99,6 +99,7 @@ define(function (require) {
 
                 $scope.email = false;
                 $scope.base_url = website_base_url;
+                $scope.email_enabled = stash_email_enabled;
 
                 $scope.items = rExport.saved;
 

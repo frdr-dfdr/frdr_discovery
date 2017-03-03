@@ -22,7 +22,7 @@
                 </div>
                 <div class="row-fluid">
                     <button class="dl-sbtn dl-sf-clear" ng-click="clearSaved();"><span translate>STASH_CLEAR</span></button>
-                     <button class="dl-btn" ng-click="emailForm()"><i class="fa fa-envelope-o"></i><span translate>STASH_ACTION_EMAIL</span></button>
+                     <button class="dl-btn" ng-click="emailForm()" ng-if="email_enabled"><i class="fa fa-envelope-o"></i><span translate>STASH_ACTION_EMAIL</span></button>
                      <button class="dl-btn" ng-csv="toCsv" filename="stashed-items.csv"><i class="fa fa-download"></i><span translate>STASH_ACTION_DOWNLOAD</span></button>
                      <button class="dl-btn" ng-click="toPrinter()"><i class="fa fa-print"></i><span translate>STASH_ACTION_PRINT</span></button>
                 </div>

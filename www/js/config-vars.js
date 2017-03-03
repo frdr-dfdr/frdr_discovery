@@ -9,7 +9,7 @@ var search_api_search_endpoint = "/search";
 var iiif_api = "https://iiif.library.ubc.ca";
 var api_key = "e5fce533396c36ab4483df12bea1dd6a89e9209405af09db3f13a03d92fbdf89"; // this key is rate-limited.
 var app_version = "1.6.3";
-
+var stash_email_enabled = true;
 
 
 
