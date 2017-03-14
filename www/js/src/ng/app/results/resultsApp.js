@@ -19,6 +19,7 @@ define(function (require) {
         dlThumbs = require('thumbnails'),
         dlD3charts = require('d3onebar'),
         ngTranslate = require('pascalprecht.translate'),
+        uiBootstrap = require('ui.bootstrap'),
 
         dlServices = require('services/fieldService');
         dlServices = require('services/searchString');
@@ -42,7 +43,8 @@ define(function (require) {
             'dlSavedItems',
             'dlPagination',
             'dlThumbs',
-            'pascalprecht.translate'
+            'pascalprecht.translate',
+            'ui.bootstrap',
         ],
         ['$locationProvider', function ($locationProvider) {
             $locationProvider.html5Mode({
