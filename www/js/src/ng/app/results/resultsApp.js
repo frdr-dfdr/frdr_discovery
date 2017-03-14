@@ -708,6 +708,14 @@ define(function (require) {
                         $scope.r.icon_url = "/img/sources/york_80x80.png";
                         $scope.r.collection_url = "https://digital.library.yorku.ca";
                     }
+                    if ($scope.r.icon_url == "https://polardata.ca/images/ccin-hori.gif") {
+                        $scope.r.icon_url = "/img/sources/pdc_80x80.png";
+                        $scope.r.collection_url = "http://polardata.ca";
+                    }
+                    if ($scope.r.icon_url == "https://polardata.ca/images/ccin-hori.gif") {
+                        $scope.r.icon_url = "/img/sources/pdc_80x80.png";
+                        $scope.r.collection_url = "http://polardata.ca";
+                    }
                     $scope.r.type = "dataset";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
 
