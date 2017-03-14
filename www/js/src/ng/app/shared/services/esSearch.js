@@ -114,11 +114,11 @@ define(function(require){
                         }
                         if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
                             if (filterItem.begin != "") {
-                                var beginDate = new Date(filterItem.begin.key);
+                                var beginDate = new Date(parseInt(filterItem.begin.key,10));
                                 beginString = beginDate.getFullYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
                             }
                             if (filterItem.end != "") {
-                                endDate = new Date(filterItem.end.key);
+                                endDate = new Date(parseInt(filterItem.end.key,10));
                                 endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
                             }
                         }
@@ -126,7 +126,7 @@ define(function(require){
 
                     // Always wrap the original (possibly boolean) query with the date
                     // 2017-01-26: Space after the first parens is needed due to Globus search bug
-                    q = "( "+ q + ") AND Date:[" + beginString + " TO " + endString + "]";
+                     q = "( "+ q + ") AND " + encodeURIComponent("http://dublincore.org/documents/dcmi-terms#date")+":[" + beginString + " TO " + endString + "]"
                 }
 
                 var facets = "";
@@ -137,7 +137,7 @@ define(function(require){
                         if (simpleFacet.toLowerCase() == "creator") {
                             facets = facets + 'http://dublincore.org/documents/dcmi-terms#contributor.author';
                         } else if (simpleFacet.toLowerCase() == "sortdate") {
-                            facets = facets + 'Publication Date';
+                            facets = facets + 'http://dublincore.org/documents/dcmi-terms#date';
                         } else {
                             facets = facets + simpleFacet;
                         }
@@ -178,7 +178,7 @@ define(function(require){
                         var aggsObject = {};
                         for (var facetName in response.data["gfacets"]) {
                             // Turn facet names back into common names where needed
-                            if (facetName == "Publication Date") {
+                            if (facetName == "http://dublincore.org/documents/dcmi-terms#date") {
                                 q = "sortDate";
                             } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#contributor.author') {
                                 q = "creator";

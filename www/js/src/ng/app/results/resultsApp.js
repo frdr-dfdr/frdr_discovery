@@ -19,6 +19,7 @@ define(function (require) {
         dlThumbs = require('thumbnails'),
         dlD3charts = require('d3onebar'),
         ngTranslate = require('pascalprecht.translate'),
+        uiBootstrap = require('ui.bootstrap'),
 
         dlServices = require('services/fieldService');
         dlServices = require('services/searchString');
@@ -42,7 +43,8 @@ define(function (require) {
             'dlSavedItems',
             'dlPagination',
             'dlThumbs',
-            'pascalprecht.translate'
+            'pascalprecht.translate',
+            'ui.bootstrap',
         ],
         ['$locationProvider', function ($locationProvider) {
             $locationProvider.html5Mode({
@@ -707,6 +709,14 @@ define(function (require) {
                     if ($scope.r.icon_url == "https://digital.library.yorku.ca/YorkULogo_Hor_rgb-bootstrap_transparent.png") {
                         $scope.r.icon_url = "/img/sources/york_80x80.png";
                         $scope.r.collection_url = "https://digital.library.yorku.ca";
+                    }
+                    if ($scope.r.icon_url == "https://polardata.ca/images/ccin-hori.gif") {
+                        $scope.r.icon_url = "/img/sources/pdc_80x80.png";
+                        $scope.r.collection_url = "http://polardata.ca";
+                    }
+                    if ($scope.r.icon_url == "https://polardata.ca/images/ccin-hori.gif") {
+                        $scope.r.icon_url = "/img/sources/pdc_80x80.png";
+                        $scope.r.collection_url = "http://polardata.ca";
                     }
                     $scope.r.type = "dataset";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
