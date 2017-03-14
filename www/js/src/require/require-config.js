@@ -48,12 +48,13 @@ requirejs.config({
     "shim": {
         "angular": {
             "deps" : ["jquery"],
-           "exports": "angular"
+            "exports": "angular"
         },
         "ngAnimate": {
             "deps": ["angular"],
             "exports": "ngAnimate"
-        },"ngAria": {
+        },
+        "ngAria": {
             "deps": ["angular"],
             "exports": "ngAria"
         },

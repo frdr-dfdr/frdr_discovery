@@ -60,7 +60,7 @@ define(function (require) {
             }
     }]);
 
-    pagination.directive('pagination', function() {
+    pagination.directive('custompaging', function() {
         return {
             scope: '=',
             controller: 'paginationController',
