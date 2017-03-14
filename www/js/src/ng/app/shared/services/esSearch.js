@@ -73,9 +73,9 @@ define(function(require){
                     console.log('SEARCH INPUT:', input);
                 }
 
-                var pagination = "";
+                var qsfrom = "";
                 if (input.hasOwnProperty('from') && input.from != "0") {
-                    pagination = "&from=" + input.from;
+                    qsfrom = "&from=" + input.from;
                 }
 
                 var filters = "";
@@ -150,7 +150,7 @@ define(function(require){
                 if (facets == "") {
                     facets = "publication";
                 }
-                var targetURL = search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets='+encodeURIComponent(facets)+'&q='+q+pagination+filters;
+                var targetURL = search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets='+encodeURIComponent(facets)+'&q='+q+qsfrom+filters;
 
                 return $http.get(
                     targetURL,
