@@ -25,7 +25,7 @@ requirejs.config({
         "ngModal": "vendor/angular-modal-service/dst/angular-modal-service.min",
         "ngCsv": "vendor/ng-csv/build/ng-csv.min",
         "pascalprecht.translate":"vendor/angular-translate/angular-translate.min",
-        "ui.bootstrap": "vendor/angular-bootstrap/ui-bootstrap-tpls",
+        "angularBootstrap": "vendor/angular-bootstrap/ui-bootstrap-tpls",
         "ngColorPicker" : "vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min",
         "d3": "vendor/d3/d3",
         "velocity": "vendor/velocity/velocity.min",
@@ -90,9 +90,9 @@ requirejs.config({
             "deps": ["angular"],
             "exports": "pascalprecht.translate"
         },
-        "ui.bootstrap": {
+        "angularBootstrap": {
             "deps": ["angular","ngAnimate","ngTouch","jquery"],
-            "exports": "ui.bootstrap"
+            "exports": "angularBootstrap"
         },
         "d3": {
             "deps" : ["licenses/d3-license"],

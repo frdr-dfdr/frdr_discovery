@@ -19,7 +19,7 @@ define(function (require) {
         dlThumbs = require('thumbnails'),
         dlD3charts = require('d3onebar'),
         ngTranslate = require('pascalprecht.translate'),
-        uiBootstrap = require('ui.bootstrap'),
+        uiBootstrap = require('angularBootstrap'),
 
         dlServices = require('services/fieldService');
         dlServices = require('services/searchString');
