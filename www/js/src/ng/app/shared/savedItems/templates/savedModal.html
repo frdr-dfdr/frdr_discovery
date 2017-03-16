@@ -67,8 +67,8 @@
         
                         <br />
                         <!-- add collection URL -->
-                        <span ng-click="addFilter('creator', c)" class="dl-r-creator"  ng-repeat="c in ::r.creator track by $index" ng-bind="c"></span>
-                        <span class="dl-r-creator" ng-if="r.creator[0] === ''" >[<span translate>CREATOR_UNKNOWN</span>]</span>
+                        <span ng-click="addFilter('author', c)" class="dl-r-creator"  ng-repeat="c in ::r.author track by $index" ng-bind="c"></span>
+                        <span class="dl-r-creator" ng-if="r.author[0] === ''" >[<span translate>ITEM_AUTHOR_UNKNOWN</span>]</span>
         
                         <span class="dl-r-date">{[{::r.sortDate}]}</span>
         

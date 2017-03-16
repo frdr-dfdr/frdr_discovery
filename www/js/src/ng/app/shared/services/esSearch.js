@@ -104,7 +104,7 @@ define(function(require){
                             for (var t in filterItem["terms"]) {
                                 thisFilter += ' "' + encodeURIComponent(filterItem["terms"][t]) + '"';
                             }
-                            if (filterField.toLowerCase() == "creator") {
+                            if (filterField.toLowerCase() == "author") {
                                 filterField = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
                                 q = q + " AND " + encodeURIComponent(filterField) + ":" + thisFilter;
                             } else {
@@ -134,7 +134,7 @@ define(function(require){
                     for (var t=0; t <  input["body"]["aggsArr"].length; t++) {
                         if (facets != "") { facets = facets + ","; }
                         var simpleFacet = input["body"]["aggsArr"][t];
-                        if (simpleFacet.toLowerCase() == "creator") {
+                        if (simpleFacet.toLowerCase() == "author") {
                             facets = facets + 'http://dublincore.org/documents/dcmi-terms#contributor.author';
                         } else if (simpleFacet.toLowerCase() == "sortdate") {
                             facets = facets + 'http://dublincore.org/documents/dcmi-terms#date';
@@ -181,7 +181,7 @@ define(function(require){
                             if (facetName == "http://dublincore.org/documents/dcmi-terms#date") {
                                 q = "sortDate";
                             } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#contributor.author') {
-                                q = "creator";
+                                q = "author";
                             } else { q = facetName; }
                             aggsObject[q]= {};
                             aggsObject[q].doc_count_error_upper_bound = 0;

@@ -11,7 +11,7 @@ define(function(require){
         apifields.selectTemplate = js_base_url + "ng/app/shared/templates/apifields.html";        
 
         var theFields = {};
-        var defaultFields = ['creator', 'title', 'subject', 'description'];
+        var defaultFields = ['author', 'title', 'subject', 'description'];
 
 
         apifields.getFields = function() {

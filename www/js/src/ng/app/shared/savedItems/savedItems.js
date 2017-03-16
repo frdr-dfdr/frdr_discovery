@@ -26,6 +26,7 @@ define(function (require) {
     ).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.translations('en', {
+            'ITEM_AUTHOR_UNKNOWN': 'Author Unknown',
             'STASH_ACTION_DOWNLOAD': 'Download',
             'STASH_ACTION_EMAIL': 'Email',
             'STASH_ACTION_EMAIL_SEND': 'Send',
@@ -39,6 +40,7 @@ define(function (require) {
         });
           
         $translateProvider.translations('fr', {
+            'ITEM_AUTHOR_UNKNOWN': 'Auteur Inconnu',
             'STASH_ACTION_DOWNLOAD': 'Télécharger',
             'STASH_ACTION_EMAIL': 'Email',
             'STASH_ACTION_EMAIL_SEND': 'Envoyer',
@@ -106,13 +108,13 @@ define(function (require) {
                 $scope.toCsv = function () {
                     utility.gaEvent('saved_items', 'to_csv');
 
-                    var csvData = [ [ 'TITLE', 'CREATOR', 'COLLECTION', 'DATE', 'TYPE', 'URL' ] ];
+                    var csvData = [ [ 'TITLE', 'AUTHOR', 'COLLECTION', 'DATE', 'TYPE', 'URL' ] ];
 
                     angular.forEach($scope.items, function (val, key) {
 
                         var data = [
                             "'" + val.title + "'",
-                            "'" + val.creator + "'",
+                            "'" + val.author + "'",
                             "'" + val.collection + "'",
                             "'" + val.sortDate + "'",
                             "'" + val.type + "'",
@@ -292,7 +294,7 @@ define(function (require) {
                             handle: r.handle,
                             nick: r.nick,
                             collection: $filter('stripHtmlTags')(r.collection),
-                            creator: $filter('stripHtmlTags')(r.creator),
+                            author: $filter('stripHtmlTags')(r.author),
                             sortDate: $filter('stripHtmlTags')(r.sortDate),
                             saved: true,
                             title: $filter('stripHtmlTags')(r.title),

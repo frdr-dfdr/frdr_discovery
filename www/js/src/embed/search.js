@@ -199,14 +199,14 @@
                     var colNick = checkField(value, 'ubc.internal.provenance.nick');
                     var title = checkField(value, 'title');
                     var sortDate = checkField(value, 'ubc.date.sort');
-                    var creator = checkField(value, 'creator');
+                    var author = checkField(value, 'author');
 
                     var itemLink = (checkField(value, 'ubc.internal.repo') === 'vyg') ? voyagerBibId + checkField(value, 'ubc.internal.repo.handle') : serverURL + '/collections/' + colNick + '/items/' + value._id ;
 
                     htmlString += '<li>';
                     htmlString += '<a href="' + itemLink + '">' + title + '</a><br>'; 
                     // htmlString += partOf + '<br>'; 
-                    htmlString += '<small>' + creator + ', ' + sortDate + '</small>'; 
+                    htmlString += '<small>' + author + ', ' + sortDate + '</small>'; 
                     htmlString += '</li>'; 
                 });
                 htmlString += "</ol>";

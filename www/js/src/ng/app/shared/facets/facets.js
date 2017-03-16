@@ -27,7 +27,7 @@ define(function(require) {
             'CAMPUS': 'Campus',
             'CLEAR': 'Clear',
             'COLLECTION': 'Source',
-            'CREATOR(S)': 'Creator(s)',
+            'AUTHOR(S)': 'Author(s)',
             'DATE RANGE': 'Date range',
             'DEGREE': 'Degree',
             'DRILL_DOWN': 'Drill-down',
@@ -52,7 +52,7 @@ define(function(require) {
             'CAMPUS': 'Campus',
             'CLEAR': 'Supprimer',
             'COLLECTION': 'Source',
-            'CREATOR(S)': 'Créateur(s)',
+            'AUTHOR(S)': 'Auteur(s)',
             'DATE RANGE': 'Intervalle de dates',
             'DEGREE': 'Degré',
             'DRILL_DOWN': 'Percer',
@@ -587,7 +587,7 @@ define(function(require) {
                                     orderVal = -4;
                                 } else if(fArray[i] === 'genre'){
                                     orderVal = -3;
-                                } else if(fArray[i] === 'creator'){
+                                } else if(fArray[i] === 'author'){
                                     orderVal = -2;
                                 } else if(fArray[i] === 'subject'){
                                     orderVal = -1;

@@ -436,7 +436,7 @@ define(function(require){
                 }
 
                 if($scope.embed.inline) {
-                    getSearchString(["creator","ubc.date.sort","title","ubc.internal.handle","ubc.internal.provenance.nick","ubc.internal.repo","ubc.internal.repo.handle"]).then(function(response){
+                    getSearchString(["author","ubc.date.sort","title","ubc.internal.handle","ubc.internal.provenance.nick","ubc.internal.repo","ubc.internal.repo.handle"]).then(function(response){
                         getQueryObj(response).then(function(response2){
                             $scope.embed.queryObj = response2;
                         });

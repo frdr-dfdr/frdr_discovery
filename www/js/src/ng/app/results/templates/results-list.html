@@ -25,9 +25,9 @@
 		<br />
 
 		<span ng-repeat="c in ::r['http://dublincore.org/documents/dcmi-terms#contributor.author'] track by $index">
-			<a href="" ng-click="addFilter('creator', r['http://dublincore.org/documents/dcmi-terms#contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
+			<a href="" ng-click="addFilter('author', r['http://dublincore.org/documents/dcmi-terms#contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>{[{$last ? '' : '; '}]}
 		</span>
-		<span class="dl-r-creator" ng-if="!r['http://dublincore.org/documents/dcmi-terms#contributor.author'][0]" >[{{ 'ITEM_CREATOR_UNKNOWN' | translate }}]</span>  
+		<span class="dl-r-creator" ng-if="!r['http://dublincore.org/documents/dcmi-terms#contributor.author'][0]" >[{{ 'ITEM_AUTHOR_UNKNOWN' | translate }}]</span>  
 
 		<!-- <a href="" ng-click="addFilter('sortDate', r.sortDate)" class="dl-r-date" ng-bind-html="::r.sortDate"></a> -->
 		&ensp;&mdash;&ensp;<span class="dl-r-date" ng-bind-html="::r.sortDate"></span>

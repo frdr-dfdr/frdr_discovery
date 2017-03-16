@@ -80,7 +80,7 @@ define(function (require) {
             'FILTERS_HIDE': 'Hide filters',
             'FILTERS_SHOW': 'Show filters',
             'FOUND': 'found',
-            'ITEM_CREATOR_UNKNOWN': 'Creator Unknown',
+            'ITEM_AUTHOR_UNKNOWN': 'Author Unknown',
             'ITEM_DESCRIPTION': 'Description',
             'ITEM_EMBARGOED': '<b>Embargoed</b>: Access by request only.',
             'KEYWORDS': 'Keywords',
@@ -137,7 +137,7 @@ define(function (require) {
             'FILTERS_HIDE': 'Masquer les filtres',
             'FILTERS_SHOW': 'Afficher les filtres',
             'FOUND': 'trouvé',
-            'ITEM_CREATOR_UNKNOWN': 'Créateur Inconnu',
+            'ITEM_AUTHOR_UNKNOWN': 'Auteur Inconnu',
             'ITEM_DESCRIPTION': 'Description',
             'ITEM_EMBARGOED': '<b>Sous embargo</b>: Accès sur demande seulement.',
             'KEYWORDS': 'Mots clés',
@@ -248,8 +248,8 @@ define(function (require) {
                         {"index": 0, "label": "Sort by relevance",     "field": false,      "order": "desc" }, 
                         {"index": 1, "label": "sort by title A-Z",     "field": "title",    "order" : "asc" }, 
                         {"index": 2, "label": "Sort by title Z-A",     "field": "title",    "order": "desc" }, 
-                        {"index": 3, "label": "Sort by author A-Z",    "field": "creator",  "order": "asc"  }, 
-                        {"index": 4, "label": "Sort by author Z-A",    "field": "creator",  "order": "desc" }, 
+                        {"index": 3, "label": "Sort by author A-Z",    "field": "author",  "order": "asc"  }, 
+                        {"index": 4, "label": "Sort by author Z-A",    "field": "author",  "order": "desc" }, 
                         {"index": 5, "label": "Sort oldest to newest", "field": "sortDate", "order": "asc"  }, 
                         {"index": 6, "label": "Sort newest to oldest", "field": "sortDate", "order": "desc" },
                     ];
@@ -643,7 +643,7 @@ define(function (require) {
                     }();
 
                     // set required / special field vals
-                    /* NRDR
+                    /* FRDR
                     $scope.r = {
                         // app vars
                         _id: $scope.r._id,
@@ -655,7 +655,7 @@ define(function (require) {
                         // default view
                         title: highlighter.highlight(singleVal(source[rFields.title.map])),
                         sortDate: highlighter.highlight($filter('formatSortDate')(source[rFields.sortDate.map])),
-                        creator: highlighter.highlight(source[rFields.creator.map]),
+                        author: highlighter.highlight(source[rFields.author.map]),
                         type: (source[rFields.type.map]) ? source[rFields.type.map][0] : undefined,
                         // special cases
                         embargoed: (source[rFields.repo.map] === 'dsp') ? (checkEmbargo(source[rFields.dateAvailable.map])) : false,
@@ -674,7 +674,7 @@ define(function (require) {
                     $scope.r.detail = {};
                     $scope.r.type = "text";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
-                    $scope.r.creator = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
+                    $scope.r.author = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
 
                     $scope.r.icon_url = $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
                     // TEMPORARY FOR DEMOS

@@ -23,6 +23,10 @@
             "label": "Annotations",
             "sysmap": "annotations"
         }],
+        "Author": [{
+            "label": "Author",
+            "sysmap": "author"
+        }],
         "Bottom": [{
             "label": "Bottom",
             "sysmap": "bottom"
@@ -90,10 +94,6 @@
         "Creator": [{
             "label": "Creator(s)",
             "sysmap": "creator"
-        }],
-        "Author": [{
-            "label": "Author",
-            "sysmap": "author"
         }],
         "Credits": [{
             "label": "Credits",
