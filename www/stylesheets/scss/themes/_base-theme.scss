@@ -202,6 +202,18 @@
         tbody tr :first-child {
             background-color: $gray0;
         }
-    }
-        
+    } 
+}
+
+.dl-srch-grad {
+    margin-top:50px;
+    min-height:96px;
+}
+
+.navbar-inverse {
+    background-color:#424242;
+    border:none;
+}
+.navbar-brand {
+    margin-top: -12px;
 }
