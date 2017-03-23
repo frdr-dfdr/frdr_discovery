@@ -1,5 +1,5 @@
 requirejs.config({
-  "baseUrl" : "/js/build/",
+  "baseUrl" : "/discover/js/build/",
   "waitSeconds": 0,
   "paths": {
         "advSearch": "ng/app/adv-search/advSearchApp",
