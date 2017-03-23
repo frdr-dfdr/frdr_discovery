@@ -5,21 +5,21 @@
     <title>FRDR-RFDR Research Discovery | Découverte de la recherche</title>
     <!--stylesheets-->
     <!-- bootstrap & fontawesome -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- OC Styles -->
-    <link href="/stylesheets/css/discovery-ui.css" rel="stylesheet" type="text/css">
+    <link href="/discover/stylesheets/css/discovery-ui.css" rel="stylesheet" type="text/css">
     <!--js-->
-    <script type="text/javascript" src="/js/config-vars.js"></script>
+    <script type="text/javascript" src="/discover/js/config-vars.js"></script>
     <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"-->
             <!--integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>-->
-    <script type="text/javascript" src="/js/build/vendor/requirejs/require.js"></script>
+    <script type="text/javascript" src="/discover/js/build/vendor/requirejs/require.js"></script>
     <script>
         try {
-            var requireConfigObj = require(['/js/build/require/require-config.js']);
+            var requireConfigObj = require(['/discover/js/build/require/require-config.js']);
             require([requireConfigObj], function () {
-                require(["/js/build/require/search.js"])
+                require(["/discover/js/build/require/search.js"])
             });
         } catch (err) {
             console.log(err);
@@ -99,7 +99,7 @@
                 </div>
 
             <span ng-if="!rUpdating && noTerms || !rUpdating && total===0" class="ng-cloak">This search didn't return any matches. You might enter a different query, modify your filters, or try an <a
-                    ng-href="/html/adv-search.html" link-out>advanced search</a> to get better results.</span>
+                    ng-href="adv-search.html" link-out>advanced search</a> to get better results.</span>
 
                 <span ng-if="searchError" class="ng-cloak dl-warning dl-spaced-lrg">There has been an error. Please refresh the page or use the back button to try a new search.</span>
 
