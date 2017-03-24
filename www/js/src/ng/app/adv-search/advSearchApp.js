@@ -190,7 +190,7 @@ define(function(require){
                 });
 
                 $scope.search = function(){
-                    var query = "?q=" + encodeURIComponent(makeQueryString()),
+                    var query = "?q=" + encodeURIComponent(makeQueryString(false)) + encodeURIComponent(makeQueryString(true)),
                         limits = filters.all || '',
                         // TODO: update url as appropriate
                         url = '/html/discovery-ui.html';
@@ -287,9 +287,8 @@ define(function(require){
 
             }
 
-             // make query string from segments (for ACTUAL SEARCH)
-
-            function makeQueryString(opts) {
+             // make query string from segments
+            function makeQueryString(lookForCollection=false) {
                 var qString = '';
                 angular.forEach($scope.querySegments, function(v, key){
                     var bool = '',
@@ -339,7 +338,10 @@ define(function(require){
                     //    qString += bool + fields + keywords;
                     //}
 
-                    qString += bool + fields + keywords;
+                    if ((v.fields.selected == "Collection" && lookForCollection==true)
+                        || (v.fields.selected != "Collection" && lookForCollection==false)) {
+                        qString += bool + fields + keywords;
+                    }
                 });
 
 
