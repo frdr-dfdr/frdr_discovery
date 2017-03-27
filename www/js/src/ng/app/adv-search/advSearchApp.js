@@ -339,7 +339,7 @@ define(function(require){
                     //}
 
                     if (v.fields.selected == "collection" && lookForCollection==true) {
-                        qString += fields + keywords;
+                        qString += "&" + "Collection=" + keywords;
                     } else if (v.fields.selected != "collection" && lookForCollection==false) {
                         qString += bool + fields + keywords;
                     }
