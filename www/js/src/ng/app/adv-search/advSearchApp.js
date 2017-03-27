@@ -193,7 +193,7 @@ define(function(require){
                     var query = "?q=" + encodeURIComponent(makeQueryString(false)) + encodeURIComponent(makeQueryString(true)),
                         limits = filters.all || '',
                         // TODO: update url as appropriate
-                        url = '/html/discovery-ui.html';
+                        url = '/discover/html/discovery-ui.html';
                     var fullquery = url + query + limits;
                     if ($scope.circleOnly){
                         fullquery += '&circle=y';
@@ -338,8 +338,9 @@ define(function(require){
                     //    qString += bool + fields + keywords;
                     //}
 
-                    if ((v.fields.selected == "Collection" && lookForCollection==true)
-                        || (v.fields.selected != "Collection" && lookForCollection==false)) {
+                    if (v.fields.selected == "collection" && lookForCollection==true) {
+                        qString += fields + keywords;
+                    } else if (v.fields.selected != "collection" && lookForCollection==false) {
                         qString += bool + fields + keywords;
                     }
                 });
