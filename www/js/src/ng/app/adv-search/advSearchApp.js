@@ -191,7 +191,7 @@ define(function(require){
 
                 $scope.search = function(){
                     var collectionArg = encodeURIComponent(makeQueryString(true));
-                    if (collectionArg != "") { collectionArg = "&" + collectionArg; }
+                    if (collectionArg != "") { collectionArg = "&Collection=" + collectionArg; }
                     var query = "?q=" + encodeURIComponent(makeQueryString(false)) + collectionArg,
                         limits = filters.all || '',
                         // TODO: update url as appropriate
@@ -341,7 +341,7 @@ define(function(require){
                     //}
 
                     if (v.fields.selected == "collection" && lookForCollection==true) {
-                        qString += "Collection=" + keywords;
+                        qString += v.keywords;
                     } else if (v.fields.selected != "collection" && lookForCollection==false) {
                         qString += bool + fields + keywords;
                     }
