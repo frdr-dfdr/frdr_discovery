@@ -190,7 +190,9 @@ define(function(require){
                 });
 
                 $scope.search = function(){
-                    var query = "?q=" + encodeURIComponent(makeQueryString(false)) + encodeURIComponent(makeQueryString(true)),
+                    var collectionArg = encodeURIComponent(makeQueryString(true));
+                    if (collectionArg != "") { collectionArg = "&" + collectionArg; }
+                    var query = "?q=" + encodeURIComponent(makeQueryString(false)) + collectionArg,
                         limits = filters.all || '',
                         // TODO: update url as appropriate
                         url = '/discover/html/discovery-ui.html';
@@ -339,7 +341,7 @@ define(function(require){
                     //}
 
                     if (v.fields.selected == "collection" && lookForCollection==true) {
-                        qString += "&" + "Collection=" + keywords;
+                        qString += "Collection=" + keywords;
                     } else if (v.fields.selected != "collection" && lookForCollection==false) {
                         qString += bool + fields + keywords;
                     }
