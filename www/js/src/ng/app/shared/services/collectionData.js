@@ -27,12 +27,12 @@
                             method: 'GET',
                             url: '/discover/html/_collections',
                             cache: true
-                        }).success(function(data){
-                            collections = data;
+                        }).success(function(response){
+                            collections = response;
                             return collections;
                         }).error(function(error){
                             console.log('error retrieving collection list', error);
-                            return {};
+                            return [];
                         });
                 } else {
                     return $q.when(collections);

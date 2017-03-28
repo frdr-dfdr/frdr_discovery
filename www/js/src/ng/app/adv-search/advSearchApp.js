@@ -97,13 +97,13 @@ define(function(require){
                 // fields = fields.concat(apifields.fields);
 
                 $scope.selectedCollection = {val:"All sources", label:"All sources"};
-                var collectionList = {};
+                $scope.collectionList = [];
                 collectionData.getColsData().then(function(response){
-                    collectionList = response;
-                    collectionList.allcollections = {
+                    $scope.collectionList = response.data;
+                    $scope.collectionList.push({
                         label: 'All sources',
                         val: 'All sources'
-                    };
+                    });
                 });
 
                 var fields = {};
