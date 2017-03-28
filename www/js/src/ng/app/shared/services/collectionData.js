@@ -10,11 +10,10 @@
 
         // load data
     services.factory('collectionData', [ '$q', '$http', '$filter', 
-        var collections = {};
-
         function ($q, $http, $filter) {
             "use strict";
             var d = {};
+            var collections = {};
 
             // console.log('BASE',website_base_url);
             // These functions are used to load data for the admin pages.
