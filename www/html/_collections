@@ -1,38 +1,38 @@
 [
     {
-    	val: "Abacus Dataverse Network",
-    	label: "Abacus Dataverse Network"
+    	"val": "Abacus Dataverse Network",
+    	"label": "Abacus Dataverse Network"
     },
     {
-    	val: "Concordia Spectrum Research Repository",
-    	label: "Concordia Spectrum Research Repository"
+    	"val": "Concordia Spectrum Research Repository",
+    	"label": "Concordia Spectrum Research Repository"
     },
     {
-    	val: "FRDR",
-    	label: "FRDR"
+    	"val": "FRDR",
+    	"label": "FRDR"
     },
     { 	
-    	val: "Open Data Canada",
-    	label: "Open Data Canada"
+    	"val": "Open Data Canada",
+    	"label": "Open Data Canada"
     },
     {
-    	val: "Polar Data Network",
-    	label: "Polar Data Network"
+    	"val": "Polar Data Network",
+    	"label": "Polar Data Network"
 	},
     { 
-    	val: "SFU Radar",
-    	label: "SFU Radar"
+    	"val": "SFU Radar",
+    	"label": "SFU Radar"
     },
     { 
-    	val: "U of A Dataverse",
-    	label: "U of A Dataverse"
+    	"val": "U of A Dataverse",
+    	"label": "U of A Dataverse"
     },
     { 
-    	val: "UBC Circle",
-    	label: "UBC Circle"
+    	"val": "UBC Circle",
+    	"label": "UBC Circle"
     },
     { 
-    	val: "York University Digital Library",
-    	label: "York University Digital Library"
+    	"val": "York University Digital Library",
+    	"label": "York University Digital Library"
     }
 ]
