@@ -201,8 +201,8 @@ define(function(require){
 
                 $scope.search = function(){
                     var collectionArg = "";
-                    if ($scope.selectedCollection != "" && $scope.selectedCollection != "All sources") { 
-                        collectionArg = "&Collection=" + encodeURIComponent($scope.selectedCollection); 
+                    if ($scope.selectedCollection.val != "" && $scope.selectedCollection.val != "All sources") { 
+                        collectionArg = "&Collection=" + encodeURIComponent($scope.selectedCollection.val); 
                     }
                     var query = "?q=" + encodeURIComponent(makeQueryString(false)) + collectionArg,
                         limits = filters.all || '',
