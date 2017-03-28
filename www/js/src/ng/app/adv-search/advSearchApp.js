@@ -200,8 +200,10 @@ define(function(require){
                 });
 
                 $scope.search = function(){
-                    var collectionArg = encodeURIComponent(makeQueryString(true));
-                    if (collectionArg != "") { collectionArg = "&Collection=" + collectionArg; }
+                    var collectionArg = "";
+                    if ($scope.selectedCollection != "" && $scope.selectedCollection != "All sources") { 
+                        collectionArg = "&Collection=" + encodeURIComponent($scope.selectedCollection); 
+                    }
                     var query = "?q=" + encodeURIComponent(makeQueryString(false)) + collectionArg,
                         limits = filters.all || '',
                         // TODO: update url as appropriate
@@ -300,7 +302,7 @@ define(function(require){
             }
 
              // make query string from segments
-            function makeQueryString(lookForCollection=false) {
+            function makeQueryString(opts) {
                 var qString = '';
                 angular.forEach($scope.querySegments, function(v, key){
                     var bool = '',
@@ -350,11 +352,7 @@ define(function(require){
                     //    qString += bool + fields + keywords;
                     //}
 
-                    if (v.fields.selected == "collection" && lookForCollection==true) {
-                        qString += v.keywords;
-                    } else if (v.fields.selected != "collection" && lookForCollection==false) {
-                        qString += bool + fields + keywords;
-                    }
+                    qString += bool + fields + keywords;
                 });
 
 
