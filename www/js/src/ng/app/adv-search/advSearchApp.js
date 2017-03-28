@@ -40,6 +40,12 @@ define(function(require){
         angular.bootstrap(document, ['advSearchApp']);
     };
 
+    // UPDATE TEMPLATE CACHE (tCache service in services.js)
+    advSearchApp.run(['tCache', function (tCache) {
+        tCache.clearCache();  // clear cache on dev
+        tCache.templatePath = templatePath;
+        tCache.getTemplates(['mainpage-header.html']);
+    }]);
 
     advSearchApp.config(["$interpolateProvider", "$routeProvider", "$locationProvider", function($interpolateProvider, $routeProvider, $locationProvider){
             $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
@@ -468,7 +474,12 @@ define(function(require){
 
     /************** ADVANCED SEARCH DIRECTIVES *****************/
 
-
+    .directive('mainpageHeader', function () {
+        return {
+            restrict: 'E',
+            templateUrl: templatePath + 'mainpage-header.html?version=' + app_version,
+        };
+    })
 
     .directive('ngEnter', function () {
         return function (scope, element, attrs) {
