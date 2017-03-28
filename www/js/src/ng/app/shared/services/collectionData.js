@@ -10,6 +10,8 @@
 
         // load data
     services.factory('collectionData', [ '$q', '$http', '$filter', 
+        var collections = {};
+
         function ($q, $http, $filter) {
             "use strict";
             var d = {};
@@ -18,18 +20,25 @@
             // These functions are used to load data for the admin pages.
             // current collection id (for editing / reloading reference)
             d.currentCol = '';
-            // http getters
 
+            // http getters
             var getColsData = function(){
-                return $http({
-                    method: 'GET',
-                    url   : website_base_url + '/ajax/get_collections_and_aggregates'
-                }).success(function (data) {
-                    return data;
-                }).error(function (error) {
-                    // return console.log('ERROR:'), error;
-                });
-            };
+                if (angular.equals({}, collections)){
+                    return $http({
+                            method: 'GET',
+                            url: website_base_url + '/html/_collections',
+                            cache: true
+                        }).success(function(data){
+                            collections = data;
+                            return collections;
+                        }).error(function(error){
+                            console.log('error retrieving collection list', error);
+                            return {};
+                        });
+                } else {
+                    return $q.when(collections);
+                }
+            }
 
             var getAdminColsData = function(){
                 return $http({

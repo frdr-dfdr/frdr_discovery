@@ -68,7 +68,7 @@ define(function(require){
                 //'program',
                 'description',
                 //'type',
-                'collection',
+                //'collection',
                 //'creator',
                 'author',
                 'date',

@@ -55,8 +55,8 @@ define(function(require){
 
     /************** ADVANCED SEARCH CONTROLLERS *****************/
 
-    advSearchApp.controller('advSearchController', ['esSearchString', 'esSearchService', '$scope', '$rootScope', '$location', '$http', 'facetService', 'collectionData', '$q', 'apifields', 'fieldService', 'utility',
-        function(searchString, es, $scope, $rootScope, $location, $http, facetService, collectionData, $q, apifields, fieldService, utility) {
+    advSearchApp.controller('advSearchController', ['esSearchString', 'esSearchService', '$scope', '$rootScope', '$location', '$http', 'facetService', 'collectionData', '$q', 'apifields', 'fieldService', 'collectionData', 'utility',
+        function(searchString, es, $scope, $rootScope, $location, $http, facetService, collectionData, $q, apifields, fieldService, collectionData, utility) {
 
             fieldService.getFields().then(function(){
                 init(); // Go!
@@ -95,6 +95,16 @@ define(function(require){
 
                 // var fields = ['all fields'];
                 // fields = fields.concat(apifields.fields);
+
+                $scope.selectedCollection = {val:"All sources", label:"All sources"};
+                var collectionList = {};
+                collectionData.getColsData().then(function(response){
+                    collectionList = response;
+                    collectionList.allcollections = {
+                        label: 'All sources',
+                        val: 'All sources'
+                    };
+                });
 
                 var fields = {};
                 fieldService.getFields(fieldService.advSearchFields).then(function(response){

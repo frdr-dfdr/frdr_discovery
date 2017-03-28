@@ -52,30 +52,31 @@
             <h3>Build An Advanced Search Query</h3>
             <div class="row-fluid dl-advs-cont">
                 <div class="dl-advs-buildquery" ng-cloak>
+
+                    <div class="dl-advs-inputs">
+                        Source:
+                        <select class="fields" ng-model="selectedCollection" ng-options="option.label for option in collectionList track by option.val" aria-label="Select collection"></select>
+                    </div>
+
                     <span ng-repeat="s in querySegments">
-                <div class="dl-center dl-advs-boolgrp ng-cloak">
-                    <select class="bool sm" ng-model="s.bool.selected" ng-options="o as o for o in s.bool.opts"
-                            ng-hide="s.track===0" aria-label="Boolean" ng-change="selectEvent('select_bool', s.bool.selected)"></select>
+                    <div class="dl-center dl-advs-boolgrp ng-cloak">
+                        <select class="bool sm" ng-model="s.bool.selected" ng-options="o as o for o in s.bool.opts"
+                                ng-hide="s.track===0" aria-label="Boolean" ng-change="selectEvent('select_bool', s.bool.selected)"></select>
+                    </div>
 
-                </div>
+                    <div class="dl-advs-inputs">
+                        <select class="anyall" ng-model="s.anyAll.selected" ng-options="o as (o | capitalize) for o in s.anyAll.opts" aria-label="Limit by" ng-change="selectEvent('select_anyall', s.anyAll.selected)"></select>
 
-                <div class="dl-advs-inputs">
+                        <input type="text" ng-model="s.keywords" onclick="this.select();" ng-enter="search()" aria-label="Text query field">
 
-                    <select class="anyall" ng-model="s.anyAll.selected" ng-options="o as (o | capitalize) for o in s.anyAll.opts" aria-label="Limit by" ng-change="selectEvent('select_anyall', s.anyAll.selected)"></select>
+                        <span class="in">in</span>
 
-                    <input type="text" ng-model="s.keywords" onclick="this.select();" ng-enter="search()" aria-label="Text query field">
+                        <select class="fields" ng-model="s.fields.selected" ng-options="val.map as val.label for (key, val) in s.fields.opts" aria-label="Select field" ng-change="selectEvent('select_field', s.fields.selected)"></select>
 
-                    <span class="in">in</span>
+                        <button class="dl-sbtn-lrg dl-advs-rm-btn" ng-disabled="s.track===0" ng-class="{disabled:s.track===0}" ng-click="rmSegment($index)" ng-cloak aria-label="Remove field" ga-event="advanced_search,remove_segment"><i class="fa fa-close"></i></button>
+                    </div>
 
-                    <select class="fields" ng-model="s.fields.selected" ng-options="val.map as val.label for (key, val) in s.fields.opts" aria-label="Select field" ng-change="selectEvent('select_field', s.fields.selected)"></select>
-
-                    <button class="dl-sbtn-lrg dl-advs-rm-btn" ng-disabled="s.track===0" ng-class="{disabled:s.track===0}" ng-click="rmSegment($index)" ng-cloak aria-label="Remove field" ga-event="advanced_search,remove_segment"><i class="fa fa-close"></i></button>
-
-                </div>
-
-
-
-            </span>
+                    </span>
 
                     <button class="dl-sbtn-lrg dl-advs-add-btn" ng-click="addSegment()" aria-label="Add field">Add field</button>
 
