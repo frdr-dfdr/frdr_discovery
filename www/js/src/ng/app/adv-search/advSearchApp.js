@@ -39,6 +39,13 @@ define(function(require){
     ).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.translations('en', {
+            'ADVSEARCH_HEADER':'Advanced Search',
+            'BOOLEAN':'Boolean',
+            'FIELD': 'Field',
+            'FIELD_ADD': 'Add a field',
+            'FIELD_REMOVE': 'Remove field',
+            'KEYWORDS': 'Keywords',
+            'LIMIT_BY':'Limit by',
             'MAINPAGE_HEADER': 'Research Discovery',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
             'MAINPAGE_LOGO_LINK': mainpage_logo_link + '?locale=en',
@@ -47,16 +54,25 @@ define(function(require){
             'MENU_ACCOUNT_ACTIVITY': 'View Transfers',
             'MENU_ACCOUNT_ADMIN': 'Admin',
             'MENU_ACCOUNT_GLOBUS': 'Globus Account',
-            'MENU_ACCOUNT_LOGOUT': 'Log Out',
             'MENU_ACCOUNT_LOGIN': 'Log In',
+            'MENU_ACCOUNT_LOGOUT': 'Log Out',
             'MENU_HELP': 'Help',
             'MENU_HELP_GETACCOUNT': 'Get An Account',
             'MENU_HELP_SUPPORT': 'Contact Support',
             'MENU_HELP_TERMS': 'Terms of Service',
             'MENU_LOCALE': 'EN',
+            'SEARCH': 'Search',
+            'SOURCE': 'Source',
         });
              
         $translateProvider.translations('fr', {
+            'ADVSEARCH_HEADER':'Recherche Avancée',
+            'BOOLEAN':'Booléen',
+            'FIELD': 'Champ',
+            'FIELD_ADD': 'Ajouter un champ',
+            'FIELD_REMOVE': 'Supprimer ce champ',
+            'KEYWORDS': 'Mots clés',
+            'LIMIT_BY':'Limite par',
             'MAINPAGE_HEADER': 'Découverte de la recherche',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
             'MAINPAGE_LOGO_LINK': mainpage_logo_link + '?locale=fr',
@@ -65,13 +81,15 @@ define(function(require){
             'MENU_ACCOUNT_ACTIVITY': 'Voir les transferts',
             'MENU_ACCOUNT_ADMIN': 'Admin',
             'MENU_ACCOUNT_GLOBUS': 'Compte Globus',
-            'MENU_ACCOUNT_LOGOUT': 'Se déconnecter',
             'MENU_ACCOUNT_LOGIN': 'Se connecter',
+            'MENU_ACCOUNT_LOGOUT': 'Se déconnecter',
             'MENU_HELP': 'Aider',
             'MENU_HELP_GETACCOUNT': 'Obtenez un compte',
             'MENU_HELP_SUPPORT': 'Contactez le support',
             'MENU_HELP_TERMS': 'Conditions d\'utilisation',
             'MENU_LOCALE': 'FR',
+            'SEARCH': 'Recherche',
+            'SOURCE': 'Source',
         });
 
         $translateProvider.useSanitizeValueStrategy('escape');            
