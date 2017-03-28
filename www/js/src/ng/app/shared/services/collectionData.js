@@ -25,7 +25,7 @@
                 if (angular.equals({}, collections)){
                     return $http({
                             method: 'GET',
-                            url: website_base_url + '/html/_collections',
+                            url: '/discover/html/_collections',
                             cache: true
                         }).success(function(data){
                             collections = data;
