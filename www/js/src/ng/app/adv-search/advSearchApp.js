@@ -13,6 +13,7 @@ define(function(require){
         dlServices = require('services/collectionData'),
         dlServices = require('services/apifields'),
         dlServices = require('services/fieldService'),
+        ngTranslate = require('pascalprecht.translate'),
 
         dlAnimations = require('animations'),
         dlFilters = require('filters'),
@@ -26,13 +27,53 @@ define(function(require){
             'dlAnimations',
             'dlFilters',
             'dlFacets',
-            'colorpicker.module'
+            'colorpicker.module',
+            'pascalprecht.translate',
             // 'angularModalService'   
         ]
         // ['$routeProvider', function($routeProvider){
         //     reloadOnSearch(false);
         // }]
-    );
+    ).config(['$translateProvider', function ($translateProvider) {
+
+        $translateProvider.translations('en', {
+            'MAINPAGE_HEADER': 'Research Discovery',
+            'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
+            'MAINPAGE_LOGO_LINK': mainpage_logo_link + '?locale=en',
+            'MAINPAGE_LOGO_URL': '/discover/img/sitelogo_en.png',
+            'MENU_ACCOUNT': 'Account',
+            'MENU_ACCOUNT_ACTIVITY': 'View Transfers',
+            'MENU_ACCOUNT_ADMIN': 'Admin',
+            'MENU_ACCOUNT_GLOBUS': 'Globus Account',
+            'MENU_ACCOUNT_LOGOUT': 'Log Out',
+            'MENU_ACCOUNT_LOGIN': 'Log In',
+            'MENU_HELP': 'Help',
+            'MENU_HELP_GETACCOUNT': 'Get An Account',
+            'MENU_HELP_SUPPORT': 'Contact Support',
+            'MENU_HELP_TERMS': 'Terms of Service',
+            'MENU_LOCALE': 'EN',
+        });
+             
+        $translateProvider.translations('fr', {
+            'MAINPAGE_HEADER': 'Découverte de la recherche',
+            'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
+            'MAINPAGE_LOGO_LINK': mainpage_logo_link + '?locale=fr',
+            'MAINPAGE_LOGO_URL': '/discover/img/sitelogo_fr.png',
+            'MENU_ACCOUNT': 'Compte',
+            'MENU_ACCOUNT_ACTIVITY': 'Voir les transferts',
+            'MENU_ACCOUNT_ADMIN': 'Admin',
+            'MENU_ACCOUNT_GLOBUS': 'Compte Globus',
+            'MENU_ACCOUNT_LOGOUT': 'Se déconnecter',
+            'MENU_ACCOUNT_LOGIN': 'Se connecter',
+            'MENU_HELP': 'Aider',
+            'MENU_HELP_GETACCOUNT': 'Obtenez un compte',
+            'MENU_HELP_SUPPORT': 'Contactez le support',
+            'MENU_HELP_TERMS': 'Conditions d\'utilisation',
+            'MENU_LOCALE': 'FR',
+        });
+
+        $translateProvider.useSanitizeValueStrategy('escape');            
+    }]);
 
 
     advSearchApp.boot = function(){
@@ -60,8 +101,22 @@ define(function(require){
 
     /************** ADVANCED SEARCH CONTROLLERS *****************/
 
-    advSearchApp.controller('advSearchController', ['esSearchString', 'esSearchService', '$scope', '$rootScope', '$location', '$http', 'facetService', 'collectionData', '$q', 'apifields', 'fieldService', 'collectionData', 'utility',
-        function(searchString, es, $scope, $rootScope, $location, $http, facetService, collectionData, $q, apifields, fieldService, collectionData, utility) {
+    advSearchApp.controller('advSearchController', [
+        'esSearchString', 
+        'esSearchService', 
+        '$scope', 
+        '$rootScope', 
+        '$location', 
+        '$http', 
+        'facetService', 
+        'collectionData', 
+        '$q', 
+        'apifields', 
+        'fieldService', 
+        'collectionData', 
+        'utility', 
+        '$translate',
+        function(searchString, es, $scope, $rootScope, $location, $http, facetService, collectionData, $q, apifields, fieldService, collectionData, utility, $translate) {
 
             fieldService.getFields().then(function(){
                 init(); // Go!
@@ -79,6 +134,11 @@ define(function(require){
                 facetService.minimized = true; // set default facet state to closed
                 facetService.defaultSort = 'key'; // set default facet sort to alphabetical
 
+                // Set the language from the search string
+                var locSearch = $location.search();
+                $scope.language = locSearch.lang || "en";
+                $translate.use($scope.language);
+
                 $scope.loadFacets = function(){
                     // console.log($rootScope.facetsLoaded, $scope.hideFacets);
 
@@ -92,6 +152,16 @@ define(function(require){
                     // start facet query
                     facetService.newFacetQuery('*');
                     $scope.facetsLoaded = true;
+                };
+
+                // Update language when user clicks language link
+                $scope.changeLanguage = function (langKey) {
+                    var currentLang = $translate.use();
+                    $translate.use(langKey);
+                    $scope.language = langKey;
+                    if (currentLang != langKey) {
+                        updateLocation();
+                    }
                 };
 
                 // adv search form input ('search segment builder')
@@ -304,6 +374,14 @@ define(function(require){
                 //$scope.updateApiData();
                 //$scope.updateRSSData();
 
+            }
+
+            function updateLocation() {
+                utility.windowstop();
+                var locObj = {
+                    'lang': $scope.language
+                };
+                $location.search(locObj);
             }
 
              // make query string from segments

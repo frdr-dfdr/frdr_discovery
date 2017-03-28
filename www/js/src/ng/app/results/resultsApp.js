@@ -199,7 +199,6 @@ define(function (require) {
         });
 
         $translateProvider.useSanitizeValueStrategy('escape');            
-        //$translateProvider.preferredLanguage('fr');
     }]);
 
     resultsApp.boot = function () {
