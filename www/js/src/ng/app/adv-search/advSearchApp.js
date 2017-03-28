@@ -15,7 +15,7 @@ define(function(require){
         dlServices = require('services/fieldService'),
         ngTranslate = require('pascalprecht.translate'),
         uiBootstrap = require('angularBootstrap'),
-        
+
         dlAnimations = require('animations'),
         dlFilters = require('filters'),
         dlFacets = require('facets');
@@ -30,6 +30,7 @@ define(function(require){
             'dlFacets',
             'colorpicker.module',
             'pascalprecht.translate',
+            'ui.bootstrap',
             // 'angularModalService'   
         ]
         // ['$routeProvider', function($routeProvider){
