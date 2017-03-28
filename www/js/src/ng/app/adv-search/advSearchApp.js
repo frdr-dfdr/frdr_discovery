@@ -2,7 +2,6 @@ define(function(require){
 
     var templatePath = js_base_url + "ng/app/adv-search/templates/";
 
-
     // ----- requireJS dependencies ------ //
     var angular = require('angular'),
         ngRoute = require('ngRoute'),
@@ -44,7 +43,7 @@ define(function(require){
     advSearchApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['mainpage-header.html']);
+        tCache.getTemplates(['search-header.html']);
     }]);
 
     advSearchApp.config(["$interpolateProvider", "$routeProvider", "$locationProvider", function($interpolateProvider, $routeProvider, $locationProvider){
@@ -474,10 +473,10 @@ define(function(require){
 
     /************** ADVANCED SEARCH DIRECTIVES *****************/
 
-    .directive('mainpageHeader', function () {
+    .directive('searchHeader', function () {
         return {
             restrict: 'E',
-            templateUrl: templatePath + 'mainpage-header.html?version=' + app_version,
+            templateUrl: templatePath + 'search-header.html?version=' + app_version,
         };
     })
 
