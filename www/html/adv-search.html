@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Advanced Search</title>
+    <title>Advanced Search | Recherche Avancée </title>
     <!--stylesheets-->
     <!-- bootstrap & fontawesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 
     <div class="dl-masthead expand row-fluid">
         <div class="dl-header expand dl-thm-solid-base">
-            <h3>Advanced Search</h3>
+            <h3><span translate>ADVSEARCH_HEADER</span></h3>
         </div>
     </div>
 
@@ -43,12 +43,12 @@
         <!-- start main DL Content -->
 
         <article class="dl-spaced">
-            <h3>{{ 'ADVSEARCH_HEADER' | translate }}</h3>
+            <h3><span translate>ADVSEARCH_HEADER</span></h3>
             <div class="row-fluid dl-advs-cont">
                 <div class="dl-advs-buildquery" ng-cloak>
 
                     <div class="dl-advs-inputs">
-                        {{ 'SOURCE' | translate }}:
+                        <span translate>SOURCE</span>:
                         <select class="fields" ng-model="selectedCollection" ng-options="option.label for option in collectionList track by option.val" aria-label="{{ 'SOURCE' | translate }}"></select>
                     </div>
 
@@ -72,7 +72,7 @@
 
                     </span>
 
-                    <button class="dl-sbtn-lrg dl-advs-add-btn" ng-click="addSegment()" aria-label="{{ 'FIELD_ADD' | translate }}">{{ 'FIELD_ADD' | translate }}</button>
+                    <button class="dl-sbtn-lrg dl-advs-add-btn" ng-click="addSegment()" aria-label="{{ 'FIELD_ADD' | translate }}"><span translate>FIELD_ADD</span></button>
 
 
                     <div class="row-fluid dl-advs-searchrow">
