@@ -39,6 +39,7 @@ define(function(require){
     ).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.translations('en', {
+            'ALL_SOURCES': 'All sources',
             'ADVSEARCH_HEADER':'Advanced Search',
             'BOOLEAN':'Boolean',
             'FIELD': 'Field',
@@ -66,6 +67,7 @@ define(function(require){
         });
              
         $translateProvider.translations('fr', {
+            'ALL_SOURCES': 'Toutes les sources',
             'ADVSEARCH_HEADER':'Recherche Avancée',
             'BOOLEAN':'Booléen',
             'FIELD': 'Champ',
@@ -191,14 +193,15 @@ define(function(require){
                 // var fields = ['all fields'];
                 // fields = fields.concat(apifields.fields);
 
-                $scope.selectedCollection = {val:"All sources", label:"All sources"};
+                var allSourcesLabel = "All sources";
+                if ($scope.language == 'fr') {
+                    allSourcesLabel = "Toutes les sources";
+                }
+                $scope.selectedCollection = {val: "All sources", label: allSourcesLabel};
                 $scope.collectionList = [];
                 collectionData.getColsData().then(function(response){
                     $scope.collectionList = response.data;
-                    $scope.collectionList.push({
-                        label: 'All sources',
-                        val: 'All sources'
-                    });
+                    $scope.collectionList.push({ val: "All sources", label: allSourcesLabel });
                 });
 
                 var fields = {};
@@ -296,7 +299,7 @@ define(function(require){
 
                 $scope.search = function(){
                     var collectionArg = "";
-                    if ($scope.selectedCollection.val != "" && $scope.selectedCollection.val != "All sources") { 
+                    if ($scope.selectedCollection.val != "" && $scope.selectedCollection.val != "All sources" ) { 
                         collectionArg = "&Collection=" + encodeURIComponent($scope.selectedCollection.val); 
                     }
                     var query = "?q=" + encodeURIComponent(makeQueryString(false)) + collectionArg,
