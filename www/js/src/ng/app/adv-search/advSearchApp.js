@@ -39,13 +39,17 @@ define(function(require){
     ).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.translations('en', {
-            'ALL_SOURCES': 'All sources',
-            'ALL_FIELDS': 'All fields',
             'ADVSEARCH_HEADER':'Advanced Search',
+            'ALL_FIELDS': 'All fields',
+            'ALL_SOURCES': 'All sources',
+            'ANYALL_ALL': 'all of these words:', 
+            'ANYALL_ANY': 'any of these words:', 
+            'ANYALL_EXACT': 'this exact phrase:',
             'BOOLEAN':'Boolean',
             'FIELD': 'Field',
             'FIELD_ADD': 'Add a field',
             'FIELD_REMOVE': 'Remove field',
+            'IN':'in',
             'KEYWORDS': 'Keywords',
             'LIMIT_BY':'Limit by',
             'MAINPAGE_HEADER': 'Research Discovery',
@@ -68,13 +72,17 @@ define(function(require){
         });
              
         $translateProvider.translations('fr', {
-            'ALL_SOURCES': 'Toutes les sources',
-            'ALL_FIELDS': 'Toutes les champs',
             'ADVSEARCH_HEADER':'Recherche Avancée',
+            'ALL_FIELDS': 'Toutes les champs',
+            'ALL_SOURCES': 'Toutes les sources',
+            'ANYALL_ALL': 'tous ces mots:',
+            'ANYALL_ANY': 'aucun de ces mots:',
+            'ANYALL_EXACT': 'cette expression exacte:',
             'BOOLEAN':'Booléen',
             'FIELD': 'Champ',
             'FIELD_ADD': 'Ajouter un champ',
             'FIELD_REMOVE': 'Supprimer ce champ',
+            'IN':'dans',
             'KEYWORDS': 'Mots clés',
             'LIMIT_BY':'Limite par',
             'MAINPAGE_HEADER': 'Découverte de la recherche',
@@ -422,6 +430,22 @@ define(function(require){
                         $scope.querySegments[qs].fields.opts.allfields.label = t;
                     }
                 });
+                $translate('ANYALL_ANY').then(function(t) {
+                    for (var qs = 0; qs < $scope.querySegments.length; qs++) {
+                        $scope.querySegments[qs].anyAll.opts[0] = t;
+                        $scope.querySegments[qs].anyAll.selected = t;
+                    }
+                });
+                $translate('ANYALL_ALL').then(function(t) {
+                    for (var qs = 0; qs < $scope.querySegments.length; qs++) {
+                        $scope.querySegments[qs].anyAll.opts[1] = t;
+                    }
+                }); 
+                $translate('ANYALL_EXACT').then(function(t) {
+                    for (var qs = 0; qs < $scope.querySegments.length; qs++) {
+                        $scope.querySegments[qs].anyAll.opts[2] = t;
+                    }
+                });
             }
 
              // make query string from segments
@@ -444,7 +468,7 @@ define(function(require){
                         fields = v.fields.selected + ': ';
                     }
 
-                    if (v.anyAll.selected === 'this exact phrase:'){
+                    if (v.anyAll.selected === 'this exact phrase:' || v.anyAll.selected === 'cette expression exacte:'){
                         // escape lucene special characters - backslash seperate to prevent crazy loops.
                         if(keywords !== '*'){
                             v.keywords = v.keywords.replace('\\', '\\\\');
@@ -456,7 +480,7 @@ define(function(require){
                         keywords = '"'+ keywords + '"';
                         // console.log(keywords);
                     }
-                    else if (v.anyAll.selected === 'all of these words:') {
+                    else if (v.anyAll.selected === 'all of these words:' || v.anyAll.selected === 'tous ces mots:') {
                         // get rid of silly quotes.. 
                         keywords = keywords.replace(/"/g,'');
                         keywords = keywords.split(' ').join(' AND ');
@@ -464,7 +488,7 @@ define(function(require){
                             keywords = '('+ keywords + ')';
                         //}
                     }
-                    else if (v.anyAll.selected === 'any of these words:') {
+                    else {
                         keywords = '('+ keywords + ')';
                     }
 
