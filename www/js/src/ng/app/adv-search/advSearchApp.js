@@ -40,6 +40,7 @@ define(function(require){
 
         $translateProvider.translations('en', {
             'ALL_SOURCES': 'All sources',
+            'ALL_FIELDS': 'All fields',
             'ADVSEARCH_HEADER':'Advanced Search',
             'BOOLEAN':'Boolean',
             'FIELD': 'Field',
@@ -68,6 +69,7 @@ define(function(require){
              
         $translateProvider.translations('fr', {
             'ALL_SOURCES': 'Toutes les sources',
+            'ALL_FIELDS': 'Toutes les champs',
             'ADVSEARCH_HEADER':'Recherche Avancée',
             'BOOLEAN':'Booléen',
             'FIELD': 'Champ',
@@ -186,13 +188,6 @@ define(function(require){
                     }
                 };
 
-                // INITIALIZE
-                updateTranslations();
-                // UPDATE ON LOCATION CHANGE
-                $scope.$on('$locationChangeSuccess', function () {
-                    updateTranslations();
-                });
-
                 // adv search form input ('search segment builder')
 
                 // get searchable fields from apifields service
@@ -235,6 +230,13 @@ define(function(require){
                             }
                         }
                     ];
+                });
+
+                // INITIALIZE
+                updateTranslations();
+                // UPDATE ON LOCATION CHANGE
+                $scope.$on('$locationChangeSuccess', function () {
+                    updateTranslations();
                 });
 
                 var querySegmentTracker = 0;
@@ -414,7 +416,12 @@ define(function(require){
                 $translate('ALL_SOURCES').then(function(t) {
                     $scope.selectedCollection = {val: "All sources", label: t};
                     $scope.collectionList[$scope.collectionList.length-1] = {val: "All sources", label: t};
-                })
+                });
+                $translate('ALL_FIELDS').then(function(t) {
+                    for (var qs = 0; qs < $scope.querySegments.length; qs++) {
+                        $scope.querySegments[qs].fields.opts.allfields.label = t;
+                    }
+                });
             }
 
              // make query string from segments
