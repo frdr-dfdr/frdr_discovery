@@ -200,6 +200,7 @@ define(function(require){
                 collectionData.getColsData().then(function(response){
                     $scope.collectionList = response.data;
                     $scope.collectionList.push({ val: "All sources", label: "All sources" });
+                    updateTranslations();
                 });
 
                 var fields = {};
@@ -230,10 +231,9 @@ define(function(require){
                             }
                         }
                     ];
+                    updateTranslations();
                 });
 
-                // INITIALIZE
-                updateTranslations();
                 // UPDATE ON LOCATION CHANGE
                 $scope.$on('$locationChangeSuccess', function () {
                     updateTranslations();
