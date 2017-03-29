@@ -315,7 +315,9 @@ define(function(require){
                     if ($scope.selectedCollection.val != "" && $scope.selectedCollection.val != "All sources" ) { 
                         collectionArg = "&Collection=" + encodeURIComponent($scope.selectedCollection.val); 
                     }
-                    var query = "?q=" + encodeURIComponent(makeQueryString(false)) + collectionArg,
+                    var langArg = "";
+                    if ($scope.language != "en") { langArg = "&lang=" + $scope.language; }
+                    var query = "?q=" + encodeURIComponent(makeQueryString(false)) + collectionArg + langArg,
                         limits = filters.all || '',
                         // TODO: update url as appropriate
                         url = '/discover/html/discovery-ui.html';
