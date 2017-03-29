@@ -186,6 +186,13 @@ define(function(require){
                     }
                 };
 
+                // INITIALIZE
+                updateTranslations();
+                // UPDATE ON LOCATION CHANGE
+                $scope.$on('$locationChangeSuccess', function () {
+                    updateTranslations();
+                });
+
                 // adv search form input ('search segment builder')
 
                 // get searchable fields from apifields service
@@ -193,15 +200,11 @@ define(function(require){
                 // var fields = ['all fields'];
                 // fields = fields.concat(apifields.fields);
 
-                var allSourcesLabel = "All sources";
-                if ($scope.language == 'fr') {
-                    allSourcesLabel = "Toutes les sources";
-                }
-                $scope.selectedCollection = {val: "All sources", label: allSourcesLabel};
+                $scope.selectedCollection = {val: "All sources", label: "All sources"};
                 $scope.collectionList = [];
                 collectionData.getColsData().then(function(response){
                     $scope.collectionList = response.data;
-                    $scope.collectionList.push({ val: "All sources", label: allSourcesLabel });
+                    $scope.collectionList.push({ val: "All sources", label: "All sources" });
                 });
 
                 var fields = {};
@@ -405,6 +408,13 @@ define(function(require){
                     'lang': $scope.language
                 };
                 $location.search(locObj);
+            }
+
+            function updateTranslations() {
+                $translate('ALL_SOURCES').then(function(t) {
+                    $scope.selectedCollection = {val: "All sources", label: t};
+                    $scope.collectionList[$scope.collectionList.length-1] = {val: "All sources", label: t};
+                })
             }
 
              // make query string from segments
