@@ -150,7 +150,7 @@ define(function(require){
                 if (facets == "") {
                     facets = "publication";
                 }
-                var targetURL = search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets='+encodeURIComponent(facets)+'&q='+q+qsfrom+filters;
+                var targetURL = search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets='+encodeURIComponent(facets)+'&q='+q+qsfrom+"&count=20"+filters;
 
                 return $http.get(
                     targetURL,
