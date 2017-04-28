@@ -63,11 +63,16 @@ define(function (require) {
         $translateProvider.translations('en', {
             'AFFILIATION': 'Affiliation',
             'APPLIED': 'applied',
+            'CARL_ABRC': 'Canadian Association of Research Libraries',
+            'CARL_ABRC_URL': 'http://www.carl-abrc.ca/',
             'CLEAR': 'Clear',
+            'COMPUTE_CANADA': 'Compute Canada',
+            'COMPUTE_CANADA_URL': 'https://www.computecanada.ca/',
             'DESCRIPTION': 'Description',
             'DETAILS': 'Details',
             'DETAILS_HIDE': '- Hide ',
             'DETAILS_SHOW': '+ Show ',
+            'DISCOVERY_CREDIT': 'Based on UBC Open Collections Discovery',
             'DRILL_DOWN': 'Drill-down',
             'DRILL_DOWN_DESC': 'Filter terms will be updated each time a filter is added, narrowing to reflect the new results each time.',
             'FACET': 'Facet',
@@ -95,16 +100,23 @@ define(function (require) {
             'MENU_ACCOUNT_ACTIVITY': 'View Transfers',
             'MENU_ACCOUNT_ADMIN': 'Admin',
             'MENU_ACCOUNT_GLOBUS': 'Globus Account',
-            'MENU_ACCOUNT_LOGOUT': 'Log Out',
             'MENU_ACCOUNT_LOGIN': 'Log In',
+            'MENU_ACCOUNT_LOGIN_URL': '/repo/PublishDashboard',
+            'MENU_ACCOUNT_LOGOUT': 'Log Out',
+            'MENU_ACCOUNT_LOGOUT_URL': '/repo/logout',
             'MENU_HELP': 'Help',
             'MENU_HELP_GETACCOUNT': 'Get An Account',
+            'MENU_HELP_GETACCOUNT_URL': '/docs/en/getting_an_account/',
             'MENU_HELP_SUPPORT': 'Contact Support',
+            'MENU_HELP_SUPPORT_URL': '/docs/en/contact_support/',
             'MENU_HELP_TERMS': 'Terms of Service',
+            'MENU_HELP_TERMS_URL': '/docs/en/terms_of_service/',
             'MENU_LOCALE': 'EN',
             'NO_RESULTS': 'No results found',
             'OF': 'of',
             'OPTIONS': 'Options',
+            'PRIVACY_POLICY': 'Privacy Policy',
+            'PRIVACY_POLICY_URL': '/docs/en/terms_of_service/',
             'PROGRAM': 'Program',
             'REDIRECTING': 'Redirecting to item...',
             'RESULT': 'result',
@@ -133,11 +145,16 @@ define(function (require) {
         $translateProvider.translations('fr', {
             'AFFILIATION': 'Affiliation',
             'APPLIED': 'appliqué',
+            'CARL_ABRC': 'Association des bibliothèques de recherche du Canada',
+            'CARL_ABRC_URL': 'http://www.carl-abrc.ca/fr/',
             'CLEAR': 'Supprimer',
+            'COMPUTE_CANADA': 'Calcul Canada',
+            'COMPUTE_CANADA_URL': 'https://www.computecanada.ca/?lang=fr',
             'DESCRIPTION': 'Description',
             'DETAILS': 'Détails',
             'DETAILS_HIDE': '- Cacher ',
             'DETAILS_SHOW': '+ Montrer ',
+            'DISCOVERY_CREDIT': 'Basé sur UBC Open Collections Discovery',
             'DRILL_DOWN': 'Percer',
             'DRILL_DOWN_DESC': 'Filtrer les termes seront mis à jour chaque fois qu\'un filtre est ajouté, se rétrécissant pour refléter les nouveaux résultats à chaque fois.',
             'FACET': 'Facette',
@@ -165,16 +182,23 @@ define(function (require) {
             'MENU_ACCOUNT_ACTIVITY': 'Voir les transferts',
             'MENU_ACCOUNT_ADMIN': 'Admin',
             'MENU_ACCOUNT_GLOBUS': 'Compte Globus',
-            'MENU_ACCOUNT_LOGOUT': 'Se déconnecter',
             'MENU_ACCOUNT_LOGIN': 'Se connecter',
+            'MENU_ACCOUNT_LOGIN_URL': '/repo/PublishDashboard',
+            'MENU_ACCOUNT_LOGOUT': 'Se déconnecter',
+            'MENU_ACCOUNT_LOGOUT_URL': '/repo/logout',
             'MENU_HELP': 'Aider',
             'MENU_HELP_GETACCOUNT': 'Obtenez un compte',
+            'MENU_HELP_GETACCOUNT_URL': '/docs/fr/obtenir_un_compte/',
             'MENU_HELP_SUPPORT': 'Contactez le support',
+            'MENU_HELP_SUPPORT_URL': '/docs/fr/contactez_nous/',
             'MENU_HELP_TERMS': 'Conditions d\'utilisation',
+            'MENU_HELP_TERMS_URL': '/docs/fr/conditions_d%27utilisation/',
             'MENU_LOCALE': 'FR',
             'NO_RESULTS': 'Aucun résultat trouvé',
             'OF': 'de',
             'OPTIONS': 'Options',
+            'PRIVACY_POLICY': 'politique de confidentialité',
+            'PRIVACY_POLICY_URL': '/docs/fr/conditions_d%27utilisation/',
             'PROGRAM': 'Programme',
             'REDIRECTING': 'Redirection vers l\'article...',
             'RESULT': 'résultat',
@@ -211,7 +235,7 @@ define(function (require) {
     resultsApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['results-parent.html', 'results-list2.html', 'inner-results.html','mainpage-header.html','mainpage-search-options.html','mainpage-results-header.html']);
+        tCache.getTemplates(['results-parent.html', 'results-list2.html', 'inner-results.html','mainpage-header.html','mainpage-footer.html','mainpage-search-options.html','mainpage-results-header.html']);
     }]);
 
 
@@ -949,6 +973,13 @@ define(function (require) {
             return {
                 restrict: 'E',
                 templateUrl: templatePath + 'mainpage-header.html?version=' + app_version,
+            };
+        })
+
+        .directive('mainpageFooter', function () {
+            return {
+                restrict: 'E',
+                templateUrl: templatePath + 'mainpage-footer.html?version=' + app_version,
             };
         })
 

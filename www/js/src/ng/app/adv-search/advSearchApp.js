@@ -46,6 +46,11 @@ define(function(require){
             'ANYALL_ANY': 'any of these words:', 
             'ANYALL_EXACT': 'this exact phrase:',
             'BOOLEAN':'Boolean',
+            'CARL_ABRC': 'Canadian Association of Research Libraries',
+            'CARL_ABRC_URL': 'http://www.carl-abrc.ca/',
+            'COMPUTE_CANADA': 'Compute Canada',
+            'COMPUTE_CANADA_URL': 'https://www.computecanada.ca/',
+            'DISCOVERY_CREDIT': 'Based on UBC Open Collections Discovery',
             'FIELD': 'Field',
             'FIELD_ADD': 'Add a field',
             'FIELD_REMOVE': 'Remove field',
@@ -67,6 +72,8 @@ define(function(require){
             'MENU_HELP_SUPPORT': 'Contact Support',
             'MENU_HELP_TERMS': 'Terms of Service',
             'MENU_LOCALE': 'EN',
+            'PRIVACY_POLICY': 'Privacy Policy',
+            'PRIVACY_POLICY_URL': '/docs/en/terms_of_service/',
             'SEARCH': 'Search',
             'SOURCE': 'Source',
         });
@@ -79,6 +86,11 @@ define(function(require){
             'ANYALL_ANY': 'aucun de ces mots:',
             'ANYALL_EXACT': 'cette expression exacte:',
             'BOOLEAN':'Booléen',
+            'CARL_ABRC': 'Association des bibliothèques de recherche du Canada',
+            'CARL_ABRC_URL': 'http://www.carl-abrc.ca/fr/',
+            'COMPUTE_CANADA': 'Calcul Canada',
+            'COMPUTE_CANADA_URL': 'https://www.computecanada.ca/?lang=fr',
+            'DISCOVERY_CREDIT': 'Basé sur UBC Open Collections Discovery',
             'FIELD': 'Champ',
             'FIELD_ADD': 'Ajouter un champ',
             'FIELD_REMOVE': 'Supprimer ce champ',
@@ -100,6 +112,8 @@ define(function(require){
             'MENU_HELP_SUPPORT': 'Contactez le support',
             'MENU_HELP_TERMS': 'Conditions d\'utilisation',
             'MENU_LOCALE': 'FR',
+            'PRIVACY_POLICY': 'politique de confidentialité',
+            'PRIVACY_POLICY_URL': '/docs/fr/conditions_d%27utilisation/',
             'SEARCH': 'Recherche',
             'SOURCE': 'Source',
         });
@@ -116,7 +130,7 @@ define(function(require){
     advSearchApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['search-header.html']);
+        tCache.getTemplates(['search-header.html','search-footer.html']);
     }]);
 
     advSearchApp.config(["$interpolateProvider", "$routeProvider", "$locationProvider", function($interpolateProvider, $routeProvider, $locationProvider){
@@ -621,6 +635,13 @@ define(function(require){
         return {
             restrict: 'E',
             templateUrl: templatePath + 'search-header.html?version=' + app_version,
+        };
+    })
+
+    .directive('searchFooter', function () {
+        return {
+            restrict: 'E',
+            templateUrl: templatePath + 'search-footer.html?version=' + app_version,
         };
     })
 
