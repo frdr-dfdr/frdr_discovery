@@ -260,6 +260,7 @@ define(function (require) {
             '$scope',
             '$rootScope',
             '$location',
+            '$window',
             'rExport',
             '$timeout',
             '$filter',
@@ -271,7 +272,7 @@ define(function (require) {
             'fieldService',
             'utility',
             '$translate',
-            function (searchString, es, $scope, $rootScope, $location, rExport, $timeout, $filter, pVars, collectionData, max400, highlighter, facetService, fieldService, utility,$translate) {
+            function (searchString, es, $scope, $rootScope, $location, $window, rExport, $timeout, $filter, pVars, collectionData, max400, highlighter, facetService, fieldService, utility,$translate) {
                 $scope.rUpdating = true;
                 // make sure fields mappings are loaded FIRST
                 fieldService.getFields().then(function () {
@@ -323,7 +324,11 @@ define(function (require) {
                     getLocation(updateSearch);
                     // UPDATE ON LOCATION CHANGE
                     $scope.$on('$locationChangeSuccess', function () {
-                        getLocation(updateSearch);
+                        if ($location.path().startsWith('/discover/') ) {
+                            getLocation(updateSearch);
+                        } else {
+                            $window.location.href = $location.url();
+                        }
                     });
 
                     // INITIALIZE SCOPE FUNCTIONS

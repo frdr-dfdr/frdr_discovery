@@ -152,7 +152,8 @@ define(function(require){
         'esSearchService', 
         '$scope', 
         '$rootScope', 
-        '$location', 
+        '$location',
+        '$window',
         '$http', 
         'facetService', 
         'collectionData', 
@@ -162,7 +163,7 @@ define(function(require){
         'collectionData', 
         'utility', 
         '$translate',
-        function(searchString, es, $scope, $rootScope, $location, $http, facetService, collectionData, $q, apifields, fieldService, collectionData, utility, $translate) {
+        function(searchString, es, $scope, $rootScope, $location, $window, $http, facetService, collectionData, $q, apifields, fieldService, collectionData, utility, $translate) {
 
             fieldService.getFields().then(function(){
                 init(); // Go!
@@ -258,7 +259,11 @@ define(function(require){
 
                 // UPDATE ON LOCATION CHANGE
                 $scope.$on('$locationChangeSuccess', function () {
-                    updateTranslations();
+                        if ($location.path().startsWith('/discover/') ) {
+                            updateTranslations();
+                        } else {
+                            $window.location.href = $location.url();
+                        }
                 });
 
                 var querySegmentTracker = 0;
