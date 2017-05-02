@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" ng-href="{{ 'MAINPAGE_LOGO_LINK' | translate }}"><span class="navbar-highlight"><img ng-src="{{ 'MAINPAGE_LOGO_URL' | translate }}" style="max-height:44px" alt="{{ 'MAINPAGE_LOGO_ALT' | translate }}"/></span></a>
+          <a class="navbar-brand" ng-href="{{ 'MAINPAGE_LOGO_LINK' | translate }}"><span class="navbar-highlight"><img ng-src="{{ 'MAINPAGE_LOGO_URL' | translate }}" style="max-height:44px" alt="{{ 'MAINPAGE_LOGO_ALT' | translate }}"/></span></a><div class="navbar-brand" style="font-size:24px;padding-top:25px;color:#537eec;font-weight:400;"> BETA </div>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1" uib-collapse="isCollapsed">
@@ -27,15 +27,18 @@
             <li class="dropdown" uib-dropdown>
               <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_HELP' | translate }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">{{ 'MENU_HELP_GETACCOUNT' | translate }}</a></li>
-                <li><a href="#">{{ 'MENU_HELP_TERMS' | translate }}</a></li>
-                <li><a href="#">{{ 'MENU_HELP_SUPPORT' | translate }}</a></li>
+                <li><a href="{{ 'MENU_HELP_GETACCOUNT_URL' | translate }}">{{ 'MENU_HELP_GETACCOUNT' | translate }}</a></li>
+                <li><a href="{{ 'MENU_HELP_TERMS_URL' | translate }}">{{ 'MENU_HELP_TERMS' | translate }}</a></li>
+                <li><a href="{{ 'MENU_HELP_DOCUMENTATION_URL' | translate }}">{{ 'MENU_HELP_DOCUMENTATION' | translate }}</a></li>
+                <li><a href="{{ 'MENU_HELP_SUPPORT_URL' | translate }}">{{ 'MENU_HELP_SUPPORT' | translate }}</a></li>
+                <li><a href="{{ 'MENU_HELP_ABOUT_URL' | translate }}">{{ 'MENU_HELP_ABOUT' | translate }}</a></li>
               </ul>
             </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" ng-href="{{ 'MAINPAGE_LOGO_LINK' | translate }}">{{ 'MENU_ACCOUNT_LOGIN' | translate }}</a></li>
+            <li><a href="{{ 'MENU_FEEDBACK_URL' | translate }}">{{ 'MENU_FEEDBACK' | translate }}</a></li>
+            <li><a href="{{ 'MENU_ACCOUNT_LOGIN_URL' | translate }}">{{ 'MENU_ACCOUNT_LOGIN' | translate }}</a></li>
             <li class="dropdown" uib-dropdown>
               <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_ACCOUNT' | translate }} <span class="caret"></span></a>
               <ul class="dropdown-menu">
