@@ -94,7 +94,7 @@ define(function(require){
              
         $translateProvider.translations('fr', {
             'ADVSEARCH_HEADER':'Recherche Avancée',
-            'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l%27aide sur cette page',
+            'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur cette page',
             'ADVSEARCH_DOCS_TEXT2': 'lisez la documentation',
             'ADVSEARCH_DOCS_URL': '/docs/fr/frdr_d%27utilisation/',
             'ALL_FIELDS': 'Toutes les champs',
@@ -140,7 +140,7 @@ define(function(require){
             'MENU_HELP_TERMS': 'Conditions d\'utilisation',
             'MENU_HELP_TERMS_URL': '/docs/fr/conditions_d%27utilisation/',
             'MENU_LOCALE': 'FR',
-            'PRIVACY_POLICY': 'politique de confidentialité',
+            'PRIVACY_POLICY': 'Politique de confidentialité',
             'PRIVACY_POLICY_URL': '/docs/fr/conditions_d%27utilisation/',
             'SEARCH': 'Recherche',
             'SOURCE': 'Source',
