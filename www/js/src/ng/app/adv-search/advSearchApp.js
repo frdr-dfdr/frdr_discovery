@@ -158,7 +158,7 @@ define(function(require){
     advSearchApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['search-header.html','search-footer.html']);
+        tCache.getTemplates(['search-header.html','search-builder.html','search-footer.html']);
     }]);
 
     advSearchApp.config(["$interpolateProvider", "$routeProvider", "$locationProvider", function($interpolateProvider, $routeProvider, $locationProvider){
@@ -287,11 +287,12 @@ define(function(require){
 
                 // UPDATE ON LOCATION CHANGE
                 $scope.$on('$locationChangeSuccess', function () {
-                        if ($location.path().startsWith('/discover/') ) {
-                            updateTranslations();
-                        } else {
-                            $window.location.href = $location.url();
-                        }
+                    console.log("Location update");
+                    if ($location.path().startsWith('/discover/') ) {
+                        updateTranslations();
+                    } else {
+                        $window.location.href = $location.url();
+                    }
                 });
 
                 var querySegmentTracker = 0;
@@ -668,6 +669,13 @@ define(function(require){
         return {
             restrict: 'E',
             templateUrl: templatePath + 'search-header.html?version=' + app_version,
+        };
+    })
+
+    .directive('searchBuilder', function () {
+        return {
+            restrict: 'E',
+            templateUrl: templatePath + 'search-builder.html?version=' + app_version,
         };
     })
 
