@@ -2,26 +2,25 @@
 <div ng-if="!max400" class="dl-r-lthumb dl-basic-thumb"
 	basic-thumb 
 	img-width="80"
-	item-id="{[{ r['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}"
-	repo="{[{ r['http://nrdr-ednr.ca/schema/1.0#origin.id']}]}"
+	item-id="{[{ r['https://frdr.ca/schema/1.0/#origin.id'] }]}"
+	repo="{[{ r['https://frdr.ca/schema/1.0/#origin.id']}]}"
 	handle="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}"
 	item-title="{[{ r['http://dublincore.org/documents/dcmi-terms#title'] }]}" 
 	type="dataset"
 	img-src="{[{ r.icon_url }]}"
-	img-link="{[{ r.collection_url }]}"
-	col-nick="{[{ r['http://nrdr-ednr.ca/schema/1.0#origin.id'] }]}">
+	col-nick="{[{ r['https://frdr.ca/schema/1.0/#origin.id'] }]}">
 </div>
 
 <div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
 </div>
 <article class="dl-r-content">
 
-	<h6><a link-out ng-href="{[{ r['handle'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	<h6><a link-out ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
 	</h6>
 
 	<div class="dl-r-metadata-short">
 
-		<span ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></span>
+		<a ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
 
 		<br />
 
@@ -62,7 +61,7 @@
 	</div>
 
 	<!-- <button class="dl-sbtn-xsm">Show Details</button> -->
-	<button ng-click="toggleDetails()" class="dl-sbtn-xsm dl-small-txt dl-no-visited dl-r-more" ng-hide="detailView" ga-event="search_results,show_details"> 
+	<button ng-click="toggleDetails()" class="dl-sbtn-xsm dl-small-txt dl-no-visited dl-r-more" ng-hide="detailView"> 
 		<span ng-hide="!details">{{ 'DETAILS_HIDE' | translate }}</span>
 		<span ng-hide="details">{{ 'DETAILS_SHOW' | translate }}</span>
 		{{ 'DETAILS' | translate }}

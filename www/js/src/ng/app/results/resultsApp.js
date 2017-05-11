@@ -733,7 +733,7 @@ define(function (require) {
                     $scope.r._id = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
                     $scope.r.handle = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
                     $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
-                    $scope.r.collection = $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.id'];
+                    $scope.r.collection = $scope.r['https://frdr.ca/schema/1.0/#origin.id'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
                     $scope.r.sortDate = $scope.r['http://dublincore.org/documents/dcmi-terms#date'];
@@ -742,7 +742,7 @@ define(function (require) {
                     $scope.r.saved = rExport.isSaved($scope.r._id);
                     $scope.r.author = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
 
-                    $scope.r.icon_url = $scope.r['http://nrdr-ednr.ca/schema/1.0#origin.icon'];
+                    $scope.r.icon_url = $scope.r['https://frdr.ca/schema/1.0/#origin.icon'];
                     // TEMPORARY FOR DEMOS
                     if ($scope.r.icon_url == "http://static.lib.sfu.ca/clf2013/sfu-logo.png") {
                         $scope.r.icon_url = "/discover/img/sources/sfu_80x80.png";
