@@ -1,38 +1,182 @@
 [
     {
     	"val": "Abacus Dataverse Network",
-    	"label": "Abacus Dataverse Network"
+    	"label": "Abacus Dataverse Network",
+        "icon_url": "",
+        "repo_url": ""
     },
     {
     	"val": "Concordia Spectrum Research Repository",
     	"label": "Concordia Spectrum Research Repository"
+        "icon_url": "/discover/img/sources/concordia_80x80.png",
+        "repo_url": "http://spectrum.library.concordia.ca"
     },
     {
     	"val": "FRDR",
     	"label": "FRDR"
+        "icon_url": "/discover/img/sources/frdr_80x80.png",
+        "repo_url": "http://beta.frdr.ca/"
     },
     { 	
     	"val": "Open Data Canada",
     	"label": "Open Data Canada"
+        "icon_url": "/discover/img/sources/odc_80x80.png",
+        "repo_url": "http://open.canada.ca/"
     },
     {
     	"val": "Polar Data Network",
     	"label": "Polar Data Network"
+        "icon_url": "/discover/img/sources/pdc_80x80.png",
+        "repo_url": "http://polardata.ca/"
 	},
     { 
     	"val": "SFU Radar",
     	"label": "SFU Radar"
+        "icon_url": "/discover/img/sources/sfu_80x80.png",
+        "repo_url": "http://researchdata.sfu.ca/"
     },
     { 
     	"val": "U of A Dataverse",
     	"label": "U of A Dataverse"
+        "icon_url": "/discover/img/sources/uofa_80x80.png",
+        "repo_url": "https://dataverse.library.ualberta.ca"
     },
     { 
     	"val": "UBC Circle",
     	"label": "UBC Circle"
+        "icon_url": "/discover/img/sources/ubc_80x80.png",
+        "repo_url": "http://circle.ubc.ca/"
     },
     { 
     	"val": "York University Digital Library",
     	"label": "York University Digital Library"
+        "icon_url": "/discover/img/sources/york_80x80.png",
+        "repo_url": "https://digital.library.yorku.ca"
+    },
+    { 
+        "val": "Scholars Portal Algoma University Dataverse",
+        "label": "Scholars Portal Algoma University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Brock University Dataverse",
+        "label": "Scholars Portal Brock University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Carleton University Dataverse",
+        "label": "Scholars Portal Carleton University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Lakehead University Dataverse",
+        "label": "Scholars Portal Lakehead University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Laurentian University Dataverse",
+        "label": "Scholars Portal Laurentian University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal McMaster University Dataverse",
+        "label": "Scholars Portal McMaster University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Nipissing University Dataverse",
+        "label": "Scholars Portal Nipissing University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal OCAD Dataverse",
+        "label": "Scholars Portal OCAD Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal ODESI Dataverse",
+        "label": "Scholars Portal ODESI Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Queen's University Dataverse",
+        "label": "Scholars Portal Queen's University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Ryerson University Dataverse",
+        "label": "Scholars Portal Ryerson University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Trent University Dataverse",
+        "label": "Scholars Portal Trent University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal University of Guelph Dataverse",
+        "label": "Scholars Portal University of Guelph Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal University of Ottawa Dataverse",
+        "label": "Scholars Portal University of Ottawa Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal UOIT Dataverse",
+        "label": "Scholars Portal UOIT Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal University of Toronto Dataverse",
+        "label": "Scholars Portal University of Toronto Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Waterloo University Dataverse",
+        "label": "Scholars Portal Waterloo University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Western University Dataverse",
+        "label": "Scholars Portal Western University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal Wilfrid Laurier University Dataverse",
+        "label": "Scholars Portal Wilfrid Laurier University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal University of Windsor Dataverse",
+        "label": "Scholars Portal University of Windsor Dataverse"
+        "icon_url": "",
+        "repo_url": ""
+    },
+    { 
+        "val": "Scholars Portal York University Dataverse",
+        "label": "Scholars Portal York University Dataverse"
+        "icon_url": "",
+        "repo_url": ""
     }
 ]

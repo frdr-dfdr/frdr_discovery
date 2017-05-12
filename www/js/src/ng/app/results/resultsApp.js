@@ -302,7 +302,7 @@ define(function (require) {
                     $scope.rViewOptions = [
                         {"index": 0, "label": "List view",      "perPage": 20}, 
                         {"index": 1, "label": "Detailed view",  "perPage": 20}, 
-                        {"index": 2, "label": "Thumbnail view", "perPage": 60},
+                        /* {"index": 2, "label": "Thumbnail view", "perPage": 60}, */
                     ];
 
                     //sort options
@@ -741,51 +741,27 @@ define(function (require) {
                     $scope.r.type = "text";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
                     $scope.r.author = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
-
                     $scope.r.icon_url = $scope.r['https://frdr.ca/schema/1.0#origin.icon'];
-                    // TEMPORARY FOR DEMOS
-                    if ($scope.r.icon_url == "http://static.lib.sfu.ca/clf2013/sfu-logo.png") {
-                        $scope.r.icon_url = "/discover/img/sources/sfu_80x80.png";
-                        $scope.r.collection_url = "http://researchdata.sfu.ca/";
-                    }
-                    if ($scope.r.icon_url == "https://circle-23jan2015.sites.olt.ubc.ca/files/2015/01/circle-logo-inverted.png") {
-                        $scope.r.icon_url = "/discover/img/sources/ubc_80x80.png";
-                        $scope.r.collection_url = "http://circle.ubc.ca/";
-                    }
-                    if ($scope.r.icon_url == "https://frdr-alpha.computecanada.ca/jspui/image/logo.png") { 
-                        $scope.r.icon_url = "/discover/img/sources/frdr_80x80.png";
-                        $scope.r.collection_url = "http://frdr-alpha.computecanada.ca/";
-                    }
-                    if ($scope.r.icon_url == "http://images.scholarsportal.info/dataverse/logo.png") {
-                        $scope.r.icon_url = "/discover/img/sources/sp_80x80.png";
-                        $scope.r.collection_url = "http://www.scholarsportal.info/";
-                    }
-                    if ($scope.r.icon_url == "http://open.canada.ca/data/static/img/leaves/fivestar.png") {
-                        $scope.r.icon_url = "/discover/img/sources/odc_80x80.png";
-                        $scope.r.collection_url = "http://open.canada.ca";
-                    }
-                    if ($scope.r.icon_url == "http://spectrum.library.concordia.ca/images/custom-logo.jpg") {
-                        $scope.r.icon_url = "/discover/img/sources/concordia_80x80.png";
-                        $scope.r.collection_url = "http://spectrum.library.concordia.ca";
-                    }
-                    if ($scope.r.icon_url == "https://dataverse.library.ualberta.ca/dvn/resources/images/ua-lib-logo.png") {
-                        $scope.r.icon_url = "/discover/img/sources/uofa_80x80.png";
-                        $scope.r.collection_url = "https://dataverse.library.ualberta.ca";
-                    }
-                    if ($scope.r.icon_url == "https://digital.library.yorku.ca/YorkULogo_Hor_rgb-bootstrap_transparent.png") {
-                        $scope.r.icon_url = "/discover/img/sources/york_80x80.png";
-                        $scope.r.collection_url = "https://digital.library.yorku.ca";
-                    }
-                    if ($scope.r.icon_url == "https://polardata.ca/images/ccin-hori.gif") {
-                        $scope.r.icon_url = "/discover/img/sources/pdc_80x80.png";
-                        $scope.r.collection_url = "http://polardata.ca";
-                    }
-                    if ($scope.r.icon_url == "https://polardata.ca/images/ccin-hori.gif") {
-                        $scope.r.icon_url = "/discover/img/sources/pdc_80x80.png";
-                        $scope.r.collection_url = "http://polardata.ca";
-                    }
-                    $scope.r.type = "dataset";
+                    $scope.r.repo_url = "";
+                    $scope.r.type = $scope.r['https://schema.labs.datacite.org/meta/kernel-4.0/metadata.xsd#resourceTypeGeneral'];
                     $scope.r.saved = rExport.isSaved($scope.r._id);
+
+                    $scope.collectionList = [];
+                    collectionData.getColsData().then(function(response){
+                        $scope.collectionList = response.data;
+                    });
+
+                    for (var i=0; i < collectionList.length; i++) {
+                        console.log("Comparing: " + $scope.r.collection + " =? " + collectionList[i].val);
+                        if ($scope.r.collection == collectionList[i].val ) {
+                            if (collectionList[i].hasOwnProperty("icon_url") && collectionList[i].icon_url != "") {
+                                $scope.r.icon_url = collectionList[i].icon_url;
+                            }
+                            if (collectionList[i].hasOwnProperty("repo_url")) {
+                                $scope.r.repo_url = collectionList[i].repo_url;
+                            }
+                        }
+                    }
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;

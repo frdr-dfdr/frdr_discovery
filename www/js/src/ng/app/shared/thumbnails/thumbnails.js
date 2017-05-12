@@ -23,6 +23,7 @@ define(function (require) {
         $timeout(function(){  // timeout ensures vars are in place before thumbs load
             $scope.noThumb = false;
 
+            // FRDR
             //$scope.src = thumbService.thumbSrc($scope.width, $scope.repo, $scope.itemId, $scope.colNick, $scope.handle);
             $scope.src = $scope.imgSrc;
 
