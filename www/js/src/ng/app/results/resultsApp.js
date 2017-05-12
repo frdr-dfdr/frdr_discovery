@@ -746,22 +746,21 @@ define(function (require) {
                     $scope.r.type = $scope.r['https://schema.labs.datacite.org/meta/kernel-4.0/metadata.xsd#resourceTypeGeneral'];
                     $scope.r.saved = rExport.isSaved($scope.r._id);
 
-                    $scope.collectionList = [];
+                    var collectionList = [];
                     collectionData.getColsData().then(function(response){
-                        $scope.collectionList = response.data;
-                    });
+                        collectionList = response.data;
 
-                    for (var i=0; i < collectionList.length; i++) {
-                        console.log("Comparing: " + $scope.r.collection + " =? " + collectionList[i].val);
-                        if ($scope.r.collection == collectionList[i].val ) {
-                            if (collectionList[i].hasOwnProperty("icon_url") && collectionList[i].icon_url != "") {
-                                $scope.r.icon_url = collectionList[i].icon_url;
-                            }
-                            if (collectionList[i].hasOwnProperty("repo_url")) {
-                                $scope.r.repo_url = collectionList[i].repo_url;
+                        for (var i=0; i < collectionList.length; i++) {
+                            if ($scope.r.collection == collectionList[i].val ) {
+                                if (collectionList[i].hasOwnProperty("icon_url") && collectionList[i].icon_url != "") {
+                                    $scope.r.icon_url = collectionList[i].icon_url;
+                                }
+                                if (collectionList[i].hasOwnProperty("repo_url")) {
+                                    $scope.r.repo_url = collectionList[i].repo_url;
+                                }
                             }
                         }
-                    }
+                    });
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
