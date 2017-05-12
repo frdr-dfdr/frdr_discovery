@@ -2,13 +2,13 @@
 <div ng-if="!max400" class="dl-r-lthumb dl-basic-thumb"
 	basic-thumb 
 	img-width="80"
-	item-id="{[{ r['https://frdr.ca/schema/1.0/#origin.id'] }]}"
-	repo="{[{ r['https://frdr.ca/schema/1.0/#origin.id']}]}"
+	item-id="{[{ r['https://frdr.ca/schema/1.0#origin.id'] }]}"
+	repo="{[{ r['https://frdr.ca/schema/1.0#origin.id']}]}"
 	handle="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}"
 	item-title="{[{ r['http://dublincore.org/documents/dcmi-terms#title'] }]}" 
 	type="dataset"
 	img-src="{[{ r.icon_url }]}"
-	col-nick="{[{ r['https://frdr.ca/schema/1.0/#origin.id'] }]}">
+	col-nick="{[{ r['https://frdr.ca/schema/1.0#origin.id'] }]}">
 </div>
 
 <div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
