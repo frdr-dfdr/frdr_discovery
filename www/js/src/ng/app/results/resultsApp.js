@@ -289,6 +289,10 @@ define(function (require) {
                 function init() {
                     // pre-load collections data (makes page load much faster)
                     collectionData.aggsSubsCols();
+                    $scope.collectionList = [];
+                    collectionData.getColsData().then(function(response){
+                            $scope.collectionList = response.data;
+                    });
 
                     // SET INITIAL VARS
                     $scope.total = undefined;
@@ -746,21 +750,17 @@ define(function (require) {
                     $scope.r.type = $scope.r['https://schema.labs.datacite.org/meta/kernel-4.0/metadata.xsd#resourceTypeGeneral'];
                     $scope.r.saved = rExport.isSaved($scope.r._id);
 
-                    var collectionList = [];
-                    collectionData.getColsData().then(function(response){
-                        collectionList = response.data;
-
-                        for (var i=0; i < collectionList.length; i++) {
-                            if ($scope.r.collection == collectionList[i].val ) {
-                                if (collectionList[i].hasOwnProperty("icon_url") && collectionList[i].icon_url != "") {
-                                    $scope.r.icon_url = collectionList[i].icon_url;
-                                }
-                                if (collectionList[i].hasOwnProperty("repo_url")) {
-                                    $scope.r.repo_url = collectionList[i].repo_url;
-                                }
+                    // Check for icon overrides in the collection definitions
+                    for (var i=0; i < $scope.collectionList.length; i++) {
+                        if ($scope.r.collection == $scope.collectionList[i].val ) {
+                            if ($scope.collectionList[i].hasOwnProperty("icon_url") && $scope.collectionList[i].icon_url != "") {
+                                $scope.r.icon_url = $scope.collectionList[i].icon_url;
+                            }
+                            if ($scope.collectionList[i].hasOwnProperty("repo_url")) {
+                                $scope.r.repo_url = $scope.collectionList[i].repo_url;
                             }
                         }
-                    });
+                    }
 
                     // add detail view fields for any fields not already added above, only if details visible
                     var detailsParsed = false;
