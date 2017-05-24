@@ -59,7 +59,7 @@ define(function(require){
 
             function doSearch(){
                 // support switching of headers for API Tool
-                var postObject = {"@datatype": "GSearchRequest","@version": "2016-11-09","limit": 20};
+                var postObject = {"@datatype": "GSearchRequest","@version": "2016-11-09","advanced": true,"limit": 20};
                 var headers = {
                             'X-Requested-With': 'XMLHttpRequest',
                             'Content-Type': 'application/json'
@@ -70,7 +70,6 @@ define(function(require){
                     }
                 }
 
-                // if(!input.type) { input.type = 'object';}
                 if(website_env !== 'prod') {
                     console.log('SEARCH INPUT:', input);
                 }
