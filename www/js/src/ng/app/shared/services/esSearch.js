@@ -59,8 +59,10 @@ define(function(require){
 
             function doSearch(){
                 // support switching of headers for API Tool
+                var postObject = {"@datatype": "GSearchRequest","@version": "2016-11-09","limit": 20};
                 var headers = {
-                            'X-Requested-With': 'XMLHttpRequest'
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Content-Type': 'application/json'
                         };
                 if(input.headers){
                     for (var prop in input.headers){
@@ -73,87 +75,96 @@ define(function(require){
                     console.log('SEARCH INPUT:', input);
                 }
 
-                var qsfrom = "";
                 if (input.hasOwnProperty('from') && input.from != "0") {
-                    qsfrom = "&from=" + input.from;
+                    postObject.offset = parseInt(input.from, 10);
                 }
 
-                var filters = "";
-                // This code base splits out the collection facet; capture it here
-                /*
-                if (input.hasOwnProperty('searchIndex') && input.searchIndex != "" && input.searchIndex != "oc") {
-                    var cols = input.searchIndex.split(",");
-                    for (var c in cols) {
-                        filters += ' "' + cols[c] + '"';
-                    }
-                }
-                */
-
-                var q = encodeURIComponent(searchString.vars.query);
+                postObject.q = searchString.vars.query;
 
                 // Add filters for each facet
+                postObject.filters = [];
                 if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter") && input["body"]["filter"] !== "omit" ) {
+
                     var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
                     var endDate = new Date();
                     var endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
 
                     for (var filterField in input["body"]["filter"]) {
-                        var filterItem = input["body"]["filter"][filterField];
-                        if (filterItem["terms"].length > 0) {
-                            var thisFilter = "";
-                            for (var t in filterItem["terms"]) {
-                                thisFilter += ' "' + encodeURIComponent(filterItem["terms"][t]) + '"';
-                            }
+
+                        var filterFieldObject = input["body"]["filter"][filterField];
+                        if (filterFieldObject["terms"].length > 0) {
                             if (filterField.toLowerCase() == "author") {
                                 filterField = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
-                                q = q + " AND " + encodeURIComponent(filterField) + ":" + thisFilter;
-                            } else {
-                                if (filters != "") { filters += ";"; }
-                                filters = encodeURIComponent(filterField) + ":" + thisFilter.trim();
+                            } else if (filterField.toLowerCase() == "sortDate") {
+                                filterField = 'http://dublincore.org/documents/dcmi-terms#date';
+                            } else if (filterField.toLowerCase() == "type") {
+                                filterField = 'http://dublincore.org/documents/dcmi-terms#type';
+                            } else if (filterField.toLowerCase() == "genre") {
+                                filterField = 'http://dublincore.org/documents/dcmi-terms#type';
+                            } else if (filterField.toLowerCase() == "collection") {
+                                filterField = 'https://frdr.ca/schema/1.0#origin.id';
+                            } else if (filterField.toLowerCase() == "keywords") {
+                                filterField = 'http://dublincore.org/documents/dcmi-terms#subject';
                             }
+
+                            var thisFilter = {"@datatype": "GFilter","@version": "2016-11-09","type": "match_any","field_name": filterField, "values":[]};
+                            for (var t in filterFieldObject["terms"]) {
+                                thisFilter.values.push(filterFieldObject["terms"][t]);
+                            }
+                            postObject.filters.push(thisFilter);
                         }
-                        if (filterItem.hasOwnProperty("begin") && filterItem.hasOwnProperty("end")) {
-                            if (filterItem.begin != "") {
-                                var beginDate = new Date(parseInt(filterItem.begin.key,10));
+
+                        if (filterFieldObject.hasOwnProperty("begin") && filterFieldObject.hasOwnProperty("end")) {
+                            if (filterFieldObject.begin != "") {
+                                var beginDate = new Date(parseInt(filterFieldObject.begin.key,10));
                                 beginString = beginDate.getFullYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
                             }
-                            if (filterItem.end != "") {
-                                endDate = new Date(parseInt(filterItem.end.key,10));
+                            if (filterFieldObject.end != "") {
+                                endDate = new Date(parseInt(filterFieldObject.end.key,10));
                                 endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
                             }
                         }
                     }
 
-                    // Always wrap the original (possibly boolean) query with the date
-                    // 2017-01-26: Space after the first parens is needed due to Globus search bug
-                     q = "( "+ q + ") AND " + encodeURIComponent("http://dublincore.org/documents/dcmi-terms#date")+":[" + beginString + " TO " + endString + "]"
+                    // Always add a date filter, even if it goes from the beginning of time until now
+                    var dateFilterObject = { "@datatype": "GFilter", "@version": "2016-11-09", "type": "range", "field_name": "http://dublincore.org/documents/dcmi-terms#date", "values": [{ "from": beginString, "to": endString }] };
+                    postObject.filters.push(dateFilterObject);
                 }
 
-                var facets = "";
+                postObject.facets = [];
                 if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggsArr")) {
-                    for (var t=0; t <  input["body"]["aggsArr"].length; t++) {
-                        if (facets != "") { facets = facets + ","; }
-                        var simpleFacet = input["body"]["aggsArr"][t];
-                        if (simpleFacet.toLowerCase() == "author") {
-                            facets = facets + 'http://dublincore.org/documents/dcmi-terms#contributor.author';
-                        } else if (simpleFacet.toLowerCase() == "sortdate") {
-                            facets = facets + 'http://dublincore.org/documents/dcmi-terms#date';
-                        } else {
-                            facets = facets + simpleFacet;
+                    for (var t=0; t < input["body"]["aggsArr"].length; t++) {
+                        var facetName = input["body"]["aggsArr"][t];
+                        var facetObject = {"@datatype": "GFacet","@version": "2016-11-09", "size": 10, "type": "terms"};
+                        if (facetName.toLowerCase() == "author") {
+                            facetName = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
+                        } else if (facetName.toLowerCase() == "sortdate") {
+                            facetObject = { "@datatype":"GFacet", "@version":"2016-11-09", "size":10, "type":"date_histogram", "date_interval": "month" };
+                            facetName = 'http://dublincore.org/documents/dcmi-terms#date';
+                        } else if (facetName.toLowerCase() == "type") {
+                            facetName = 'http://dublincore.org/documents/dcmi-terms#type';
+                        } else if (facetName.toLowerCase() == "genre") {
+                            facetName = 'http://dublincore.org/documents/dcmi-terms#type';
+                        } else if (facetName.toLowerCase() == "collection") {
+                            facetName = 'https://frdr.ca/schema/1.0#origin.id';
+                        } else if (facetName.toLowerCase() == "keywords") {
+                            facetName = 'http://dublincore.org/documents/dcmi-terms#subject';
                         }
+                        facetObject["field_name"] = facetName;
+                        postObject.facets.push(facetObject);
                     }
                 }
 
-                if (filters != "") {
-                    filters = "&filters=" + filters.trim();
+                if (postObject.facets.length == 0) {
+                    postObject.facets.push({"@datatype": "GFacet","@version": "2016-11-09","size": 10, "type": "terms", "field_name": "publication"});
                 }
-                if (facets == "") {
-                    facets = "publication";
-                }
-                var targetURL = search_api+search_api_endpoint+search_api_search_endpoint+'?stats&facets='+encodeURIComponent(facets)+'&q='+q+qsfrom+"&count=20"+filters;
+                var targetURL = search_api+search_api_endpoint+search_api_search_endpoint;
 
-                return $http.get(
+                console.log("POST:",postObject);
+
+                return $http.post(
                     targetURL,
+                    postObject,
                     {
                         headers: headers
                     })
@@ -167,49 +178,54 @@ define(function(require){
                         if (!response.data.hasOwnProperty("gfacets")) { response.data["gfacets"] = ""; }
                         var resultSet = [];
                         for (var item in response.data["gmeta"]) {
-                            for (var o in response.data["gmeta"][item]) {
-                                if (response.data["gmeta"][item][o].hasOwnProperty("content")) {
-                                    resultSet.push(response.data["gmeta"][item][o]["content"]);
-                                }
+                            if (response.data["gmeta"][item].hasOwnProperty("content")) {
+                                resultSet.push(response.data["gmeta"][item]["content"][0]);
                             }
                         }
 
                         // Format the Globus search platform response to look like what UBC code expects
                         var aggsObject = {};
-                        for (var facetName in response.data["gfacets"]) {
+                        for (var facetNum in response.data["facet_results"]) {
+                            var facetName = response.data["facet_results"][facetNum]["name"];
                             // Turn facet names back into common names where needed
                             if (facetName == "http://dublincore.org/documents/dcmi-terms#date") {
-                                q = "sortDate";
+                                facetName = "sortDate";
                             } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#contributor.author') {
-                                q = "author";
-                            } else { q = facetName; }
-                            aggsObject[q]= {};
-                            aggsObject[q].doc_count_error_upper_bound = 0;
-                            aggsObject[q].sum_other_doc_count = 0;
-                            aggsObject[q].buckets = [];
+                                facetName = "author";
+                            } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#type') {
+                                facetName = "type";
+                            } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#subject') {
+                                facetName = "Keywords";
+                            } else if (facetName == 'https://frdr.ca/schema/1.0#origin.id') {
+                                facetName = "Collection";
+                            }
+                            aggsObject[facetName]= {};
+                            aggsObject[facetName].doc_count_error_upper_bound = 0;
+                            aggsObject[facetName].sum_other_doc_count = 0;
+                            aggsObject[facetName].buckets = [];
                             var bn = 0;
-                            for (var b in response.data["gfacets"][facetName]) {
-                                aggsObject[q].buckets[bn]={};
-                                if (q == "sortDate") {
-                                    var d = new Date(response.data["gfacets"][facetName][b]["value"]);
+                            for (var b in response.data["facet_results"][facetNum]["buckets"]) {
+                                aggsObject[facetName].buckets[bn]={};
+                                if (facetName == "sortDate") {
+                                    var d = new Date(response.data["facet_results"][facetNum]["buckets"][b]["value"]);
                                     if (isNaN(d)) {
-                                        aggsObject[q].buckets[bn].key = new Date().getTime();
+                                        aggsObject[facetName].buckets[bn].key = new Date().getTime();
                                     } else {
-                                        aggsObject[q].buckets[bn].key = d.getTime();
+                                        aggsObject[facetName].buckets[bn].key = d.getTime();
                                     }
                                 } else {
-                                    aggsObject[q].buckets[bn].key = response.data["gfacets"][facetName][b]["value"];
+                                    aggsObject[facetName].buckets[bn].key = response.data["facet_results"][facetNum]["buckets"][b]["value"];
                                 }
-                                aggsObject[q].buckets[bn].key_as_string = response.data["gfacets"][facetName][b]["value"];
-                                aggsObject[q].buckets[bn].doc_count = response.data["gfacets"][facetName][b]["count"];
+                                aggsObject[facetName].buckets[bn].key_as_string = response.data["facet_results"][facetNum]["buckets"][b]["value"];
+                                aggsObject[facetName].buckets[bn].doc_count = response.data["facet_results"][facetNum]["buckets"][b]["count"];
                                 bn++;
                             }
                         }
 
                         var output = {
                             results: resultSet,
-                            count  : response.data["gstats"]["count"],
-                            total  : response.data["gstats"]["total"],
+                            count  : response.data["count"],
+                            total  : response.data["total"],
                             aggs   : aggsObject
                         };
                         // debugger;
