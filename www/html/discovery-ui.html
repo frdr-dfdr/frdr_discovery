@@ -88,9 +88,7 @@
                 <!--RESULTS-->
                 <noscript>
                     <p class="dl-warning">
-                        This site requires JavaScript to function properly. Please
-                        <a href="http://enable-javascript.com/" target="_blank">enable JavaScript</a>
-                        in your browser, and try loading the page again.
+                        <span translate>ERROR_NEED_JAVASCRIPT</span>
                     </p>
                 </noscript>
 
@@ -98,10 +96,9 @@
                     <div class="dl-spinner"></div>
                 </div>
 
-            <span ng-if="!rUpdating && noTerms || !rUpdating && total===0" class="ng-cloak">This search didn't return any matches. You might enter a different query, modify your filters, or try an <a
-                    ng-href="/discover/html/adv-search.html" link-out>advanced search</a> to get better results.</span>
+            <span ng-if="!rUpdating && noTerms || !rUpdating && total===0" class="ng-cloak"><span translate>ERROR_NO_RESULTS</span></span>
 
-                <span ng-if="searchError" class="ng-cloak dl-warning dl-spaced-lrg">There has been an error. Please refresh the page or use the back button to try a new search.</span>
+                <span ng-if="searchError" class="ng-cloak dl-warning dl-spaced-lrg"><span translate>ERROR_GENERAL</span></span>
 
                 <results-view class="ng-fade-out ng-fade-in" ng-show="!rUpdating || !noTerms || total>0"></results-view>
 
