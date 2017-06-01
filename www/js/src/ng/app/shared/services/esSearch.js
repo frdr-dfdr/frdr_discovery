@@ -57,6 +57,20 @@ define(function(require){
 
             }
 
+            function stripAccents(s) {
+                var in_chrs   = 'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ',
+                out_chrs  = 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY',
+                chars_rgx = new RegExp('[' + in_chrs + ']', 'g'),
+                transl    = {}, i,
+                lookup    = function (m) { return transl[m] || m; };
+
+                for (i=0; i<in_chrs.length; i++) {
+                    transl[ in_chrs[i] ] = out_chrs[i];
+                }
+
+                return s.replace(chars_rgx, lookup);
+            };
+
             function doSearch(){
                 // support switching of headers for API Tool
                 var postObject = {"@datatype": "GSearchRequest","@version": "2016-11-09","advanced": true,"limit": 20};
@@ -78,7 +92,7 @@ define(function(require){
                     postObject.offset = parseInt(input.from, 10);
                 }
 
-                postObject.q = searchString.vars.query;
+                postObject.q = stripAccents(searchString.vars.query);
 
                 // Add filters for each facet
                 postObject.filters = [];
