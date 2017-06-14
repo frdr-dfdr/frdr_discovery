@@ -173,8 +173,6 @@ define(function(require){
                 }
                 var targetURL = search_api+search_api_endpoint+search_api_search_endpoint;
 
-                console.log("POST:",postObject);
-
                 return $http.post(
                     targetURL,
                     postObject,
@@ -236,20 +234,24 @@ define(function(require){
                         }
 
                         var output = {
+                            error  : 0,
                             results: resultSet,
                             count  : response.data["count"],
                             total  : response.data["total"],
                             aggs   : aggsObject
                         };
-                        // debugger;
-                        if(website_env !== 'prod') {
-                            // console.log('search output:', output);
-                        }
                         return output;
                     },
                     function (error) {
                         console.trace('ES query error:', error);
-                        return error;
+                        var output = {
+                            error  : 1,
+                            results: [],
+                            count  : 0,
+                            total  : 0,
+                            aggs   : {}
+                        };
+                        return output;
                     });
             }
 

@@ -506,24 +506,31 @@ define(function (require) {
                             body: response
                         };
                         es.search(searchInput).then(function (response) {
-                            searchCounter++;
-                            $scope.rUpdating = false;
-                            // fire facet queries
-                            facetService.newFacetQuery($scope.q);
-                            // typedata for onebar used at top of search results
-                            $scope.typeData = "";
-                            // update results
-                            $scope.esr = {
-                                results: response.results
-                            };
-                            $scope.total = response.total;
-                            $scope.hidePages = false;
-                            if (!$scope.terms) {
-                                $scope.terms = $scope.q || $scope.placeholder;
-                            }
-                            // update pagination vars
-                            if (pVars.total != $scope.total) {
-                                pVars.total = $scope.total;
+                            if (response.error) {
+                                $scope.rUpdating = false;
+                                $scope.searchError = error;
+                                $scope.total = 0;
+                                $scope.esr = {};
+                            } else {
+                                searchCounter++;
+                                $scope.rUpdating = false;
+                                // fire facet queries
+                                facetService.newFacetQuery($scope.q);
+                                // typedata for onebar used at top of search results
+                                $scope.typeData = "";
+                                // update results
+                                $scope.esr = {
+                                    results: response.results
+                                };
+                                $scope.total = response.total;
+                                $scope.hidePages = false;
+                                if (!$scope.terms) {
+                                    $scope.terms = $scope.q || $scope.placeholder;
+                                }
+                                // update pagination vars
+                                if (pVars.total != $scope.total) {
+                                    pVars.total = $scope.total;
+                                }
                             }
                         }, function (error) {
                             $scope.rUpdating = false;
