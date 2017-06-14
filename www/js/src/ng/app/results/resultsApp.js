@@ -167,7 +167,7 @@ define(function (require) {
             'DRILL_DOWN': 'Percer',
             'DRILL_DOWN_DESC': 'Filtrer les termes seront mis à jour chaque fois qu\'un filtre est ajouté, se rétrécissant pour refléter les nouveaux résultats à chaque fois.',
             'ERROR_NEED_JAVASCRIPT': 'Ce site nécessite JavaScript pour fonctionner correctement. Activez JavaScript dans votre navigateur et essayez de charger la page à nouveau.',
-            'ERROR_NO_RESULTS': 'Cette recherche n\'a retourné aucune correspondance. Vous pouvez essayer une recherche nouveau.',
+            'ERROR_NO_RESULTS': 'Cette recherche n\'a retourné aucune correspondance. Vous pouvez essayer une nouvelle recherche.',
             'ERROR_GENERAL': 'Il y a eu une erreur. Veuillez actualiser la page ou utiliser le bouton Précédent pour essayer une nouvelle recherche.',
             'FACET': 'Facette',
             'FACET_CLEAR_FILTERS': 'Supprimer les filtres',
