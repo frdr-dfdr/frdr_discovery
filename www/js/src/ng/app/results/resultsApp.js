@@ -508,7 +508,7 @@ define(function (require) {
                         es.search(searchInput).then(function (response) {
                             if (response.error) {
                                 $scope.rUpdating = false;
-                                $scope.searchError = error;
+                                $scope.searchError = 'error';
                                 $scope.total = 0;
                                 $scope.esr = {};
                             } else {
