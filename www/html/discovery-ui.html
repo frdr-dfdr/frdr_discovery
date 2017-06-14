@@ -98,20 +98,20 @@
 
             <span ng-if="!rUpdating && noTerms || !rUpdating && total===0" class="ng-cloak"><span translate>ERROR_NO_RESULTS</span></span>
 
-                <span ng-if="searchError" class="ng-cloak dl-warning dl-spaced-lrg"><span translate>ERROR_GENERAL</span></span>
+            <span ng-if="searchError" class="ng-cloak dl-warning dl-spaced-lrg"><span translate style="padding:5px">ERROR_GENERAL</span></span>
 
-                <results-view class="ng-fade-out ng-fade-in" ng-show="!rUpdating || !noTerms || total>0"></results-view>
+            <results-view class="ng-fade-out ng-fade-in" ng-show="!rUpdating || !noTerms || total>0"></results-view>
 
-                <div custompaging class="ng-fade-out ng-fade-in" ng-show="!rUpdating || !noTerms || total>0"></div>
+            <div custompaging class="ng-fade-out ng-fade-in" ng-show="!rUpdating || !noTerms || total>0"></div>
 
-                <!--
-                <div>&nbsp;&nbsp;
-                    <a ng-href="{[{rssLink}]}" link-out=""><i class="fa fa-rss-square"></i>
-                    </a>
-                </div>
-                -->
+            <!--
+            <div>&nbsp;&nbsp;
+                <a ng-href="{[{rssLink}]}" link-out=""><i class="fa fa-rss-square"></i>
+                </a>
+            </div>
+            -->
 
-                <!-- end results column -->
+            <!-- end results column -->
             </div>
             <!-- end cols wrap -->
         </div>
