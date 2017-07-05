@@ -71,6 +71,18 @@ define(function(require){
                 return s.replace(chars_rgx, lookup);
             };
 
+            function globusEscapeURI(s) {
+                return s.replace(/([.])/mg, "\\$1");
+            }
+
+            function globusUnEscapeURI(s) {
+                return s.replace(/\\([.])/mg, "$1");
+            }
+
+            function globusEscapeQuerystring(s) {
+                return s.replace(/([-:.+()*\\\/ ])/mg, "\\$1");
+            }
+
             function doSearch(){
                 // support switching of headers for API Tool
                 var postObject = {"@datatype": "GSearchRequest","@version": "2016-11-09","advanced": true,"limit": 20};
@@ -92,7 +104,7 @@ define(function(require){
                     postObject.offset = parseInt(input.from, 10);
                 }
 
-                postObject.q = stripAccents(searchString.vars.query);
+                postObject.q = globusEscapeQuerystring(stripAccents(searchString.vars.query));
 
                 // Add filters for each facet
                 postObject.filters = [];
@@ -120,6 +132,7 @@ define(function(require){
                                 filterField = 'http://dublincore.org/documents/dcmi-terms#subject';
                             }
 
+                            filterField = globusEscapeURI(filterField);
                             var thisFilter = {"@datatype": "GFilter","@version": "2016-11-09","type": "match_any","field_name": filterField, "values":[]};
                             for (var t in filterFieldObject["terms"]) {
                                 thisFilter.values.push(filterFieldObject["terms"][t]);
@@ -140,7 +153,8 @@ define(function(require){
                     }
 
                     // Always add a date filter, even if it goes from the beginning of time until now
-                    var dateFilterObject = { "@datatype": "GFilter", "@version": "2016-11-09", "type": "range", "field_name": "http://dublincore.org/documents/dcmi-terms#date", "values": [{ "from": beginString, "to": endString }] };
+                    var dateFieldName = globusEscapeURI("http://dublincore.org/documents/dcmi-terms#date");
+                    var dateFilterObject = { "@datatype": "GFilter", "@version": "2016-11-09", "type": "range", "field_name": dateFieldName, "values": [{ "from": beginString, "to": endString }] };
                     postObject.filters.push(dateFilterObject);
                 }
 
@@ -163,7 +177,7 @@ define(function(require){
                         } else if (facetName.toLowerCase() == "keywords") {
                             facetName = 'http://dublincore.org/documents/dcmi-terms#subject';
                         }
-                        facetObject["field_name"] = facetName;
+                        facetObject["field_name"] = globusEscapeURI(facetName);
                         postObject.facets.push(facetObject);
                     }
                 }
@@ -197,7 +211,7 @@ define(function(require){
                         // Format the Globus search platform response to look like what UBC code expects
                         var aggsObject = {};
                         for (var facetNum in response.data["facet_results"]) {
-                            var facetName = response.data["facet_results"][facetNum]["name"];
+                            var facetName = globusUnEscapeURI(response.data["facet_results"][facetNum]["name"]);
                             // Turn facet names back into common names where needed
                             if (facetName == "http://dublincore.org/documents/dcmi-terms#date") {
                                 facetName = "sortDate";
