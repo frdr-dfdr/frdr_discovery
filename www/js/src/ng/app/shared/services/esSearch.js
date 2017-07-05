@@ -80,7 +80,7 @@ define(function(require){
             }
 
             function globusEscapeQuerystring(s) {
-                return s.replace(/([-:.+()*\\\/ ])/mg, "\\$1");
+                return s.replace(/([-:.+()*\\\/])/mg, "\\$1");
             }
 
             function doSearch(){
@@ -104,7 +104,7 @@ define(function(require){
                     postObject.offset = parseInt(input.from, 10);
                 }
 
-                postObject.q = globusEscapeQuerystring(stripAccents(searchString.vars.query));
+                postObject.q = globusEscapeQuerystring(searchString.vars.query);
 
                 // Add filters for each facet
                 postObject.filters = [];
