@@ -80,7 +80,7 @@ define(function(require){
             }
 
             function globusEscapeQuerystring(s) {
-                return s.replace(/([-:.+()*\\\/])/mg, "\\$1");
+                return s.replace(/([-:.+()\\\/])/mg, "\\$1");
             }
 
             function doSearch(){
