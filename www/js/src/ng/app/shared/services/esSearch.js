@@ -213,6 +213,14 @@ define(function(require){
                     postObject.sort.push(sortObject);                 
                 }
 
+                postObject.boosts = [];
+                function addBoost(field, factor) {
+                    postObject.boosts.push({"@datatype": "GBoost","@version": "2016-11-09","field_name": globusEscapeURI(field),"factor": factor});
+                }
+                addBoost("http://dublincore.org/documents/dcmi-terms#title",8);
+                addBoost("http://dublincore.org/documents/dcmi-terms#subject",4);
+                addBoost("http://dublincore.org/documents/dcmi-terms#description",2);
+
                 var targetURL = search_api+search_api_endpoint+search_api_search_endpoint;
 
                 return $http.post(
