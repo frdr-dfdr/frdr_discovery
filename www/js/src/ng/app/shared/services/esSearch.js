@@ -71,6 +71,14 @@ define(function(require){
                 return s.replace(chars_rgx, lookup);
             };
 
+            function replaceFriendlyTerms(s) {
+                return s.replace(new RegExp('([\s]*)(title[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#title:')
+                    .replace(new RegExp('([\s]*)(author[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#contributor.author:')
+                    .replace(new RegExp('([\s]*)(date[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#date:')
+                    .replace(new RegExp('([\s]*)(description[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#description:')
+                    .replace(new RegExp('([\s]*)(subject[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#subject:');
+            }
+
             function globusEscapeURI(s) {
                 return s.replace(/([.])/mg, "\\$1");
             }
@@ -80,7 +88,7 @@ define(function(require){
             }
 
             function globusEscapeQuerystring(s) {
-                return s.replace(/([-:.+()*\\\/])/mg, "\\$1");
+                return s.replace(/([-.+()\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2');
             }
 
             function doSearch(){
@@ -104,7 +112,7 @@ define(function(require){
                     postObject.offset = parseInt(input.from, 10);
                 }
 
-                postObject.q = globusEscapeQuerystring(searchString.vars.query);
+                postObject.q = globusEscapeQuerystring(replaceFriendlyTerms(searchString.vars.query));
 
                 // Add filters for each facet
                 postObject.filters = [];
