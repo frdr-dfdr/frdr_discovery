@@ -193,6 +193,26 @@ define(function(require){
                 if (postObject.facets.length == 0) {
                     postObject.facets.push({"@datatype": "GFacet","@version": "2016-11-09","size": 10, "type": "terms", "field_name": "publication"});
                 }
+
+                postObject.sort = [];
+                if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("sort") && input["body"]["sort"]["field"] !== false ) {
+                    var sortFieldName = input["body"]["sort"]["field"];
+                    var sortOrder = "asc";
+                    if (input["body"]["sort"]["order"] == "desc") {
+                        sortOrder = "desc";
+                    }
+                    var sortObject = {"@datatype": "GSort","@version": "2016-11-09", "order": sortOrder};
+                    if (sortFieldName.toLowerCase() == "author") {
+                        sortFieldName = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
+                    } else if (sortFieldName.toLowerCase() == "sortdate") {
+                        sortFieldName = 'http://dublincore.org/documents/dcmi-terms#date';
+                    } else if (sortFieldName.toLowerCase() == "title") {
+                        sortFieldName = 'http://dublincore.org/documents/dcmi-terms#title';
+                    }
+                    sortObject["field_name"] = globusEscapeURI(sortFieldName);
+                    postObject.sort.push(sortObject);                 
+                }
+
                 var targetURL = search_api+search_api_endpoint+search_api_search_endpoint;
 
                 return $http.post(
