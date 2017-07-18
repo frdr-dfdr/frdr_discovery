@@ -592,13 +592,15 @@ define(function(require) {
                                 } else if(fArray[i] === 'subject'){
                                     orderVal = -1;
                                 }
+                                var openByDefault = false;
+                                if (searchString.vars.filter[fArray[i]].terms.length > 0) { openByDefault = true; }
                                 obj[fArray[i]] = {
                                     order : orderVal,
                                     label: fArray[i],
                                     display: fieldService.fields[fArray[i]].label,
                                     translateKey: fieldService.fields[fArray[i]].label,
                                     buckets : [],
-                                    open: false,
+                                    open: openByDefault,
                                     sum_left: 0,
                                     sortField: facetService.defaultSort
                                 };
