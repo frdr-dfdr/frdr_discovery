@@ -70,13 +70,13 @@ define(function(require){
 
                 return s.replace(chars_rgx, lookup);
             };
-
+            
             function replaceFriendlyTerms(s) {
-                return s.replace(new RegExp('([\s]*)(title[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#title:')
-                    .replace(new RegExp('([\s]*)(author[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#contributor.author:')
-                    .replace(new RegExp('([\s]*)(date[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#date:')
-                    .replace(new RegExp('([\s]*)(description[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#description:')
-                    .replace(new RegExp('([\s]*)(subject[\s]*:)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#subject:');
+                 return s.replace(new RegExp('(^|[\\s]+)(title[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#title: ')
+                    .replace(new RegExp('(^|[\\s]+)(author[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#contributor.author: ')
+                    .replace(new RegExp('(^|[\\s]+)(date[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#date: ')
+                    .replace(new RegExp('(^|[\\s]+)(description[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#description: ')
+                    .replace(new RegExp('(^|[\\s]+)(subject[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#subject: ');
             }
 
             function globusEscapeURI(s) {
@@ -194,6 +194,14 @@ define(function(require){
                     postObject.facets.push({"@datatype": "GFacet","@version": "2016-11-09","size": 10, "type": "terms", "field_name": "publication"});
                 }
 
+                postObject.boosts = [];
+                function addBoost(field, factor) {
+                    postObject.boosts.push({"@datatype": "GBoost","@version": "2016-11-09","field_name": globusEscapeURI(field),"factor": factor});
+                }
+                addBoost("http://dublincore.org/documents/dcmi-terms#title",8);
+                addBoost("http://dublincore.org/documents/dcmi-terms#subject",4);
+                addBoost("http://dublincore.org/documents/dcmi-terms#description",2);
+
                 postObject.sort = [];
                 if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("sort") && input["body"]["sort"]["field"] !== false ) {
                     var sortFieldName = input["body"]["sort"]["field"];
@@ -210,16 +218,9 @@ define(function(require){
                         sortFieldName = 'http://dublincore.org/documents/dcmi-terms#title';
                     }
                     sortObject["field_name"] = globusEscapeURI(sortFieldName);
-                    postObject.sort.push(sortObject);                 
+                    postObject.sort.push(sortObject);
+                    postObject.boosts = []; // When sorting results, boost values do not matter
                 }
-
-                postObject.boosts = [];
-                function addBoost(field, factor) {
-                    postObject.boosts.push({"@datatype": "GBoost","@version": "2016-11-09","field_name": globusEscapeURI(field),"factor": factor});
-                }
-                addBoost("http://dublincore.org/documents/dcmi-terms#title",8);
-                addBoost("http://dublincore.org/documents/dcmi-terms#subject",4);
-                addBoost("http://dublincore.org/documents/dcmi-terms#description",2);
 
                 var targetURL = search_api+search_api_endpoint+search_api_search_endpoint;
 
