@@ -539,6 +539,8 @@ define(function(require){
                         //}
                     }
                     else {
+                        keywords = keywords.replace(/"/g,'');
+                        keywords = keywords.split(' ').join(' OR ');
                         keywords = '('+ keywords + ')';
                     }
 

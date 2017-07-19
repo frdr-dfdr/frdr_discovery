@@ -70,13 +70,13 @@ define(function(require){
 
                 return s.replace(chars_rgx, lookup);
             };
-            
+
             function replaceFriendlyTerms(s) {
-                 return s.replace(new RegExp('(^|[\\s]+)(title[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#title: ')
-                    .replace(new RegExp('(^|[\\s]+)(author[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#contributor.author: ')
-                    .replace(new RegExp('(^|[\\s]+)(date[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#date: ')
-                    .replace(new RegExp('(^|[\\s]+)(description[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#description: ')
-                    .replace(new RegExp('(^|[\\s]+)(subject[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#subject: ');
+                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#title: ')
+                    .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#contributor.author: ')
+                    .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#date: ')
+                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#description: ')
+                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#subject: ');
             }
 
             function globusEscapeURI(s) {
@@ -88,7 +88,7 @@ define(function(require){
             }
 
             function globusEscapeQuerystring(s) {
-                return s.replace(/([-.+()\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2');
+                return s.replace(/([-.+\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2');
             }
 
             function doSearch(){
