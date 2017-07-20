@@ -136,7 +136,7 @@ define(function(require){
                                 filterField = 'http://dublincore.org/documents/dcmi-terms#type';
                             } else if (filterField.toLowerCase() == "collection") {
                                 filterField = 'https://frdr.ca/schema/1.0#origin.id';
-                            } else if (filterField.toLowerCase() == "keywords" or filterField.toLowerCase() == "subject" ) {
+                            } else if (filterField.toLowerCase() == "keywords" || filterField.toLowerCase() == "subject" ) {
                                 filterField = 'http://dublincore.org/documents/dcmi-terms#subject';
                             }
 
@@ -182,7 +182,7 @@ define(function(require){
                             facetName = 'http://dublincore.org/documents/dcmi-terms#type';
                         } else if (facetName.toLowerCase() == "collection") {
                             facetName = 'https://frdr.ca/schema/1.0#origin.id';
-                        } else if (facetName.toLowerCase() == "keywords" or facetName.toLowerCase() == "subject") {
+                        } else if (facetName.toLowerCase() == "keywords" || facetName.toLowerCase() == "subject") {
                             facetName = 'http://dublincore.org/documents/dcmi-terms#subject';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
