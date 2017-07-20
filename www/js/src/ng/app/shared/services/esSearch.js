@@ -72,11 +72,11 @@ define(function(require){
             };
 
             function replaceFriendlyTerms(s) {
-                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1http\\:\\/\\/dublincore\\.org\\/documents\\/dcmi-terms#title: ')
-                    .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1http\\:\\/\\/dublincore\\.org\\/documents\\/dcmi-terms#contributor.author: ')
-                    .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1http\\:\\/\\/dublincore\\.org\\/documents\\/dcmi-terms#date: ')
-                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1http\\:\\/\\/dublincore\\.org\\/documents\\/dcmi-terms#description: ')
-                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1http\\:\\/\\/dublincore\\.org\\/documents\\/dcmi-terms#subject: ');
+                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#title: ')
+                    .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#contributor.author: ')
+                    .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#date: ')
+                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#description: ')
+                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1http://dublincore.org/documents/dcmi-terms#subject: ');
             }
 
             function globusEscapeURI(s) {
@@ -85,6 +85,10 @@ define(function(require){
 
             function globusUnEscapeURI(s) {
                 return s.replace(/\\([.])/mg, "$1");
+            }
+
+            function globusEscapeQuerystring(s) {
+                return s.replace(/([.\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2');
             }
 
             function doSearch(){
@@ -108,7 +112,7 @@ define(function(require){
                     postObject.offset = parseInt(input.from, 10);
                 }
 
-                postObject.q = replaceFriendlyTerms(searchString.vars.query);
+                postObject.q = globusEscapeQuerystring(replaceFriendlyTerms(searchString.vars.query));
 
                 // Add filters for each facet
                 postObject.filters = [];
