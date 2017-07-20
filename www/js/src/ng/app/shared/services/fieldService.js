@@ -16,7 +16,8 @@ define(function(require){
                 'type',
                 // 'genre',
                 'genre',
-                'Keywords',
+                //'Keywords',
+                'subject',
                 //'creator',
                 'Author',
                 'Collection', // needs special treatment: field needs to be 'nick'
@@ -47,7 +48,7 @@ define(function(require){
                 'campus',
                 'affiliation',
                 'scholarlyLevel',
-                'Keywords',
+                'subject',
                 'geographicLocation',
                 'genre',
                 'title',
