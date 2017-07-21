@@ -232,11 +232,18 @@ define(function(require){
                     })
                     .then(
                     function (response) {
-                        if(website_env !== 'prod') {
-                            console.log('response:', response);
-                        }
+                        //console.log('response:', response);
 
                         // FRDR changes for Globus Search
+                        function strip_tags(input, allowed) {
+                            // making sure the allowed arg is a string containing only tags in lowercase (<a><b><c>)
+                            allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join(''); 
+                            var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
+                            var commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+                            return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+                                return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+                            });
+                        }
                         function refit_keys(o) {
                             if (Array.isArray(o)) {
                                 var returnObject = [];
@@ -259,7 +266,7 @@ define(function(require){
                                     }
                                 }
                             } else {
-                                returnObject = o;
+                                returnObject = strip_tags(o,"<b><br><em><hr><i><p><pre><s><strong><ul><li><dd><dl><dt><ol><sup><blockquote><u>");
                             }
                             return returnObject;
                             }

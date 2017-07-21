@@ -777,7 +777,7 @@ define(function (require) {
                     var detailsParsed = false;
                     var fieldsToHide = { 
                         "_id":1,"origin.icon":1,"origin.id":1,"saved":1,"detail":1,"repo_url":1,"resourceTypeGeneral":1,
-                        "contributor.author":1,"icon_url":1,"series":1
+                        "contributor.author":1,"icon_url":1,"series":1, "http://nrdr-ednr.ca/schema/1.0#origin.id": 1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
                     function parseDetails() {
