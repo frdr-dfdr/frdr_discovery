@@ -56,7 +56,7 @@
     { 
         "val": "Nipissing University Dataverse",
         "label": "Nipissing University Dataverse",
-        "icon_url": "/discover/img/sources/nipissing_80x80.png",
+        "icon_url": "/discover/img/sources/nipissing_80x80.jpg",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/nipissing"
     },
     { 
@@ -86,7 +86,7 @@
     { 
         "val": "Queen's University Dataverse",
         "label": "Queen's University Dataverse",
-        "icon_url": "/discover/img/sources/queens_80x80.png",
+        "icon_url": "/discover/img/sources/queens_80x80.jpg",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/queens"
     },
     { 
@@ -104,7 +104,7 @@
     { 
         "val": "Trent University Dataverse",
         "label": "Trent University Dataverse",
-        "icon_url": "/discover/img/sources/trent_80x80.png",
+        "icon_url": "/discover/img/sources/trent_80x80.jpg",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/trent"
     },
     { 
@@ -128,7 +128,7 @@
     { 
         "val": "University of Ottawa Dataverse",
         "label": "University of Ottawa Dataverse",
-        "icon_url": "/discover/img/sources/uottawa_80x80.png",
+        "icon_url": "/discover/img/sources/uottawa_80x80.jpg",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/ottawa"
     },
     { 
@@ -146,13 +146,13 @@
     { 
         "val": "UOIT Dataverse",
         "label": "UOIT Dataverse",
-        "icon_url": "/discover/img/sources/uoit_80x80.png",
+        "icon_url": "/discover/img/sources/uoit_80x80.jpg",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/uoit"
     },
     { 
         "val": "Waterloo University Dataverse",
         "label": "Waterloo University Dataverse",
-        "icon_url": "/discover/img/sources/waterloo_80x80.png",
+        "icon_url": "/discover/img/sources/waterloo_80x80.jpg",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/waterloo"
     },
     { 
