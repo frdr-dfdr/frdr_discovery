@@ -237,11 +237,38 @@ define(function(require){
                         }
 
                         // FRDR changes for Globus Search
-                        if (!response.data.hasOwnProperty("gfacets")) { response.data["gfacets"] = ""; }
-                        var resultSet = [];
-                        for (var item in response.data["gmeta"]) {
+                        function refit_keys(o) {
+                            if (Array.isArray(o)) {
+                                var returnObject = [];
+                                for (var i=0; i<o.length; i++) {
+                                    returnObject[i] = refit_keys(o[i]);
+                                }
+                            } else if (typeof o === "object") {
+                                var returnObject, key, destKey, value;
+                                returnObject = {};
+                                for (key in o) {
+                                    if (o.hasOwnProperty(key)) {
+                                        destKey = key.replace('http://dublincore.org/documents/dcmi-terms#','')
+                                            .replace('https://schema.labs.datacite.org/meta/kernel-4.0/metadata.xsd#','')
+                                            .replace('https://frdr.ca/schema/1.0#','');
+                                        value = o[key];
+                                        if (typeof value === "object") {
+                                            value = refit_keys(value);
+                                        }
+                                        returnObject[destKey] = value;
+                                    }
+                                }
+                            } else {
+                                returnObject = o;
+                            }
+                            return returnObject;
+                            }
+                            if (!response.data.hasOwnProperty("gfacets")) { response.data["gfacets"] = ""; }
+                            var resultSet = [];
+                            for (var item in response.data["gmeta"]) {
                             if (response.data["gmeta"][item].hasOwnProperty("content")) {
-                                resultSet.push(response.data["gmeta"][item]["content"][0]);
+                                thisResult = refit_keys(response.data["gmeta"][item]["content"][0]);
+                                resultSet.push(thisResult);
                             }
                         }
 

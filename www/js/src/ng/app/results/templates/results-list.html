@@ -2,39 +2,39 @@
 <div ng-if="!max400" class="dl-r-lthumb dl-basic-thumb"
 	basic-thumb 
 	img-width="80"
-	item-id="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}"
-	repo="{[{ r['https://frdr.ca/schema/1.0#origin.id']}]}"
-	handle="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}"
-	item-title="{[{ r['http://dublincore.org/documents/dcmi-terms#title'] }]}" 
+	item-id="{[{ r.source }]}"
+	repo="{[{ r['origin.id']}]}"
+	handle="{[{ r.source }]}"
+	item-title="{[{ r.title }]}" 
 	type="dataset"
 	img-src="{[{ r.icon_url }]}"
 	img-link="{[{ r.repo_url }]}"
-	col-nick="{[{ r['https://frdr.ca/schema/1.0#origin.id'] }]}">
+	col-nick="{[{ r['origin.id'] }]}">
 </div>
 
 <div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
 </div>
 <article class="dl-r-content">
 
-	<h6><a link-out ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	<h6><a link-out ng-href="{[{ r.source }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
 	</h6>
 
 	<div class="dl-r-metadata-short">
 
 		<!--
-		<a ng-href="{[{ r['http://dublincore.org/documents/dcmi-terms#source'] }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
+		<a ng-href="{[{ r.source }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
 		-->
 		<span class="dl-r-collection" ng-bind-html="::r.collection"></span>
 
 		<br />
 
-		<span ng-repeat="c in ::r['http://dublincore.org/documents/dcmi-terms#contributor.author'] track by $index">
+		<span ng-repeat="c in ::r['contributor.author'] track by $index">
 			<!-- 
-			<a href="" ng-click="addFilter('author', r['http://dublincore.org/documents/dcmi-terms#contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>
+			<a href="" ng-click="addFilter('author', r['contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>
 			-->
 			<span class="dl-r-creator" ng-bind-html="c"></span>{[{$last ? '' : '; '}]}
 		</span>
-		<span class="dl-r-creator" ng-if="!r['http://dublincore.org/documents/dcmi-terms#contributor.author'][0]" >[{{ 'ITEM_AUTHOR_UNKNOWN' | translate }}]</span>  
+		<span class="dl-r-creator" ng-if="!r['contributor.author'][0]" >[{{ 'ITEM_AUTHOR_UNKNOWN' | translate }}]</span>  
 
 		<!-- <a href="" ng-click="addFilter('sortDate', r.sortDate)" class="dl-r-date" ng-bind-html="::r.sortDate"></a> -->
 		&ensp;&mdash;&ensp;<span class="dl-r-date" ng-bind-html="::r.sortDate"></span>
@@ -55,11 +55,6 @@
 				</span>
 			</td>
 		</tr>
-
-		<tr ng-if="!r.embargoed && r.description && r.description != '[unknown]'">
-			<td class="dl-r-label">{{ 'ITEM_DESCRIPTION' | translate }}</td>
-			<td class="dl-r-data" ng-bind-html="::r['http://dublincore.org/documents/dcmi-terms#description']"></td>
-		</tr> 
 	</table>
 	<div class="dl-r-inner row-fluid" ng-if="r.compound && details">
 		<span ng-hide="innerContent"><div class="dl-loader-inline"></div>{{ 'RESULTS_LOADING' | translate }}</span>

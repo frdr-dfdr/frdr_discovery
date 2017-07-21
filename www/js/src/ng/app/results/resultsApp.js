@@ -710,12 +710,9 @@ define(function (require) {
 
                 function setR(rFields) {
 
-                    var source = $scope.r._source;
-                    // normal terms scope
-
                     var hasFields = function () {
                         var arr = [];
-                        for (var prop in source) {
+                        for (var prop in r) {
                             for (var p in rFields) {
                                 if (rFields[p].map === prop) {
                                     arr.push(p);
@@ -747,21 +744,22 @@ define(function (require) {
                     };
                     */
 
-                    $scope.r._id = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
-                    $scope.r.handle = $scope.r['http://dublincore.org/documents/dcmi-terms#source'];
-                    $scope.r.title = highlighter.highlight(singleVal($scope.r['http://dublincore.org/documents/dcmi-terms#title']));
-                    $scope.r.collection = $scope.r['https://frdr.ca/schema/1.0#origin.id'];
+                    $scope.r._id = $scope.r.source;
+                    $scope.r.author = highlighter.highlight($scope.r['contributor.author']);
+                    $scope.r.collection = $scope.r['origin.id'];
+                    $scope.r.description = highlighter.highlight(singleVal($scope.r.description,"Description"));                    
+                    $scope.r.detail = {};
+                    $scope.r.handle = $scope.r.source;
+                    $scope.r.icon_url = $scope.r['https://frdr.ca/schema/1.0#origin.icon'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
-                    $scope.r.sortDate = $scope.r['http://dublincore.org/documents/dcmi-terms#date'];
-                    $scope.r.detail = {};
-                    $scope.r.type = "text";
-                    $scope.r.saved = rExport.isSaved($scope.r._id);
-                    $scope.r.author = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#contributor.author']);
-                    $scope.r.icon_url = $scope.r['https://frdr.ca/schema/1.0#origin.icon'];
                     $scope.r.repo_url = "";
-                    $scope.r.type = $scope.r['https://schema.labs.datacite.org/meta/kernel-4.0/metadata.xsd#resourceTypeGeneral'];
                     $scope.r.saved = rExport.isSaved($scope.r._id);
+                    $scope.r.saved = rExport.isSaved($scope.r._id);
+                    $scope.r.sortDate = $scope.r.date;
+                    $scope.r.title = highlighter.highlight(singleVal($scope.r.title,"Title"));
+                    $scope.r.type = "text";
+                    $scope.r.type = singleVal($scope.r['resourceTypeGeneral'],"Type");
 
                     // Check for icon overrides in the collection definitions
                     for (var i=0; i < $scope.collectionList.length; i++) {
@@ -775,22 +773,32 @@ define(function (require) {
                         }
                     }
 
-                    // add detail view fields for any fields not already added above, only if details visible
+                    // add detail view for ALL fields, only if details visible
                     var detailsParsed = false;
+                    var fieldsToHide = { 
+                        "_id":1,"origin.icon":1,"origin.id":1,"saved":1,"detail":1,"repo_url":1,"resourceTypeGeneral":1,
+                        "contributor.author":1,"icon_url":1,"series":1
+                    }
+                    function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
                     function parseDetails() {
-                        $scope.r.description = highlighter.highlight($scope.r['http://dublincore.org/documents/dcmi-terms#description']);
-                        for (var i = 0; i < hasFields.length; i++) {
-                            if (!$scope.r.hasOwnProperty(hasFields[i])) {
-                                // console.log(hasFields[i]);
-                                if (hasFields[i] !== 'dateAvailable') {
-                                    $scope.r.detail[hasFields[i]] = {
-                                        field: hasFields[i],
-                                        label: rFields[hasFields[i]].label,
-                                        val: highlighter.highlight(source[rFields[hasFields[i]].map]),
-                                        facetField: facetable(hasFields[i])
-                                    };
-                                }
-                            }
+                        for (var key in $scope.r) {
+                           if ($scope.r.hasOwnProperty(key) && !fieldsToHide.hasOwnProperty(key)) {
+                              if (rFields.hasOwnProperty(key)) {
+                                  $scope.r.detail[key] = {
+                                      field: key,
+                                      label: rFields[key].label,
+                                      val: makeArray($scope.r[rFields[key].map]),
+                                      facetField: facetable(key)
+                                  }
+                              } else {
+                                  $scope.r.detail[key] = {
+                                      field: key,
+                                      label: key,
+                                      val: makeArray($scope.r[key]),
+                                      facetField: facetable(key)
+                                  }
+                              }
+                           }
                         }
                         detailsParsed = true;
                     }
@@ -819,12 +827,12 @@ define(function (require) {
                         return fieldService.facetFields.indexOf(check) !== -1 ? true : false;
                     }
 
-                    // make sure single val exists for TITLE
-                    function singleVal(check) {
+                    // make sure single val exists for required fields
+                    function singleVal(check, fieldname) {
                         if (check) {
                             return check;
                         } else {
-                            return '[title unknown]';
+                            return '[' + fieldname + ' unknown]';
                         }
                     }
 
