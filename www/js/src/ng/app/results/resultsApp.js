@@ -346,7 +346,9 @@ define(function (require) {
                     //SEARCH FUNCTIONS
                     $scope.newSearch = function newSearch() {
                         $scope.q = $scope.terms;
-                        // console.log('NEW SEARCH', 'keep filters:', searchString.keepFilters);
+                        if(website_env !== 'prod') {
+                            console.log('NEW SEARCH', 'keep filters:', searchString.keepFilters);
+                        }
                         // reset page number
                         $scope.currentPage = 0;
                         $scope.hidePages = true;
@@ -373,7 +375,6 @@ define(function (require) {
                     };
 
                     $scope.modifySearch = function modifySearch() {
-                        // console.log('MODIFY SEARCH');
                         $scope.currentPage = 0;
                         updateLocation();
                     };
@@ -422,7 +423,6 @@ define(function (require) {
                         utility.gaEvent('search_results', 'add_filter', f);
                         var term = $filter('stripHtmlTags')(t);
                         var index = searchString.vars.filter[f].terms.indexOf(term);
-                        // console.log('toggle filter', f, term, index);
                         if (index === -1) {
                             searchString.vars.filter[f].terms.push(term);
                         }
@@ -445,11 +445,9 @@ define(function (require) {
                     max400.watch();
                     max400.ismatch(function () {
                         $scope.max400 = true;
-                        // console.log('MAX 400 TRUE');
                     });
                     max400.notmatch(function () {
                         $scope.max400 = false;
-                        // console.log('MAX 400 FALSE');
                     });
                 }  //-- end init();
 
@@ -494,7 +492,7 @@ define(function (require) {
                     highlighter.getTerms();
 
                     if (website_env !== 'prod') {
-                        //console.log("searchString", searchString);
+                        console.log("searchString", searchString);
                     }
 
                     //define search input, THEN do search
@@ -549,7 +547,6 @@ define(function (require) {
                     utility.windowstop();
                     // get dates from obj
                     var beginKey = '', endKey = '';
-                    // console.log(searchString.vars.filter.sortDate);
                     if (searchString.vars.filter.sortDate.begin && searchString.vars.filter.sortDate.end) {
                         beginKey = searchString.vars.filter.sortDate.begin.key;
                         endKey = searchString.vars.filter.sortDate.end.key;
@@ -618,7 +615,6 @@ define(function (require) {
                     }
                     // get date begin/end
                     if (locSearch.dBegin && locSearch.dEnd) {
-                        // console.log('add date filters!', locSearch.dBegin, locSearch.dEnd);
                         searchString.vars.filter.sortDate.begin = {
                             key: locSearch.dBegin,
                             display: $filter('date')(locSearch.dBegin, 'yyyy')
@@ -697,7 +693,6 @@ define(function (require) {
                 $scope.base_url = website_base_url;
                 // check view
                 // detailed view
-                // console.log($scope.resultsView.index)
                 if ($scope.resultsView.index === 1) {
                     $scope.detailView = true;
                     $scope.details = true;
@@ -755,8 +750,6 @@ define(function (require) {
                     $scope.r.repo = $scope.r.collection;
                     $scope.r.repo_url = "";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
-                    $scope.r.saved = rExport.isSaved($scope.r._id);
-                    $scope.r.sortDate = $scope.r.date;
                     $scope.r.title = highlighter.highlight(singleVal($scope.r.title,"Title"));
                     $scope.r.type = "text";
                     $scope.r.type = singleVal($scope.r['resourceTypeGeneral'],"Type");
@@ -774,31 +767,33 @@ define(function (require) {
                     }
 
                     // add detail view for ALL fields, only if details visible
+                    // we are hiding specific fields so that all unknown fields (custom metadata) can be exposed by default
                     var detailsParsed = false;
                     var fieldsToHide = { 
                         "_id":1,"origin.icon":1,"origin.id":1,"saved":1,"detail":1,"repo_url":1,"resourceTypeGeneral":1,
-                        "contributor.author":1,"icon_url":1,"series":1, "http://nrdr-ednr.ca/schema/1.0#origin.id": 1
+                        "contributor.author":1,"icon_url":1,"series":1, "http://nrdr-ednr.ca/schema/1.0#origin.id": 1,
+                        "contact": 1, "nick": 1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
                     function parseDetails() {
                         for (var key in $scope.r) {
-                           if ($scope.r.hasOwnProperty(key) && !fieldsToHide.hasOwnProperty(key)) {
-                              if (rFields.hasOwnProperty(key)) {
-                                  $scope.r.detail[key] = {
-                                      field: key,
-                                      label: rFields[key].label,
-                                      val: makeArray($scope.r[rFields[key].map]),
-                                      facetField: facetable(key)
-                                  }
-                              } else {
-                                  $scope.r.detail[key] = {
-                                      field: key,
-                                      label: key,
-                                      val: makeArray($scope.r[key]),
-                                      facetField: facetable(key)
-                                  }
-                              }
-                           }
+                            if ($scope.r.hasOwnProperty(key) && !fieldsToHide.hasOwnProperty(key)) {
+                                if (rFields.hasOwnProperty(key)) {
+                                    $scope.r.detail[key] = {
+                                        field: key,
+                                        label: rFields[key].label,
+                                        val: makeArray($scope.r[rFields[key].map]),
+                                        facetField: facetable(key)
+                                    }
+                                } else {
+                                    $scope.r.detail[key] = {
+                                        field: key,
+                                        label: key,
+                                        val: makeArray($scope.r[key]),
+                                        facetField: facetable(key)
+                                    }
+                                }
+                            }
                         }
                         detailsParsed = true;
                     }
@@ -884,7 +879,7 @@ define(function (require) {
                         var iiifUrl = iiif_api + '/viewer/excerpt.php?handle=' + newHandle + '&search=' + encodeURIComponent(query) + '&json';
                         $http.get(iiifUrl).then(function (response) {
                             if (website_env !== 'prod') {
-                                //console.log('inner response', response.data);
+                                console.log('inner response', response.data);
                             }
 
                             if (!response.data) {

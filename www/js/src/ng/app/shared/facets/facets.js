@@ -115,7 +115,6 @@ define(function(require) {
                         $scope.chunked = true;
                         var chunkSize = Math.ceil($scope.f.length / 2);
                         $scope.f = chunk($scope.f, chunkSize, 0);
-                        // console.log($scope.f);
                     }
                     function chunk(arr, size, start){
                         var newArr = [];
@@ -406,7 +405,9 @@ define(function(require) {
                     $scope.optsLoading = true;
                     $scope.optsCount += 60;
                     searchOpts.aggSize = $scope.optsCount;
-                    console.log($scope.orderField);
+                    if(website_env !== 'prod') {
+                        console.log($scope.orderField);
+                    }
                     getFacetsData(searchOpts).then(function(response){
                     });
 
@@ -424,8 +425,6 @@ define(function(require) {
                 // DATE FACET
                 // **NOTE: this filter works closely and depends on the 'datechart' d3 directive
                 $scope.dateRangeFilter = function(begin, end) {
-                    // console.log('RANGEFILTER dates', begin, end);
-
                     if(!begin || !end) {
                         return;
                     }
@@ -619,7 +618,9 @@ define(function(require) {
 
                 // set facet options 
                 setFacetOpts = function(aggInput){
-                    console.log("setFacetOpts() aggInput:", aggInput);
+                    if(website_env !== 'prod') {
+                        console.log("setFacetOpts() aggInput:", aggInput);
+                    }
                     // set facets based on aggs output
                     for (var k in aggInput ) {
                         if (facetService.facets.hasOwnProperty(k) ) {

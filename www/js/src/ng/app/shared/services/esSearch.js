@@ -31,7 +31,6 @@ define(function(require){
 
                 // resolve aggregate collection nicks to full strings with collectionData service, then set index 
                 return collectionData.resolveAggs(nicks).then(function(response){
-                    // console.log('set index from input.searchIndex', response);
                     input.searchIndex = response;
                     return doSearch();
                 });   
@@ -151,11 +150,11 @@ define(function(require){
                         if (filterFieldObject.hasOwnProperty("begin") && filterFieldObject.hasOwnProperty("end")) {
                             if (filterFieldObject.begin != "") {
                                 var beginDate = new Date(parseInt(filterFieldObject.begin.key,10));
-                                beginString = beginDate.getFullYear() + "-" + (beginDate.getMonth() + 1) + "-" + beginDate.getDate();
+                                beginString = beginDate.getFullYear() + "-01-01"; // Users are supplying years only, so make sure we start in Jan
                             }
                             if (filterFieldObject.end != "") {
                                 endDate = new Date(parseInt(filterFieldObject.end.key,10));
-                                endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+                                endString = endDate.getFullYear() + "-12-31";  // Users are supplying years only, so make sure we go to end of year
                             }
                         }
                     }
@@ -232,8 +231,6 @@ define(function(require){
                     })
                     .then(
                     function (response) {
-                        //console.log('response:', response);
-
                         // FRDR changes for Globus Search
                         function strip_tags(input, allowed) {
                             // making sure the allowed arg is a string containing only tags in lowercase (<a><b><c>)
