@@ -712,7 +712,7 @@ define(function (require) {
 
                     var hasFields = function () {
                         var arr = [];
-                        for (var prop in r) {
+                        for (var prop in $scope.r) {
                             for (var p in rFields) {
                                 if (rFields[p].map === prop) {
                                     arr.push(p);
