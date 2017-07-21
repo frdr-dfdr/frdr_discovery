@@ -8,13 +8,13 @@
     { 
         "val": "Algoma University Dataverse",
         "label": "Algoma University Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/algoma_80x80.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/algoma"
     },
     { 
         "val": "Brock University Dataverse",
         "label": "Brock University Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/brock_80x48.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/brock"
     },
     { 
@@ -44,7 +44,7 @@
     { 
         "val": "Laurentian University Dataverse",
         "label": "Laurentian University Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/laurentian_80x80.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/laurentian"
     },
     { 
@@ -56,13 +56,13 @@
     { 
         "val": "Nipissing University Dataverse",
         "label": "Nipissing University Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/nipissing_80x80.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/nipissing"
     },
     { 
         "val": "OCAD Dataverse",
         "label": "OCAD Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/ocad_80x80.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/ocad"
     },
     { 
@@ -122,13 +122,13 @@
     { 
         "val": "University of Guelph Dataverse",
         "label": "University of Guelph Dataverse",
-        "icon_url": "",
+        "icon_url": "https://www.uoguelph.ca/polisci/sites/default/files/images/University-of-Guelph.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/guelph"
     },
     { 
         "val": "University of Ottawa Dataverse",
         "label": "University of Ottawa Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/uottawa_80x80.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/ottawa"
     },
     { 
@@ -140,7 +140,7 @@
     { 
         "val": "University of Windsor Dataverse",
         "label": "University of Windsor Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/uwindsor_80x80.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/windsor"
     },
     { 
@@ -158,13 +158,13 @@
     { 
         "val": "Western University Dataverse",
         "label": "Western University Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/western_80x80.png",
         "repo_url": "https://dataverse.scholarsportal.info/dataverse/westernu"
     },
     { 
         "val": "Wilfrid Laurier University Dataverse",
         "label": "Wilfrid Laurier University Dataverse",
-        "icon_url": "",
+        "icon_url": "/discover/img/sources/laurier_80x80.png",
         "repo_url": ""
     },
     { 
