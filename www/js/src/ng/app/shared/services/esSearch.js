@@ -265,8 +265,10 @@ define(function(require){
                                         returnObject[destKey] = value;
                                     }
                                 }
-                            } else {
+                            } else if (typeof o === "string") {
                                 returnObject = strip_tags(o,"<b><br><em><hr><i><p><pre><s><strong><ul><li><dd><dl><dt><ol><sup><blockquote><u>");
+                            } else {
+                                returnObject = o;
                             }
                             return returnObject;
                             }
