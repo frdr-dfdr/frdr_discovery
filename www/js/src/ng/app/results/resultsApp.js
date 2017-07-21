@@ -740,19 +740,22 @@ define(function (require) {
                     */
 
                     $scope.r._id = $scope.r.source;
-                    $scope.r.author = highlighter.highlight($scope.r['contributor.author']);
+                    $scope.r.author = highlighter.highlight(singleVal($scope.r['contributor.author']));
                     $scope.r.collection = $scope.r['origin.id'];
-                    $scope.r.description = highlighter.highlight(singleVal($scope.r.description,"Description"));                    
+                    $scope.r.description = highlighter.highlight(singleVal($scope.r.description));                    
                     $scope.r.detail = {};
+                    if ($scope.r.hasOwnProperty("geospatial")) {
+                        $scope.r.geospatial = JSON.stringify($scope.r.geospatial);
+                    }
                     $scope.r.handle = $scope.r.source;
-                    $scope.r.icon_url = $scope.r['https://frdr.ca/schema/1.0#origin.icon'];
+                    $scope.r.icon_url = $scope.r['origin.icon'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
                     $scope.r.repo_url = "";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
-                    $scope.r.title = highlighter.highlight(singleVal($scope.r.title,"Title"));
+                    $scope.r.title = highlighter.highlight(singleVal($scope.r.title));
                     $scope.r.type = "text";
-                    $scope.r.type = singleVal($scope.r['resourceTypeGeneral'],"Type");
+                    $scope.r.type = singleVal($scope.r['resourceTypeGeneral']);
 
                     // Check for icon overrides in the collection definitions
                     for (var i=0; i < $scope.collectionList.length; i++) {
@@ -772,7 +775,7 @@ define(function (require) {
                     var fieldsToHide = { 
                         "_id":1,"origin.icon":1,"origin.id":1,"saved":1,"detail":1,"repo_url":1,"resourceTypeGeneral":1,
                         "contributor.author":1,"icon_url":1,"series":1, "http://nrdr-ednr.ca/schema/1.0#origin.id": 1,
-                        "contact": 1, "nick": 1
+                        "contact": 1, "nick": 1, "collectionlink": 1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
                     function parseDetails() {
@@ -823,11 +826,11 @@ define(function (require) {
                     }
 
                     // make sure single val exists for required fields
-                    function singleVal(check, fieldname) {
+                    function singleVal(check) {
                         if (check) {
                             return check;
                         } else {
-                            return '[' + fieldname + ' unknown]';
+                            return " ";
                         }
                     }
 
