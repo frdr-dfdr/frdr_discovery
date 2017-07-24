@@ -5,7 +5,7 @@
 
                     <div class="dl-advs-inputs">
                         <span translate>SOURCE</span>:
-                        <select class="fields" ng-model="selectedCollection" ng-options="option.label for option in collectionList track by option.val" aria-label="{{ 'SOURCE' | translate }}"></select>
+                        <select class="adv-source" ng-model="selectedCollection" ng-options="option.label for option in collectionList track by option.val" aria-label="{{ 'SOURCE' | translate }}"></select>
                     </div>
 
                     <span ng-repeat="s in querySegments">

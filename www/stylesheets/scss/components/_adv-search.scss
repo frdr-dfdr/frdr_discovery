@@ -49,7 +49,11 @@
     margin: 0 6px;
     width: 200px;
     height: 30px;
+  }
 
+  select.adv-source {
+    margin: 0 6px;
+    height: 30px;  
   }
 
   @media #{$max-1200} {
