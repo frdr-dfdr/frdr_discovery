@@ -2,11 +2,11 @@
   "name": "UBC Open Collections",
   "version": "1.6.2",
   "authors": [
-    "Schuyler Lindberg <schuyler.lindberg@ubc.ca>",
-    "Rod McFarland <rod.mcfarland@ubc.ca>",
-    "Stefan Khan-Kernahan <stefan.khan-kernahan@ubc.ca>",
-    "Sean McNamara <sean.mcnamara@ubc.ca>",
-    "Kevin Ho <kevho99@mail.ubc.ca>"
+    "Schuyler Lindberg",
+    "Rod McFarland",
+    "Stefan Khan-Kernahan",
+    "Sean McNamara",
+    "Kevin Ho"
   ],
   "description": "The UBC Open Collections",
   "license": "GNU",

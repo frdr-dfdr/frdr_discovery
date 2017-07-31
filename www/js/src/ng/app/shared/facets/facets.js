@@ -182,9 +182,9 @@ define(function(require) {
                     if (opts.query) {
                         searchStringObj.query = opts.query;
                     }
-                    if (opts.aggArr[0] === 'collection') {
-                        searchStringObj.aggSize += 100;  /// make this one bigger to offset aggregate collection weirdness.
-                    }
+                    //if (opts.aggArr[0] === 'collection') {
+                    //    searchStringObj.aggSize += 100;  /// make this one bigger to offset aggregate collection weirdness.
+                    //}
                     // set sort
                     searchStringObj.aggSort = makeAggSort($scope.orderField);
                     // check for overrides in opts object:
@@ -403,7 +403,7 @@ define(function(require) {
                 $scope.loadMore = function() {
                     utility.gaEvent('facets', 'load_more', $scope.ff.label);
                     $scope.optsLoading = true;
-                    $scope.optsCount += 60;
+                    $scope.optsCount += 30;
                     searchOpts.aggSize = $scope.optsCount;
                     if(website_env !== 'prod') {
                         console.log($scope.orderField);
@@ -506,7 +506,7 @@ define(function(require) {
                 // replace this with an array to only display certain facets.
                 facetService.showOnly = false;
                 // number of options to show by default
-                facetService.optsCount = 20;
+                facetService.optsCount = 10;
                 // which field to order on
                 // facetService.defaultSort = {
                 //     field : 'doc_count',  // should be 'key' or 'doc_count'

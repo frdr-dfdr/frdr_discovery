@@ -173,7 +173,7 @@ define(function(require){
                         if (facetName.toLowerCase() == "author") {
                             facetName = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
                         } else if (facetName.toLowerCase() == "sortdate") {
-                            facetObject = { "@datatype":"GFacet", "@version":"2016-11-09", "size":10, "type":"date_histogram", "date_interval": "month" };
+                            facetObject = { "@datatype":"GFacet", "@version":"2016-11-09", "size": 10, "type":"date_histogram", "date_interval": "month" };
                             facetName = 'http://dublincore.org/documents/dcmi-terms#date';
                         } else if (facetName.toLowerCase() == "type") {
                             facetName = 'http://dublincore.org/documents/dcmi-terms#type';
@@ -185,6 +185,9 @@ define(function(require){
                             facetName = 'http://dublincore.org/documents/dcmi-terms#subject';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
+                        if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggSize")) {
+                            facetObject.size = parseInt(input["body"]["aggSize"]);
+                        }
                         postObject.facets.push(facetObject);
                     }
                 }
