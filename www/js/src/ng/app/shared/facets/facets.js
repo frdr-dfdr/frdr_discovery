@@ -174,7 +174,7 @@ define(function(require) {
                     // default search string object
                     var searchStringObj = {
                         aggsArr: opts.aggArr,
-                        aggSize: 20,
+                        aggSize: 10,
                         scriptFields: 'omit',
                         fields: 'omit'
                     };
@@ -415,7 +415,8 @@ define(function(require) {
 
                 function moreCheck(){
                     // if more facets to load, show load more button
-                    if (facetService.facets[$scope.ff.label].sum_left > 0) {
+                    //if (facetService.facets[$scope.ff.label].sum_left > 0) {
+                    if ($scope.optsCount <= facetService.facets[$scope.ff.label].buckets.length )
                         $scope.moreBtn = true;
                     } else {
                         $scope.moreBtn = false;
