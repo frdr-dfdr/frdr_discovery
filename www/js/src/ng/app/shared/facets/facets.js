@@ -174,7 +174,7 @@ define(function(require) {
                     // default search string object
                     var searchStringObj = {
                         aggsArr: opts.aggArr,
-                        aggSize: 10,
+                        aggSize: $scope.optsCount,
                         scriptFields: 'omit',
                         fields: 'omit'
                     };
