@@ -92,12 +92,6 @@ module.exports = function (grunt) {
                         citeproc: 'empty:',
                         sharethis: 'empty:',
                     },
-                    modules            : [
-                        {
-                            name   : 'require/search',
-                            exclude: excludedModules
-                        }
-                    ]
                 }
             }
         },
