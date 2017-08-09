@@ -104,7 +104,7 @@
             "sysmap": "current"
         }],
         "Date": [{
-            "label": "Date",
+            "label": "Date (yyyy-mm-dd)",
             "sysmap": "date"
         }],
         "DateAvailable": [{
