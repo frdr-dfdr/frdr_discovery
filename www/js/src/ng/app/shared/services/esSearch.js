@@ -113,14 +113,14 @@ define(function(require){
 
                 postObject.q = globusEscapeQuerystring(replaceFriendlyTerms(searchString.vars.query));
 
+                // The date histogram will need the start and end dates
+                var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
+                var endDate = new Date();
+                var endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+
                 // Add filters for each facet
                 postObject.filters = [];
                 if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("filter") && input["body"]["filter"] !== "omit" ) {
-
-                    var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
-                    var endDate = new Date();
-                    var endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
-
                     for (var filterField in input["body"]["filter"]) {
 
                         var filterFieldObject = input["body"]["filter"][filterField];
@@ -173,7 +173,8 @@ define(function(require){
                         if (facetName.toLowerCase() == "author") {
                             facetName = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
                         } else if (facetName.toLowerCase() == "sortdate") {
-                            facetObject = { "@datatype":"GFacet", "@version":"2016-11-09", "size": 10, "type":"date_histogram", "date_interval": "month" };
+                            facetObject = { "@datatype":"GFacet", "@version":"2016-11-09", "size": 10, "type":"date_histogram", "date_interval": "month",
+                                "histogram_range": { "low": beginString, "high": endString } };
                             facetName = 'http://dublincore.org/documents/dcmi-terms#date';
                         } else if (facetName.toLowerCase() == "type") {
                             facetName = 'http://dublincore.org/documents/dcmi-terms#type';
