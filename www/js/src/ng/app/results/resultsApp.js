@@ -63,6 +63,7 @@ define(function (require) {
         $translateProvider.translations('en', {
             'AFFILIATION': 'Affiliation',
             'APPLIED': 'applied',
+            'BRANDING_LABEL': branding_label_en,
             'CARL_ABRC': 'Canadian Association of Research Libraries',
             'CARL_ABRC_URL': 'http://www.carl-abrc.ca/',
             'CLEAR': 'Clear',
@@ -153,6 +154,7 @@ define(function (require) {
              
         $translateProvider.translations('fr', {
             'AFFILIATION': 'Affiliation',
+            'BRANDING_LABEL': branding_label_fr,
             'APPLIED': 'appliqué',
             'CARL_ABRC': 'Association des bibliothèques de recherche du Canada',
             'CARL_ABRC_URL': 'http://www.carl-abrc.ca/fr/',

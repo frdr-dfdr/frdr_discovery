@@ -116,7 +116,9 @@ define(function(require){
                 // The date histogram will need the start and end dates
                 var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
                 var endDate = new Date();
-                var endString = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+                var endStringMonth = (endDate.getMonth() + 1)
+                var endStringDay = endDate.getDate()
+                var endString = endDate.getFullYear() + "-" + (endStringMonth<10?"0":"") + endStringMonth + "-" + (endStringDay<10?"0":"") + endStringDay;
 
                 // Add filters for each facet
                 postObject.filters = [];
@@ -147,6 +149,7 @@ define(function(require){
                             postObject.filters.push(thisFilter);
                         }
 
+                        // Check for start and end dates
                         if (filterFieldObject.hasOwnProperty("begin") && filterFieldObject.hasOwnProperty("end")) {
                             if (filterFieldObject.begin != "") {
                                 var beginDate = new Date(parseInt(filterFieldObject.begin.key,10));
