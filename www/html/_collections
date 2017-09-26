@@ -114,12 +114,6 @@
         "repo_url": "http://circle.ubc.ca/"
     },
     { 
-        "val": "U of A Dataverse",
-        "label": "U of A Dataverse",
-        "icon_url": "/discover/img/sources/uofa_80x80.png",
-        "repo_url": "https://dataverse.library.ualberta.ca"
-    },
-    { 
         "val": "University of Alberta Dataverse",
         "label": "University of Alberta Dataverse",
         "icon_url": "/discover/img/sources/uofa_80x80.png",
