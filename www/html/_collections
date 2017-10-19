@@ -3,7 +3,7 @@
         "val": "Abacus Dataverse Network",
         "label": "Abacus Dataverse Network",
         "icon_url": "/discover/img/sources/abacus_80x80.png",
-        "repo_url": ""
+        "repo_url": "http://dvn.library.ubc.ca/dvn/"
     },
     { 
         "val": "Algoma University Dataverse",
@@ -33,7 +33,7 @@
         "val": "FRDR",
         "label": "FRDR",
         "icon_url": "/discover/img/sources/frdr_80x80.png",
-        "repo_url": "http://beta.frdr.ca/"
+        "repo_url": "http://www.frdr.ca/"
     },
     { 
         "val": "Lakehead University Dataverse",
@@ -69,7 +69,7 @@
         "val": "ODESI Dataverse",
         "label": "ODESI Dataverse",
         "icon_url": "/discover/img/sources/odesi_80x80.png",
-        "repo_url": ""
+        "repo_url": "https://dataverse.scholarsportal.info/dataverse/odesi-data"
     },
     {   
         "val": "Open Data Canada",
@@ -165,7 +165,7 @@
         "val": "Wilfrid Laurier University Dataverse",
         "label": "Wilfrid Laurier University Dataverse",
         "icon_url": "/discover/img/sources/laurier_80x80.png",
-        "repo_url": ""
+        "repo_url": "https://dataverse.scholarsportal.info/dataverse/laurier"
     },
     { 
         "val": "York University Digital Library",
@@ -177,6 +177,6 @@
         "val": "York University Dataverse",
         "label": "York University Dataverse",
         "icon_url": "/discover/img/sources/york_80x80.png",
-        "repo_url": ""
+        "repo_url": "https://dataverse.scholarsportal.info/dataverse/york"
     }
 ]
