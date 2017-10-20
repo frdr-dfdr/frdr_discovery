@@ -42,7 +42,7 @@ define(function(require){
             'ADVSEARCH_HEADER':'Advanced Search',
             'ADVSEARCH_DOCS_TEXT1': 'For help with this page please',
             'ADVSEARCH_DOCS_TEXT2': 'see the documentation',
-            'ADVSEARCH_DOCS_URL': '/docs/en/using_frdr/#searching',
+            'ADVSEARCH_DOCS_URL': '/docs/en/searching/',
             'ALL_FIELDS': 'All fields',
             'ALL_SOURCES': 'All sources',
             'ANYALL_ALL': 'all of these words:', 
@@ -95,9 +95,9 @@ define(function(require){
              
         $translateProvider.translations('fr', {
             'ADVSEARCH_HEADER':'Recherche Avancée',
-            'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur cette page',
+            'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l%27aide sur cette page',
             'ADVSEARCH_DOCS_TEXT2': 'lisez la documentation',
-            'ADVSEARCH_DOCS_URL': '/docs/fr/frdr_d%27utilisation/',
+            'ADVSEARCH_DOCS_URL': '/docs/fr/déposer_les_données/',
             'ALL_FIELDS': 'Toutes les champs',
             'ALL_SOURCES': 'Toutes les sources',
             'ANYALL_ALL': 'tous ces mots:',
