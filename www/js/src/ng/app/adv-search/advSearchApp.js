@@ -136,7 +136,7 @@ define(function(require){
             'MENU_HELP_DOCUMENTATION': 'Documentation',
             'MENU_HELP_DOCUMENTATION_URL': '/docs/fr/',
             'MENU_HELP_GETACCOUNT': 'Obtenez un compte',
-            'MENU_HELP_GETACCOUNT_URL': '/docs/fr/avant_d'utiliser/#obtenir-un-compte',
+            'MENU_HELP_GETACCOUNT_URL': "/docs/fr/avant_d'utiliser/#obtenir-un-compte",
             'MENU_HELP_SUPPORT': 'Contactez le support',
             'MENU_HELP_SUPPORT_URL': '/docs/fr/contactez_nous/',
             'MENU_HELP_TERMS': 'Conditions d\'utilisation',
