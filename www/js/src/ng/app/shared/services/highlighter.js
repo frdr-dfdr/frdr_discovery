@@ -86,19 +86,21 @@ define(function(require){
                         // add highlight
                         // var check = new RegExp('(\\b'+queryTerms[ii]+'\\b)', 'gi');
                         var check = new RegExp('\\b'+queryTerms[ii]+'\\b', 'gi');
-                        fld[i] = fld[i].replace(check, function(match, offset){
-                            switch(match){
-                                case "class" :
-                                    var nextChar = fld[i][offset + match.length];
-                                    if (nextChar === '='){ return match; }
-                                    break;
-                                case "span" :
-                                    var prevChar = fld[i][offset - 1];
-                                    if (prevChar === '<' || prevChar === "/"){ return match; }
-                                    break;
-                            }
-                            return '<span class="dl-highlighted">' + match + '</span>';
-                        });
+                        if (typeof fld[i] === "string") {
+                            fld[i] = fld[i].replace(check, function(match, offset){
+                                switch(match){
+                                    case "class" :
+                                        var nextChar = fld[i][offset + match.length];
+                                        if (nextChar === '='){ return match; }
+                                        break;
+                                    case "span" :
+                                        var prevChar = fld[i][offset - 1];
+                                        if (prevChar === '<' || prevChar === "/"){ return match; }
+                                        break;
+                                }
+                                return '<span class="dl-highlighted">' + match + '</span>';
+                            });
+                        }
                     }   
                 }
             }
