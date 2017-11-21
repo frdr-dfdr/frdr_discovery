@@ -61,6 +61,7 @@ define(function (require) {
     ).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.translations('en', {
+            'ACCESS_NOT_PUBLIC': 'Access to this item may be limited or restricted',
             'AFFILIATION': 'Affiliation',
             'APPLIED': 'applied',
             'BRANDING_LABEL': branding_label_en,
@@ -153,6 +154,7 @@ define(function (require) {
         });
              
         $translateProvider.translations('fr', {
+            'ACCESS_NOT_PUBLIC': 'L\'accès à cet article peut être limité ou restreint',
             'AFFILIATION': 'Affiliation',
             'BRANDING_LABEL': branding_label_fr,
             'APPLIED': 'appliqué',
@@ -748,6 +750,9 @@ define(function (require) {
                     $scope.r.detail = {};
                     if ($scope.r.hasOwnProperty("geospatial")) {
                         $scope.r.geospatial = JSON.stringify($scope.r.geospatial);
+                    }
+                    if ($scope.r.hasOwnProperty("access") == false) {
+                        $scope.r.access = "";
                     }
                     $scope.r.handle = $scope.r.source;
                     $scope.r.icon_url = $scope.r['origin.icon'];

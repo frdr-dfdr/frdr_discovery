@@ -24,6 +24,7 @@
 		<!--
 		<a ng-href="{[{ r.source }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
 		-->
+		<img src="/discover/img/access_limited.png" width="16" height="16" ng-if="r.access != '' && r.access != 'Public'" alt="{{ 'ACCESS_NOT_PUBLIC' | translate }}"/>
 		<span class="dl-r-collection" ng-bind-html="::r.collection"></span>
 
 		<br />

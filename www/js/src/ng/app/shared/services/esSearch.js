@@ -248,6 +248,7 @@ define(function(require){
                                 return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
                             });
                         }
+                        
                         function refit_keys(o) {
                             if (Array.isArray(o)) {
                                 var returnObject = [];
@@ -275,10 +276,11 @@ define(function(require){
                                 returnObject = o;
                             }
                             return returnObject;
-                            }
-                            if (!response.data.hasOwnProperty("gfacets")) { response.data["gfacets"] = ""; }
-                            var resultSet = [];
-                            for (var item in response.data["gmeta"]) {
+                        }
+
+                        if (!response.data.hasOwnProperty("gfacets")) { response.data["gfacets"] = ""; }
+                        var resultSet = [];
+                        for (var item in response.data["gmeta"]) {
                             if (response.data["gmeta"][item].hasOwnProperty("content")) {
                                 thisResult = refit_keys(response.data["gmeta"][item]["content"][0]);
                                 resultSet.push(thisResult);
