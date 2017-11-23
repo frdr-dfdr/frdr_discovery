@@ -16,7 +16,7 @@
 </div>
 <article class="dl-r-content">
 
-	<h6><a link-out ng-href="{[{ r.source }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	<h6><img class="access-limited" src="/discover/img/access_limited.png" width="16" height="16" ng-if="r.access != '' && r.access != 'Public'" alt="*" title="{{ 'ACCESS_NOT_PUBLIC' | translate }}"/><a link-out ng-href="{[{ r.source }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
 	</h6>
 
 	<div class="dl-r-metadata-short">
@@ -24,7 +24,6 @@
 		<!--
 		<a ng-href="{[{ r.source }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
 		-->
-		<img src="/discover/img/access_limited.png" width="16" height="16" ng-if="r.access != '' && r.access != 'Public'" alt="*" title="{{ 'ACCESS_NOT_PUBLIC' | translate }}"/>
 		<span class="dl-r-collection" ng-bind-html="::r.collection"></span>
 
 		<br />
