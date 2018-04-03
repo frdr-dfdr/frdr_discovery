@@ -19,7 +19,7 @@ define(function(require){
                 //'Keywords',
                 'subject',
                 //'creator',
-                'Author',
+                'author',
                 'Collection', // needs special treatment: field needs to be 'nick'
                 //'degree',
                 //'campus',
