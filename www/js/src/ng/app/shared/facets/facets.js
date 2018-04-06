@@ -95,6 +95,7 @@ define(function(require) {
                 $http.get(templatePath + 'facet-group.html?version='+app_version, { cache:$templateCache });
                 $http.get(templatePath + 'facet-opts.html?version='+app_version, { cache:$templateCache });
                 $http.get(templatePath + 'facets.html?version='+app_version, { cache:$templateCache });
+                $http.get(templatePath + 'repolist-link.html?version='+app_version, { cache:$templateCache });
 
                 // keep filters?
                 $scope.keepFilters = searchString.keepFilters;
@@ -472,6 +473,14 @@ define(function(require) {
                 restrict: 'EA',
                 scope: '=',
                 templateUrl: templatePath + 'facet-opts.html?version='+app_version
+            };
+        })
+
+        .directive('repolistLink', function() {
+            return {
+                restrict: 'EA',
+                scope: '=',
+                templateUrl: templatePath + 'repolist-link.html?version='+app_version
             };
         })
 
