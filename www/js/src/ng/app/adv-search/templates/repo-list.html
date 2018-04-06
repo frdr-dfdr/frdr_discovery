@@ -13,10 +13,10 @@
                     </tr>
 
                     <tr ng-repeat="row in repoList">
-                        <td><img ng-if="row.icon_url" src="{{row.icon_url}}" class="repologo"/></td>
-                        <td>{{row.label}}</td>
+                        <td><img ng-if="row.icon_url" src="{{::row.icon_url}}" class="repologo"/></td>
+                        <td>{{::row.label}}</td>
                         <td>0</td>
-                        <td><a link-out ng-if="row.repo_url" ng-href="{{ row.repo_url }}" ng-bind-html="::row.repo_url"></a></td>
+                        <td><span ng-if="row.repo_url"><a link-out ng-href="{{ ::row.repo_url }}">{{ ::row.repo_url }}</a></span></td>
                     </tr>
                     
                 </table>
