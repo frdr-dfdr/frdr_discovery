@@ -42,8 +42,6 @@ define(function(require) {
             'LOAD_MORE': 'Load More',
             'OPTIONS': 'Options',
             'PROGRAM': 'Program',
-            'REPOLIST_LINK': '/discover/html/repository-list.html?lang=en',
-            'REPOLIST_TITLE': 'List of sources',
             'SCHOLARLY LEVEL': 'Scholarly level',
             'SUBJECT': 'Subject',
             'TYPE': 'Type',
@@ -69,8 +67,6 @@ define(function(require) {
             'LOAD_MORE': 'Montre plus',
             'OPTIONS': 'Options',
             'PROGRAM': 'Programme',
-            'REPOLIST_LINK': '/discover/html/repository-list.html?lang=fr',
-            'REPOLIST_TITLE': 'Liste des sources',
             'SCHOLARLY LEVEL': 'Niveau scolaire',
             'SUBJECT': 'Sujet',
             'TYPE': 'Type',
@@ -87,8 +83,8 @@ define(function(require) {
 
     // facet group
     facets
-        .controller('facetsController', ['$scope', '$rootScope', 'esSearchString', '$filter', '$q', 'facetService', 'fieldService', '$http', '$templateCache', 'utility', '$translate',
-            function($scope, $rootScope, searchString, $filter, $q, facetService, fieldService, $http, $templateCache, utility, $translate) {
+        .controller('facetsController', ['$scope', '$rootScope', 'esSearchString', '$filter', '$q', 'facetService', 'fieldService', '$http', '$templateCache', 'utility',
+            function($scope, $rootScope, searchString, $filter, $q, facetService, fieldService, $http, $templateCache, utility) {
 
                 // load and cache templates up front
                 $http.get(templatePath + 'date-input.html?version='+app_version, { cache:$templateCache });
