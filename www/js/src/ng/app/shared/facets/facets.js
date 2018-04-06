@@ -87,8 +87,8 @@ define(function(require) {
 
     // facet group
     facets
-        .controller('facetsController', ['$scope', '$rootScope', 'esSearchString', '$filter', '$q', 'facetService', 'fieldService', '$http', '$templateCache', 'utility',
-            function($scope, $rootScope, searchString, $filter, $q, facetService, fieldService, $http, $templateCache, utility) {
+        .controller('facetsController', ['$scope', '$rootScope', 'esSearchString', '$filter', '$q', 'facetService', 'fieldService', '$http', '$templateCache', 'utility', '$translate',
+            function($scope, $rootScope, searchString, $filter, $q, facetService, fieldService, $http, $templateCache, utility, $translate) {
 
                 // load and cache templates up front
                 $http.get(templatePath + 'date-input.html?version='+app_version, { cache:$templateCache });
