@@ -1,14 +1,22 @@
         <article class="dl-spaced">
             <h3><span translate>REPOLIST_HEADER</span></h3>
             <div class="row-fluid dl-advs-cont">
-                Repo list here
+                
+                <p>Repo list here</p>
 
-                <table>
+                <table class="table">
                     <tr>
                         <th></th>
                         <th><span translate>REPOSITORY_NAME</span></th>
-                        <th><span translate>ITEMS</span></th>
+                        <th><span translate>ITEM_COUNT</span></th>
                         <th><span translate>WEBSITE</span></th>
+                    </tr>
+
+                    <tr ng-repeat="row in repoList">
+                        <td><img ng-if="row.icon_url" src="{{row.icon_url}}" class="repologo"/></td>
+                        <td>{{row.label"}}</td>
+                        <td>0</td>
+                        <td><a link-out ng-href="{{ row.repo_url }}" ng-bind-html="::row.repo_url"></a></td>
                     </tr>
                     
                 </table>

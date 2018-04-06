@@ -91,6 +91,7 @@ define(function(require){
             'PRIVACY_POLICY': 'Privacy Policy',
             'PRIVACY_POLICY_URL': '/docs/en/terms_of_service/',
             'REPOLIST_HEADER':'Canadian Research Data Repositories',
+            'REPOSITORY_NAME': 'Repository Name',
             'SEARCH': 'Search',
             'SOURCE': 'Source',
             'WEBSITE': 'Website'
@@ -257,8 +258,10 @@ define(function(require){
 
                 $scope.selectedCollection = {val: "All sources", label: "All sources"};
                 $scope.collectionList = [];
+                $scope.repoList = [];
                 collectionData.getColsData().then(function(response){
                     $scope.collectionList = response.data;
+                    $scope.repoList = response.data;
                     $scope.collectionList.push({ val: "All sources", label: "All sources" });
                     updateTranslations();
                 });
