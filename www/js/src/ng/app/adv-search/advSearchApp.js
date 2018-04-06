@@ -261,7 +261,7 @@ define(function(require){
                 $scope.repoList = [];
                 collectionData.getColsData().then(function(response){
                     $scope.collectionList = response.data;
-                    $scope.repoList = response.data;
+                    $scope.repoList = angular.copy(response.data);
                     $scope.collectionList.push({ val: "All sources", label: "All sources" });
                     updateTranslations();
                 });
