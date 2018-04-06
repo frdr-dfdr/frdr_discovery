@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Search | Recherche Avancée </title>
+    <!--stylesheets-->
+    <!-- bootstrap & fontawesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- OC Styles -->
+    <link href="/discover/stylesheets/css/adv-search.css" rel="stylesheet" type="text/css">
+    <!--js-->
+    <script type="text/javascript" src="/discover/js/config-vars.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"-->
+    <!--integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>-->
+    <script type="text/javascript" src="/discover/js/build/vendor/requirejs/require.js"></script>
+    <script>
+        try {
+            var requireConfigObj = require(['/discover/js/build/require/require-config.js']);
+            require([requireConfigObj], function () {
+                require(["/discover/js/build/require/adv-search.js"])
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    </script>
+</head>
+<body ng-controller="advSearchController">
+<base href="/"/>
+
+<search-header></search-header>
+
+<div class="dl expand" role="main">
+
+    <div class="dl-masthead expand row-fluid">
+        <div class="dl-header expand dl-thm-solid-base">
+            <h3><span translate>REPOLIST_HEADER</span></h3>
+        </div>
+    </div>
+
+    <div class="expand dl-content dl-advs-wrapper"> 
+    <!-- Main Content Area Start -->
+
+        <quicksearch-bar></quicksearch-bar>
+
+        <repo-list></repo-list>
+
+    </div>
+
+    <p>&nbsp;</p>
+
+    <search-footer></search-footer>
+
+</body>
+</html>

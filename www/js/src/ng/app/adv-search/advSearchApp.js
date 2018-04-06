@@ -59,6 +59,7 @@ define(function(require){
             'FIELD_ADD': 'Add a field',
             'FIELD_REMOVE': 'Remove field',
             'IN':'in',
+            'ITEM_COUNT': 'Item Count',
             'KEYWORDS': 'Keywords',
             'LIMIT_BY':'Limit by',
             'MAINPAGE_HEADER': 'Research Discovery',
@@ -89,8 +90,10 @@ define(function(require){
             'MENU_LOCALE': 'EN',
             'PRIVACY_POLICY': 'Privacy Policy',
             'PRIVACY_POLICY_URL': '/docs/en/terms_of_service/',
+            'REPOLIST_HEADER':'Canadian Research Data Repositories',
             'SEARCH': 'Search',
             'SOURCE': 'Source',
+            'WEBSITE': 'Website'
         });
              
         $translateProvider.translations('fr', {
@@ -114,6 +117,7 @@ define(function(require){
             'FIELD_ADD': 'Ajouter un champ',
             'FIELD_REMOVE': 'Supprimer ce champ',
             'IN':'dans',
+            'ITEM_COUNT': 'Nombre d\'éléments',
             'KEYWORDS': 'Mots clés',
             'LIMIT_BY':'Limite par',
             'MAINPAGE_HEADER': 'Découverte de la recherche',
@@ -144,8 +148,11 @@ define(function(require){
             'MENU_LOCALE': 'FR',
             'PRIVACY_POLICY': 'Politique de confidentialité',
             'PRIVACY_POLICY_URL': '/docs/fr/conditions_d%27utilisation/',
+            'REPOLIST_HEADER':'Dépôts de données de recherche au Canada',
+            'REPOSITORY_NAME': 'Nom du dépôt de données',
             'SEARCH': 'Recherche',
             'SOURCE': 'Source',
+            'WEBSITE': 'Site Internet'
         });
 
         $translateProvider.useSanitizeValueStrategy('escape');            
@@ -160,7 +167,7 @@ define(function(require){
     advSearchApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['search-header.html','search-builder.html','search-footer.html']);
+        tCache.getTemplates(['search-header.html','search-builder.html','search-footer.html','quicksearch-bar.html','repo-list.html']);
     }]);
 
     advSearchApp.config(["$interpolateProvider", "$routeProvider", "$locationProvider", function($interpolateProvider, $routeProvider, $locationProvider){
@@ -680,6 +687,20 @@ define(function(require){
         return {
             restrict: 'E',
             templateUrl: templatePath + 'search-builder.html?version=' + app_version,
+        };
+    })
+
+    .directive('quicksearchBar', function () {
+        return {
+            restrict: 'E',
+            templateUrl: templatePath + 'quicksearch-bar.html?version=' + app_version,
+        };
+    })
+
+    .directive('repoList', function () {
+        return {
+            restrict: 'E',
+            templateUrl: templatePath + 'repo-list.html?version=' + app_version,
         };
     })
 
