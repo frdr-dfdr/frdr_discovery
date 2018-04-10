@@ -16,7 +16,7 @@
                         <td>{{::row.label}}</td>
                         <td style="text-align:right;padding-right:10px"><span ng-if="row.item_count > 0"><a 
                         link-out href="/discover/html/discovery-ui.html?q=*&Collection={{::row.label}}">{{::row.item_count}}</a></span>
-                        <span ng-if="row.item_count = 0">0</span>
+                        <span ng-if="row.item_count == 0">0</span>
                         </td>
                         <td><span ng-if="row.repo_url"><a link-out ng-href="{{ ::row.repo_url }}">{{ ::row.repo_url }}</a></span></td>
                     </tr>
