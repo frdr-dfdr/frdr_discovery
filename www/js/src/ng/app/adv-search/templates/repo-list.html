@@ -14,7 +14,7 @@
                     <tr ng-repeat="row in repoList">
                         <td><img ng-if="row.icon_url" src="{{::row.icon_url}}" class="repologo"/></td>
                         <td>{{::row.label}}</td>
-                        <td>0</td>
+                        <td style="text-align:right;padding-right:10px">{{::row.item_count}}</td>
                         <td><span ng-if="row.repo_url"><a link-out ng-href="{{ ::row.repo_url }}">{{ ::row.repo_url }}</a></span></td>
                     </tr>
                     

@@ -102,7 +102,7 @@ define(function(require){
             'ADVSEARCH_HEADER':'Recherche Avancée',
             'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur cette page',
             'ADVSEARCH_DOCS_TEXT2': 'lisez la documentation',
-            'ADVSEARCH_DOCS_URL': '/docs/fr/de%C3%A9poser_les_donne%C3%A9es/',
+            'ADVSEARCH_DOCS_URL': '/docs/fr/d%C3%A9poser_les_donn%C3%A9es/',
             'ALL_FIELDS': 'Toutes les champs',
             'ALL_SOURCES': 'Toutes les sources',
             'ANYALL_ALL': 'tous ces mots:',
