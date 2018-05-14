@@ -40,7 +40,7 @@ define(function(require){
 
         $translateProvider.translations('en', {
             'ADVSEARCH_HEADER':'Advanced Search',
-            'ADVSEARCH_DOCS_TEXT1': 'For help with this page please',
+            'ADVSEARCH_DOCS_TEXT1': 'For help with full search capabilities and syntax please',
             'ADVSEARCH_DOCS_TEXT2': 'see the documentation',
             'ADVSEARCH_DOCS_URL': '/docs/en/searching/',
             'ALL_FIELDS': 'All fields',
@@ -100,8 +100,8 @@ define(function(require){
              
         $translateProvider.translations('fr', {
             'ADVSEARCH_HEADER':'Recherche Avancée',
-            'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur cette page',
-            'ADVSEARCH_DOCS_TEXT2': 'lisez la documentation',
+            'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur les fonctions de recherche complètes et la syntaxe, veuillez',
+            'ADVSEARCH_DOCS_TEXT2': 'lire la documentation',
             'ADVSEARCH_DOCS_URL': '/docs/fr/d%C3%A9poser_les_donn%C3%A9es/',
             'ALL_FIELDS': 'Toutes les champs',
             'ALL_SOURCES': 'Toutes les sources',
