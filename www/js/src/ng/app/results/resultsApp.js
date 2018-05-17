@@ -205,7 +205,7 @@ define(function (require) {
             'MENU_FEEDBACK': 'Commentaires',
             'MENU_FEEDBACK_URL': 'mailto:support@frdr.ca',
             'MENU_HELP': 'Aider',
-            'MENU_HELP_ABOUT': 'À propos de ce site',
+            'MENU_HELP_ABOUT': 'À propos',
             'MENU_HELP_ABOUT_URL': '/docs/fr/a_propos/',  
             'MENU_HELP_DOCUMENTATION': 'Documentation',
             'MENU_HELP_DOCUMENTATION_URL': '/docs/fr/',            
