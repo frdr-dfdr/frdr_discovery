@@ -159,7 +159,7 @@ define(function(require){
             'REPOLIST_BLURB_1': 'Voici la liste des référentiels de données de recherche actuellement inclus dans les résultats de la découverte.  Veuillez',
             'REPOLIST_BLURB_2': 'contactez le support',
             'REPOLIST_BLURB_3': 'pour ajouter un référentiel de données.',
-            'REPOLIST_BLURB_URL': '/docs/en/contact_support/',
+            'REPOLIST_BLURB_URL': '/docs/fr/contactez_nous/',
             'REPOSITORY_NAME': 'Nom du dépôt de données',
             'SEARCH': 'Recherche',
             'SOURCE': 'Source',
