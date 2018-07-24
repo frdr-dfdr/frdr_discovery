@@ -762,6 +762,7 @@ define(function (require) {
                     $scope.r.repo_url = "";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
                     $scope.r.title = highlighter.highlight(singleVal($scope.r.title));
+                    $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.date));
                     $scope.r.type = "text";
                     $scope.r.type = singleVal($scope.r['resourceTypeGeneral']);
 
