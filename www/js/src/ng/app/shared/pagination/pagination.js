@@ -93,7 +93,7 @@ define(function (require) {
         pVars.init = function(){
             pVars.pages =  Math.ceil(pVars.total / pVars.perPage);
             pVars.pageRange = [];
-            for (var i = 0; i <= pVars.pages-1; i++){
+            for (var i = 0; i <= pVars.pages-1  && i <= 500; i++){
                  pVars.pageRange.push(i);
             }
             pVars.update();
