@@ -87,7 +87,7 @@ define(function(require){
             }
 
             function globusEscapeQuerystring(s) {
-                return s.replace(/([.\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2');
+                return s.replace(/([.\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2').replace(/'/,"%27");
             }
 
             function doSearch(){
