@@ -196,6 +196,18 @@ define(function (require) {
         };
     });
 
+    services.directive('targetBlank', function(){
+        return {
+            restrict:'A',
+            link: function(scope, element, attr){
+                element.attr('target', '_blank')
+                    .on('click',function(){
+                        window.stop();
+                    });
+            }
+        };
+    });
+
     services.directive('clickselect', function(){
         return {
             restrict:'A',
