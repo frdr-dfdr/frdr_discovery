@@ -599,7 +599,7 @@ define(function (require) {
                     // make scope.q natural string so that ES doesn't get thrown off by plusses
                     // $scope.q = searchString.makeNaturalStr(locSearch.q) || '*';
                     $scope.q = decodeURIComponent(locSearch.q) || '*';
-                    $scope.q = $scope.q.replace(/:([^ ])/,": $1"); // Ensure colons always have space after them
+                    $scope.q = $scope.q.replace(/:([^ ^\/])/,": $1"); // Ensure colons always have space after them
                     //get query
                     $scope.terms = $scope.q;
                     //get language
