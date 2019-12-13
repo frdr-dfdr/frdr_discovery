@@ -110,7 +110,7 @@ define(function(require){
             'ALL_FIELDS': 'Toutes les champs',
             'ALL_SOURCES': 'Toutes les sources',
             'ANYALL_ALL': 'tous ces mots:',
-            'ANYALL_ANY': 'aucun de ces mots:',
+            'ANYALL_ANY': 'un de ces mots:',
             'ANYALL_EXACT': 'cette expression exacte:',
             'BOOLEAN':'Booléen',
             'BRANDING_LABEL': branding_label_fr,
