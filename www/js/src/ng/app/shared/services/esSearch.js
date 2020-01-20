@@ -92,7 +92,7 @@ define(function(require){
 
             function doSearch(){
                 // support switching of headers for API Tool
-                var postObject = {"@datatype": "GSearchRequest","@version": "2016-11-09","advanced": true,"limit": 20};
+                var postObject = {"@datatype": "GSearchRequest","@version": "2017-09-01","advanced": true,"limit": 20};
                 var headers = {
                             'X-Requested-With': 'XMLHttpRequest',
                             'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ define(function(require){
                             }
 
                             filterField = globusEscapeURI(filterField);
-                            var thisFilter = {"@datatype": "GFilter","@version": "2016-11-09","type": "match_any","field_name": filterField, "values":[]};
+                            var thisFilter = {"@datatype": "GFilter","@version": "2017-09-01","type": "match_any","field_name": filterField, "values":[]};
                             for (var t in filterFieldObject["terms"]) {
                                 thisFilter.values.push(filterFieldObject["terms"][t]);
                             }
@@ -164,7 +164,7 @@ define(function(require){
 
                     // Always add a date filter, even if it goes from the beginning of time until now
                     var dateFieldName = globusEscapeURI("http://dublincore.org/documents/dcmi-terms#date");
-                    var dateFilterObject = { "@datatype": "GFilter", "@version": "2016-11-09", "type": "range", "field_name": dateFieldName, "values": [{ "from": beginString, "to": endString }] };
+                    var dateFilterObject = { "@datatype": "GFilter", "@version": "2017-09-01", "type": "range", "field_name": dateFieldName, "values": [{ "from": beginString, "to": endString }] };
                     postObject.filters.push(dateFilterObject);
                 }
 
@@ -172,11 +172,11 @@ define(function(require){
                 if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggsArr")) {
                     for (var t=0; t < input["body"]["aggsArr"].length; t++) {
                         var facetName = input["body"]["aggsArr"][t];
-                        var facetObject = {"@datatype": "GFacet","@version": "2016-11-09", "size": 10, "type": "terms"};
+                        var facetObject = {"@datatype": "GFacet","@version": "2017-09-01", "size": 10, "type": "terms"};
                         if (facetName.toLowerCase() == "author") {
                             facetName = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
                         } else if (facetName.toLowerCase() == "sortdate") {
-                            facetObject = { "@datatype":"GFacet", "@version":"2016-11-09", "size": 10, "type":"date_histogram", "date_interval": "month",
+                            facetObject = { "@datatype":"GFacet", "@version":"2017-09-01", "size": 10, "type":"date_histogram", "date_interval": "month",
                                 "histogram_range": { "low": beginString, "high": endString } };
                             facetName = 'http://dublincore.org/documents/dcmi-terms#date';
                         } else if (facetName.toLowerCase() == "type") {
@@ -197,12 +197,12 @@ define(function(require){
                 }
 
                 if (postObject.facets.length == 0) {
-                    postObject.facets.push({"@datatype": "GFacet","@version": "2016-11-09","size": 10, "type": "terms", "field_name": "publication"});
+                    postObject.facets.push({"@datatype": "GFacet","@version": "2017-09-01","size": 10, "type": "terms", "field_name": "publication"});
                 }
 
                 postObject.boosts = [];
                 function addBoost(field, factor) {
-                    postObject.boosts.push({"@datatype": "GBoost","@version": "2016-11-09","field_name": globusEscapeURI(field),"factor": factor});
+                    postObject.boosts.push({"@datatype": "GBoost","@version": "2017-09-01","field_name": globusEscapeURI(field),"factor": factor});
                 }
                 addBoost("http://dublincore.org/documents/dcmi-terms#title",8);
                 addBoost("http://dublincore.org/documents/dcmi-terms#subject",4);
@@ -215,7 +215,7 @@ define(function(require){
                     if (input["body"]["sort"]["order"] == "desc") {
                         sortOrder = "desc";
                     }
-                    var sortObject = {"@datatype": "GSort","@version": "2016-11-09", "order": sortOrder};
+                    var sortObject = {"@datatype": "GSort","@version": "2017-09-01", "order": sortOrder};
                     if (sortFieldName.toLowerCase() == "author") {
                         sortFieldName = 'http://dublincore.org/documents/dcmi-terms#contributor.author';
                     } else if (sortFieldName.toLowerCase() == "sortdate") {
