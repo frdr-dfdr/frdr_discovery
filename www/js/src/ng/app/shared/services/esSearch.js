@@ -92,7 +92,7 @@ define(function(require){
 
             function doSearch(){
                 // support switching of headers for API Tool
-                var postObject = {"@datatype": "GSearchRequest","@version": "2017-09-01","advanced": true,"limit": 20};
+                var postObject = {"@datatype": "GSearchRequest","@version": "2017-09-01","result_format_version": "2017-09-01","advanced": true,"limit": 20};
                 var headers = {
                             'X-Requested-With': 'XMLHttpRequest',
                             'Content-Type': 'application/json'
