@@ -392,6 +392,7 @@ define(function(require) {
                 // open/close facet group
 
                 $scope.isOpen = facetService.facets[$scope.ff.label].open;
+                $scope.isOpen = true;
                 $scope.toggle = function(){
                     if ($scope.isOpen === true){
                         facetService.facets[$scope.ff.label].open = false;
@@ -399,7 +400,7 @@ define(function(require) {
                         facetService.facets[$scope.ff.label].open = true;
                     }
                     $scope.isOpen = facetService.facets[$scope.ff.label].open;
-                    utility.gaEvent('facets', 'toggle: ' + $scope.isOpen, $scope.ff.label);
+                    //utility.gaEvent('facets', 'toggle: ' + $scope.isOpen, $scope.ff.label);
                 };
 
                 // LOAD MORE FACET OPTIONS
