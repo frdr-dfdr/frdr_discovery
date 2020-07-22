@@ -14,21 +14,14 @@ define(["jquery"],
             var act = $(this).find(opts.activator),
                 t = $(this).find(opts.target);
 
-            t.animate('slideInDown', {duration: 0});
-
             act.on('click', function() {
-
-                //console.log('MORELESS');
 
                 if(t.hasClass('hidden')){
                     unhide(t);
-                    t.animate('slideInDown', {duration: 300});
                     pointDown(act.children('i'));
                 } else if(!t.hasClass('hidden')){
                     pointRight(act.children('i'));
-                    t.animate('slideOutUp', {duration: 300,
-                        complete: function(){hide(t);}
-                    });
+                    hide(t);
                 }
             });
         });
@@ -104,8 +97,6 @@ define(["jquery"],
             button.on('click',function(event){
                 // hide element
                 unhide(el);
-                el.velocity('slideOutUp', {duration:0});
-                el.velocity('slideInDown', {duration:100});
 
                 // unbind button click event for now
                 $(this).unbind(event);
@@ -116,15 +107,11 @@ define(["jquery"],
                         // check for click outside element
                         if(!$(event.target).parents().addBack().is(el)){
                             // hide element
-                            el.velocity('slideOutUp', {duration: 100,
-                                complete: function(){
-                                    hide(el)
-                                    // unbind window click event
-                                    $(this).unbind(event);
-                                    // (re)bind button click event
-                                    bindButton();
-                                }
-                            });
+                            hide(el)
+                            // unbind window click event
+                            $(this).unbind(event);
+                            // (re)bind button click event
+                            bindButton();
                         }
                     });
                 }, 2);
