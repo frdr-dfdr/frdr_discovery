@@ -392,7 +392,6 @@ define(function(require) {
                 // open/close facet group
 
                 $scope.isOpen = facetService.facets[$scope.ff.label].open;
-                $scope.isOpen = true;
                 $scope.toggle = function(){
                     if ($scope.isOpen === true){
                         facetService.facets[$scope.ff.label].open = false;
@@ -606,7 +605,7 @@ define(function(require) {
                                 } else if(fArray[i] === 'subject'){
                                     orderVal = -1;
                                 }
-                                var openByDefault = false;
+                                var openByDefault = true;
                                 if (searchString.vars.filter[fArray[i]].terms.length > 0) { openByDefault = true; }
                                 obj[fArray[i]] = {
                                     order : orderVal,
