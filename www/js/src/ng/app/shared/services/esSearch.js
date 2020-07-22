@@ -260,9 +260,7 @@ define(function(require){
                                 returnObject = {};
                                 for (key in o) {
                                     if (o.hasOwnProperty(key)) {
-                                        destKey = key.replace('http://dublincore.org/documents/dcmi-terms#','')
-                                            .replace('https://schema.labs.datacite.org/meta/kernel-4.0/metadata.xsd#','')
-                                            .replace('https://frdr.ca/schema/1.0#','');
+                                        destKey = key;
                                         value = o[key];
                                         if (typeof value === "object") {
                                             value = refit_keys(value);
@@ -292,15 +290,15 @@ define(function(require){
                         for (var facetNum in response.data["facet_results"]) {
                             var facetName = globusUnEscapeURI(response.data["facet_results"][facetNum]["name"]);
                             // Turn facet names back into common names where needed
-                            if (facetName == "http://dublincore.org/documents/dcmi-terms#date") {
+                            if (facetName == "dc_date") {
                                 facetName = "sortDate";
-                            } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#contributor.author') {
+                            } else if (facetName == 'dc_contributor_author') {
                                 facetName = "author";
-                            } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#type') {
+                            } else if (facetName == 'datacite_resourceTypeGeneral') {
                                 facetName = "type";
-                            } else if (facetName == 'http://dublincore.org/documents/dcmi-terms#subject') {
+                            } else if (facetName == 'dc_subject_en') {
                                 facetName = "subject";
-                            } else if (facetName == 'https://frdr.ca/schema/1.0#origin.id') {
+                            } else if (facetName == 'frdr_origin_id') {
                                 facetName = "Collection";
                             }
                             aggsObject[facetName]= {};
