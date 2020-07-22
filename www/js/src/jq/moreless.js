@@ -14,19 +14,19 @@ define(["jquery"],
             var act = $(this).find(opts.activator),
                 t = $(this).find(opts.target);
 
-            t.animate('slideUp', {duration: 0});
+            t.animate('slideInDown', {duration: 0});
 
             act.on('click', function() {
 
-                console.log('MORELESS');
+                //console.log('MORELESS');
 
                 if(t.hasClass('hidden')){
                     unhide(t);
-                    t.animate('slideDown', {duration: 300});
+                    t.animate('slideInDown', {duration: 300});
                     pointDown(act.children('i'));
                 } else if(!t.hasClass('hidden')){
                     pointRight(act.children('i'));
-                    t.animate('slideUp', {duration: 300,
+                    t.animate('slideOutUp', {duration: 300,
                         complete: function(){hide(t);}
                     });
                 }
@@ -65,13 +65,13 @@ define(["jquery"],
                 var visible = $(opts.target).not('.hidden');
                 var thisT =  $(this).parents(opts.parentGroup).find(tgts);
                 if (thisT.hasClass('hidden')) {
-                        $(visible).animate('slideUp', {
+                        $(visible).animate('slideOutUp', {
                             duration: 300,
                             complete: function(){hide(visible)}
                         });
                         unhide(thisT);
-                        $(thisT).animate('slideUp', {duration: 0});
-                        $(thisT).animate('slideDown', {duration: 300});
+                        $(thisT).animate('slideOutUp', {duration: 0});
+                        $(thisT).animate('slideInDown', {duration: 300});
                         
                         // stop();
                         pointRight($(opts.parentGroup).find('i'));
@@ -79,7 +79,7 @@ define(["jquery"],
                     // });
                 } else if (!thisT.hasClass('hidden')){
                     // hide(thisT);
-                    $(thisT).animate('slideUp', {
+                    $(thisT).animate('slideOutUp', {
                         duration: 300,
                         complete: function(){hide(thisT)}
                     });
@@ -97,15 +97,15 @@ define(["jquery"],
             button = $(btn);
 
         bindButton();
-        // el.animate('slideUp', {duration:0});
+        // el.animate('slideOutUp', {duration:0});
 
         function bindButton(){
             // bind button click event
             button.on('click',function(event){
                 // hide element
                 unhide(el);
-                el.velocity('slideUp', {duration:0});
-                el.velocity('slideDown', {duration:100});
+                el.velocity('slideOutUp', {duration:0});
+                el.velocity('slideInDown', {duration:100});
 
                 // unbind button click event for now
                 $(this).unbind(event);
@@ -116,7 +116,7 @@ define(["jquery"],
                         // check for click outside element
                         if(!$(event.target).parents().addBack().is(el)){
                             // hide element
-                            el.velocity('slideUp', {duration: 100,
+                            el.velocity('slideOutUp', {duration: 100,
                                 complete: function(){
                                     hide(el)
                                     // unbind window click event

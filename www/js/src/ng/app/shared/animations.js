@@ -11,7 +11,7 @@ define(function (require) {
     animations.animation('.dl-ani-hide', function(){
         var open = function(element, className, done){
             console.log('open!', element);
-            element.hide().velocity('slideDown', {duration: 200});
+            element.hide().velocity('slideInDown', {duration: 200});
             return function(cancel) {
               if(cancel) {
                 element.stop();
@@ -20,7 +20,7 @@ define(function (require) {
         };
 
         var closed = function(element, className, done){
-            element.velocity('slideUp', {duration: 200
+            element.velocity('slideOutUp', {duration: 200
             });
             return function(cancel) {
               if(cancel) {
