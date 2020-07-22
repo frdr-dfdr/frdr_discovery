@@ -739,14 +739,29 @@ define(function (require) {
                     }
                     delete $scope.r.dc_subject_en;
                     $scope.r.detail = {};
-                    if ($scope.r.hasOwnProperty("geospatial")) {
-                        $scope.r.geospatial = JSON.stringify($scope.r.geospatial);
+                    if ($scope.r.hasOwnProperty("frdr_geospatial")) {
+                        $scope.r.geospatial = JSON.stringify($scope.r.frdr_geospatial);
                     }
+                    delete $scope.r.frdr_geospatial;
+                    if ($scope.r.hasOwnProperty("frdr_tags_en")) {
+                        $scope.r.keywords_en = JSON.stringify($scope.r.frdr_tags_en);
+                    }
+                    delete $scope.r.frdr_tags_en; 
+                    if ($scope.r.hasOwnProperty("frdr_tags_fr")) {
+                        $scope.r.keywords_fr = JSON.stringify($scope.r.frdr_tags_fr);
+                    }
+                    delete $scope.r.frdr_tags_fr;
                     if ($scope.r.hasOwnProperty("frdr_access")) {
                         $scope.r.access = $scope.r.frdr_access;
                         delete $scope.r.frdr_access;
                     } else {
                         $scope.r.access = "";
+                    }
+                    if ($scope.r.hasOwnProperty("datacite_creatoraffiliation")) {
+                        $scope.r.creatoraffiliation = $scope.r.datacite_creatoraffiliation;
+                        delete $scope.r.datacite_creatoraffiliation;
+                    } else {
+                        $scope.r.creatoraffiliation = "";
                     }
                     delete $scope.r.dc_contributor;
                     $scope.r.publisher = $scope.r.dc_publisher;
