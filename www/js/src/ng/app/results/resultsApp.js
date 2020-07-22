@@ -256,7 +256,7 @@ define(function (require) {
     resultsApp.run(['tCache', function (tCache) {
         tCache.clearCache();  // clear cache on dev
         tCache.templatePath = templatePath;
-        tCache.getTemplates(['results-parent.html', 'results-list2.html', 'inner-results.html','mainpage-header.html','mainpage-footer.html','mainpage-search-options.html','mainpage-results-header.html']);
+        tCache.getTemplates(['results-parent.html', 'results-list.html', 'inner-results.html','mainpage-header.html','mainpage-footer.html','mainpage-search-options.html','mainpage-results-header.html']);
     }]);
 
 
@@ -632,7 +632,6 @@ define(function (require) {
 
                     $translate('VIEW_OPTIONS_1').then(function(t) { $scope.rViewOptions[0]['label'] = t; })
                     $translate('VIEW_OPTIONS_2').then(function(t) { $scope.rViewOptions[1]['label'] = t; })
-                    //$translate('VIEW_OPTIONS_3').then(function(t) { $scope.rViewOptions[2]['label'] = t; })
                     $translate('SORT_OPTIONS_1').then(function(t) { $scope.rSortOptions[0]['label'] = t; })
                     $translate('SORT_OPTIONS_2').then(function(t) { $scope.rSortOptions[1]['label'] = t; })
                     $translate('SORT_OPTIONS_3').then(function(t) { $scope.rSortOptions[2]['label'] = t; })
@@ -670,10 +669,7 @@ define(function (require) {
     //*******************************************************//
         .controller('resultController', [
             '$scope',
-            // 'esSearchService',
-            // 'i8',
             'esSearchString',
-            // '$sce',
             'rExport',
             'collectionData',
             '$http',
@@ -722,31 +718,18 @@ define(function (require) {
                     }();
 
                     // set required / special field vals
-                    /* FRDR
-                    $scope.r = {
-                        // app vars
-                        _id: $scope.r._id,
-                        repo: source[rFields.repo.map],
-                        compound: $scope.r.fields.is_compound[0],
-                        saved: rExport.isSaved($scope.r._id),
-                        nick: utility.mustBeString($scope.r._source[rFields.nick.map]),
-                        handle: source[rFields.handle.map],
-                        // default view
-                        title: highlighter.highlight(singleVal(source[rFields.title.map])),
-                        sortDate: highlighter.highlight($filter('formatSortDate')(source[rFields.sortDate.map])),
-                        author: highlighter.highlight(source[rFields.author.map]),
-                        type: (source[rFields.type.map]) ? source[rFields.type.map][0] : undefined,
-                        // special cases
-                        embargoed: (source[rFields.repo.map] === 'dsp') ? (checkEmbargo(source[rFields.dateAvailable.map])) : false,
-                        // details object (filled below)
-                        detail: {}
-                    };
-                    */
-
                     $scope.r._id = $scope.r.source;
-                    $scope.r.author = highlighter.highlight(singleVal($scope.r['contributor.author']));
-                    $scope.r.collection = $scope.r['origin.id'];
-                    $scope.r.description = highlighter.highlight(singleVal($scope.r.description));                    
+                    $scope.r.author = highlighter.highlight(singleVal($scope.r.dc_contributor_author));
+                    delete $scope.r.dc_contributor_author;
+                    $scope.r.collection = $scope.r['frdr_origin_id'];
+                    if ($scope.r.dc_description_fr) {
+                        $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_fr));
+                        delete $scope.r.dc_description_fr;
+                    }
+                    if ($scope.r.dc_description_en && $scope.r.dc_description_en.trim() != "") {  // EN description will overwrite FR description
+                        $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_en));
+                        delete $scope.r.dc_description_en;
+                    }
                     $scope.r.detail = {};
                     if ($scope.r.hasOwnProperty("geospatial")) {
                         $scope.r.geospatial = JSON.stringify($scope.r.geospatial);
@@ -755,15 +738,24 @@ define(function (require) {
                         $scope.r.access = "";
                     }
                     $scope.r.handle = $scope.r.source;
-                    $scope.r.icon_url = $scope.r['origin.icon'];
+                    $scope.r.icon_url = $scope.r['frdr_origin_icon'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
                     $scope.r.repo_url = "";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
                     $scope.r.title = highlighter.highlight(singleVal($scope.r.title));
-                    $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.date));
-                    $scope.r.type = "text";
-                    $scope.r.type = singleVal($scope.r['resourceTypeGeneral']);
+                    if ($scope.r.dc_title_fr) {
+                        $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_fr));
+                        delete $scope.r.dc_title_fr;
+                    }
+                    if ($scope.r.dc_title_en && $scope.r.dc_title_en.trim() != "") {  // EN title will overwrite FR title
+                        $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_en));
+                        delete $scope.r.dc_title_en;
+                    }
+                    $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.dc_date));
+                    delete $scope.r.dc_date;
+                    $scope.r.type = singleVal($scope.r.datacite_resourceTypeGeneral);
+                    delete $scope.r.datacite_resourceTypeGeneral;
 
                     // Check for icon overrides in the collection definitions
                     for (var i=0; i < $scope.collectionList.length; i++) {
@@ -782,7 +774,7 @@ define(function (require) {
                     var detailsParsed = false;
                     var fieldsToHide = { 
                         "_id":1,"origin.icon":1,"origin.id":1,"saved":1,"detail":1,"repo_url":1,"resourceTypeGeneral":1,
-                        "contributor.author":1,"icon_url":1,"series":1, "http://nrdr-ednr.ca/schema/1.0#origin.id": 1,
+                        "dc_contributor_author":1,"icon_url":1,"series":1, "frdr_origin_id": 1,
                         "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
@@ -961,7 +953,7 @@ define(function (require) {
 
             return {
                 restrict: 'A',
-                templateUrl: templatePath + 'results-list2.html?version=' + app_version,
+                templateUrl: templatePath + 'results-list.html?version=' + app_version,
                 link: link
             };
         })
