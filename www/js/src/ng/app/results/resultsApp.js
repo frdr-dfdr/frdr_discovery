@@ -726,7 +726,7 @@ define(function (require) {
                         $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_fr));
                         delete $scope.r.dc_description_fr;
                     }
-                    if ($scope.r.dc_description_en && $scope.r.dc_description_en.trim() != "") {  // EN description will overwrite FR description
+                    if ($scope.r.dc_description_en && $scope.r.dc_description_en != "" && $scope.r.dc_description_en != " ") {  // EN description will overwrite FR description
                         $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_en));
                         delete $scope.r.dc_description_en;
                     }
@@ -748,7 +748,7 @@ define(function (require) {
                         $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_fr));
                         delete $scope.r.dc_title_fr;
                     }
-                    if ($scope.r.dc_title_en && $scope.r.dc_title_en.trim() != "") {  // EN title will overwrite FR title
+                    if ($scope.r.dc_title_en && $scope.r.dc_title_en != "" && $scope.r.dc_title_en != " ") {  // EN title will overwrite FR title
                         $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_en));
                         delete $scope.r.dc_title_en;
                     }
