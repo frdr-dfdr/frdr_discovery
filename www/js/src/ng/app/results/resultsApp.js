@@ -753,24 +753,24 @@ define(function (require) {
                     delete $scope.r.frdr_tags_fr;
                     if ($scope.r.hasOwnProperty("frdr_access")) {
                         $scope.r.access = $scope.r.frdr_access;
-                        delete $scope.r.frdr_access;
                     } else {
                         $scope.r.access = "";
                     }
+                    delete $scope.r.frdr_access;
                     if ($scope.r.hasOwnProperty("datacite_creatoraffiliation")) {
                         $scope.r.creatoraffiliation = $scope.r.datacite_creatoraffiliation;
-                        delete $scope.r.datacite_creatoraffiliation;
                     } else {
                         $scope.r.creatoraffiliation = "";
                     }
+                    delete $scope.r.datacite_creatoraffiliation;
                     delete $scope.r.dc_contributor;
                     $scope.r.publisher = $scope.r.dc_publisher;
                     delete $scope.r.dc_publisher;
                     $scope.r.handle = $scope.r.item_url;
                     if ($scope.r.hasOwnProperty("dc_rights")) {
                         $scope.r.rights = $scope.r.dc_rights;
-                        delete $scope.r.dc_rights;
                     }
+                    delete $scope.r.dc_rights;
                     $scope.r.icon_url = $scope.r['frdr_origin_icon'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;

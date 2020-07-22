@@ -293,6 +293,7 @@ define(function(require){
                         var aggsObject = {};
                         for (var facetNum in response.data["facet_results"]) {
                             var facetName = globusUnEscapeURI(response.data["facet_results"][facetNum]["name"]);
+                            console.log("Got facet results for: " + facetName);
                             // Turn facet names back into common names where needed
                             if (facetName == "dc_date") {
                                 facetName = "sortDate";
