@@ -730,13 +730,27 @@ define(function (require) {
                         $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_en));
                         delete $scope.r.dc_description_en;
                     }
+                    if ($scope.r.dc_subject_fr) {
+                        $scope.r.subject = highlighter.highlight(singleVal($scope.r.dc_subject_fr));
+                        delete $scope.r.dc_subject_fr;
+                    }
+                    if ($scope.r.dc_subject_en && $scope.r.dc_subject_en != "" && $scope.r.dc_subject_en != " ") {  // EN subject will overwrite FR subject
+                        $scope.r.subject = highlighter.highlight(singleVal($scope.r.dc_subject_en));
+                        delete $scope.r.dc_subject_en;
+                    }
                     $scope.r.detail = {};
                     if ($scope.r.hasOwnProperty("geospatial")) {
                         $scope.r.geospatial = JSON.stringify($scope.r.geospatial);
                     }
-                    if ($scope.r.hasOwnProperty("access") == false) {
+                    if ($scope.r.hasOwnProperty("frdr_access") == false) {
                         $scope.r.access = "";
+                    } else {
+                        $scope.r.access = $scope.r.frdr_access;
+                        delete $scope.r.frdr_access;
                     }
+                    delete $scope.r.dc_contributor;
+                    $scope.r.publisher = $scope.r.dc_publisher;
+                    delete $scope.r.dc_publisher;
                     $scope.r.handle = $scope.r.source;
                     $scope.r.icon_url = $scope.r['frdr_origin_icon'];
                     $scope.r.nick = $scope.r.collection;
@@ -773,8 +787,8 @@ define(function (require) {
                     // we are hiding specific fields so that all unknown fields (custom metadata) can be exposed by default
                     var detailsParsed = false;
                     var fieldsToHide = { 
-                        "_id":1,"origin.icon":1,"origin.id":1,"saved":1,"detail":1,"repo_url":1,"resourceTypeGeneral":1,
-                        "dc_contributor_author":1,"icon_url":1,"series":1, "frdr_origin_id": 1,
+                        "_id":1,"frdr_origin_icon":1,"frdr_origin_id":1,"saved":1,"detail":1,"repo_url":1,"datacite_resourceTypeGeneral":1,
+                        "dc_contributor_author":1,"icon_url":1,"series":1, "frdr_origin_id": 1,"frdr_series":1,
                         "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
