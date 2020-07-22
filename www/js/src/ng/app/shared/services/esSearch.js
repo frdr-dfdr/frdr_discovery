@@ -75,7 +75,7 @@ define(function(require){
                     .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1dc_contributor_author: ')
                     .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1dc_date: ')
                     .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1dc_subject_en: ')
-                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1dc_subject_en: ')
+                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_tags_en: ')
                     .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_en: ');
             }
 
@@ -132,12 +132,14 @@ define(function(require){
                                 filterField = 'dc_contributor_author';
                             } else if (filterField.toLowerCase() == "sortDate") {
                                 filterField = 'dc_date';
-                            } else if (filterField.toLowerCase() == "type" || filterField.toLowerCase() == "genre") {
+                            } else if (filterField.toLowerCase() == "type") {
                                 filterField = 'datacite_resourceTypeGeneral';
                             } else if (filterField.toLowerCase() == "collection") {
                                 filterField = 'frdr_origin_id';
-                            } else if (filterField.toLowerCase() == "keyword" || filterField.toLowerCase() == "subject" ) {
+                            } else if (filterField.toLowerCase() == "subject" ) {
                                 filterField = 'dc_subject_en';
+                            } else if (filterField.toLowerCase() == "keyword") {
+                                filterField = 'frdr_tags_en';
                             }
 
                             filterField = globusEscapeURI(filterField);
@@ -178,12 +180,14 @@ define(function(require){
                             facetObject = { "@datatype":"GFacet", "@version":"2017-09-01", "size": 10, "type":"date_histogram", "date_interval": "month",
                                 "histogram_range": { "low": beginString, "high": endString } };
                             facetName = 'dc_date';
-                        } else if (facetName.toLowerCase() == "type" || facetName.toLowerCase() == "genre") {
+                        } else if (facetName.toLowerCase() == "type") {
                             facetName = 'datacite_resourceTypeGeneral';
                         } else if (facetName.toLowerCase() == "collection") {
                             facetName = 'frdr_origin_id';
-                        } else if (facetName.toLowerCase() == "keyword" || facetName.toLowerCase() == "subject") {
+                        } else if (facetName.toLowerCase() == "subject") {
                             facetName = 'dc_subject_en';
+                        } else if (facetName.toLowerCase() == "keyword") {
+                            facetName = 'frdr_tags_en';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
                         if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggSize")) {
