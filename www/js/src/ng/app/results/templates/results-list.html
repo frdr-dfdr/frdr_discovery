@@ -2,9 +2,9 @@
 <div ng-if="!max400" class="dl-r-lthumb dl-basic-thumb"
 	basic-thumb 
 	img-width="80"
-	item-id="{[{ r.source }]}"
+	item-id="{[{ r.item_url }]}"
 	repo="{[{ r['origin.id']}]}"
-	handle="{[{ r.source }]}"
+	handle="{[{ r.item_url }]}"
 	item-title="{[{ r.title }]}" 
 	type="dataset"
 	img-src="{[{ r.icon_url }]}"
@@ -16,32 +16,19 @@
 </div>
 <article class="dl-r-content">
 
-	<h6><img class="access-limited" src="/discover/img/access_limited.png" width="16" height="16" ng-if="r.access != '' && r.access != 'Public'" alt="*" title="{{ 'ACCESS_NOT_PUBLIC' | translate }}"/><a target-blank ng-href="{[{ r.source }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
+	<h6><img class="access-limited" src="/discover/img/access_limited.png" width="16" height="16" ng-if="r.access != '' && r.access != 'Public'" alt="*" title="{{ 'ACCESS_NOT_PUBLIC' | translate }}"/><a target-blank ng-href="{[{ r.item_url }]}" class="dl-r-title" ng-bind-html="::r.title"></a>
 	</h6>
 
 	<div class="dl-r-metadata-short">
-
-		<!--
-		<a ng-href="{[{ r.source }]}" link-out ng-hide="hr.collection" class="dl-r-collection" ng-bind-html="::r.collection"></a>
-		-->
 		<span class="dl-r-collection" ng-bind-html="::r.collection"></span>
-
 		<br />
-
-		<span ng-repeat="c in ::r['contributor.author'] track by $index">
-			<!-- 
-			<a href="" ng-click="addFilter('author', r['contributor.author'][$index])" class="dl-r-creator" ng-bind-html="c"></a>
-			-->
+		<span ng-repeat="c in ::r['author'] track by $index">
 			<span class="dl-r-creator" ng-bind-html="c"></span>{[{$last ? '' : '; '}]}
 		</span>
-		<span class="dl-r-creator" ng-if="!r['contributor.author'][0]" >[{{ 'ITEM_AUTHOR_UNKNOWN' | translate }}]</span>  
-
-		<!-- <a href="" ng-click="addFilter('sortDate', r.sortDate)" class="dl-r-date" ng-bind-html="::r.sortDate"></a> -->
+		<span class="dl-r-creator" ng-if="!r['author'][0]" >[{{ 'ITEM_AUTHOR_UNKNOWN' | translate }}]</span>  
 		&ensp;&mdash;&ensp;<span class="dl-r-date" ng-bind-html="::r.sortDate"></span>
 		<br />
-
 		<span ng-if="r.embargoed" class="dl-small-txt">{{ 'ITEM_EMBARGOED' | translate }}</span>
-
 	</div>
 								
 	<table class="dl-r-metadata-table" ng-if="details">
