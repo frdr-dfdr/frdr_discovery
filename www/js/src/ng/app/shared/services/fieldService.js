@@ -13,10 +13,10 @@ define(function(require){
         config = {
             facetFields : [
                 'sortDate',  // needs special treatment: date hist object
-                'type',
+                // 'type',
                 // 'genre',
-                'genre',
-                //'Keywords',
+                // 'genre',
+                'keyword',
                 'subject',
                 //'creator',
                 'author',
