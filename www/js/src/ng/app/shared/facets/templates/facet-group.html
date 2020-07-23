@@ -32,9 +32,7 @@
 
     <span ng-switch-when="collection">
         <dt>
-            <a href="" ng-click="toggle()" class="dl-f-activator">
-                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{ff.display }]}
-            </a>
+            {[{ff.display }]}
             <button class="dl-f-clear dl-sbtn-xsm" 
                     ng-hide="!activeFilters.length > 0"
                     ng-click="clearFilterGroup()">{{ 'CLEAR' | translate }}</button>
@@ -73,10 +71,8 @@
 
     <span ng-switch-default>
         <dt>
-            <a href="" ng-click="toggle()" class="dl-f-activator">
-                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{ff.display }]}
-                <span ng-show="optsLoading" class="dl-loader-inline"></span>
-            </a>
+            {[{ff.display }]}
+            <span ng-show="optsLoading" class="dl-loader-inline"></span>
             <button class="dl-f-clear dl-sbtn-xsm" 
                     ng-hide="!activeFilters.length > 0"
                     ng-click="clearFilterGroup()">{{ 'CLEAR' | translate }}</button>
