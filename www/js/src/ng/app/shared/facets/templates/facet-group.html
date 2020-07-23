@@ -1,9 +1,7 @@
 <span ng-switch on="ff.label">
     <span ng-switch-when="sortDate">
         <dt>
-            <a href="" ng-click="toggle()" class="dl-f-activator">
-                <i class="fa fa-angle-down" ng-hide="!isOpen"></i> <i class="fa fa-angle-right" ng-hide="isOpen"></i> {[{ff.display }]}
-            </a>
+            {[{ff.display }]}
             <button class="dl-f-clear dl-sbtn-xsm" 
                     ng-if="selected"
                     ng-click="clearFilterGroup()">{{ 'CLEAR' | translate }}</button>

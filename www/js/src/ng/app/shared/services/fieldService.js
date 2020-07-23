@@ -16,7 +16,7 @@ define(function(require){
                 // 'type',
                 // 'genre',
                 // 'genre',
-                'keyword',
+                'keywords',
                 'subject',
                 //'creator',
                 'author',

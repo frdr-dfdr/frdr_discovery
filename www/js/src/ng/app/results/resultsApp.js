@@ -762,7 +762,6 @@ define(function (require) {
                     } else {
                         $scope.r.creatoraffiliation = "";
                     }
-                    delete $scope.r.datacite_creatoraffiliation;
                     delete $scope.r.dc_contributor;
                     $scope.r.publisher = $scope.r.dc_publisher;
                     delete $scope.r.dc_publisher;
@@ -808,7 +807,7 @@ define(function (require) {
                     var fieldsToHide = { 
                         "_id":1,"frdr_origin_icon":1,"frdr_origin_id":1,"saved":1,"detail":1,"repo_url":1,"datacite_resourceTypeGeneral":1,
                         "dc_contributor_author":1,"icon_url":1,"series":1, "frdr_origin_id": 1,"frdr_series":1,"handle":1,
-                        "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1
+                        "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1,"datacite_creatoraffiliation":1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
                     function parseDetails() {
