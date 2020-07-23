@@ -186,7 +186,7 @@ define(function(require){
                             facetName = 'frdr_origin_id';
                         } else if (facetName.toLowerCase() == "subject") {
                             facetName = 'dc_subject_en';
-                        } else if (facetName.toLowerCase() == "keyword" || facetName.toLowerCase() == "keywords")) {
+                        } else if (facetName.toLowerCase() == "keyword" || facetName.toLowerCase() == "keywords") {
                             facetName = 'frdr_tags_en';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
