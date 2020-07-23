@@ -138,7 +138,7 @@ define(function(require){
                                 filterField = 'frdr_origin_id';
                             } else if (filterField.toLowerCase() == "subject" ) {
                                 filterField = 'dc_subject_en';
-                            } else if (filterField.toLowerCase() == "keyword") {
+                            } else if (filterField.toLowerCase() == "keyword" || filterField.toLowerCase() == "keywords") {
                                 filterField = 'frdr_tags_en';
                             }
 
@@ -186,7 +186,7 @@ define(function(require){
                             facetName = 'frdr_origin_id';
                         } else if (facetName.toLowerCase() == "subject") {
                             facetName = 'dc_subject_en';
-                        } else if (facetName.toLowerCase() == "keyword") {
+                        } else if (facetName.toLowerCase() == "keyword" || facetName.toLowerCase() == "keywords")) {
                             facetName = 'frdr_tags_en';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
