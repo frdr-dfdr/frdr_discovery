@@ -726,27 +726,27 @@ define(function (require) {
                     if ($scope.r.hasOwnProperty("dc_description_en") && $scope.r.dc_description_en != "" && $scope.r.dc_description_en != " ") {  // EN description will overwrite FR description
                         $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_en));
                     }
-                    if ($scope.r.hasOwnProperty("dc_category_fr")) {
-                        $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.dc_category_fr));
+                    if ($scope.r.hasOwnProperty("frdr_category_fr")) {
+                        $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.frdr_category_fr));
                     }
-                    delete $scope.r.dc_category_fr;
-                    if ($scope.r.hasOwnProperty("dc_category_en")) {
-                        $scope.r.subject_en = highlighter.highlight(singleVal($scope.r.dc_category_en));
+                    delete $scope.r.frdr_category_fr;
+                    if ($scope.r.hasOwnProperty("frdr_category_en")) {
+                        $scope.r.subject_en = highlighter.highlight(singleVal($scope.r.frdr_category_en));
                     }
-                    delete $scope.r.dc_category_en;
+                    delete $scope.r.frdr_category_en;
                     $scope.r.detail = {};
                     if ($scope.r.hasOwnProperty("frdr_geospatial")) {
                         $scope.r.geospatial = JSON.stringify($scope.r.frdr_geospatial);
                     }
                     delete $scope.r.frdr_geospatial;
-                    if ($scope.r.hasOwnProperty("frdr_tags_en")) {
-                        $scope.r.keywords_en = JSON.stringify($scope.r.frdr_tags_en);
+                    if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
+                        $scope.r.keyword_en = JSON.stringify($scope.r.frdr_keyword_en);
                     }
-                    delete $scope.r.frdr_tags_en; 
-                    if ($scope.r.hasOwnProperty("frdr_tags_fr")) {
-                        $scope.r.keywords_fr = JSON.stringify($scope.r.frdr_tags_fr);
+                    delete $scope.r.frdr_keyword_en; 
+                    if ($scope.r.hasOwnProperty("frdr_keyword_fr")) {
+                        $scope.r.keyword_fr = JSON.stringify($scope.r.frdr_keyword_fr);
                     }
-                    delete $scope.r.frdr_tags_fr;
+                    delete $scope.r.frdr_keyword_fr;
                     if ($scope.r.hasOwnProperty("frdr_access")) {
                         $scope.r.access = $scope.r.frdr_access;
                     } else {
@@ -754,12 +754,12 @@ define(function (require) {
                     }
                     delete $scope.r.frdr_access;
                     delete $scope.r.frdr_contact;
-                    if ($scope.r.hasOwnProperty("datacite_creatoraffiliation")) {
-                        $scope.r.author_affiliation = $scope.r.datacite_creatoraffiliation;
+                    if ($scope.r.hasOwnProperty("datacite_creatorAffiliation")) {
+                        $scope.r.author_affiliation = $scope.r.datacite_creatorAffiliation;
                     } else {
                         $scope.r.author_affiliation = "";
                     }
-                    delete $scope.r.datacite_creatoraffiliation;
+                    delete $scope.r.datacite_creatorAffiliation;
                     $scope.r.publisher = $scope.r.dc_publisher;
                     delete $scope.r.dc_publisher;
                     $scope.r.handle = $scope.r.item_url;
@@ -767,16 +767,26 @@ define(function (require) {
                         $scope.r.rights = $scope.r.dc_rights;
                     }
                     delete $scope.r.dc_rights;
+                    if ($scope.r.hasOwnProperty("frdr_series")) {
+                        $scope.r.series = $scope.r.frdr_series;
+                    }
+                    delete $scope.r.frdr_series;
                     $scope.r.icon_url = $scope.r['frdr_origin_icon'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
                     $scope.r.saved = rExport.isSaved($scope.r._id);
                     if ($scope.r.hasOwnProperty("dc_title_fr")) {
                         $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_fr));
+                        $scope.r.title_fr = $scope.r.title;
                     }
+                    delete $scope.r.dc_title_fr;
                     if ($scope.r.hasOwnProperty("dc_title_en") && $scope.r.dc_title_en != "" && $scope.r.dc_title_en != " ") {  // EN title will overwrite FR title
                         $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_en));
+                        $scope.r.title_en = $scope.r.title;
+                    } else {
+                        $scope.r.title_en = highlighter.highlight(singleVal($scope.r.dc_title_en));
                     }
+                    delete $scope.r.dc_title_en;
                     $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.dc_date));
                     delete $scope.r.dc_date;
                     $scope.r.type = singleVal($scope.r.datacite_resourceTypeGeneral);
@@ -800,8 +810,8 @@ define(function (require) {
                     var detailsParsed = false;
                     var fieldsToHide = { 
                         "_id":1,"frdr_origin_icon":1,"frdr_origin_id":1,"saved":1,"detail":1,"repo_url":1,"datacite_resourceTypeGeneral":1,
-                        "dc_contributor_author":1,"icon_url":1,"series":1, "frdr_origin_id": 1,"frdr_series":1,"handle":1,"title":1,"description":1,
-                        "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1,"datacite_creatoraffiliation":1
+                        "dc_contributor":1,"icon_url":1,"series":1, "frdr_origin_id": 1,"handle":1,"title":1,"description":1,
+                        "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
                     function parseDetails() {
