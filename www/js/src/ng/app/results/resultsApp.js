@@ -678,9 +678,7 @@ define(function (require) {
             'fieldService',
             'utility',
             function ($scope,
-                      // es,
                       searchString,
-                      // $sce,
                       rExport,
                       collectionData,
                       $http,
@@ -691,7 +689,7 @@ define(function (require) {
 
                 var query = searchString.vars.query;
                 $scope.base_url = website_base_url;
-                // check view
+
                 // detailed view
                 if ($scope.resultsView.index === 1) {
                     $scope.detailView = true;
@@ -725,19 +723,17 @@ define(function (require) {
                     if ($scope.r.hasOwnProperty("dc_description_fr")) {
                         $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_fr));
                     }
-                    delete $scope.r.dc_description_fr;
                     if ($scope.r.hasOwnProperty("dc_description_en") && $scope.r.dc_description_en != "" && $scope.r.dc_description_en != " ") {  // EN description will overwrite FR description
                         $scope.r.description = highlighter.highlight(singleVal($scope.r.dc_description_en));
                     }
-                    delete $scope.r.dc_description_en;
-                    if ($scope.r.hasOwnProperty("dc_subject_fr")) {
-                        $scope.r.subject = highlighter.highlight(singleVal($scope.r.dc_subject_fr));
+                    if ($scope.r.hasOwnProperty("dc_category_fr")) {
+                        $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.dc_category_fr));
                     }
-                    delete $scope.r.dc_subject_fr;
-                    if ($scope.r.hasOwnProperty("dc_subject_en") && $scope.r.dc_subject_en != "" && $scope.r.dc_subject_en != " ") {  // EN subject will overwrite FR subject
-                        $scope.r.subject = highlighter.highlight(singleVal($scope.r.dc_subject_en));
+                    delete $scope.r.dc_category_fr;
+                    if ($scope.r.hasOwnProperty("dc_category_en")) {
+                        $scope.r.subject_en = highlighter.highlight(singleVal($scope.r.dc_category_en));
                     }
-                    delete $scope.r.dc_subject_en;
+                    delete $scope.r.dc_category_en;
                     $scope.r.detail = {};
                     if ($scope.r.hasOwnProperty("frdr_geospatial")) {
                         $scope.r.geospatial = JSON.stringify($scope.r.frdr_geospatial);
@@ -757,12 +753,13 @@ define(function (require) {
                         $scope.r.access = "";
                     }
                     delete $scope.r.frdr_access;
+                    delete $scope.r.frdr_contact;
                     if ($scope.r.hasOwnProperty("datacite_creatoraffiliation")) {
-                        $scope.r.creatoraffiliation = $scope.r.datacite_creatoraffiliation;
+                        $scope.r.author_affiliation = $scope.r.datacite_creatoraffiliation;
                     } else {
-                        $scope.r.creatoraffiliation = "";
+                        $scope.r.author_affiliation = "";
                     }
-                    delete $scope.r.dc_contributor;
+                    delete $scope.r.datacite_creatoraffiliation;
                     $scope.r.publisher = $scope.r.dc_publisher;
                     delete $scope.r.dc_publisher;
                     $scope.r.handle = $scope.r.item_url;
@@ -773,23 +770,20 @@ define(function (require) {
                     $scope.r.icon_url = $scope.r['frdr_origin_icon'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
-                    $scope.r.repo_url = "";
                     $scope.r.saved = rExport.isSaved($scope.r._id);
-                    $scope.r.title = highlighter.highlight(singleVal($scope.r.title));
                     if ($scope.r.hasOwnProperty("dc_title_fr")) {
                         $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_fr));
                     }
-                    delete $scope.r.dc_title_fr;
                     if ($scope.r.hasOwnProperty("dc_title_en") && $scope.r.dc_title_en != "" && $scope.r.dc_title_en != " ") {  // EN title will overwrite FR title
                         $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_en));
                     }
-                    delete $scope.r.dc_title_en;
                     $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.dc_date));
                     delete $scope.r.dc_date;
                     $scope.r.type = singleVal($scope.r.datacite_resourceTypeGeneral);
                     delete $scope.r.datacite_resourceTypeGeneral;
 
                     // Check for icon overrides in the collection definitions
+                    $scope.r.repo_url = "";
                     for (var i=0; i < $scope.collectionList.length; i++) {
                         if ($scope.r.collection == $scope.collectionList[i].val ) {
                             if ($scope.collectionList[i].hasOwnProperty("icon_url") && $scope.collectionList[i].icon_url != "") {
@@ -802,11 +796,11 @@ define(function (require) {
                     }
 
                     // add detail view for ALL fields, only if details visible
-                    // we are hiding specific fields so that all unknown fields (custom metadata) can be exposed by default
+                    // we are hiding specific fields so that all unknown fields will be exposed by default
                     var detailsParsed = false;
                     var fieldsToHide = { 
                         "_id":1,"frdr_origin_icon":1,"frdr_origin_id":1,"saved":1,"detail":1,"repo_url":1,"datacite_resourceTypeGeneral":1,
-                        "dc_contributor_author":1,"icon_url":1,"series":1, "frdr_origin_id": 1,"frdr_series":1,"handle":1,
+                        "dc_contributor_author":1,"icon_url":1,"series":1, "frdr_origin_id": 1,"frdr_series":1,"handle":1,"title":1,"description":1,
                         "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1,"datacite_creatoraffiliation":1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
