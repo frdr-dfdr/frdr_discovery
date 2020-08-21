@@ -154,11 +154,15 @@ define(function(require){
                         if (filterFieldObject.hasOwnProperty("begin") && filterFieldObject.hasOwnProperty("end")) {
                             if (filterFieldObject.begin != "") {
                                 var beginDate = new Date(parseInt(filterFieldObject.begin.key,10));
-                                beginString = beginDate.getFullYear() + "-01-01"; // Users are supplying years only, so make sure we start in Jan
+                                var dd = beginDate.getDate(); if(dd<10) { dd='0'+dd; }
+                                var mm = beginDate.getMonth()+1; if(mm<10) { mm='0'+mm; }
+                                beginString = beginDate.getFullYear() + "-" + mm + "-" + dd;
                             }
                             if (filterFieldObject.end != "") {
                                 endDate = new Date(parseInt(filterFieldObject.end.key,10));
-                                endString = endDate.getFullYear() + "-12-31";  // Users are supplying years only, so make sure we go to end of year
+                                var dd = endDate.getDate(); if(dd<10) { dd='0'+dd; }
+                                var mm = endDate.getMonth()+1; if(mm<10) { mm='0'+mm; }
+                                endString = endDate.getFullYear() + "-" + mm + "-" + dd;
                             }
                         }
                     }

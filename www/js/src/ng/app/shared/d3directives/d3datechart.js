@@ -287,7 +287,7 @@ define(function (require){
                     }
 
                     function displayDate(d) {
-                        var format = d3.time.format('%Y');
+                        var format = d3.time.format('%Y-%m-%d');
 
                         var display = format(d);
 
