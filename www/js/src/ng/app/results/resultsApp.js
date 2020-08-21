@@ -621,11 +621,11 @@ define(function (require) {
                     if (locSearch.dBegin && locSearch.dEnd) {
                         searchString.vars.filter.sortDate.begin = {
                             key: locSearch.dBegin,
-                            display: $filter('date')(locSearch.dBegin, 'yyyy')
+                            display: $filter('date')(locSearch.dBegin, 'yyyy-mm-dd')
                         };
                         searchString.vars.filter.sortDate.end = {
                             key: locSearch.dEnd,
-                            display: $filter('date')(locSearch.dEnd, 'yyyy')
+                            display: $filter('date')(locSearch.dEnd, 'yyyy-mm-dd')
                         };
                         $scope.rssLink = $scope.rssLink + '&dBegin=' + locSearch.dBegin + '&dEnd=' + locSearch.dEnd;
                     }
