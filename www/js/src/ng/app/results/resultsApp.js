@@ -726,7 +726,8 @@ define(function (require) {
                         $scope.r.description = $scope.r.description_fr;
                     }
                     delete $scope.r.dc_description_fr;
-                    if ($scope.r.hasOwnProperty("dc_description_en") && $scope.r.dc_description_en != "" && $scope.r.dc_description_en != " ") {  // EN description will overwrite FR description
+                    if ($scope.r.hasOwnProperty("dc_description_en") && $scope.r.dc_description_en != "" && $scope.r.dc_description_en != " ") {
+                        // EN description, if not blank, will overwrite FR description
                         $scope.r.description_en = highlighter.highlight(singleVal($scope.r.dc_description_en));
                         $scope.r.description = $scope.r.description_en;
                     }
@@ -745,11 +746,13 @@ define(function (require) {
                     }
                     delete $scope.r.frdr_geospatial;
                     if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
-                        $scope.r.keyword_en = JSON.stringify($scope.r.frdr_keyword_en);
+                        var jk = JSON.stringify($scope.r.frdr_keyword_en);
+                        $scope.r.keyword_en = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}]/g,"")));
                     }
-                    delete $scope.r.frdr_keyword_en; 
+                    delete $scope.r.frdr_keyword_en;
                     if ($scope.r.hasOwnProperty("frdr_keyword_fr")) {
-                        $scope.r.keyword_fr = JSON.stringify($scope.r.frdr_keyword_fr);
+                        var jk = JSON.stringify($scope.r.frdr_keyword_fr);
+                        $scope.r.frdr_keyword_fr = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}]/g,"")));
                     }
                     delete $scope.r.frdr_keyword_fr;
                     if ($scope.r.hasOwnProperty("frdr_access")) {
