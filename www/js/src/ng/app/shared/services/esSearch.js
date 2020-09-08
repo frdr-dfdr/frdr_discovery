@@ -128,7 +128,7 @@ define(function(require){
 
                         var filterFieldObject = input["body"]["filter"][filterField];
                         if (filterFieldObject["terms"].length > 0) {
-                            if (filterField.toLowerCase() == "author") {
+                            if (filterField.toLowerCase() == "author" || filterField.toLowerCase() == "contributor_author") {
                                 filterField = 'dc_contributor_author';
                             } else if (filterField.toLowerCase() == "sortDate") {
                                 filterField = 'dc_date';
@@ -174,7 +174,7 @@ define(function(require){
                     for (var t=0; t < input["body"]["aggsArr"].length; t++) {
                         var facetName = input["body"]["aggsArr"][t];
                         var facetObject = {"@datatype": "GFacet","@version": "2017-09-01", "size": 10, "type": "terms"};
-                        if (facetName.toLowerCase() == "author") {
+                        if (facetName.toLowerCase() == "author" || facetName.toLowerCase() == "contributor_author") {
                             facetName = 'dc_contributor_author';
                         } else if (facetName.toLowerCase() == "sortdate") {
                             facetObject = { "@datatype":"GFacet", "@version":"2017-09-01", "size": 10, "type":"date_histogram", "date_interval": "month",
@@ -220,7 +220,7 @@ define(function(require){
                         sortOrder = "desc";
                     }
                     var sortObject = {"@datatype": "GSort","@version": "2017-09-01", "order": sortOrder};
-                    if (sortFieldName.toLowerCase() == "author") {
+                    if (sortFieldName.toLowerCase() == "author" || sortFieldName.toLowerCase() == "contributor_author") {
                         sortFieldName = 'dc_contributor_author';
                     } else if (sortFieldName.toLowerCase() == "sortdate") {
                         sortFieldName = 'dc_date';
