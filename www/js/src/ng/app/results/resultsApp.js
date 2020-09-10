@@ -137,19 +137,16 @@ define(function (require) {
             'SEARCH_ALL': 'Search all content',
             'SEARCH_LIMITED': 'Search cIRcle only',
             'SEARCH_RESULTS': 'Search Results',
-            'SORT_OPTIONS_1': 'Sort by relevance',
-            'SORT_OPTIONS_2': 'Sort by title A-Z',
-            'SORT_OPTIONS_3': 'Sort by title Z-A',
-            'SORT_OPTIONS_4': 'Sort by author A-Z',
-            'SORT_OPTIONS_5': 'Sort by author Z-A',
-            'SORT_OPTIONS_6': 'Sort by oldest to newest',
-            'SORT_OPTIONS_7': 'Sort by newest to oldest',
+            'SORT_OPTIONS_0': 'Sort by relevance',
+            'SORT_OPTIONS_1': 'Sort by title A-Z',
+            'SORT_OPTIONS_2': 'Sort by title Z-A',
+            'SORT_OPTIONS_3': 'Sort by oldest to newest',
+            'SORT_OPTIONS_4': 'Sort by newest to oldest',
             'SUBJECT': 'Subject',
             'TO': 'to',
             'TOGGLE_NAVIGATION': 'Toggle Navigation',
-            'VIEW_OPTIONS_1': 'List view',
-            'VIEW_OPTIONS_2': 'Detailed view',
-            'VIEW_OPTIONS_3': 'Thumbnail view',
+            'VIEW_OPTIONS_0': 'List view',
+            'VIEW_OPTIONS_1': 'Detailed view'
         });
              
         $translateProvider.translations('fr', {
@@ -230,19 +227,16 @@ define(function (require) {
             'SEARCH_ALL': 'Rechercher tout le contenu',
             'SEARCH_LIMITED': 'Recherche cIRcle seulement',
             'SEARCH_RESULTS': 'Résultats de la recherche',
-            'SORT_OPTIONS_1': 'Trier par pertinence',
-            'SORT_OPTIONS_2': 'Trier par titre A-Z',
-            'SORT_OPTIONS_3': 'Trier par titre Z-A',
-            'SORT_OPTIONS_4': 'Trier par auteur A-Z',
-            'SORT_OPTIONS_5': 'Trier par auteur Z-A',
-            'SORT_OPTIONS_6': 'Trier par plus vieux à nouveau',
-            'SORT_OPTIONS_7': 'Trier par plus nouveau à vieux',
+            'SORT_OPTIONS_0': 'Trier par pertinence',
+            'SORT_OPTIONS_1': 'Trier par titre A-Z',
+            'SORT_OPTIONS_2': 'Trier par titre Z-A',
+            'SORT_OPTIONS_3': 'Trier par plus vieux à nouveau',
+            'SORT_OPTIONS_4': 'Trier par plus nouveau à vieux',
             'SUBJECT': 'Sujet',
             'TO': 'à',
             'TOGGLE_NAVIGATION': 'Changer la navigation',
-            'VIEW_OPTIONS_1': 'Vue liste',
-            'VIEW_OPTIONS_2': 'Vue détaillée',
-            'VIEW_OPTIONS_3': 'Vue vignette',
+            'VIEW_OPTIONS_0': 'Vue liste',
+            'VIEW_OPTIONS_1': 'Vue détaillée'
         });
 
         $translateProvider.useSanitizeValueStrategy('escape');            
@@ -630,15 +624,14 @@ define(function (require) {
                         $scope.rssLink = $scope.rssLink + '&dBegin=' + locSearch.dBegin + '&dEnd=' + locSearch.dEnd;
                     }
 
-                    $translate('VIEW_OPTIONS_1').then(function(t) { $scope.rViewOptions[0]['label'] = t; })
-                    $translate('VIEW_OPTIONS_2').then(function(t) { $scope.rViewOptions[1]['label'] = t; })
-                    $translate('SORT_OPTIONS_1').then(function(t) { $scope.rSortOptions[0]['label'] = t; })
-                    $translate('SORT_OPTIONS_2').then(function(t) { $scope.rSortOptions[1]['label'] = t; })
-                    $translate('SORT_OPTIONS_3').then(function(t) { $scope.rSortOptions[2]['label'] = t; })
-                    $translate('SORT_OPTIONS_4').then(function(t) { $scope.rSortOptions[3]['label'] = t; })
-                    $translate('SORT_OPTIONS_5').then(function(t) { $scope.rSortOptions[4]['label'] = t; })
-                    $translate('SORT_OPTIONS_6').then(function(t) { $scope.rSortOptions[5]['label'] = t; })
-                    $translate('SORT_OPTIONS_7').then(function(t) { $scope.rSortOptions[6]['label'] = t; })
+                    $translate('VIEW_OPTIONS_0').then(function(t) { $scope.rViewOptions[0]['label'] = t; })
+                    $translate('VIEW_OPTIONS_1').then(function(t) { $scope.rViewOptions[1]['label'] = t; })
+
+                    $translate('SORT_OPTIONS_0').then(function(t) { $scope.rSortOptions[0]['label'] = t; })
+                    $translate('SORT_OPTIONS_1').then(function(t) { $scope.rSortOptions[1]['label'] = t; })
+                    $translate('SORT_OPTIONS_2').then(function(t) { $scope.rSortOptions[2]['label'] = t; })
+                    $translate('SORT_OPTIONS_3').then(function(t) { $scope.rSortOptions[3]['label'] = t; })
+                    $translate('SORT_OPTIONS_4').then(function(t) { $scope.rSortOptions[4]['label'] = t; })
 
                     function getLocFilters(loc) {
                         var output = [];
