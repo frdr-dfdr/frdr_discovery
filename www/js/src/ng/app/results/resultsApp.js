@@ -314,13 +314,11 @@ define(function (require) {
 
                     //sort options
                     $scope.rSortOptions = [
-                        {"index": 0, "label": "Sort by relevance",     "field": false,      "order": "desc" }, 
-                        {"index": 1, "label": "sort by title A-Z",     "field": "title",    "order" : "asc" }, 
-                        {"index": 2, "label": "Sort by title Z-A",     "field": "title",    "order": "desc" }, 
-                        {"index": 3, "label": "Sort by author A-Z",    "field": "author",  "order": "asc"  }, 
-                        {"index": 4, "label": "Sort by author Z-A",    "field": "author",  "order": "desc" }, 
-                        {"index": 5, "label": "Sort oldest to newest", "field": "sortDate", "order": "asc"  }, 
-                        {"index": 6, "label": "Sort newest to oldest", "field": "sortDate", "order": "desc" },
+                        {"index": 0, "label": "Sort by relevance",        "field": false,      "order": "desc" }, 
+                        {"index": 1, "label": "sort by title A-Z",        "field": "title",    "order": "asc" }, 
+                        {"index": 2, "label": "Sort by title Z-A",        "field": "title",    "order": "desc" }, 
+                        {"index": 3, "label": "Sort by oldest to newest", "field": "sortDate", "order": "asc"  }, 
+                        {"index": 4, "label": "Sort by newest to oldest", "field": "sortDate", "order": "desc" },
                     ];
 
                     // UPDATE SEARCH BASED ON INITIAL VARS TO START APP
