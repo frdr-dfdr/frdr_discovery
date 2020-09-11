@@ -710,6 +710,7 @@ define(function (require) {
                     $scope.r._id = $scope.r.item_url;
                     $scope.r.author = highlighter.highlight(singleVal($scope.r.dc_contributor_author));
                     delete $scope.r.dc_contributor_author;
+                    delete $scope.r.dc_contributor;
                     $scope.r.collection = $scope.r['frdr_origin_id'];
                     if ($scope.r.hasOwnProperty("dc_description_fr")) {
                         $scope.r.description_fr = highlighter.highlight(singleVal($scope.r.dc_description_fr));
