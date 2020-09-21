@@ -186,11 +186,12 @@ define(function (require){
 
                     function brushstart() {
                         updateRangeBrush();
-
+                        updateRangeDomain('apply');
                     }
 
                     function brushmove() {
                         updateRangeBrush();
+                        updateRangeDomain('apply');
                         updateBBG();
                     }
 
@@ -356,10 +357,10 @@ define(function (require){
                         chart.select('.date-chart-area').data([data])
                             .transition().duration(300).ease(d3.easeSinInOut)
                             .attr("d", area);
-                        brush.clear().x(x);
+                        //brush.clear().x(x);
                         
                         brush.extent([newBegin, newEnd]);
-                        svg.select('.brush').call(brush);
+                        //svg.select('.brush').call(brush);
                         updateBBG(); 
 
                     }
