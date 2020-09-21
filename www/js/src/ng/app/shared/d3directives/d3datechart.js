@@ -240,26 +240,22 @@ define(function (require){
                                     key: +d3.event.selection.map(x.invert)[1]
                                 }
                             };
-                            if (a === 'apply'){
-                                $scope.$apply();
-                            }
+                        } else {
+                            $scope.selection = {
+                                begin: {
+                                    display: displayDate(x.domain()[0]),
+                                    key: +x.domain()[0]
+                                },
+                                end: {
+                                    display: displayDate(x.domain()[1]),
+                                    key: +x.domain()[1]
+                                }
+                            };                            
+                        }
+                        if (a === 'apply'){
+                            $scope.$apply();
                         }
                     }
-
-                    // datechart.refreshInputs(function(){
-                    //     var refreshed = {
-                    //             begin : {
-                    //                 display: displayDate(x.domain()[0]),
-                    //                 key: +x.domain()[0]
-                    //             },
-                    //             end: {
-                    //                 display: displayDate(x.domain()[1]),
-                    //                 key: +x.domain()[1]
-                    //             }
-                    //         };
-
-                    //     return refreshed;
-                    // });
                     
                     function updateRangeBrush() {
                         $scope.selection = {
