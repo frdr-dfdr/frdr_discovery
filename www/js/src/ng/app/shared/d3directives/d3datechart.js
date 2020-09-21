@@ -162,7 +162,7 @@ define(function (require){
                         .attr('height', chartHeight);
 
                     // brush ends / 'handles'
-                    brushg.selectAll(".resize")
+                    brushg.selectAll(".handle")
                         .attr('x', '-5')
                         .attr('width', '10')
                         .append('rect')
