@@ -50,7 +50,6 @@ define(function (require){
                     // setup variables
                     var wd = ele.parent().width() < 200 ? ele.closest('.dl-f-group').width() : ele.parent().width();
                     var width = wd - margin.right - margin.left;
-                    // var width = 257 - margin.right - margin.left,
                     var chartHeight = height - margin.top - margin.bottom;
                     //console.log(ele, width);
                     elem = ele;
@@ -230,18 +229,20 @@ define(function (require){
                     }
 
                     function updateRangeDomain(a) {
-                        $scope.selection = {
-                            begin: {
-                                display: displayDate(d3.event.selection.map(x.invert)[0]),
-                                key: +d3.event.selection.map(x.invert)[0]
-                            },
-                            end: {
-                                display: displayDate(d3.event.selection.map(x.invert)[1]),
-                                key: +d3.event.selection.map(x.invert)[1]
+                        if (d3.event != null) {
+                            $scope.selection = {
+                                begin: {
+                                    display: displayDate(d3.event.selection.map(x.invert)[0]),
+                                    key: +d3.event.selection.map(x.invert)[0]
+                                },
+                                end: {
+                                    display: displayDate(d3.event.selection.map(x.invert)[1]),
+                                    key: +d3.event.selection.map(x.invert)[1]
+                                }
+                            };
+                            if (a === 'apply'){
+                                $scope.$apply();
                             }
-                        };
-                        if (a === 'apply'){
-                            $scope.$apply();
                         }
                     }
 
