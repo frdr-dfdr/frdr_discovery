@@ -21,7 +21,7 @@
     "tests"
   ],
   "dependencies": {
-    "d3": "~3.4.13",
+    "d3": "~5.14.2",
     "enquire": "2.1.2",
     "elasticsearch": "~2.2.0",
     "velocity": "latest",

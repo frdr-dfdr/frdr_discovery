@@ -45,48 +45,44 @@ define(function (require){
                   // remove all previous items before render
                     svg.selectAll('*').remove();
                     // If we don't pass any data, return out of the element
-                    if (!data || Object.keys(data).length === 0 ) return console.log('NO DATE CHART DATA!');
+                    if (!data || Object.keys(data).length === 0 ) return console.log('Date chart not yet ready to render');
 
                     // setup variables
                     var wd = ele.parent().width() < 200 ? ele.closest('.dl-f-group').width() : ele.parent().width();
                     var width = wd - margin.right - margin.left,
                     // var width = 257 - margin.right - margin.left,
-                        chartHeight = height - margin.top - margin.bottom;
+                    var chartHeight = height - margin.top - margin.bottom;
                     //console.log(ele, width);
                     elem = ele;
-                    // var dateFormat = d3.time.format('%Y-%m-%d');
+                    // var dateFormat = d3.timeFormat('%Y-%m-%d');
                     // var parseDate = dateFormat.parse;
                     // var parseDate = new Date(time);
 
-                    var x = d3.time.scale()
+                    var x = d3.scaleTime()
                             .range([0, width]);
 
-                    var y = d3.scale.linear()
+                    var y = d3.scaleLinear()
                             .range([chartHeight, 0]);
 
-                    var xAxis = d3.svg.axis()
+                    var xAxis = d3.axisBottom()
                                 .scale(x)
-                                .orient('bottom')
                                 .ticks(4)
                                 .tickSize(1);
 
-                    var yAxis = d3.svg.axis()
+                    var yAxis = d3.axisLeft()
                                 .scale(y)
-                                .orient('left')
                                 .ticks(3);
 
-                    var emptyArea = d3.svg.area()
+                    var emptyArea = d3.area()
                                     .x(function(d) { return x(d.key); })
                                     .y(chartHeight)
-                                    // .interpolate('basis');
-                                    .interpolate('step');
+                                    .curve(d3.curveStep);
 
-                    var area = d3.svg.area()
+                    var area = d3.area()
                                 .x(function(d) { return x(d.key); })
                                 .y0(chartHeight)
                                 .y1(function(d){ return y(d.count); })
-                                // .interpolate('basis');
-                                .interpolate('step');
+                                .curve(d3.curveStep);
 
                     // parse data
                     data.forEach(function(d){
@@ -144,12 +140,11 @@ define(function (require){
 
                     // brush behavior
 
-                    var brush = d3.svg.brush()
-                                .x(x)
-                                // .extent(x.domain())
-                                .on("brushstart", brushstart)
+                    var brush = d3.brushX()
+                                .extent([[x.range()[0], 0], [x.range()[1], chartHeight]])
+                                .on("start", brushstart)
                                 .on("brush", brushmove)
-                                .on("brushend", brushend);
+                                .on("end", brushend);
 
                     // brush background
                     var brushbg = chart.append('g')
@@ -177,8 +172,10 @@ define(function (require){
                             .style('visibility', 'visible')
                             .style('fill', 'orange');
 
-                    brushg.selectAll('.background')
-                            .style({'visibility': 'visible', 'fill': 'none'})
+                    brushg.selectAll('.overlay')
+                            .style({'visibility': 'visible', 'fill': 'none'});
+
+                    brushg.selectAll('.overlay')                            
                             .append('rect')
                                 .attr('class', 'left')
                                 .attr('x', 0)
@@ -190,39 +187,32 @@ define(function (require){
 
                     function brushstart() {
                         updateRangeBrush();
-                        // updateBBG();
 
                     }
 
                     function brushmove() {
-                        
                         updateRangeBrush();
                         updateBBG();
                     }
 
                     function brushend() {
                         // if empty or full domain return without call to refresh and clear bg
-                        if (brush.empty() || d3.values(brush.extent()).join() === d3.values(x.domain()).join()){
-                            
+                        if (d3.event.selection === null || d3.values(brush.extent()).join() === d3.values(x.domain()).join()){
                             updateRangeDomain('apply');
                             brushbg.selectAll('.bbg')
                                 .attr('width', 0);
-
                             return;
                         } else {
                             utility.gaEvent('facets','date_picker', 'brush_select');
-                            xZoom(brush.extent()[0], brush.extent()[1]);
+                            xZoom(d3.event.selection.map(x.invert)[0], d3.event.selection.map(x.invert)[1]);
                         }
 
                     }
 
                     function updateBBG() {
-
                         // update background shading around brush selection
-
-                        var eX = parseInt(svg.selectAll('.brush .extent').attr('x'));
-                        var eW = parseInt(svg.selectAll('.brush .extent').attr('width'));
-
+                        var eX = parseInt(svg.selectAll('.brush .selection').attr('x'));
+                        var eW = parseInt(svg.selectAll('.brush .selection').attr('width'));
 
                         svg.select('.bbg.l')
                             .attr('x', 0)
@@ -242,18 +232,17 @@ define(function (require){
                     function updateRangeDomain(a) {
                         $scope.selection = {
                             begin: {
-                                display: displayDate(x.domain()[0]),
-                                key: +x.domain()[0]
+                                display: displayDate(d3.event.selection.map(x.invert)[0]),
+                                key: +d3.event.selection.map(x.invert)[0]
                             },
                             end: {
-                                display: displayDate(x.domain()[1]),
-                                key: +x.domain()[1]
+                                display: displayDate(d3.event.selection.map(x.invert)[1]),
+                                key: +d3.event.selection.map(x.invert)[1]
                             }
                         };
                         if (a === 'apply'){
                             $scope.$apply();
                         }
-                        // console.log($scope.range.begin.display, $scope.range.end.display);
                     }
 
                     // datechart.refreshInputs(function(){
@@ -287,7 +276,7 @@ define(function (require){
                     }
 
                     function displayDate(d) {
-                        var format = d3.time.format('%Y');
+                        var format = d3.timeFormat('%Y');
 
                         var display = format(d);
 
@@ -368,7 +357,7 @@ define(function (require){
                         updateXAxis();
 
                         chart.select('.date-chart-area').data([data])
-                            .transition().duration(300).ease('sin-in-out')
+                            .transition().duration(300).ease(d3.easeSinInOut)
                             .attr("d", area);
                         brush.clear().x(x);
                         
@@ -380,7 +369,7 @@ define(function (require){
 
                     function updateXAxis(){
                        svg.select('.xaxis')
-                                .transition().duration(300).ease('sin-in-out')
+                                .transition().duration(300).ease(d3.easeSinInOut)
                                 .call(xAxis);
                     }
 
