@@ -49,7 +49,7 @@ define(function (require){
 
                     // setup variables
                     var wd = ele.parent().width() < 200 ? ele.closest('.dl-f-group').width() : ele.parent().width();
-                    var width = wd - margin.right - margin.left,
+                    var width = wd - margin.right - margin.left;
                     // var width = 257 - margin.right - margin.left,
                     var chartHeight = height - margin.top - margin.bottom;
                     //console.log(ele, width);
