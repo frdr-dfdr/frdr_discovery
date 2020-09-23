@@ -13,6 +13,7 @@ requirejs.config({
         "d3directives": "ng/app/shared/d3directives/d3charts",
         "d3onebar": "ng/app/shared/d3directives/d3onebar",
         "d3datechart": "ng/app/shared/d3directives/d3datechart",
+        "enquire": "vendor/enquire/dist/enquire.min",
         "thumbnails": "ng/app/shared/thumbnails/thumbnails",
         "angular": "vendor/angular/angular",
         "ngAnimate": "vendor/angular-animate/angular-animate.min",
