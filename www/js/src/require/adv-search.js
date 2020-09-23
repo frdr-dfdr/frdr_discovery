@@ -1,5 +1,5 @@
 // Start the main app logic.
-require(['advSearch', 'sidebar', 'fastclickInit'],
+require(['advSearch', 'fastclickInit'],
     function(resultsApp) {
         // start angular app
         resultsApp.boot();

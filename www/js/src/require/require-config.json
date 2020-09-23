@@ -29,19 +29,15 @@ requirejs.config({
         "ngColorPicker" : "vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min",
         "d3": "vendor/d3/d3",
         "velocity": "vendor/velocity/velocity.min",
-        "enquire": "vendor/enquire/dist/enquire.min",
-        "hammer": "vendor/hammerjs/hammer",
         "fastclick": "vendor/fastclick/lib/fastclick",
         "jquery": "vendor/jquery/dist/jquery.min",
         "jqueryui": "vendor/jquery-ui/jquery-ui.min",
         "flipcards": "jq/flipcards",
         "moreless": "jq/moreless",
         "accordy": "jq/accordy",
-        "sidebar": "jq/sidebar",
         "datepicker": "jq/datepicker",
         "pluginDetect": "pluginDetect",
         "fastclickInit": "fastclick-init",
-        "hammerDefine": "require/window/hammer",
         "googlefont": "jq/googlefont",
         "licenses": "require/licenses"
     },
@@ -114,19 +110,6 @@ requirejs.config({
                 "velocity"
             ],
             "exports": "moreless"
-        },
-        "sidebar": {
-            "deps": [
-                "jquery",
-                "velocity",
-                "enquire",
-                "hammerDefine"
-            ],
-           "exports": "sidebar"
-        },
-        "hammerDefine": {
-          "deps":["hammer"],
-          "exports": "hammerDefine"
         },
         "googlefont" : {
             "exports": "googlefont"

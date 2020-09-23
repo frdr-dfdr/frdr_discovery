@@ -83,8 +83,6 @@ define(function (require) {
             'FILTER': 'filter',
             'FILTER_APPLY': 'Apply filter',
             'FILTER_RESULTS': 'Filter Results',
-            'FILTERS_HIDE': 'Hide filters',
-            'FILTERS_SHOW': 'Show filters',
             'FOOTER_CARL_ABRC': 'Canadian Association of Research Libraries',
             'FOOTER_CARL_ABRC_URL': 'http://www.carl-abrc.ca/',
             'FOOTER_COMPUTE_CANADA': 'Compute Canada',
@@ -172,8 +170,6 @@ define(function (require) {
             'FILTER': 'filtre',
             'FILTER_APPLY': 'Appliquer filtre',
             'FILTER_RESULTS': 'Filtrer les résultats',
-            'FILTERS_HIDE': 'Masquer les filtres',
-            'FILTERS_SHOW': 'Afficher les filtres',
             'FOOTER_CARL_ABRC': 'Association des bibliothèques de recherche du Canada',
             'FOOTER_CARL_ABRC_URL': 'http://www.carl-abrc.ca/fr/',
             'FOOTER_COMPUTE_CANADA': 'Calcul Canada',
@@ -990,16 +986,6 @@ define(function (require) {
                 restrict: 'A',
                 templateUrl: templatePath + 'results-list.html?version=' + app_version,
                 link: link
-            };
-        })
-        .directive('sidebarShow', function () {
-            return {
-                restrict: 'A',
-                link: function (scope, element, attrs) {
-                    element.on('click', function () {
-                        $('#cols-wrap').sidebar({'toggle': true});
-                    });
-                }
             };
         })
         .directive('mainpageSearchOptions', function () {

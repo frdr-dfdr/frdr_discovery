@@ -65,27 +65,6 @@
   display: none;
 }
 
-// sidebar-in added when sidebar is present. (added by 'sidebar' plugin in dl-jquery.js)
-
-.sidebar-in #nav-toggle {
-  .hide-filters {
-    display: block;
-  }
-  .show-filters {
-    display: none;
-  }
-
-  @media #{$sidebar-max} {
-    transform: translateX(-165px);
-  }
-}
-
-.sidebar-in .dl-pagination, .sidebar-in .dl-r-opt {
-  // @media #{$sidebar-max} {
-  //     display: none;
-  // }
-}
-
 // show /hide btn
 .dl-r-col-btn {
 

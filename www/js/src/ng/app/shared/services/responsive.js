@@ -34,7 +34,7 @@ define(function(require){
     }]);
 
 
-    // max window size 680 -- this is the cutoff for hiding the sidebar
+    // max window size 680 -- this is the cutoff for reflowing the sidebar
     // services.factory('max680', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
     //     var max680 = {
     //         watch: function() { enquire.register('screen and (max-width: 680px)', max680handler); },
