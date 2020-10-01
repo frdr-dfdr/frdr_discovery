@@ -20,7 +20,11 @@ h1 {
 }
 
 navbar {
-height: 50px;
-min-height: 50px;
-margin-bottom: 20px;
+   height: 50px;
+   min-height: 50px;
+   margin-bottom: 20px;
+}
+
+.dl-search input[type="search"] {
+   font-size: .5em;
 }
