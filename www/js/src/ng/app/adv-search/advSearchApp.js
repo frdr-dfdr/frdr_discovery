@@ -95,6 +95,7 @@ define(function(require){
             'REPOLIST_BLURB_2': 'contact support',
             'REPOLIST_BLURB_3': 'to have a repository added.',
             'REPOLIST_BLURB_URL': '/docs/en/contact_support/',
+            'REPOLIST_TOTAL_FOOTER': 'Total number of sources',
             'REPOSITORY_NAME': 'Repository Name',
             'SEARCH': 'Search',
             'SOURCE': 'Source',
@@ -158,6 +159,7 @@ define(function(require){
             'REPOLIST_BLURB_2': 'contactez le support',
             'REPOLIST_BLURB_3': 'pour ajouter un référentiel de données.',
             'REPOLIST_BLURB_URL': '/docs/fr/contactez_nous/',
+            'REPOLIST_TOTAL_FOOTER': 'Nombre total de sources',
             'REPOSITORY_NAME': 'Nom du dépôt de données',
             'SEARCH': 'Recherche',
             'SOURCE': 'Source',
@@ -270,6 +272,7 @@ define(function(require){
                 collectionData.getColsData().then(function(response){
                     $scope.collectionList = response.data;
                     $scope.repoList = angular.copy(response.data);
+                    $scope.total = $scope.repoList.length;
                     $scope.collectionList.push({ val: "All sources", label: "All sources" });
                     updateTranslations();
                 });
