@@ -7,13 +7,18 @@
   padding: 20px;
 }
 
+.frdr-jumbo-footer a {
+  font-weight: bold;
+}
+
+.frdr-jumbo-footer a:visited{
+  color: #884488;
+}
+
 .frdr-jumbo-footer a:hover {
   color: white;
 }
 
-.frdr-jumbo-footer a {
-  color: #0A0A0A;
-}
 
 h1 {
   font-size: 1.2em;
