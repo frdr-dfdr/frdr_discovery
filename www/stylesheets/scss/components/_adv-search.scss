@@ -308,4 +308,21 @@ input.search_bar {
 .repologo {
   padding: 5px;
   max-width: 100px;
+  @media #{$max-979} {
+    padding: 0px;
+    max-width: 40px;
+  }
+}
+
+.repolinknormal {
+  display: block;
+  @media #{$max-979} {
+    display: none;
+  }
+}
+.repolinksmall {
+  display: none;
+  @media #{$max-979} {
+    display: block;
+  }  
 }
