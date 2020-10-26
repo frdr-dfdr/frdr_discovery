@@ -89,7 +89,7 @@ define(function(require){
             'MENU_HELP_TERMS_URL': '/docs/en/terms_of_service/',
             'MENU_LOCALE': 'EN',
             'PRIVACY_POLICY': 'Privacy Policy',
-            'PRIVACY_POLICY_URL': '/docs/en/terms_of_service/',
+            'PRIVACY_POLICY_URL': '/docs/en/privacy_policy/',
             'REPOLIST_HEADER':'Canadian Research Data Repositories',
             'REPOLIST_BLURB_1': 'This is the list of research data repositories currently included in the discovery results.  Please',
             'REPOLIST_BLURB_2': 'contact support',
