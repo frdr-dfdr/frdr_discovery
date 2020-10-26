@@ -11,12 +11,16 @@
   font-weight: bold;
 }
 
+.frdr-jumbo-footer a:link{
+  color: #34d;
+}
+
 .frdr-jumbo-footer a:visited{
   color: #884488;
 }
 
 .frdr-jumbo-footer a:hover {
-  color: white;
+  color: #B12;
 }
 
 
