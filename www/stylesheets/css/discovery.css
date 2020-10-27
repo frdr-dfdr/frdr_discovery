@@ -12,15 +12,15 @@
 }
 
 .frdr-jumbo-footer a:link, a.dl-r-title.ng-binding:link {
-  color: #34d;
+  color: #34d !important;
 }
 
 .frdr-jumbo-footer a:visited, a.dl-r-title.ng-binding:visited {
-  color: #884488;
+  color: #884488 !important;
 }
 
 .frdr-jumbo-footer a:hover, a.dl-r-title.ng-binding:hover  {
-  color: #B12;
+  color: #B12 !important;
 }
 
 
