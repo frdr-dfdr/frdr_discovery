@@ -11,15 +11,15 @@
   font-weight: bold;
 }
 
-.frdr-jumbo-footer a:link{
+.frdr-jumbo-footer a:link, a.dl-r-title.ng-binding:link {
   color: #34d;
 }
 
-.frdr-jumbo-footer a:visited{
+.frdr-jumbo-footer a:visited, a.dl-r-title.ng-binding:visited {
   color: #884488;
 }
 
-.frdr-jumbo-footer a:hover {
+.frdr-jumbo-footer a:hover, a.dl-r-title.ng-binding:hover  {
   color: #B12;
 }
 
