@@ -48,10 +48,10 @@ dd.ng-scope {
 
 dd.ng-scope:hover {
   background:black !important;
-  color:#333 !important;
+  color:#f6f6f6 !important;
 }
 
-a.ng-binding, span.count.ng-binding {
+dd.a.ng-binding, span.count.ng-binding {
  color: inherit !important;
  background: inherit !important;
 }
