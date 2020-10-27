@@ -37,3 +37,21 @@ navbar {
 .dl-search input[type="search"] {
    font-size: 1em;
 }
+
+a.ng-binding {
+  padding-right: 5px;
+}
+
+dd.ng-scope {
+  margin-left: 0px;
+}
+
+dd.ng-scope:hover {
+  background:black;
+  color:#333;
+}
+
+a.ng-binding, span.count.ng-binding {
+ color: inherit;
+ background: inherit;
+}
