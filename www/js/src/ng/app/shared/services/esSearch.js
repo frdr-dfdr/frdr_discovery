@@ -190,7 +190,7 @@ define(function(require){
                             facetName = 'frdr_keyword_en';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
-                        if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggSize")) {
+                        if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggSize") && facetName != "dc_date") {
                             facetObject.size = parseInt(input["body"]["aggSize"]);
                         }
                         postObject.facets.push(facetObject);
