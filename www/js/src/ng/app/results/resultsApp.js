@@ -739,7 +739,7 @@ define(function (require) {
                     delete $scope.r.frdr_keyword_en;
                     if ($scope.r.hasOwnProperty("frdr_keyword_fr")) {
                         var jk = JSON.stringify($scope.r.frdr_keyword_fr);
-                        $scope.r.frdr_keyword_fr = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}]/g,"")));
+                        $scope.r.keyword_fr = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}]/g,"")));
                     }
                     delete $scope.r.frdr_keyword_fr;
                     if ($scope.r.hasOwnProperty("frdr_access")) {
