@@ -260,12 +260,6 @@ define(function(require){
                 };
 
                 // adv search form input ('search segment builder')
-
-                // get searchable fields from apifields service
-
-                // var fields = ['all fields'];
-                // fields = fields.concat(apifields.fields);
-
                 $scope.selectedCollection = {val: "All sources", label: "All sources"};
                 $scope.collectionList = [];
                 $scope.repoList = [];
@@ -277,6 +271,7 @@ define(function(require){
                     updateTranslations();
                 });
 
+                // get searchable fields from apifields service
                 var fields = {};
                 fieldService.getFields(fieldService.advSearchFields).then(function(response){
                     fields = response;
@@ -284,10 +279,6 @@ define(function(require){
                         label: 'All fields',
                         map: 'all fields'
                     };
-                    //fields.titleCombined = {
-                    //    label: "All title fields",
-                    //    map: "title combined"
-                    //};
                     $scope.querySegments = [
                         {
                             track: querySegmentTracker,
@@ -298,7 +289,6 @@ define(function(require){
                             }, anyAll: {
                                 opts: [ 'any of these words:', 'all of these words:', 'this exact phrase:'],
                                 selected: 'any of these words:'
-                                //selected: 'all of these words:'
                             }, bool: {
                                 opts: [ 'AND', 'OR', 'NOT'],
                                 selected: 'AND'

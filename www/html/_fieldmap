@@ -199,6 +199,10 @@
             "label": "Is Shown At",
             "sysmap": "isShownAt"
         }],
+        "Keyword": [{
+            "label": "Keyword",
+            "sysmap": "keyword"
+        }],
         "Language": [{
             "label": "Language",
             "sysmap": "language"

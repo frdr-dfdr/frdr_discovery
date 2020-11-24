@@ -16,7 +16,7 @@ define(function(require){
                 // 'type',
                 // 'genre',
                 // 'genre',
-                'keywords',
+                'keyword',
                 'subject',
                 //'creator',
                 'author',
@@ -59,8 +59,8 @@ define(function(require){
             advSearchFields : [
                 //'genre',
                 //'geographicLocation',
-                //'Keywords',
-                'subject',
+                'keyword',
+                //'subject',
                 //'category',
                 //'person',
                 //'scholarlyLevel',
@@ -158,9 +158,9 @@ define(function(require){
                      map: 'ubc.transcript', 
                      label: 'Full Text'
                 };
-            fieldService.fields.Keywords = {
-                     map: 'Keywords', 
-                     label: 'Keywords'
+            fieldService.fields.Keyword = {
+                     map: 'Keyword', 
+                     label: 'Keyword'
                 };
             fieldService.fields.Collection = {
                      map: 'Collection', 
