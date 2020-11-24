@@ -177,7 +177,7 @@ define(function(require){
                         if (facetName.toLowerCase() == "author" || facetName.toLowerCase() == "contributor_author") {
                             facetName = 'dc_contributor_author';
                         } else if (facetName.toLowerCase() == "sortdate") {
-                            facetObject = { "@datatype":"GFacet", "@version":"2017-09-01", "size": 10, "type":"date_histogram", "date_interval": "month",
+                            facetObject = { "@datatype":"GFacet", "@version":"2017-09-01", "type":"date_histogram", "date_interval": "month",
                                 "histogram_range": { "low": beginString, "high": endString } };
                             facetName = 'dc_date';
                         } else if (facetName.toLowerCase() == "type") {
