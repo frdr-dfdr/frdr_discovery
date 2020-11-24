@@ -75,7 +75,7 @@ define(function(require){
                     .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1dc_contributor_author: ')
                     .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1dc_date: ')
                     .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1dc_subject_en: ')
-                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_tags_en: ')
+                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1keyword_en: ')
                     .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_en: ');
             }
 
@@ -139,7 +139,7 @@ define(function(require){
                             } else if (filterField.toLowerCase() == "subject" ) {
                                 filterField = 'dc_subject_en';
                             } else if (filterField.toLowerCase() == "keyword" || filterField.toLowerCase() == "keywords") {
-                                filterField = 'frdr_tags_en';
+                                filterField = 'keyword_en';
                             }
 
                             filterField = globusEscapeURI(filterField);
@@ -187,7 +187,7 @@ define(function(require){
                         } else if (facetName.toLowerCase() == "subject") {
                             facetName = 'dc_subject_en';
                         } else if (facetName.toLowerCase() == "keyword" || facetName.toLowerCase() == "keywords") {
-                            facetName = 'frdr_tags_en';
+                            facetName = 'keyword_en';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
                         if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggSize")) {
