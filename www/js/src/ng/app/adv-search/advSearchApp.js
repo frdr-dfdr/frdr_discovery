@@ -39,6 +39,7 @@ define(function(require){
     ).config(['$translateProvider', function ($translateProvider) {
 
         $translateProvider.translations('en', {
+            'AND': 'AND',
             'ADVSEARCH_HEADER':'Advanced Search',
             'ADVSEARCH_DOCS_TEXT1': 'For help with full search capabilities and syntax please',
             'ADVSEARCH_DOCS_TEXT2': 'see the documentation',
@@ -88,6 +89,8 @@ define(function(require){
             'MENU_HELP_TERMS': 'Terms of Service',
             'MENU_HELP_TERMS_URL': '/docs/en/terms_of_service/',
             'MENU_LOCALE': 'EN',
+            'NOT': 'NOT',
+            'OR': 'OR',
             'PRIVACY_POLICY': 'Privacy Policy',
             'PRIVACY_POLICY_URL': '/docs/en/privacy_policy/',
             'REPOLIST_HEADER':'Canadian Research Data Repositories',
@@ -103,6 +106,8 @@ define(function(require){
         });
              
         $translateProvider.translations('fr', {
+            'AND': 'Et',
+            'Author': 'Auteur',
             'ADVSEARCH_HEADER':'Recherche Avancée',
             'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur les fonctions de recherche complètes et la syntaxe, veuillez',
             'ADVSEARCH_DOCS_TEXT2': 'lire la documentation',
@@ -114,6 +119,7 @@ define(function(require){
             'ANYALL_EXACT': 'cette expression exacte:',
             'BOOLEAN':'Booléen',
             'BRANDING_LABEL': branding_label_fr,
+            'Date (yyyy-mm-dd)': 'Date',
             'DISCOVERY_CREDIT': 'Découverte basé sur UBC Open Collections',
             'FIELD': 'Champ',
             'FIELD_ADD': 'Ajouter un champ',
@@ -126,6 +132,7 @@ define(function(require){
             'IN':'dans',
             'ITEM_COUNT': 'Nombre d\'éléments',
             'KEYWORDS': 'Mots clés',
+            'Keyword': 'Mots clés',
             'LIMIT_BY':'Limite par',
             'MAINPAGE_HEADER': 'Découverte de la recherche',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
@@ -152,6 +159,8 @@ define(function(require){
             'MENU_HELP_TERMS': 'Conditions d\'utilisation',
             'MENU_HELP_TERMS_URL': '/docs/fr/conditions_d%27utilisation/',
             'MENU_LOCALE': 'FR',
+            'NOT': 'Sauf',
+            'OR': 'Ou',
             'PRIVACY_POLICY': 'Politique de confidentialité',
             'PRIVACY_POLICY_URL': '/docs/fr/conditions_d%27utilisation/',
             'REPOLIST_HEADER':'Dépôts de données de recherche au Canada',
@@ -163,6 +172,7 @@ define(function(require){
             'REPOSITORY_NAME': 'Nom du dépôt de données',
             'SEARCH': 'Recherche',
             'SOURCE': 'Source',
+            'Title': 'Titre',
             'WEBSITE': 'Site Internet'
         });
 
@@ -287,8 +297,8 @@ define(function(require){
                                 opts: fields,
                                 selected: 'all fields'
                             }, anyAll: {
-                                opts: [ 'any of these words:', 'all of these words:', 'this exact phrase:'],
-                                selected: 'any of these words:'
+                                opts: [ 'ANYALL_ANY', 'ANYALL_ALL', 'ANYALL_EXACT'],
+                                selected: 'ANYALL_ANY'
                             }, bool: {
                                 opts: [ 'AND', 'OR', 'NOT'],
                                 selected: 'AND'
@@ -321,8 +331,8 @@ define(function(require){
                             opts: fields,
                             selected: 'all fields'
                         }, anyAll: {
-                            opts: [ 'any of these words:', 'all of these words:', 'this exact phrase:'],
-                            selected: 'all of these words:'
+                            opts: [ 'ANYALL_ANY', 'ANYALL_ALL', 'ANYALL_EXACT'],
+                            selected: 'ANYALL_ANY'
                         }, bool: {
                             opts: [ 'AND', 'OR', 'NOT'],
                             selected: 'AND'

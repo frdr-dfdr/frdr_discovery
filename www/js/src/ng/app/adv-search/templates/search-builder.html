@@ -9,18 +9,23 @@
 
                     <span ng-repeat="s in querySegments">
                     <div class="dl-center dl-advs-boolgrp ng-cloak">
-                        <select class="bool sm" ng-model="s.bool.selected" ng-options="o as o for o in s.bool.opts"
-                                ng-hide="s.track===0" aria-label="{{ 'BOOLEAN' | translate }}" ng-change="selectEvent('select_bool', s.bool.selected)"></select>
+                        <select class="bool sm"
+                                ng-model="s.bool.selected"
+                                ng-options="o as (o | translate) for o in s.bool.opts"
+                                ng-hide="s.track===0"
+                                aria-label="{{ 'BOOLEAN' | translate }}"
+                                ng-change="selectEvent('select_bool', s.bool.selected)"></select>
                     </div>
 
                     <div class="dl-advs-inputs">
-                        <select class="anyall" ng-model="s.anyAll.selected" ng-options="o as (o | capitalize) for o in s.anyAll.opts" aria-label="{{ 'LIMIT_BY' | translate }}" ng-change="selectEvent('select_anyall', s.anyAll.selected)"></select>
+                        <select class="anyall" ng-model="s.anyAll.selected" ng-options="o as (o | translate | capitalize) for o in s.anyAll.opts" aria-label="{{ 'LIMIT_BY' | translate }}" ng-change="selectEvent('select_anyall', s.anyAll.selected)"></select>
 
                         <input type="text" ng-model="s.keywords" onclick="this.select();" ng-enter="search()" aria-label="{{ 'KEYWORDS' | translate }}">
 
                         <span class="in"><span translate>IN</span></span>
 
-                        <select class="fields" ng-model="s.fields.selected" ng-options="val.map as val.label for (key, val) in s.fields.opts" aria-label="{{ 'FIELD' | translate }}" ng-change="selectEvent('select_field', s.fields.selected)"></select>
+
+                        <select class="fields" ng-model="s.fields.selected" ng-options="val.map as val.label | translate for (key, val) in s.fields.opts" aria-label="{{ 'FIELD' | translate }}" ng-change="selectEvent('select_field', s.fields.selected)"></select>
 
                         <button class="dl-sbtn-lrg dl-advs-rm-btn" ng-disabled="s.track===0" ng-class="{disabled:s.track===0}" ng-click="rmSegment($index)" ng-cloak aria-label="{{ 'FIELD_REMOVE' | translate }}" ga-event="advanced_search,remove_segment"><i class="fa fa-close"></i></button>
                     </div>
