@@ -129,7 +129,7 @@ define(function(require){
             'FOOTER_CARL_ABRC_URL': 'http://www.carl-abrc.ca/fr/',
             'FOOTER_COMPUTE_CANADA': 'Calcul Canada',
             'FOOTER_COMPUTE_CANADA_URL': 'https://www.computecanada.ca/?lang=fr',
-            'FOOTER_DISCLAIMER': 'Calcul Canada et ABRC respectent la vie privée des personnes et ne collecteront, utiliseront et ne divulgueront les renseignements personnels que dans le respect des lois sur l''accès à l''information et la protection de la vie privée.',
+            'FOOTER_DISCLAIMER': 'Calcul Canada et ABRC respectent la vie privée des personnes et ne collecteront, utiliseront et ne divulgueront les renseignements personnels que dans le respect des lois sur l\'accès à l\'information et la protection de la vie privée.',
             'FOOTER_PORTAGE_URL': 'https://www.portagenetwork.ca/fr/',
             'IN':'dans',
             'ITEM_COUNT': 'Nombre d\'éléments',
