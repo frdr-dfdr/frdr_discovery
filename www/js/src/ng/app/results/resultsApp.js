@@ -708,6 +708,10 @@ define(function (require) {
                     $scope.r._id = $scope.r.item_url;
                     $scope.r.author = highlighter.highlight(singleVal($scope.r.dc_contributor_author));
                     delete $scope.r.dc_contributor_author;
+                    if ($scope.r.hasOwnProperty("dc_contributor")) {
+                        var contributor = JSON.stringify($scope.r.dc_contributor);
+                        $scope.r.contributor = contributor.replace(/[\[\]\{\}]/g,"")
+                    }
                     delete $scope.r.dc_contributor;
                     $scope.r.collection = $scope.r['frdr_origin_id'];
                     if ($scope.r.hasOwnProperty("dc_description_fr")) {
@@ -730,9 +734,6 @@ define(function (require) {
                     }
                     delete $scope.r.frdr_category_en;
                     $scope.r.detail = {};
-                    if ($scope.r.hasOwnProperty("frdr_geospatial")) {
-                        $scope.r.geospatial = JSON.stringify($scope.r.frdr_geospatial);
-                    }
                     delete $scope.r.frdr_geospatial;
                     if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
                         var jk = JSON.stringify($scope.r.frdr_keyword_en);
