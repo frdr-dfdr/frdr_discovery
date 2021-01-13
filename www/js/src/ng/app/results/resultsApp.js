@@ -709,8 +709,8 @@ define(function (require) {
                     $scope.r.author = highlighter.highlight(singleVal($scope.r.dc_contributor_author));
                     delete $scope.r.dc_contributor_author;
                     if ($scope.r.hasOwnProperty("dc_contributor")) {
-                        var contributor = JSON.stringify($scope.r.dc_contributor);
-                        $scope.r.contributor = contributor.replace(/[\[\]\{\}]/g,"")
+                        var contributor = JSON.stringify($scope.r.dc_contributor).replace(/","/g,"\"  ,  \"");
+                        $scope.r.contributor = highlighter.highlight(contributor.replace(/[\[\]\{\}"]/g,""))
                     }
                     delete $scope.r.dc_contributor;
                     $scope.r.collection = $scope.r['frdr_origin_id'];
@@ -737,12 +737,12 @@ define(function (require) {
                     delete $scope.r.frdr_geospatial;
                     if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
                         var jk = JSON.stringify($scope.r.frdr_keyword_en);
-                        $scope.r.keyword_en = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}]/g,"")));
+                        $scope.r.keyword_en = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}"]/g,"")));
                     }
                     delete $scope.r.frdr_keyword_en;
                     if ($scope.r.hasOwnProperty("frdr_keyword_fr")) {
                         var jk = JSON.stringify($scope.r.frdr_keyword_fr);
-                        $scope.r.keyword_fr = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}]/g,"")));
+                        $scope.r.keyword_fr = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}"]/g,"")));
                     }
                     delete $scope.r.frdr_keyword_fr;
                     if ($scope.r.hasOwnProperty("frdr_access")) {
@@ -868,7 +868,6 @@ define(function (require) {
                         }
                     }
 
-                    // check if embargoed
                     function checkEmbargo(input) {
                         if (!input) return false;
                         var today = new Date(), eDate = new Date(input);
