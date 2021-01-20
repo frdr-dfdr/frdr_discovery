@@ -786,6 +786,7 @@ define(function (require) {
                     }
                     delete $scope.r.dc_title_en;
                     $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.dc_date));
+                    $scope.r.date = highlighter.highlight(singleVal($scope.r.dc_date));
                     delete $scope.r.dc_date;
                     $scope.r.type = singleVal($scope.r.datacite_resourceTypeGeneral);
                     delete $scope.r.datacite_resourceTypeGeneral;
