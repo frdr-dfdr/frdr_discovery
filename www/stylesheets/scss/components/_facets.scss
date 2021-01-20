@@ -43,7 +43,7 @@
             line-height: 2em;
             
             &:hover, &:focus, &:focus {
-                background-color: $gray1;
+                background-color: $highlight-orange;
             }
 
             a, a:visited, a:active,a:hover{
@@ -66,7 +66,7 @@
         dl {
 
             &.dl-f-selected {
-                dd{
+                dd {
                     position: relative;
                     color: black;
                     // animated entrance
