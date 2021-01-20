@@ -725,14 +725,14 @@ define(function (require) {
                         $scope.r.description = $scope.r.description_en;
                     }
                     delete $scope.r.dc_description_en;
-                    if ($scope.r.hasOwnProperty("frdr_category_fr")) {
-                        $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.frdr_category_fr));
+                    if ($scope.r.hasOwnProperty("frdr_subject_fr")) {
+                        $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.frdr_subject_fr));
                     }
-                    delete $scope.r.frdr_category_fr;
-                    if ($scope.r.hasOwnProperty("frdr_category_en")) {
-                        $scope.r.subject_en = highlighter.highlight(singleVal($scope.r.frdr_category_en));
+                    delete $scope.r.frdr_subject_fr;
+                    if ($scope.r.hasOwnProperty("frdr_subject_en")) {
+                        $scope.r.subject_en = highlighter.highlight(singleVal($scope.r.frdr_subject_en));
                     }
-                    delete $scope.r.frdr_category_en;
+                    delete $scope.r.frdr_subject_en;
                     $scope.r.detail = {};
                     delete $scope.r.frdr_geospatial;
                     if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
