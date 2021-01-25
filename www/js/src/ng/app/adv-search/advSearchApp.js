@@ -109,7 +109,7 @@ define(function(require){
         $translateProvider.translations('fr', {
             'AND': 'Et',
             'Author': 'Auteur',
-            'ADVSEARCH_HEADER':'Recherche Avancée',
+            'ADVSEARCH_HEADER':'Recherche avancée',
             'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur les fonctions de recherche complètes et la syntaxe, veuillez',
             'ADVSEARCH_DOCS_TEXT2': 'lire la documentation',
             'ADVSEARCH_DOCS_URL': '/docs/fr/d%C3%A9poser_les_donn%C3%A9es/',
