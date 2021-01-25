@@ -727,12 +727,18 @@ define(function (require) {
                     delete $scope.r.dc_description_en;
                     if ($scope.r.hasOwnProperty("frdr_subject_fr")) {
                         $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.frdr_subject_fr));
+                    } else if ($scope.r.hasOwnProperty("frdr_category_fr")) {
+                        $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.frdr_category_fr));
                     }
                     delete $scope.r.frdr_subject_fr;
+                    delete $scope.r.frdr_category_fr;
                     if ($scope.r.hasOwnProperty("frdr_subject_en")) {
                         $scope.r.subject_en = highlighter.highlight(singleVal($scope.r.frdr_subject_en));
+                    } else if ($scope.r.hasOwnProperty("frdr_category_en")) {
+                        $scope.r.subject_en = highlighter.highlight(singleVal($scope.r.frdr_category_en));
                     }
                     delete $scope.r.frdr_subject_en;
+                    delete $scope.r.frdr_category_en;
                     $scope.r.detail = {};
                     delete $scope.r.frdr_geospatial;
                     if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
