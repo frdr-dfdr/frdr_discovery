@@ -121,7 +121,7 @@ define(function(require){
             'ANYALL_EXACT': 'cette expression exacte :',
             'BOOLEAN':'Booléen',
             'BRANDING_LABEL': branding_label_fr,
-            'Date (yyyy-mm-dd)': 'Date',
+            'Date (yyyy-mm-dd)': 'Date (aaaa-mm-jj)',
             'DISCOVERY_CREDIT': 'Découverte basé sur UBC Open Collections',
             'FIELD': 'Champ',
             'FIELD_ADD': 'Ajouter un champ',
