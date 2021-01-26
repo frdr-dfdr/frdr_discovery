@@ -1,3 +1,17 @@
+
+    <!--js-->
+    <script type="text/javascript" src="/discover/js/config-vars.js"></script>
+    <script type="text/javascript" src="/discover/js/build/vendor/requirejs/require.js"></script>
+    <script>
+        try {
+            var requireConfigObj = require(['/discover/js/build/require/require-config.js']);
+            require([requireConfigObj], function () {
+                require(["/discover/js/build/require/search.js"])
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    </script>
     <div class="container quicksearch" ng-controller="searchController">
         <form class="form" role="search" action="/discover/html/discovery-ui.html" method="GET">
         <div class="input-group">
