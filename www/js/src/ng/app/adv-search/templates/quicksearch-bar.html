@@ -1,7 +1,7 @@
     <div class="container quicksearch">
         <form class="form" role="search" action="/discover/html/discovery-ui.html" method="GET">
         <div class="input-group">
-            <input translate type="text" class="form-control search_bar" placeholder="ADVSEARCH_HEADER" name="q" id="srch-term" style="font-size: 17px;">
+            <input type="text" class="form-control search_bar" ng-attr-placeholder="{{ 'ADVSEARCH_HEADER' | translate }}" name="q" id="srch-term" style="font-size: 17px;">
             <input type="hidden" name="lang" id="srch-lang" value="en">
             <input id="srch-lang" type="hidden" name="lang" ng-model="language"/>
             <div class="input-group-btn">
