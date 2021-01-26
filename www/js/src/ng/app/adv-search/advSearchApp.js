@@ -709,6 +709,7 @@ define(function(require){
     .directive('quicksearchBar', function () {
         return {
             restrict: 'E',
+            controller: 'searchController',
             templateUrl: templatePath + 'quicksearch-bar.html?version=' + app_version,
         };
     })
