@@ -116,9 +116,9 @@ define(function(require){
             'ADVSEARCH_DOCS_URL': '/docs/fr/d%C3%A9poser_les_donn%C3%A9es/',
             'ALL_FIELDS': 'Toutes les champs',
             'ALL_SOURCES': 'Toutes les sources',
-            'ANYALL_ALL': 'tous ces mots:',
-            'ANYALL_ANY': 'un de ces mots:',
-            'ANYALL_EXACT': 'cette expression exacte:',
+            'ANYALL_ALL': 'tous ces mots :',
+            'ANYALL_ANY': 'un de ces mots :',
+            'ANYALL_EXACT': 'cette expression exacte :',
             'BOOLEAN':'Booléen',
             'BRANDING_LABEL': branding_label_fr,
             'Date (yyyy-mm-dd)': 'Date',
@@ -175,7 +175,7 @@ define(function(require){
             'REPOLIST_TOTAL_FOOTER': 'Nombre total de sources ',
             'REPOSITORY_NAME': 'Nom du dépôt de données',
             'SEARCH': 'Recherche',
-            'SOURCE': 'Source',
+            'SOURCE': 'Source ',
             'Title': 'Titre',
             'WEBSITE': 'Site Internet'
         });
@@ -545,7 +545,7 @@ define(function(require){
                         fields = v.fields.selected + ': ';
                     }
 
-                    if (v.anyAll.selected === 'this exact phrase:' || v.anyAll.selected === 'cette expression exacte:'){
+                    if (v.anyAll.selected === 'this exact phrase:' || v.anyAll.selected === 'cette expression exacte :'){
                         // escape lucene special characters - backslash seperate to prevent crazy loops.
                         if(keywords !== '*'){
                             v.keywords = v.keywords.replace('\\', '\\\\');
@@ -557,7 +557,7 @@ define(function(require){
                         keywords = '"'+ keywords + '"';
                         // console.log(keywords);
                     }
-                    else if (v.anyAll.selected === 'all of these words:' || v.anyAll.selected === 'tous ces mots:') {
+                    else if (v.anyAll.selected === 'all of these words:' || v.anyAll.selected === 'tous ces mots :') {
                         // get rid of silly quotes.. 
                         keywords = keywords.replace(/"/g,'');
                         keywords = keywords.split(' ').join(' AND ');
