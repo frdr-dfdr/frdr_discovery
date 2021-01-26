@@ -150,7 +150,7 @@ define(function(require){
             'MENU_ACCOUNT_LOGOUT_URL': '/repo/logout',
             'MENU_ACCOUNT_PROFILE': 'Profil',
             'MENU_FEEDBACK': 'Contactez-nous',
-            'MENU_FEEDBACK_URL': '/repo/contactus?lang=fr',
+            'MENU_FEEDBACK_URL': '/repo/contactus?locale=fr',
             'MENU_HELP': 'Aider',
             'MENU_HELP_ABOUT': 'À propos de ce site',
             'MENU_HELP_ABOUT_URL': '/docs/fr/a_propos/',
