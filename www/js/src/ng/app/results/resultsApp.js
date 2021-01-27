@@ -707,7 +707,6 @@ define(function (require) {
                     }();
 
                     // set required / special field vals
-                    console.log($scope.r);
                     $scope.r._id = $scope.r.item_url;
                     $scope.r.author = highlighter.highlight(singleVal($scope.r.dc_contributor_author));
                     delete $scope.r.dc_contributor_author;
