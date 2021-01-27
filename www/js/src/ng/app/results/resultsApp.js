@@ -707,6 +707,7 @@ define(function (require) {
                     }();
 
                     // set required / special field vals
+                    console.log($scope.r);
                     $scope.r._id = $scope.r.item_url;
                     $scope.r.author = highlighter.highlight(singleVal($scope.r.dc_contributor_author));
                     delete $scope.r.dc_contributor_author;
@@ -742,7 +743,6 @@ define(function (require) {
                     delete $scope.r.frdr_subject_en;
                     delete $scope.r.frdr_category_en;
                     $scope.r.detail = {};
-                    delete $scope.r.frdr_geospatial;
                     if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
                         var jk = JSON.stringify($scope.r.frdr_keyword_en);
                         $scope.r.keyword_en = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}"]/g,"")));
@@ -766,6 +766,32 @@ define(function (require) {
                         $scope.r.author_affiliation = "";
                     }
                     delete $scope.r.datacite_creatorAffiliation;
+                    if ($scope.r.hasOwnProperty("datacite_geoLocationBox")) {
+                        geolocation_box = JSON.stringify($scope.r.datacite_geoLocationBox);
+                        geolocation_box = geolocation_spacing(geolocation_box);
+                        $scope.r.geolocation_box = highlighter.highlight(geolocation_box.replace(/[\[\]\{\}"]/g,""));
+                    }
+                    delete $scope.r.datacite_geoLocationBox;
+                    if ($scope.r.hasOwnProperty("datacite_geoLocationPlace")) {
+                        // geolocation place returns a array with 1 object in it
+                        geolocation_place = $scope.r.datacite_geoLocationPlace.pop()
+                        // filters out keys with no value
+                        geolocation_place = Object.fromEntries(Object.entries(geolocation_place).filter(([key, val]) => val != ""))
+                        geolocation_place = JSON.stringify(geolocation_place);
+                        geolocation_place = geolocation_spacing(geolocation_place);
+                        $scope.r.geolocation_place = highlighter.highlight(geolocation_place.replace(/[\[\]\{\}"]/g,""));
+                    } 
+                    delete $scope.r.datacite_geoLocationPlace;
+                    if ($scope.r.hasOwnProperty("datacite_geoLocationPoint")) {
+                        geolocation_point = JSON.stringify($scope.r.datacite_geoLocationPoint);
+                        geolocation_point = geolocation_spacing(geolocation_point);
+                        $scope.r.geolocation_point = highlighter.highlight(geolocation_point.replace(/[\[\]\{\}"]/g,""));
+                    }
+                    delete $scope.r.datacite_geoLocationPoint;
+                    if ($scope.r.hasOwnProperty("datacite_dateCollected")) {
+                        $scope.r.date_collected = highlighter.highlight($scope.r.datacite_dateCollected);
+                    }
+                    delete $scope.r.datacite_dateCollected;
                     $scope.r.publisher = $scope.r.dc_publisher;
                     delete $scope.r.dc_publisher;
                     $scope.r.handle = $scope.r.item_url;
@@ -875,6 +901,13 @@ define(function (require) {
                         } else {
                             return " ";
                         }
+                    }
+
+                    // add some spacing around geolocation objects
+                    function geolocation_spacing(geolocation_string) {
+                        geolocation_string = geolocation_string.replace(/:/g,": ");
+                        geolocation_string = geolocation_string.replace(/,/g,", ");
+                        return geolocation_string;
                     }
 
                     function checkEmbargo(input) {
