@@ -71,12 +71,12 @@ define(function(require){
             };
 
             function replaceFriendlyTerms(s) {
-                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1dc_title_en: ')
-                    .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1dc_contributor_author: ')
-                    .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1dc_date: ')
-                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1dc_subject_en: ')
-                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_keyword_en: ')
-                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_en: ');
+                 return s.replace(new RegExp('(^|[\\s(]+)(title:[\\s]*)([^\\s]*)', 'img'), '$1(dc_title_en: $3 OR dc_title_fr: $3) ')
+                    .replace(new RegExp('(^|[\\s(]+)(author:[\\s]*)', 'img'), '$1dc_contributor_author: ')
+                    .replace(new RegExp('(^|[\\s(]+)(date:[\\s]*)', 'img'), '$1dc_date: ')
+                    .replace(new RegExp('(^|[\\s(]+)(subject:[\\s]*)([^\\s]*)', 'img'), '$1(dc_subject_en: $3 OR dc_subject_fr: $3) ')
+                    .replace(new RegExp('(^|[\\s(]+)(subject:[\\s]*)([^\\s]*)', 'img'), '$1(dc_keyword_en: $3 OR dc_keyword_fr: $3) ')
+                    .replace(new RegExp('(^|[\\s(]+)(subject:[\\s]*)([^\\s]*)', 'img'), '$1(dc_description_en: $3 OR dc_description_fr: $3) ');
             }
 
             function globusEscapeURI(s) {
