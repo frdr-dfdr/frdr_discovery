@@ -55,6 +55,7 @@ define(function(require){
             'FIELD': 'Field',
             'FIELD_ADD': 'Add a field',
             'FIELD_REMOVE': 'Remove field',
+            'FOOTER_AND': '&',
             'FOOTER_CARL_ABRC': 'Canadian Association of Research Libraries',
             'FOOTER_CARL_ABRC_URL': 'http://www.carl-abrc.ca/',
             'FOOTER_COMPUTE_CANADA': 'Compute Canada',
@@ -76,8 +77,8 @@ define(function(require){
             'MENU_ACCOUNT_LOGOUT': 'Log Out',
             'MENU_ACCOUNT_LOGOUT_URL': '/repo/logout',
             'MENU_ACCOUNT_PROFILE': 'Profile',
-            'MENU_FEEDBACK': 'Feedback',
-            'MENU_FEEDBACK_URL': 'mailto:support@frdr-dfdr.ca',
+            'MENU_FEEDBACK': 'Contact Us',
+            'MENU_FEEDBACK_URL': '/repo/contactus',
             'MENU_HELP': 'Help',
             'MENU_HELP_ABOUT': 'About',
             'MENU_HELP_ABOUT_URL': '/docs/en/about/',  
@@ -115,16 +116,17 @@ define(function(require){
             'ADVSEARCH_DOCS_URL': '/docs/fr/d%C3%A9poser_les_donn%C3%A9es/',
             'ALL_FIELDS': 'Toutes les champs',
             'ALL_SOURCES': 'Toutes les sources',
-            'ANYALL_ALL': 'tous ces mots:',
-            'ANYALL_ANY': 'un de ces mots:',
-            'ANYALL_EXACT': 'cette expression exacte:',
+            'ANYALL_ALL': 'tous ces mots :',
+            'ANYALL_ANY': 'un de ces mots :',
+            'ANYALL_EXACT': 'cette expression exacte :',
             'BOOLEAN':'Booléen',
             'BRANDING_LABEL': branding_label_fr,
-            'Date (yyyy-mm-dd)': 'Date',
+            'Date (yyyy-mm-dd)': 'Date (aaaa-mm-jj)',
             'DISCOVERY_CREDIT': 'Découverte basé sur UBC Open Collections',
             'FIELD': 'Champ',
             'FIELD_ADD': 'Ajouter un champ',
             'FIELD_REMOVE': 'Supprimer ce champ',
+            'FOOTER_AND': 'et',
             'FOOTER_CARL_ABRC': 'Association des bibliothèques de recherche du Canada',
             'FOOTER_CARL_ABRC_URL': 'http://www.carl-abrc.ca/fr/',
             'FOOTER_COMPUTE_CANADA': 'Calcul Canada',
@@ -133,8 +135,8 @@ define(function(require){
             'FOOTER_PORTAGE_URL': 'https://www.portagenetwork.ca/fr/',
             'IN':'dans',
             'ITEM_COUNT': 'Nombre d\'éléments',
-            'KEYWORDS': 'Mots clés',
-            'Keyword': 'Mots clés',
+            'KEYWORDS': 'Mots-clés',
+            'Keyword': 'Mots-clés',
             'LIMIT_BY':'Limite par',
             'MAINPAGE_HEADER': 'Découverte de la recherche',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
@@ -147,8 +149,8 @@ define(function(require){
             'MENU_ACCOUNT_LOGOUT': 'Se déconnecter',
             'MENU_ACCOUNT_LOGOUT_URL': '/repo/logout',
             'MENU_ACCOUNT_PROFILE': 'Profil',
-            'MENU_FEEDBACK': 'Commentaires',
-            'MENU_FEEDBACK_URL': 'mailto:support@frdr-dfdr.ca',
+            'MENU_FEEDBACK': 'Contactez-nous',
+            'MENU_FEEDBACK_URL': '/repo/contactus?locale=fr',
             'MENU_HELP': 'Aider',
             'MENU_HELP_ABOUT': 'À propos de ce site',
             'MENU_HELP_ABOUT_URL': '/docs/fr/a_propos/',
@@ -166,14 +168,14 @@ define(function(require){
             'PRIVACY_POLICY': 'Politique de confidentialité',
             'PRIVACY_POLICY_URL': '/docs/fr/conditions_d%27utilisation/',
             'REPOLIST_HEADER':'Dépôts de données de recherche au Canada',
-            'REPOLIST_BLURB_1': 'Voici la liste des référentiels de données de recherche actuellement inclus dans les résultats de la découverte.  Veuillez',
+            'REPOLIST_BLURB_1': 'Voici la liste des Dépôts de données de recherche actuellement inclus dans les résultats de la découverte.  Veuillez',
             'REPOLIST_BLURB_2': 'contactez le support',
             'REPOLIST_BLURB_3': 'pour ajouter un référentiel de données.',
             'REPOLIST_BLURB_URL': '/docs/fr/contactez_nous/',
-            'REPOLIST_TOTAL_FOOTER': 'Nombre total de sources',
+            'REPOLIST_TOTAL_FOOTER': 'Nombre total de sources ',
             'REPOSITORY_NAME': 'Nom du dépôt de données',
             'SEARCH': 'Recherche',
-            'SOURCE': 'Source',
+            'SOURCE': 'Source ',
             'Title': 'Titre',
             'WEBSITE': 'Site Internet'
         });
@@ -543,7 +545,7 @@ define(function(require){
                         fields = v.fields.selected + ': ';
                     }
 
-                    if (v.anyAll.selected === 'this exact phrase:' || v.anyAll.selected === 'cette expression exacte:'){
+                    if (v.anyAll.selected === 'this exact phrase:' || v.anyAll.selected === 'cette expression exacte :'){
                         // escape lucene special characters - backslash seperate to prevent crazy loops.
                         if(keywords !== '*'){
                             v.keywords = v.keywords.replace('\\', '\\\\');
@@ -555,7 +557,7 @@ define(function(require){
                         keywords = '"'+ keywords + '"';
                         // console.log(keywords);
                     }
-                    else if (v.anyAll.selected === 'all of these words:' || v.anyAll.selected === 'tous ces mots:') {
+                    else if (v.anyAll.selected === 'all of these words:' || v.anyAll.selected === 'tous ces mots :') {
                         // get rid of silly quotes.. 
                         keywords = keywords.replace(/"/g,'');
                         keywords = keywords.split(' ').join(' AND ');
@@ -709,6 +711,7 @@ define(function(require){
     .directive('quicksearchBar', function () {
         return {
             restrict: 'E',
+            controller: 'searchController',
             templateUrl: templatePath + 'quicksearch-bar.html?version=' + app_version,
         };
     })
