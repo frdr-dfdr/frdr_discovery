@@ -75,7 +75,7 @@ define(function(require){
                     .replace(new RegExp('(^|[\\s(]+)(author:[\\s]*)', 'img'), '$1dc_contributor_author: ')
                     .replace(new RegExp('(^|[\\s(]+)(date:[\\s]*)', 'img'), '$1dc_date: ')
                     .replace(new RegExp('(^|[\\s(]+)(subject:[\\s]*)([^\\s]*)', 'img'), '$1(dc_subject_en: $3 OR dc_subject_fr: $3) ')
-                    .replace(new RegExp('(^|[\\s(]+)(keyword:[\\s]*)([^\\s]*)', 'img'), '$1(dc_keyword_en: $3 OR dc_keyword_fr: $3) ')
+                    .replace(new RegExp('(^|[\\s(]+)(keyword:[\\s]*)([^\\s]*)', 'img'), '$1(frdr_keyword_en: $3 OR frdr_keyword_fr: $3) ')
                     .replace(new RegExp('(^|[\\s(]+)(description:[\\s]*)([^\\s]*)', 'img'), '$1(dc_description_en: $3 OR dc_description_fr: $3) ');
             }
 
