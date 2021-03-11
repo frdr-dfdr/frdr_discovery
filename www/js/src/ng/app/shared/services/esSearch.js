@@ -113,6 +113,9 @@ define(function(require){
                 }
 
                 postObject.q = globusEscapeQuerystring(replaceFriendlyTerms(searchString.vars.query));
+                if (postObject.q == "*") {
+                        postObject.advanced = false;
+                }
 
                 // The date histogram will need the start and end dates
                 var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
