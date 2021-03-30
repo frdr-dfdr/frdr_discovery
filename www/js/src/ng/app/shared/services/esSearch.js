@@ -71,12 +71,12 @@ define(function(require){
             };
 
             function replaceFriendlyTerms(s) {
-                 return s.replace(new RegExp('(^|[\\s(]+)(title:[\\s]*)([^\\s]*)', 'img'), '$1(dc_title_en: $3 OR dc_title_fr: $3) ')
-                    .replace(new RegExp('(^|[\\s(]+)(author:[\\s]*)', 'img'), '$1dc_contributor_author: ')
-                    .replace(new RegExp('(^|[\\s(]+)(date:[\\s]*)', 'img'), '$1dc_date: ')
-                    .replace(new RegExp('(^|[\\s(]+)(subject:[\\s]*)([^\\s]*)', 'img'), '$1(dc_subject_en: $3 OR dc_subject_fr: $3) ')
-                    .replace(new RegExp('(^|[\\s(]+)(keyword:[\\s]*)([^\\s]*)', 'img'), '$1(frdr_keyword_en: $3 OR frdr_keyword_fr: $3) ')
-                    .replace(new RegExp('(^|[\\s(]+)(description:[\\s]*)([^\\s]*)', 'img'), '$1(dc_description_en: $3 OR dc_description_fr: $3) ');
+                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1dc_title_multi: ')
+                    .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1dc_contributor_author: ')
+                    .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1dc_date: ')
+                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1frdr_subject_multi: ')
+                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_keyword_multi: ')
+                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_multi: ');
             }
 
             function globusEscapeURI(s) {
@@ -140,9 +140,9 @@ define(function(require){
                             } else if (filterField.toLowerCase() == "collection") {
                                 filterField = 'frdr_origin_id';
                             } else if (filterField.toLowerCase() == "subject" ) {
-                                filterField = 'dc_subject_en';
+                                filterField = 'frdr_subject_multi';
                             } else if (filterField.toLowerCase() == "keyword" || filterField.toLowerCase() == "keywords") {
-                                filterField = 'frdr_keyword_en';
+                                filterField = 'frdr_keyword_multi';
                             }
 
                             filterField = globusEscapeURI(filterField);
@@ -188,9 +188,9 @@ define(function(require){
                         } else if (facetName.toLowerCase() == "collection") {
                             facetName = 'frdr_origin_id';
                         } else if (facetName.toLowerCase() == "subject") {
-                            facetName = 'dc_subject_en';
+                            facetName = 'frdr_subject_multi';
                         } else if (facetName.toLowerCase() == "keyword" || facetName.toLowerCase() == "keywords") {
-                            facetName = 'frdr_keyword_en';
+                            facetName = 'frdr_keyword_multi';
                         }
                         facetObject["field_name"] = globusEscapeURI(facetName);
                         if (input.hasOwnProperty("body") && input["body"].hasOwnProperty("aggSize") && facetName != "dc_date") {
@@ -208,10 +208,13 @@ define(function(require){
                 function addBoost(field, factor) {
                     postObject.boosts.push({"@datatype": "GBoost","@version": "2017-09-01","field_name": globusEscapeURI(field),"factor": factor});
                 }
-                addBoost("dc_title_en",8);
+                addBoost("dc_title_multi",8);
+                addBoost("dc_title_en",6);
                 addBoost("dc_title_fr",6);
-                addBoost("dc_subject_en",4);
-                addBoost("dc_subject_fr",3);
+                addBoost("frdr_subject_multi",4);
+                addBoost("frdr_subject_en",3);
+                addBoost("frdr_subject_fr",3);
+                addBoost("dc_description_multi",3);
                 addBoost("dc_description_en",2);
                 addBoost("dc_description_fr",2);
 
@@ -228,7 +231,7 @@ define(function(require){
                     } else if (sortFieldName.toLowerCase() == "sortdate") {
                         sortFieldName = 'dc_date';
                     } else if (sortFieldName.toLowerCase() == "title") {
-                        sortFieldName = 'dc_title_en';
+                        sortFieldName = 'dc_title_multi';
                     }
                     sortObject["field_name"] = globusEscapeURI(sortFieldName);
                     postObject.sort.push(sortObject);
@@ -304,7 +307,7 @@ define(function(require){
                                 facetName = "author";
                             } else if (facetName == 'datacite_resourceTypeGeneral') {
                                 facetName = "type";
-                            } else if (facetName == 'dc_subject_en') {
+                            } else if (facetName == 'frdr_subject_multi') {
                                 facetName = "subject";
                             } else if (facetName == 'frdr_origin_id') {
                                 facetName = "Collection";
