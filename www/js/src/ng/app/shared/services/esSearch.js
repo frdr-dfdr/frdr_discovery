@@ -71,12 +71,12 @@ define(function(require){
             };
 
             function replaceFriendlyTerms(s) {
-                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1dc_title_multi.\\\\*: ')
+                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1dc_title_multi.\\*: ')
                     .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1dc_contributor_author: ')
                     .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1dc_date: ')
-                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1frdr_subject_multi.\\\\*: ')
-                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_keyword_multi.\\\\*: ')
-                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_multi.\\\\*: ');
+                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1frdr_subject_multi.\\*: ')
+                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_keyword_multi.\\*: ')
+                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_multi.\\*: ');
             }
 
             function globusEscapeURI(s) {
