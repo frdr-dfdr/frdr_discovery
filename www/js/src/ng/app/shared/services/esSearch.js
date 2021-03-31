@@ -71,16 +71,19 @@ define(function(require){
             };
 
             function replaceFriendlyTerms(s) {
-                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1dc_title_multi: ')
+                 return s.replace(new RegExp('(^|[\\s(]+)(title[\\s]*:[\\s]*)', 'img'), '$1dc_title_multi.\\\\*: ')
                     .replace(new RegExp('(^|[\\s(]+)(author[\\s]*:[\\s]*)', 'img'), '$1dc_contributor_author: ')
                     .replace(new RegExp('(^|[\\s(]+)(date[\\s]*:[\\s]*)', 'img'), '$1dc_date: ')
-                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1frdr_subject_multi: ')
-                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_keyword_multi: ')
-                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_multi: ');
+                    .replace(new RegExp('(^|[\\s(]+)(subject[\\s]*:[\\s]*)', 'img'), '$1frdr_subject_multi.\\\\*: ')
+                    .replace(new RegExp('(^|[\\s(]+)(keyword[\\s]*:[\\s]*)', 'img'), '$1frdr_keyword_multi.\\\\*: ')
+                    .replace(new RegExp('(^|[\\s(]+)(description[\\s]*:[\\s]*)', 'img'), '$1dc_description_multi.\\\\*: ');
             }
 
             function globusEscapeURI(s) {
-                return s.replace(/([.])/mg, "\\$1");
+                return s;
+                // We used to pass full URIs as field names to Globus which required escaping periods
+                // Not sure where this may still be needed?
+                //return s.replace(/([.])/mg, "\\$1");
             }
 
             function globusUnEscapeURI(s) {
@@ -112,10 +115,12 @@ define(function(require){
                     postObject.offset = parseInt(input.from, 10);
                 }
 
-                postObject.q = globusEscapeQuerystring(replaceFriendlyTerms(searchString.vars.query));
                 if (postObject.q == "*") {
                         postObject.advanced = false;
+                } else {
+                    postObject.q = replaceFriendlyTerms(globusEscapeQuerystring(searchString.vars.query));
                 }
+
 
                 // The date histogram will need the start and end dates
                 var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
