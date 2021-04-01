@@ -143,6 +143,9 @@ define(function (require) {
                 return input[0];
             }
         };
+
+        return utility;
+    });
         
     // not really a services but these directive live here so they can be loaded in all dl angular apps
     services.directive('linkOut', function(){
