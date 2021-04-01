@@ -143,46 +143,10 @@ define(function (require) {
                 return input[0];
             }
         };
-        
-        // GOOGLE ANALYTICS EVENT UTILITY
-        utility.gaEvent = function(category, action, label){
 
-            try {
-                _gaTracker('send', {
-                  hitType: 'event',
-                  eventCategory: category,
-                  eventAction: action,
-                  eventLabel: label
-                });
-            } catch(e) {
-                if (website_env != 'prod') {
-                    console.log('GA Event: ', category, action, label);
-                    // console.error('error sending GA event:', category, action, label, e);
-                } else {
-                    console.error(e);
-                }
-            }
-        };
-
-        utility.gaPageview = function(loc) {
-            
-            try {
-                _gaTracker('set', 'page', loc);
-                _gaTracker('send', 'pageview');
-            } catch(e) {
-                if (website_env != 'prod') {
-                    console.log('GA pageview', loc);
-                    // console.error('error sending GA event:', category, action, label, e);
-                } else {
-                    console.error(e);
-                }
-            }
-        };
-        
         return utility;
     });
-
-
+        
     // not really a services but these directive live here so they can be loaded in all dl angular apps
     services.directive('linkOut', function(){
         return {
