@@ -147,6 +147,17 @@ define(function (require) {
         return utility;
     });
         
+        // GOOGLE ANALYTICS EVENT UTILITY - disabled for GDPR rules.
+        utility.gaEvent = function(category, action, label){
+        };
+
+        utility.gaPageview = function(loc) {
+        };
+        
+        return utility;
+    });
+
+
     // not really a services but these directive live here so they can be loaded in all dl angular apps
     services.directive('linkOut', function(){
         return {
