@@ -144,9 +144,6 @@ define(function (require) {
             }
         };
 
-        return utility;
-    });
-        
         // GOOGLE ANALYTICS EVENT UTILITY - disabled for GDPR rules.
         utility.gaEvent = function(category, action, label){
         };
