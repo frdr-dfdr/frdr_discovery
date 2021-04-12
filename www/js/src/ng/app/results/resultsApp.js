@@ -843,7 +843,8 @@ define(function (require) {
                     var fieldsToHide = { 
                         "_id":1,"frdr_origin_icon":1,"frdr_origin_id":1,"saved":1,"detail":1,"repo_url":1,"datacite_resourceTypeGeneral":1,
                         "icon_url":1,"frdr_origin_id": 1,"handle":1,"title":1,"description":1, "source_url": 1,
-                        "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1
+                        "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1,
+                        "frdr_subject_multi": 1, "frdr_keyword_multi": 1, "dc_description_multi": 1, "dc_title_multi": 1
                     }
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
                     function parseDetails() {
