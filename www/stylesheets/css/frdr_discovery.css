@@ -20,3 +20,7 @@ div#navbar-collapse-1 {
     border:none;
     border-radius: 5px 5px 5px 5px;
 }
+div#filler{
+    height: 15px;
+    background-color #FFFFFF;
+}
