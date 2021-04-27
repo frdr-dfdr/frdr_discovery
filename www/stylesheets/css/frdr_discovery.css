@@ -22,6 +22,11 @@ div#navbar-collapse-1 {
     border-radius: 5px 5px 5px 5px;
 }
 
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    color: #FFFFFF;
+    background-color: #2191C5;
+}
+
 /* colors for mobile menu */
 @media only screen and (max-width : 931px) {
   #navbar-collapse-1 > ul { margin-top: 0px; margin-bottom: 0px;}
