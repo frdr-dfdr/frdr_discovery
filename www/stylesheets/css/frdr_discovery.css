@@ -34,7 +34,7 @@ div#navbar-collapse-1 {
   #navbar-collapse-1 > ul >li > a:hover, #navbar-collapse-1 > ul >li > a:focus { border-radius: 0px; margin:0px; color:#424242; background-color: #FFFFFF;}
   #navbar-collapse-1 > ul >li > a:active {border-radius: 0px; margin:0px; color:#424242; background-color: #F0F0F0;}
   #navbar-collapse-1 > ul >li > ul { padding: 0px; }
-  #navbar-collapse-1 > ul >li > ul > li > a:hover { border-radius: 0px; margin:0px; color: #FFFFF !important; background-color: #2191C5;}
+  #navbar-collapse-1 > ul >li > ul > li > a:hover { border-radius: 0px; margin:0px; color: #FFFFFF !important; background-color: #2191C5;}
   .navbar-collapse li a { color:white; background-color: #424242;}
   .navbar-collapse li a:hover { background-color: white; }
   .navbar-nav > li > a:hover { background-color: white; }
