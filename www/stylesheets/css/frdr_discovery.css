@@ -1,4 +1,22 @@
-.navbar {
-        border-bottom: 1px solid white;
-        padding: 7px 0px;
+.navbar-inverse.navbar-fixed-top {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.navbar-brand{
+    margin-left: 0px;
+}
+
+div#navbar-collapse-1 {
+    margin-right: 15px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,.navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:active {
+    color: #000000;
+    background: #FFFFFF;
+    font-weight: 300;
+    line-height: 23px;
+    font-size: 15px;
+    border:none;
+    border-radius: 5px 5px 5px 5px;
 }
