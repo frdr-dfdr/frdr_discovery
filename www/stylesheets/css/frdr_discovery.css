@@ -24,10 +24,18 @@ div#navbar-collapse-1 {
 
 /* colors for mobile menu */
 @media only screen and (max-width : 931px) {
+  .navbar-collapse li a { color:white ; background-color: black; }
+  .navbar-collapse li a:hover { background-color: white; }
+  .navbar-nav > li > a:hover { background-color: white; }
+  .navbar-inverse .navbar-nav > li > a:hover,
+  .navbar-inverse .navbar-nav > li > a:active {  color: #2191C5 !important; background-color: white;}
   #navbar-collapse-1 > ul { margin-top: 0px; margin-bottom: 0px;}
   #navbar-collapse-1 > ul >li > a { border-radius: 0px; margin:0px; color:#424242;}
   #navbar-collapse-1 > ul >li > ul { padding: 0px; }
   #navbar-collapse-1 > ul >li > ul > li > a:hover { border-radius: 0px; margin:0px; color:#2191C5 !important;}
+  .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus { background-color: white; }
+  .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus { background-color: white; }
+  .navbar-inverse .navbar-nav > .dropdown > a .caret { border-top: 4px solid #424242; }
   #sitelogo {height: 110px; margin-right:-10px;}
   #jumbo-mid-logo {height: 110px;}
   #jumbo-mid-tagline { font-size: 24px; margin-top: 150px; margin-left:-10px;}
