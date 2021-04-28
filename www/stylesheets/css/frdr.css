@@ -132,3 +132,6 @@
   #jumbo-mid-tagline { font-size: 22px; margin-top: 150px; margin-left:-20px;}
   .frdr-jumbo-mid { min-height: 240px; }
 }
+a#ndrio_logo {
+    padding-left: 9px;
+}
