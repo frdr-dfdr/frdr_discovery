@@ -24,10 +24,11 @@ define(function(require) {
 
         $translateProvider.translations('en', {
             'AFFILIATION': 'Affiliation',
+            'AUTHOR(S)': 'Author(s)',
+            'AUTHOR': 'Author',
             'CAMPUS': 'Campus',
             'CLEAR': 'Clear',
             'COLLECTION': 'Source',
-            'AUTHOR(S)': 'Author(s)',
             'DATE RANGE': 'Date range',
             'DEGREE': 'Degree',
             'DRILL_DOWN': 'Drill-down',
@@ -44,15 +45,17 @@ define(function(require) {
             'REPOLIST_TITLE': 'List of sources',
             'SCHOLARLY LEVEL': 'Scholarly level',
             'SUBJECT': 'Subject',
+            'TO': 'to',
             'TYPE': 'Type',
         });
              
         $translateProvider.translations('fr', {
             'AFFILIATION': 'Affiliation',
+            'AUTHOR(S)': 'Auteur(s)',
+            'AUTHOR': 'Auteur',
             'CAMPUS': 'Campus',
             'CLEAR': 'Supprimer',
             'COLLECTION': 'Source',
-            'AUTHOR(S)': 'Auteur(s)',
             'DATE RANGE': 'Intervalle de dates',
             'DEGREE': 'Degré',
             'DRILL_DOWN': 'Percer',
@@ -69,6 +72,7 @@ define(function(require) {
             'REPOLIST_TITLE': 'Liste des sources',
             'SCHOLARLY LEVEL': 'Niveau scolaire',
             'SUBJECT': 'Sujet',
+            'TO': 'à',
             'TYPE': 'Type',
         });
         $translateProvider.useSanitizeValueStrategy('escape');            
