@@ -120,7 +120,7 @@ define(function(require){
             'ADVSEARCH_DOCS_TEXT1': 'Pour obtenir de l\'aide sur les fonctions de recherche complètes et la syntaxe, veuillez',
             'ADVSEARCH_DOCS_TEXT2': 'lire la documentation',
             'ADVSEARCH_DOCS_URL': '/docs/fr/d%C3%A9poser_les_donn%C3%A9es/',
-            'ALL_FIELDS': 'Toutes les champs',
+            'ALL_FIELDS': 'Tous les champs',
             'ALL_SOURCES': 'Toutes les sources',
             'ANYALL_ALL': 'tous ces mots :',
             'ANYALL_ANY': 'un de ces mots :',
