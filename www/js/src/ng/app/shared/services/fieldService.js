@@ -10,7 +10,7 @@ define(function(require){
         fieldService.allFieldsArr = [];
 
         // Config values for field groups
-        config = {
+        var config = {
             facetFields : [
                 'sortDate',  // needs special treatment: date hist object
                 // 'type',

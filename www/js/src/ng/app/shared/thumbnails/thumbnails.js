@@ -31,20 +31,6 @@ define(function (require) {
             if($scope.itemId) {
                 collectionData.getTitle($scope.colNick).then(function(response){
                     var nick = (response && response.nick) ? response.nick : $scope.colNick;
-
-                    if($scope.repo == 'dsp') {
-                        if($scope.colNick != nick) {
-                            $scope.itemLink = 'cIRcle/collections/' + nick + '/' +$scope.colNick + '/items/' + $scope.itemId;
-                        } else {
-                            $scope.itemLink = 'cIRcle/collections/' + nick + '/items/' + $scope.itemId;
-                        }
-                    }
-                    else if($scope.colNick != nick) {
-                        $scope.itemLink = 'collections/' + nick + '/' +$scope.colNick + '/items/' + $scope.itemId;
-                    }
-                    else {
-                        $scope.itemLink = 'collections/' + nick + '/items/' + $scope.itemId;
-                    }
                     // FRDR
                     $scope.itemLink = $scope.imgLink;
 

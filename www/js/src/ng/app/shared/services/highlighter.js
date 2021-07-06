@@ -32,7 +32,7 @@ define(function(require){
                 }
 
                 // remove problematic punctuation
-                queryLeft = queryLeft.replace(/[\.\[\]\(\)\+\*\[\]\{\}\?\|\&]/gi, '');
+                queryLeft = queryLeft.replace(/[\.\[\]\(\)\+\*\{\}\?\|\&]/gi, '');
 
                 // add terms broken by booleans and spaces
                 var separators = ['\\sAND\\s+', '\\sOR\\s+', '\\sNOT\\s+', '\\s+'];

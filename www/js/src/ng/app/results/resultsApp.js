@@ -780,14 +780,14 @@ define(function (require) {
                     }
                     delete $scope.r.datacite_creatorAffiliation;
                     if ($scope.r.hasOwnProperty("datacite_geoLocationBox")) {
-                        geolocation_box = JSON.stringify($scope.r.datacite_geoLocationBox);
+                        var geolocation_box = JSON.stringify($scope.r.datacite_geoLocationBox);
                         geolocation_box = geolocation_spacing(geolocation_box);
                         $scope.r.geolocation_box = highlighter.highlight(geolocation_box.replace(/[\[\]\{\}"]/g,""));
                     }
                     delete $scope.r.datacite_geoLocationBox;
                     if ($scope.r.hasOwnProperty("datacite_geoLocationPlace")) {
                         // geolocation place returns a array with 1 object in it
-                        geolocation_place = $scope.r.datacite_geoLocationPlace.pop()
+                        var geolocation_place = $scope.r.datacite_geoLocationPlace.pop()
                         // filters out keys with no value
                         geolocation_place = Object.fromEntries(Object.entries(geolocation_place).filter(([key, val]) => val != ""))
                         geolocation_place = JSON.stringify(geolocation_place);
@@ -796,7 +796,7 @@ define(function (require) {
                     } 
                     delete $scope.r.datacite_geoLocationPlace;
                     if ($scope.r.hasOwnProperty("datacite_geoLocationPoint")) {
-                        geolocation_point = JSON.stringify($scope.r.datacite_geoLocationPoint);
+                        var geolocation_point = JSON.stringify($scope.r.datacite_geoLocationPoint);
                         geolocation_point = geolocation_spacing(geolocation_point);
                         $scope.r.geolocation_point = highlighter.highlight(geolocation_point.replace(/[\[\]\{\}"]/g,""));
                     }
@@ -855,7 +855,7 @@ define(function (require) {
                     // we are hiding specific fields so that all unknown fields will be exposed by default
                     var detailsParsed = false;
                     var fieldsToHide = { 
-                        "_id":1,"frdr_origin_icon":1,"frdr_origin_id":1,"saved":1,"detail":1,"repo_url":1,"datacite_resourceTypeGeneral":1,
+                        "_id":1,"frdr_origin_icon":1,"saved":1,"detail":1,"repo_url":1,"datacite_resourceTypeGeneral":1,
                         "icon_url":1,"frdr_origin_id": 1,"handle":1,"title":1,"description":1, "source_url": 1,
                         "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1,
                         "frdr_subject_multi": 1, "frdr_keyword_multi": 1, "dc_description_multi": 1, "dc_title_multi": 1
@@ -963,50 +963,6 @@ define(function (require) {
                             $scope.r.compound = false;
                             return;
                         //}
-
-                        var dashedId = $scope.r._id.replace(/\./g, "-");
-                        var newHandle = $scope.r.repo + "." + $scope.r.nick + "." + dashedId;
-                        // otherwise do in text search:
-                        // var iiifUrl = iiif_api +'/'+ $scope.r.repo + "." + $scope.r.nick + "." + dashedId + '&search=' + encodeURIComponent(query) + '&json';
-                        var iiifUrl = iiif_api + '/viewer/excerpt.php?handle=' + newHandle + '&search=' + encodeURIComponent(query) + '&json';
-                        $http.get(iiifUrl).then(function (response) {
-                            if (website_env !== 'prod') {
-                                console.log('inner response', response.data);
-                            }
-
-                            if (!response.data) {
-                                $scope.innerContent = {
-                                    error: true
-                                }
-                            } else if (response.data.error) {
-                                $scope.innerContent = {
-                                    error: true,
-                                    pData: response.data
-                                };
-                            } else {
-                                var pages = [];
-                                for (var i in response.data) {
-                                    var p = {page: parseInt(i) + 1, index: i};
-                                    pages.push(p);
-                                    response.data[i].pI = i;
-                                }
-                                $scope.innerContent = {
-                                    error: false,
-                                    query: query,
-                                    handle: newHandle,
-                                    pages: pages,
-                                    pData: response.data
-                                };
-
-                            }
-                            // console.log($scope.innerContent);
-                        }, function (error) {
-                            // console.log('inner data error', error);
-                            $scope.innerContent = {
-                                error: true
-                            }
-                        });
-
                     }
                 }
 

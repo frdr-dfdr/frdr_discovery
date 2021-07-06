@@ -91,7 +91,7 @@ define(function(require){
             }
 
             function globusEscapeQuerystring(s) {
-                return s.replace(/([.\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2').replace(/'/,"%27");
+                return s.replace(/([.\\\/])/mg, "\\$1").replace(/(https*)(:)/mg,'$1\\$2').replace(/'/g,"%27");
             }
 
             function doSearch(){
@@ -295,8 +295,7 @@ define(function(require){
                         var resultSet = [];
                         for (var item in response.data["gmeta"]) {
                             if (response.data["gmeta"][item].hasOwnProperty("content")) {
-                                thisResult = refit_keys(response.data["gmeta"][item]["content"][0]);
-                                resultSet.push(thisResult);
+                                resultSet.push(refit_keys(response.data["gmeta"][item]["content"][0]));
                             }
                         }
 

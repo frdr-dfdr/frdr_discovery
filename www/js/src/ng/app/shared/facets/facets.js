@@ -573,7 +573,7 @@ define(function(require) {
                         var fArray = (facetService.showOnly) ? facetService.showOnly : fieldService.facetFields;
                         var obj = {};
 
-                        setFacetDisplay = function(facetName) {
+                        function setFacetDisplay(facetName) {
                             $translate( obj[facetName].translateKey.toUpperCase() ).then(function(t) { obj[facetName].display = t; })
                         };
 
