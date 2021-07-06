@@ -1,6 +1,6 @@
         <article class="dl-spaced">
             <h3><span translate>REPOLIST_HEADER</span></h3>
-            <p><span translate>REPOLIST_BLURB_1</span> <a href="{{ 'REPOLIST_BLURB_URL' | translate }}" link-out><span translate>REPOLIST_BLURB_2</span></a> <span translate>REPOLIST_BLURB_3</span></p>
+            <p><span translate>REPOLIST_BLURB_1</span> <a ng-href="{{ 'REPOLIST_BLURB_URL' | translate }}" link-out><span translate>REPOLIST_BLURB_2</span></a> <span translate>REPOLIST_BLURB_3</span></p>
             <div class="row-fluid dl-advs-cont">
                 
                 <table class="table">
@@ -12,10 +12,10 @@
                     </tr>
 
                     <tr ng-repeat="row in repoList">
-                        <td><img ng-if="row.icon_url" src="{{::row.icon_url}}" class="repologo"/></td>
+                        <td><img ng-if="row.icon_url" ng-src="{{::row.icon_url}}" class="repologo"/></td>
                         <td>{{::row.label}}</td>
                         <td style="text-align:right;padding-right:10px"><span ng-if="row.item_count > 0"><a 
-                        link-out href="/discover/html/discovery-ui.html?q=*&Collection={{::row.label}}">{{::row.item_count}}</a></span>
+                        link-out ng-href="/discover/html/discovery-ui.html?q=*&Collection={{::row.label}}">{{::row.item_count}}</a></span>
                         <span ng-if="row.item_count == 0">0</span>
                         </td>
                         <td><span ng-if="row.repo_url"><a link-out ng-href="{{ ::row.repo_url }}" class="repolinknormal">{{ ::row.repo_url }}</a><a link-out ng-href="{{ ::row.repo_url }}" class="repolinksmall"><span class="glyphicon glyphicon-share pull-right"/></a></span></td>

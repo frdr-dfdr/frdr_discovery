@@ -352,7 +352,7 @@ define(function (require) {
             }
 
             // console.log('opts', opts, 'searchParams', searchParams, 'searchString.vars', searchString.vars);
-            return setFields(searchParams).then(function () {
+            return setFields().then(function () {
                 if (isAdvQuery(searchParams.query)) {
                     var thisQuery = {
                         query_string: {
@@ -413,7 +413,7 @@ define(function (require) {
                 var filters = [];
                 // check if filters should be omitted, else set them
                 if (searchParams.filter && !omit(searchParams.filter)) {
-                    filters = getFilters(searchParams.filter) || [];
+                    filters = getFilters(searchParams.filter);
                 }
                 var queryObj = {};
                 // PICK SEARCH TYPE

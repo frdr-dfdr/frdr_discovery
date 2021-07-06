@@ -11,8 +11,6 @@ define(function (require) {
     services.factory('tCache', ["$rootScope", "$templateCache", "$http", function($rootScope, $templateCache, $http){
         var tCache = {};
 
-        tCache.templatePath;
-
         tCache.clearCache = function(){
             // FOR DEV ONLY:: CLEAR TEMPLATE CACHE
             if (website_env && website_env==='dev') {

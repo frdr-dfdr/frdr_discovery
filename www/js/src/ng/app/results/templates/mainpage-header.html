@@ -15,36 +15,36 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" uib-dropdown>
-              <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }} <span class="caret"></span></a>
+              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#" ng-click="changeLanguage('en')">English</a></li>
-                <li><a href="#" ng-click="changeLanguage('fr')">Français</a></li>
+                <li><a ng-href="#" ng-click="changeLanguage('en')">English</a></li>
+                <li><a ng-href="#" ng-click="changeLanguage('fr')">Français</a></li>
               </ul>
             </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" uib-dropdown>
-              <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_HELP' | translate }} <span class="caret"></span></a>
+              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_HELP' | translate }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ 'MENU_HELP_GETACCOUNT_URL' | translate }}">{{ 'MENU_HELP_GETACCOUNT' | translate }}</a></li>
-                <li><a href="{{ 'MENU_HELP_DOCUMENTATION_URL' | translate }}">{{ 'MENU_HELP_DOCUMENTATION' | translate }}</a></li>
-		<li><a href="{{ 'MENU_HELP_POLICIES_URL' | translate }}">{{ 'MENU_HELP_POLICES' | translate }}</a></li>
-		<li><a href="{{ 'MENU_HELP_VIDEOS_URL' | translate }}">{{ 'MENU_HELP_VIDEOS' | translate }}</a></li>
+                <li><a ng-href="{{ 'MENU_HELP_GETACCOUNT_URL' | translate }}">{{ 'MENU_HELP_GETACCOUNT' | translate }}</a></li>
+                <li><a ng-href="{{ 'MENU_HELP_DOCUMENTATION_URL' | translate }}">{{ 'MENU_HELP_DOCUMENTATION' | translate }}</a></li>
+		<li><a ng-href="{{ 'MENU_HELP_POLICIES_URL' | translate }}">{{ 'MENU_HELP_POLICES' | translate }}</a></li>
+		<li><a ng-href="{{ 'MENU_HELP_VIDEOS_URL' | translate }}">{{ 'MENU_HELP_VIDEOS' | translate }}</a></li>
               </ul>
             </li>
-            <li><a href="{{ 'MENU_HELP_ABOUT_URL' | translate }}">{{ 'MENU_HELP_ABOUT' | translate }}</a></li>
+            <li><a ng-href="{{ 'MENU_HELP_ABOUT_URL' | translate }}">{{ 'MENU_HELP_ABOUT' | translate }}</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ 'MENU_FEEDBACK_URL' | translate }}">{{ 'MENU_FEEDBACK' | translate }}</a></li>
-            <li><a href="{{ 'MENU_ACCOUNT_DEPOSIT_URL' | translate }}">{{ 'MENU_ACCOUNT_DEPOSIT' | translate }}</a></li>
+            <li><a ng-href="{{ 'MENU_FEEDBACK_URL' | translate }}">{{ 'MENU_FEEDBACK' | translate }}</a></li>
+            <li><a ng-href="{{ 'MENU_ACCOUNT_DEPOSIT_URL' | translate }}">{{ 'MENU_ACCOUNT_DEPOSIT' | translate }}</a></li>
             <li class="dropdown" uib-dropdown>
-              <a href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_ACCOUNT' | translate }} <span class="caret"></span></a>
+              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_ACCOUNT' | translate }} <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/repo/profile">{{ 'MENU_ACCOUNT_PROFILE' | translate }}</a></li>
+                <li><a ng-href="/repo/profile">{{ 'MENU_ACCOUNT_PROFILE' | translate }}</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="/repo/logout">{{ 'MENU_ACCOUNT_LOGOUT' | translate }}</a></li>
+                <li><a ng-href="/repo/logout">{{ 'MENU_ACCOUNT_LOGOUT' | translate }}</a></li>
               </ul>
             </li>
           </ul>

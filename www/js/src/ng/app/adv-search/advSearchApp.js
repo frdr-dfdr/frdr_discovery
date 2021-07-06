@@ -560,7 +560,7 @@ define(function(require){
                     if (v.anyAll.selected === 'this exact phrase:' || v.anyAll.selected === 'cette expression exacte :'){
                         // escape lucene special characters - backslash seperate to prevent crazy loops.
                         if(keywords !== '*'){
-                            v.keywords = v.keywords.replace('\\', '\\\\');
+                            v.keywords = v.keywords.replace(/\\/g, "\\\\");
                             for (var i = 0, len = escapes.length; i < len; i++){
                                 // keywords = keywords.replace(re, '\\' + escapes[i], 'g');  global flag doesn't work in Chrome.
                                 keywords = keywords.split(escapes[i]).join('\\' + escapes[i]);

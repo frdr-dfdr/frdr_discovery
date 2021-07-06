@@ -254,36 +254,12 @@ define(function (require) {
 
                 rExport.save = function (r) {
 
-                    // console.log(r);
-
-                    var bool;
-
                     if ( rExport.isSaved(r._id) ) {
 
                         utility.gaEvent('saved_items', 'remove_item');
-
                         rExport.saved = rExport.saved.filter(function (e) {
                             return e._id !== r._id;
                         });
-
-                        /* FRDR
-                        $http.defaults.headers.common[ "X-Requested-With" ] = 'XMLHttpRequest';
-                        $http.post('/search/unstash', {
-                                id: r._id
-                            }
-                        ).
-                            success(function (data, status, headers, config) {
-                                console.log(data);
-                                console.log('reload page and see if item is in cookie!');
-                            }).
-                            error(function (data, status, headers, config) {
-                                console.log('failed');
-                            });
-                        */
-
-                        // console.log('item removed', rExport.saved);
-
-                        bool = false;
 
                     } else {
 
@@ -306,24 +282,9 @@ define(function (require) {
                         };
 
                         rExport.saved.push(saveR);
-
-                        bool = true;
-                        /* FRDR
-                        $http.defaults.headers.common[ "X-Requested-With" ] = 'XMLHttpRequest';
-                        $http.post('/search/stash', {
-                                readings: saveR
-                            }
-                        ).
-                            success(function (data, status, headers, config) {
-                                console.log('reload page and see if item is in cookie!');
-                            }).
-                            error(function (data, status, headers, config) {
-                                console.log('failed');
-                            });
-                        */
                         $cookieStore.put('savedItems', rExport.saved);
                         r.saved = true;
-                        return bool;
+                        return true;
 
                     }
                 };
@@ -331,20 +292,6 @@ define(function (require) {
                 rExport.clear = function () {
                     utility.gaEvent('saved_items', 'clear_saved');
                     rExport.saved = [];
-                    /* FRDR
-                    $http.defaults.headers.common[ "X-Requested-With" ] = 'XMLHttpRequest';
-                    $http.post('/search/unstash', {
-                            id: '_all'
-                        }
-                    ).
-                        success(function (data, status, headers, config) {
-                            console.log(data);
-                            console.log('reload page and see if item is in cookie!');
-                        }).
-                        error(function (data, status, headers, config) {
-                            console.log('failed');
-                        });
-                    */
                     $cookieStore.put('savedItems', rExport.saved);
                 };
 
