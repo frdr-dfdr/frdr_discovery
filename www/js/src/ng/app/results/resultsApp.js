@@ -692,7 +692,6 @@ define(function (require) {
                       fieldService,
                       utility) {
 
-                var query = searchString.vars.query;
                 $scope.base_url = website_base_url;
 
                 // detailed view

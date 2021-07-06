@@ -30,7 +30,6 @@ define(function (require) {
             if(!$scope.src) { $scope.noThumb = true;}
             if($scope.itemId) {
                 collectionData.getTitle($scope.colNick).then(function(response){
-                    var nick = (response && response.nick) ? response.nick : $scope.colNick;
                     // FRDR
                     $scope.itemLink = $scope.imgLink;
 
