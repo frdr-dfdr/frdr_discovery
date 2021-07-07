@@ -810,10 +810,10 @@ define(function (require) {
                             if ($scope.r.crdc_fr != "") {
                                 $scope.r.crdc_fr = $scope.r.crdc_fr + "<br/>";
                             }
-                            $scope.r.crdc_en = $scope.r.crdc_en + JSON.stringify(crdc.crdc_code) + ": " + crdc.crdc_group_en + " > "
-                                + crdc.crdc_class_en + " > " + crdc.crdc_field_en;
-                            $scope.r.crdc_fr = $scope.r.crdc_fr + JSON.stringify(crdc.crdc_code) + ": " + crdc.crdc_group_fr + " > "
-                                + crdc.crdc_class_fr + " > " + crdc.crdc_field_fr;
+                            $scope.r.crdc_en = $scope.r.crdc_en + JSON.stringify(crdc.crdc_code) + ": " + JSON.stringify(crdc.crdc_group_en) + " > "
+                                + JSON.stringify(crdc.crdc_class_en) + " > " + JSON.stringify(crdc.crdc_field_en);
+                            $scope.r.crdc_fr = $scope.r.crdc_fr + JSON.stringify(crdc.crdc_code) + ": " + JSON.stringify(crdc.crdc_group_fr) + " > "
+                                + JSON.stringify(crdc.crdc_class_fr) + " > " + JSON.stringify(crdc.crdc_field_fr);
                         }
                     }
                     delete $scope.r.crdc;
