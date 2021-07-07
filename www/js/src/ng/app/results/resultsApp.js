@@ -803,18 +803,21 @@ define(function (require) {
                     if ($scope.r.hasOwnProperty("crdc")) {
                         $scope.r.crdc_en = "";
                         $scope.r.crdc_fr = "";
-                        for (var crdc in $scope.r.crdc) {
+                        for (var ci=0; ci < $scope.r.crdc.length; ci++) {
+                            crdc = $scope.r.crdc[ci];
                             if ($scope.r.crdc_en != "") {
                                 $scope.r.crdc_en = $scope.r.crdc_en + "<br/>";
                             }
                             if ($scope.r.crdc_fr != "") {
                                 $scope.r.crdc_fr = $scope.r.crdc_fr + "<br/>";
                             }
-                            $scope.r.crdc_en = $scope.r.crdc_en + JSON.stringify(crdc.crdc_code) + ": " + JSON.stringify(crdc.crdc_group_en) + " > "
-                                + JSON.stringify(crdc.crdc_class_en) + " > " + JSON.stringify(crdc.crdc_field_en);
-                            $scope.r.crdc_fr = $scope.r.crdc_fr + JSON.stringify(crdc.crdc_code) + ": " + JSON.stringify(crdc.crdc_group_fr) + " > "
-                                + JSON.stringify(crdc.crdc_class_fr) + " > " + JSON.stringify(crdc.crdc_field_fr);
+                            $scope.r.crdc_en = $scope.r.crdc_en + crdc.crdc_code + ": " + crdc.crdc_group_en + " > "
+                                + crdc.crdc_class_en + " > " + crdc.crdc_field_en;
+                            $scope.r.crdc_fr = $scope.r.crdc_fr + crdc.crdc_code + ": " + crdc.crdc_group_fr + " > "
+                                + crdc.crdc_class_fr + " > " + crdc.crdc_field_fr;
                         }
+                        $scope.r.crdc_en = highlighter.highlight(singleVal($scope.r.crdc_en));
+                        $scope.r.crdc_fr = highlighter.highlight(singleVal($scope.r.crdc_fr));
                     }
                     delete $scope.r.crdc;
 
