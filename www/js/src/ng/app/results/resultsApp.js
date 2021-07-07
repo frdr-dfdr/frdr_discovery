@@ -801,10 +801,18 @@ define(function (require) {
 
                     // ----- Research Field (CRDC) -----
                     if ($scope.r.hasOwnProperty("crdc")) {
-                        $scope.r.crdc_en = $scope.r.crdc.crdc_code + ": " + $scope.r.crdc.crdc_group_en + " > " 
-                            + $scope.r.crdc.crdc_class_en + " > " + $scope.r.crdc.crdc_field_en;
-                        $scope.r.crdc_fr = $scope.r.crdc.crdc_code + ": " + $scope.r.crdc.crdc_group_fr + " > " 
-                            + $scope.r.crdc.crdc_class_fr + " > " + $scope.r.crdc.crdc_field_fr;
+                        for (var crdc in $scope.r.crdc) {
+                            if ($scope.r.crdc_en != "") {
+                                $scope.r.crdc_en = $scope.r.crdc_en + "<br/>";
+                            }
+                            if ($scope.r.crdc_fr != "") {
+                                $scope.r.crdc_fr = $scope.r.crdc_fr + "<br/>";
+                            }
+                            $scope.r.crdc_en = $scope.r.crdc_en + crdc.crdc_code + ": " + crdc.crdc_group_en + " > " 
+                                + crdc.crdc_class_en + " > " + crdc.crdc_field_en;
+                            $scope.r.crdc_fr = $scope.r.crdc_fr + crdc.crdc_code + ": " + crdc.crdc_group_fr + " > " 
+                                + crdc.crdc_class_fr + " > " + crdc.crdc_field_fr;
+                        }
                     }
 
                     // ----- Access -----
