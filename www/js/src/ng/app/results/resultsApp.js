@@ -151,7 +151,7 @@ define(function (require) {
             'SORT_OPTIONS_4': 'Sort by newest to oldest',
             'SUBJECT': 'Subject',
             'SURVEY_URL': 'https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=EN',
-            'SURVEY_TEXT' 'FRDR Full Survey',
+            'SURVEY_TEXT': 'FRDR Full Survey',
             'TO': 'to',
             'TOGGLE_NAVIGATION': 'Toggle Navigation',
             'VIEW_OPTIONS_0': 'List view',
