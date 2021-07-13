@@ -26,10 +26,12 @@
           <ul class="nav navbar-nav navbar-right">
             <li id="survey">
             <script>
+              lit url = window.location.href;
+              debugger;
               const para = document.createElement("a");
               para.classList.add("navbar-feature");
               para.target="_blank";
-              if(window.location.href.value.toUpperCase().contains("LANG=FR")){
+              if(url.toUpperCase().includes("LANG=FR")){
                 para.href = "https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=FR";
                 const node = document.createTextNode("Complet sondage du DFDR");
                 para.appendChild(node);
@@ -38,7 +40,6 @@
                 const node = document.createTextNode("FRDR Full Survey");
                 para.appendChild(node);
               }
-              document.write(para);
               const element = document.getElementById("survey");
               element.appendChild(para);
             </script>
