@@ -26,11 +26,10 @@
           <ul class="nav navbar-nav navbar-right">
             <li id="survey">
             <script>
-              let currentLocaleLanguage = "" + window.location.href;
               const para = document.createElement("a");
               para.classList.add("navbar-feature");
               para.target="_blank";
-              if(currentLocaleLanguage.value.toUpperCase().contains("LANG=FR")){
+              if(window.location.href.toUpperCase().contains("LANG=FR")){
                 para.href = "https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=FR";
                 const node = document.createTextNode("Complet sondage du DFDR");
                 para.appendChild(node);
