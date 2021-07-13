@@ -24,25 +24,7 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li id="survey">
-            <script>
-              let url = window.location.href;
-              const para = document.createElement("a");
-              para.classList.add("navbar-feature");
-              para.target="_blank";
-              if(url.toUpperCase().includes("LANG=FR")){
-                para.href = "https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=FR";
-                const node = document.createTextNode("Complet sondage du DFDR");
-                para.appendChild(node);
-              } else {
-                para.href = "https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=EN";
-                const node = document.createTextNode("FRDR Full Survey");
-                para.appendChild(node);
-              }
-              const element = document.getElementById("survey");
-              element.appendChild(para);
-            </script>
-            </li>
+            <li><a ng-href="{{ 'SURVEY_URL' | translate }}">{{ 'SURVEY_TEXT' | translate }}</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" uib-dropdown>
