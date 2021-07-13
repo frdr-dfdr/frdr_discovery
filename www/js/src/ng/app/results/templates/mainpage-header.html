@@ -26,7 +26,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li id="survey">
             <script>
-              const currentLocaleLanguage = window.location.href;
+              let currentLocaleLanguage = "" + window.location.href;
               const para = document.createElement("a");
               para.classList.add("navbar-feature");
               para.target="_blank";
