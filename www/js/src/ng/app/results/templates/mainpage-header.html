@@ -26,18 +26,12 @@
           <ul class="nav navbar-nav navbar-right">
             <li id="survey">
             <script>
-              try {
-                  var requireConfigObj = require(['/discover/js/build/require/require-config.js']);
-                  require([requireConfigObj], function () {
-                      require(["/discover/js/build/require/search.js"])
-                  });
-              } catch (err) {
-                  console.log(err);
-              }
+              const currentLocaleLanguage = window.location.href;
+              document.write(currentLocaleLanguage);
               const para = document.createElement("a");
               para.classList.add("navbar-feature");
               para.target="_blank";
-              if(currentLocaleLanguage.toUpperCase().contains("FR")){
+              if(currentLocaleLanguage.toUpperCase().contains("LANG=FR")){
                 para.href = "https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=FR";
                 const node = document.createTextNode("Complet sondage du DFDR");
                 para.appendChild(node);
