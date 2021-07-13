@@ -24,7 +24,32 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li id="survey"></li>
+            <li id="survey">
+            <script>
+              try {
+                  var requireConfigObj = require(['/discover/js/build/require/require-config.js']);
+                  require([requireConfigObj], function () {
+                      require(["/discover/js/build/require/search.js"])
+                  });
+              } catch (err) {
+                  console.log(err);
+              }
+              const para = document.createElement("a");
+              para.classList.add("navbar-feature");
+              para.target="_blank";
+              if(currentLocaleLanguage.toUpperCase().contains("FR")){
+                para.href = "https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=FR";
+                const node = document.createTextNode("Complet sondage du DFDR");
+                para.appendChild(node);
+              } else {
+                para.href = "https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=EN";
+                const node = document.createTextNode("FRDR Full Survey");
+                para.appendChild(node);
+              }
+              const element = document.getElementById("survey");
+              element.appendChild(para);
+            </script>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" uib-dropdown>
