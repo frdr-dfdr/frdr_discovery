@@ -257,7 +257,7 @@ define(function (require) {
             'VIEW_OPTIONS_1': 'Vue détaillée'
         });
 
-        $translateProvider.useSanitizeValueStrategy('escape');            
+        $translateProvider.useSanitizeValueStrategy('escapeParameters');
     }]);
 
     resultsApp.boot = function () {
