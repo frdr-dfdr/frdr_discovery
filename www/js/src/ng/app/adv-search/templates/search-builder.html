@@ -27,7 +27,7 @@
 
                         <select class="fields" ng-model="s.fields.selected" ng-options="val.map as val.label | translate for (key, val) in s.fields.opts" aria-label="{{ 'FIELD' | translate }}" ng-change="selectEvent('select_field', s.fields.selected)"></select>
 
-                        <button class="dl-sbtn-lrg dl-advs-rm-btn" ng-disabled="s.track===0" ng-class="{disabled:s.track===0}" ng-click="rmSegment($index)" ng-cloak aria-label="{{ 'FIELD_REMOVE' | translate }}" ga-event="advanced_search,remove_segment"><i class="fa fa-close"></i></button>
+                        <button class="dl-sbtn-lrg dl-advs-rm-btn" ng-disabled="s.track===0" ng-class="{disabled:s.track===0}" ng-click="rmSegment($index)" ng-cloak aria-label="{{ 'FIELD_REMOVE' | translate }}" ga-event="advanced_search,remove_segment"><i class="fas fa-times-circle"></i></button>
                     </div>
 
                     </span>
