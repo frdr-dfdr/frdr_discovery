@@ -808,7 +808,7 @@ define(function (require) {
                         $scope.r.crdc_en = "";
                         $scope.r.crdc_fr = "";
                         for (var ci=0; ci < $scope.r.crdc.length; ci++) {
-                            crdc = $scope.r.crdc[ci];
+                            var crdc = $scope.r.crdc[ci];
                             if ($scope.r.crdc_en != "") {
                                 $scope.r.crdc_en = $scope.r.crdc_en + "<br/>";
                             }
