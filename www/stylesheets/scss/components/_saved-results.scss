@@ -76,11 +76,6 @@
         color: $bblue;
     }
 
-    &.saved:before{
-        @extend %fa-folder;
-        color: $lblue;
-    }
-
     &.saved:hover:before {
         color: $bblue;
     }
