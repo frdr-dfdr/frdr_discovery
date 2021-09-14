@@ -150,6 +150,8 @@ define(function (require) {
             'SORT_OPTIONS_3': 'Sort by oldest to newest',
             'SORT_OPTIONS_4': 'Sort by newest to oldest',
             'SUBJECT': 'Subject',
+            'SURVEY_URL': 'https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=EN',
+            'SURVEY_TEXT': 'FRDR Full Survey',
             'TO': 'to',
             'TOGGLE_NAVIGATION': 'Toggle Navigation',
             'VIEW_OPTIONS_0': 'List view',
@@ -247,13 +249,15 @@ define(function (require) {
             'SORT_OPTIONS_3': 'Trier par plus vieux à nouveau',
             'SORT_OPTIONS_4': 'Trier par plus nouveau à vieux',
             'SUBJECT': 'Sujet',
+            'SURVEY_URL': 'https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=FR',
+            'SURVEY_TEXT': 'Sondage complet du DFDR',
             'TO': 'à',
             'TOGGLE_NAVIGATION': 'Changer la navigation',
             'VIEW_OPTIONS_0': 'Vue liste',
             'VIEW_OPTIONS_1': 'Vue détaillée'
         });
 
-        $translateProvider.useSanitizeValueStrategy('escape');            
+        $translateProvider.useSanitizeValueStrategy('escapeParameters');
     }]);
 
     resultsApp.boot = function () {
