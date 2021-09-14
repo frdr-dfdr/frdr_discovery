@@ -723,8 +723,16 @@ define(function (require) {
                         return arr;
                     }();
 
-                    // set required / special field vals
                     $scope.r._id = $scope.r.item_url;
+                    $scope.r.detail = {};
+                    $scope.r.saved = rExport.isSaved($scope.r._id);
+                    $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.dc_date));
+                    $scope.r.date = highlighter.highlight(singleVal($scope.r.dc_date));
+                    delete $scope.r.dc_date;
+                    $scope.r.type = singleVal($scope.r.datacite_resourceTypeGeneral);
+                    delete $scope.r.datacite_resourceTypeGeneral;
+
+                    // ----- Authors / Contributors -----
                     $scope.r.author = highlighter.highlight(singleVal($scope.r.dc_contributor_author));
                     delete $scope.r.dc_contributor_author;
                     if ($scope.r.hasOwnProperty("dc_contributor")) {
@@ -737,6 +745,28 @@ define(function (require) {
                         $scope.r.description_fr = highlighter.highlight(singleVal($scope.r.dc_description_fr));
                         $scope.r.description = $scope.r.description_fr;
                     }
+                    if ($scope.r.hasOwnProperty("datacite_creatorAffiliation")) {
+                        $scope.r.author_affiliation = $scope.r.datacite_creatorAffiliation;
+                    } else {
+                        $scope.r.author_affiliation = "";
+                    }
+                    delete $scope.r.datacite_creatorAffiliation;
+
+                    // ----- Title -----
+                    if ($scope.r.hasOwnProperty("dc_title_fr")) {
+                        $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_fr));
+                        $scope.r.title_fr = $scope.r.title;
+                    }
+                    delete $scope.r.dc_title_fr;
+                    if ($scope.r.hasOwnProperty("dc_title_en") && $scope.r.dc_title_en != "" && $scope.r.dc_title_en != " ") {  // EN title will overwrite FR title
+                        $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_en));
+                        $scope.r.title_en = $scope.r.title;
+                    } else {
+                        $scope.r.title_en = highlighter.highlight(singleVal($scope.r.dc_title_en));
+                    }
+                    delete $scope.r.dc_title_en;
+
+                    // ----- Description -----
                     delete $scope.r.dc_description_fr;
                     if ($scope.r.hasOwnProperty("dc_description_en") && $scope.r.dc_description_en != "" && $scope.r.dc_description_en != " ") {
                         // EN description, if not blank, will overwrite FR description
@@ -744,6 +774,8 @@ define(function (require) {
                         $scope.r.description = $scope.r.description_en;
                     }
                     delete $scope.r.dc_description_en;
+
+                    // ----- Subjects -----
                     if ($scope.r.hasOwnProperty("frdr_subject_fr")) {
                         $scope.r.subject_fr = highlighter.highlight(singleVal($scope.r.frdr_subject_fr));
                     } else if ($scope.r.hasOwnProperty("frdr_category_fr")) {
@@ -758,7 +790,8 @@ define(function (require) {
                     }
                     delete $scope.r.frdr_subject_en;
                     delete $scope.r.frdr_category_en;
-                    $scope.r.detail = {};
+
+                    // ----- Keywords -----
                     if ($scope.r.hasOwnProperty("frdr_keyword_en")) {
                         var jk = JSON.stringify($scope.r.frdr_keyword_en);
                         $scope.r.keyword_en = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}"]/g,"")));
@@ -769,6 +802,30 @@ define(function (require) {
                         $scope.r.keyword_fr = highlighter.highlight(singleVal(jk.replace(/[\[\]\{\}"]/g,"")));
                     }
                     delete $scope.r.frdr_keyword_fr;
+
+                    // ----- Research Field (CRDC) -----
+                    if ($scope.r.hasOwnProperty("crdc")) {
+                        $scope.r.crdc_en = "";
+                        $scope.r.crdc_fr = "";
+                        for (var ci=0; ci < $scope.r.crdc.length; ci++) {
+                            var crdc = $scope.r.crdc[ci];
+                            if ($scope.r.crdc_en != "") {
+                                $scope.r.crdc_en = $scope.r.crdc_en + "<br/>";
+                            }
+                            if ($scope.r.crdc_fr != "") {
+                                $scope.r.crdc_fr = $scope.r.crdc_fr + "<br/>";
+                            }
+                            $scope.r.crdc_en = $scope.r.crdc_en + crdc.crdc_code + ": " + crdc.crdc_group_en + " > "
+                                + crdc.crdc_class_en + " > " + crdc.crdc_field_en;
+                            $scope.r.crdc_fr = $scope.r.crdc_fr + crdc.crdc_code + ": " + crdc.crdc_group_fr + " > "
+                                + crdc.crdc_class_fr + " > " + crdc.crdc_field_fr;
+                        }
+                        $scope.r.crdc_en = highlighter.highlight(singleVal($scope.r.crdc_en));
+                        $scope.r.crdc_fr = highlighter.highlight(singleVal($scope.r.crdc_fr));
+                    }
+                    delete $scope.r.crdc;
+
+                    // ----- Access -----
                     if ($scope.r.hasOwnProperty("frdr_access")) {
                         $scope.r.access = $scope.r.frdr_access;
                     } else {
@@ -776,12 +833,8 @@ define(function (require) {
                     }
                     delete $scope.r.frdr_access;
                     delete $scope.r.frdr_contact;
-                    if ($scope.r.hasOwnProperty("datacite_creatorAffiliation")) {
-                        $scope.r.author_affiliation = $scope.r.datacite_creatorAffiliation;
-                    } else {
-                        $scope.r.author_affiliation = "";
-                    }
-                    delete $scope.r.datacite_creatorAffiliation;
+
+                    // ----- Geospatial -----
                     if ($scope.r.hasOwnProperty("datacite_geoLocationBox")) {
                         var geolocation_box = JSON.stringify($scope.r.datacite_geoLocationBox);
                         geolocation_box = geolocation_spacing(geolocation_box);
@@ -808,39 +861,30 @@ define(function (require) {
                         $scope.r.date_collected = highlighter.highlight($scope.r.datacite_dateCollected);
                     }
                     delete $scope.r.datacite_dateCollected;
+
+                    // ----- Publisher -----
                     $scope.r.publisher = $scope.r.dc_publisher;
                     delete $scope.r.dc_publisher;
+
+                    // ----- Handle -----
                     $scope.r.handle = $scope.r.item_url;
+
+                    // ----- Rights -----
                     if ($scope.r.hasOwnProperty("dc_rights")) {
                         $scope.r.rights = $scope.r.dc_rights;
                     }
                     delete $scope.r.dc_rights;
+
+                    // ----- Series -----
                     if ($scope.r.hasOwnProperty("frdr_series")) {
                         $scope.r.series = highlighter.highlight(singleVal($scope.r.frdr_series));
                     }
                     delete $scope.r.frdr_series;
+
+                    // ----- Repository source -----
                     $scope.r.icon_url = $scope.r['frdr_origin_icon'];
                     $scope.r.nick = $scope.r.collection;
                     $scope.r.repo = $scope.r.collection;
-                    $scope.r.saved = rExport.isSaved($scope.r._id);
-                    if ($scope.r.hasOwnProperty("dc_title_fr")) {
-                        $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_fr));
-                        $scope.r.title_fr = $scope.r.title;
-                    }
-                    delete $scope.r.dc_title_fr;
-                    if ($scope.r.hasOwnProperty("dc_title_en") && $scope.r.dc_title_en != "" && $scope.r.dc_title_en != " ") {  // EN title will overwrite FR title
-                        $scope.r.title = highlighter.highlight(singleVal($scope.r.dc_title_en));
-                        $scope.r.title_en = $scope.r.title;
-                    } else {
-                        $scope.r.title_en = highlighter.highlight(singleVal($scope.r.dc_title_en));
-                    }
-                    delete $scope.r.dc_title_en;
-                    $scope.r.sortDate = highlighter.highlight(singleVal($scope.r.dc_date));
-                    $scope.r.date = highlighter.highlight(singleVal($scope.r.dc_date));
-                    delete $scope.r.dc_date;
-                    $scope.r.type = singleVal($scope.r.datacite_resourceTypeGeneral);
-                    delete $scope.r.datacite_resourceTypeGeneral;
-
                     // Check for icon overrides in the collection definitions
                     $scope.r.repo_url = "";
                     for (var i=0; i < $scope.collectionList.length; i++) {
@@ -863,7 +907,9 @@ define(function (require) {
                         "contact": 1,"nick": 1,"collectionLink":1,"rssLink":1,"itemLink":1,
                         "frdr_subject_multi": 1, "frdr_keyword_multi": 1, "dc_description_multi": 1, "dc_title_multi": 1
                     }
+
                     function makeArray(o){ if (!angular.isArray(o)) { return [o]; } else { return o;}  }
+
                     function parseDetails() {
                         for (var key in $scope.r) {
                             if ($scope.r.hasOwnProperty(key) && !fieldsToHide.hasOwnProperty(key)) {
