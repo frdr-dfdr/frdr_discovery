@@ -9,11 +9,11 @@
           <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent" uib-collapse="isCollapsed">
 
           <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item dropdown" uib-dropdown>
-              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }} <span class="caret"></span></a>
+            <li class="nav-item dropdown">
+              <a ng-href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }}</a>
               <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <li class="dropdown-item"><a ng-href="#" ng-click="changeLanguage('en')">English</a></li>
-                <li class="dropdown-item"><a ng-href="#" ng-click="changeLanguage('fr')">Français</a></li>
+                <li class="dropdown-item"><a role="menuitem" id="nav_switch_en" ng-href="#" ng-click="changeLanguage('en')">English</a></li>
+                <li class="dropdown-item"><a role="menuitem" id="nav_switch_fr" ng-href="#" ng-click="changeLanguage('fr')">Français</a></li>
               </ul>
             </li>
           </ul>
