@@ -98,63 +98,73 @@
     font-family: "Font Awesome 5 Free";
     font-size: 0.8em;
     padding-right: 4px;
+    font-weight: 900;  // solid
     content: '\f00c';  // fa-check
 }
 %fa-remove {
     font-family: "Font Awesome 5 Free";
     padding-right: 6px;
-    content: '\f00d'; // fa-times
+    font-weight: 900;  // solid
+    content: '\f00d';  // fa-times
 }
 
 // TYPE ICONS
 
 %icon-image {
     font-family: "Font Awesome 5 Free";
-    content: '\f03e';  
+    font-weight: 900;  // solid
+    content: '\f03e';  // fa-image
 }
 
 %icon-text {
     font-family: "Font Awesome 5 Free";
-    content: '\f0f6';  // fa-icon-text-o
+    font-weight: 900;  // solid
+    content: '\f15b';  // fa-file
     font-size: 1.2em;
 }
 
 %icon-video {
     font-family: "Font Awesome 5 Free";
-    content: '\f03d';  
+    font-weight: 900;  // solid
+    content: '\f1c8';  // fa-file-video  
 }
 
 %icon-sound {
     font-family: "Font Awesome 5 Free";
-    content: '\f028';  
+    font-weight: 900;  // solid
+    content: '\f1c7';  // fa-file-audio  
 }
 
 %icon-journal {
     font-family: "Font Awesome 5 Free";
-    content: '\f19d';  // fa-graduation-cap
-    content: '\f15c';  // alternative could be fa-file-text (solid)
+    font-weight: 900;  // solid
+    content: '\f15c';  // fa-file-alt
 }
 
 %icon-dataset {
     font-family: "Font Awesome 5 Free";
-    content: '\f080';  
+    font-weight: 900;  // solid
+    content: '\f1c6';  // fa-file-archive  
 }
 
 %icon-thesis {
     font-family: "Font Awesome 5 Free";
+    font-weight: 900;  // solid
     content: '\f19d';  // fa-graduation-cap
 }
 
 %icon-interactive {
     font-family: "Font Awesome 5 Free";
-    content: '\f1c9';  // fa-file-code-o
+    font-weight: 900;  // solid
+    content: '\f1c9';  // fa-file-code
 }
 
 // folder icons
 
 %fa-minus {
     font-family: "Font Awesome 5 Free";
-    content: "\f068";
+    font-weight: 900;  // solid
+    content: "\f068";  // fa-minus
 }
 
 
