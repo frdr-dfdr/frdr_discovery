@@ -59,17 +59,12 @@
 
     height: 24px;
     width: 24px;
-    // border-radius: 12px;
 
     &:hover {
         cursor: pointer;
     }
 
     &:hover:before {
-        color: $bblue;
-    }
-
-    &:hover:after {
         @extend .dl-small-txt;
         margin-left: -23px;
         content: 'ADD';
@@ -77,13 +72,10 @@
     }
 
     &.saved:hover:before {
-        color: $bblue;
-    }
-
-    &.saved:hover:after{
         @extend .dl-small-txt;
         margin-left: -48px;
         content: 'REMOVE';
+        color: $bblue;
     }
 }
 
@@ -109,7 +101,7 @@
     background-color: $gray0;
     padding: 20px;
     border-radius: 3px;
-    min-height: 125px;
+    min-height: 140px;
 
     .dl-btn, .dl-sbtn {
         display: inline-block;
