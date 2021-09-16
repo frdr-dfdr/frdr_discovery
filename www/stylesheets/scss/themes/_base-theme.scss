@@ -265,3 +265,21 @@ navbar {
 .frdr-jumbo-footer a:hover, a.dl-r-title.ng-binding:hover  {
   color: #B12 !important;
 }
+
+.surveybutton {
+    padding:6px 0px;
+    @media screen and (min-width: 1200px) {
+        border: 0px solid #002662;
+        background-color: #002662;
+        border-radius: 8px;
+    }
+}
+
+// Make Anguler 1 uib-collapse compatible with Bootstrap 4
+.navbar-collapse.collapse:not(.show) {
+    display: initial;
+}
+.navbar-collapse.collapse:not(.in) {
+    display: none;
+}
+
