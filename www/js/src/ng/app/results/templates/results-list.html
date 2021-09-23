@@ -12,12 +12,12 @@
 	col-nick="{[{ r['origin.id'] }]}">
 </div>
 
-<div class="dl-r-save-result" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
+<div class="dl-r-save-result fa fa-folder-open" ng-class="{saved: r.saved}" ng-click="saveResult(r)">
 </div>
 <article class="dl-r-content">
 
-	<h6><img class="access-limited" src="/discover/img/access_limited.png" width="16" height="16" ng-if="r.access != '' && r.access != 'Public'" alt="*" title="{{ 'ACCESS_NOT_PUBLIC' | translate }}"/><a target-blank ng-href="{[{ r.item_url }]}" class="dl-r-title" ng-bind-html="::r.title" rel="noopener"></a>
-	</h6>
+	<h5><img class="access-limited" src="/discover/img/access_limited.png" width="16" height="16" ng-if="r.access != '' && r.access != 'Public'" alt="*" title="{{ 'ACCESS_NOT_PUBLIC' | translate }}"/><a target-blank ng-href="{[{ r.item_url }]}" class="dl-r-title" ng-bind-html="::r.title" rel="noopener"></a>
+	</h5>
 
 	<div class="dl-r-metadata-short">
 		<span class="dl-r-collection" ng-bind-html="::r.collection"></span>

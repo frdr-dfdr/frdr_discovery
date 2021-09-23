@@ -3,7 +3,7 @@
 *********/
 
 .red {  // used for testing
-	background-color:red;
+    background-color:red;
 }
 
 h1 {
@@ -22,33 +22,33 @@ dd.ng-scope {
 
 // base
 .dl-thm-base {
-	background-color: $white;
+    background-color: $white;
 }
 
 .dl-srch-grad {
-	background: #28387D; /* Old browsers */
-	background: -moz-linear-gradient(top,  #28387D 15%, #1F75A6 85%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#28387D), color-stop(85%,#1F75A6)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* IE10+ */
-	background: linear-gradient(to bottom,  #28387D 15%,#1F75A6 85%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28387D', endColorstr='#1F75A6',GradientType=0 ); /* IE6-9 */
+    background: #28387D; /* Old browsers */
+    background: -moz-linear-gradient(top,  #28387D 15%, #1F75A6 85%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#28387D), color-stop(85%,#1F75A6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* IE10+ */
+    background: linear-gradient(to bottom,  #28387D 15%,#1F75A6 85%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28387D', endColorstr='#1F75A6',GradientType=0 ); /* IE6-9 */
 }
 
 .dl-thm-solid-base {
-	background: #28387d; /* Old browsers */
-	background: -moz-linear-gradient(top,  #28387D 15%, #1F75A6 85%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#28387D), color-stop(85%,#1F75A6)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* IE10+ */
-	background: linear-gradient(to bottom,  #28387D 15%,#1F75A6 85%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28387D', endColorstr='#1F75A6',GradientType=0 ); /* IE6-9 */
-	// background-color: $srch-bg;
-	p, h1, h2, h3, h4, h5, h6 {
-		color: $white;
-	}
+    background: #28387d; /* Old browsers */
+    background: -moz-linear-gradient(top,  #28387D 15%, #1F75A6 85%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#28387D), color-stop(85%,#1F75A6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #28387D 15%,#1F75A6 85%); /* IE10+ */
+    background: linear-gradient(to bottom,  #28387D 15%,#1F75A6 85%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#28387D', endColorstr='#1F75A6',GradientType=0 ); /* IE6-9 */
+    // background-color: $srch-bg;
+    p, h1, h2, h3, h4, h5, h6 {
+        color: $white;
+    }
 }
 
 .dl-btm-space {
@@ -62,12 +62,12 @@ dd.ng-scope {
 
 .dl-thm-light-base {
     background-color: $gray2;
-	background-image: url('../../img/textures/ticks/ticks.png');
-	background-repeat: repeat;
+    background-image: url('../../img/textures/ticks/ticks.png');
+    background-repeat: repeat;
 }
 
 .dl-thm-extralight-base {
-	background-color: $gray0;
+    background-color: $gray0;
 }
 
 // Featured Header
@@ -101,8 +101,8 @@ dd.ng-scope {
     @extend .dl-spaced-lrg;
 }
 .dl-fh-featured {
-	@extend .libserif;
-	font-style: italic;
+    @extend .libserif;
+    font-style: italic;
     display: inline-block;
     margin-top: 13px;
 }
@@ -126,8 +126,9 @@ dd.ng-scope {
     ul {
         list-style-type: none;
         li:before {
-            font-family: 'FontAwesome';
-            content: '\f101';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;  // solid
+            content: '\f054';  // fa-chevron-right
             margin: 0 10px 0 -15px;
         }
     }       
@@ -136,43 +137,43 @@ dd.ng-scope {
 
 //base
 .dl-hr-top-base {
-	border-top: 1px solid $gray5;
+    border-top: 1px solid $gray5;
 }
 .dl-hr-bottom-base {
-	border-bottom: 1px solid $gray5;
+    border-bottom: 1px solid $gray5;
 }
 
 // Shapes
 .dl-uparrow-sm {
-	content: ' ';
-	width: 0;
-	height: 0;
-	border-left: 15px solid transparent;
-	border-right: 15px solid transparent;
-	border-bottom: 20px solid $gray1;
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid $gray1;
 }
 
 // spinner - in 'loading' component
 
 // @keyframes infinite-spin{
-// 	0% {
+//  0% {
 //     transform: rotate(0deg);
 //   }
-//   	100% {
+//      100% {
 //     transform: rotate(360deg);
 //   }
 // }
 
 // .dl-spinner {
-// 	display: inline-block;
-// 	margin-right: 12px;
-// 	height: 18px;
-// 	width: 20px;
-// 	border-radius: 50%;
-// 	border: 2px solid $bblue;
-// 	border-left: none;
-// 	border-right: none;
-// 	animation: infinite-spin 2s infinite linear;
+//  display: inline-block;
+//  margin-right: 12px;
+//  height: 18px;
+//  width: 20px;
+//  border-radius: 50%;
+//  border: 2px solid $bblue;
+//  border-left: none;
+//  border-right: none;
+//  animation: infinite-spin 2s infinite linear;
 // }
 
 .collectionDownloadDiv {
@@ -215,12 +216,12 @@ dd.ng-scope {
 }
 
 .dl-srch-grad {
-    margin-top:50px;
+    margin-top:64px;
     min-height:96px;
 }
 
 navbar {
-   height: 50px;
+   height: 64px;
    min-height: 50px;
    margin-bottom: 20px;
 }
@@ -241,7 +242,7 @@ navbar {
 }
 
 .frdr-jumbo-footer {
-  margin-top:50px;
+  margin-top:0px;
   background-color: #D1D1D1;
   min-height: 30px;
   font-size:14px;
@@ -264,3 +265,21 @@ navbar {
 .frdr-jumbo-footer a:hover, a.dl-r-title.ng-binding:hover  {
   color: #B12 !important;
 }
+
+.surveybutton {
+    padding:6px 0px;
+    @media screen and (min-width: 1200px) {
+        border: 0px solid #002662;
+        background-color: #002662;
+        border-radius: 8px;
+    }
+}
+
+// Make Anguler 1 uib-collapse compatible with Bootstrap 4
+.navbar-collapse.collapse:not(.show) {
+    display: initial;
+}
+.navbar-collapse.collapse:not(.in) {
+    display: none;
+}
+

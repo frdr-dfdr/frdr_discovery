@@ -1,55 +1,53 @@
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" aria-expanded="false" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
-            <span class="sr-only">{{ 'TOGGLE_NAVIGATION' | translate }}</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" ng-href="{{ 'MAINPAGE_LOGO_LINK' | translate }}"><span class="navbar-highlight"><img ng-src="{{ 'MAINPAGE_LOGO_URL' | translate }}" style="max-height:44px" alt="{{ 'MAINPAGE_LOGO_ALT' | translate }}"/></span></a><div class="navbar-brand brand-text"> {{ 'BRANDING_LABEL' | translate }} </div>
-        </div>
+    <nav class="navbar navbar-dark fixed-top navbar-expand-xl">
 
-        <div class="collapse navbar-collapse" id="navbar-collapse-1" uib-collapse="isCollapsed">
+        <a class="navbar-brand" ng-href="{{ 'MAINPAGE_LOGO_LINK' | translate }}"><span class="navbar-highlight"><img ng-src="{{ 'MAINPAGE_LOGO_URL' | translate }}" id="brandlogo" style="max-height:44px" alt="{{ 'MAINPAGE_LOGO_ALT' | translate }}"></span><div class="navbar-brand"> {{ 'BRANDING_LABEL' | translate }} </div></a>
+        <button class="navbar-toggler" type="button" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent" uib-collapse="isCollapsed">
 
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown" uib-dropdown>
-              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }} <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a ng-href="#" ng-click="changeLanguage('en')">English</a></li>
-                <li><a ng-href="#" ng-click="changeLanguage('fr')">Français</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a ng-href="{{ 'MENU_HELP_ABOUT_URL' | translate }}">{{ 'MENU_HELP_ABOUT' | translate }}</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown" uib-dropdown>
-              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_HELP' | translate }} <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a ng-href="{{ 'MENU_HELP_GETACCOUNT_URL' | translate }}">{{ 'MENU_HELP_GETACCOUNT' | translate }}</a></li>
-                <li><a ng-href="{{ 'MENU_HELP_DOCUMENTATION_URL' | translate }}">{{ 'MENU_HELP_DOCUMENTATION' | translate }}</a></li>
-                <li><a ng-href="{{ 'MENU_HELP_POLICIES_URL' | translate }}">{{ 'MENU_HELP_POLICES' | translate }}</a></li>
-                <li><a ng-href="{{ 'MENU_HELP_VIDEOS_URL' | translate }}">{{ 'MENU_HELP_VIDEOS' | translate }}</a></li>
+            <li class="nav-item dropdown" uib-dropdown>
+              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }}</a>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li class="dropdown-item"><a role="menuitem" id="nav_switch_en" ng-href="#" ng-click="changeLanguage('en')">English</a></li>
+                <li class="dropdown-item"><a role="menuitem" id="nav_switch_fr" ng-href="#" ng-click="changeLanguage('fr')">Français</a></li>
               </ul>
             </li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a ng-href="{{ 'MENU_FEEDBACK_URL' | translate }}">{{ 'MENU_FEEDBACK' | translate }}</a></li>
-            <li><a ng-href="{{ 'MENU_ACCOUNT_DEPOSIT_URL' | translate }}">{{ 'MENU_ACCOUNT_DEPOSIT' | translate }}</a></li>
-            <li class="dropdown" uib-dropdown>
-              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false">{{ 'MENU_ACCOUNT' | translate }} <span class="caret"></span></a>
+            <li class="nav-item surveybutton"><a style="margin: 0;" ng-href="{{ 'SURVEY_URL' | translate }}" target="_blank">{{ 'SURVEY_TEXT' | translate }}</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item"><a href="{{ 'MENU_HELP_ABOUT_URL' | translate }}">{{ 'MENU_HELP_ABOUT' | translate }}</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item dropdown" uib-dropdown>
+              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_HELP' | translate }} <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-item"><a ng-href="{{ 'MENU_HELP_GETACCOUNT_URL' | translate }}">{{ 'MENU_HELP_GETACCOUNT' | translate }}</a></li>
+                <li class="dropdown-item"><a ng-href="{{ 'MENU_HELP_DOCUMENTATION_URL' | translate }}">{{ 'MENU_HELP_DOCUMENTATION' | translate }}</a></li>
+                <li class="dropdown-item"><a ng-href="{{ 'MENU_HELP_POLICIES_URL' | translate }}">{{ 'MENU_HELP_POLICES' | translate }}</a></li>
+                <li class="dropdown-item"><a ng-href="{{ 'MENU_HELP_VIDEOS_URL' | translate }}">{{ 'MENU_HELP_VIDEOS' | translate }}</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item"><a href="{{ 'MENU_ACCOUNT_DEPOSIT_URL' | translate }}">{{ 'MENU_ACCOUNT_DEPOSIT' | translate }}</a></li>
+            <li class="nav-item dropdown" uib-dropdown>
+              <a href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_ACCOUNT' | translate }}</a>
               <ul class="dropdown-menu">
-                <li><a ng-href="/repo/profile">{{ 'MENU_ACCOUNT_PROFILE' | translate }}</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a ng-href="/jspui/logout">{{ 'MENU_ACCOUNT_LOGOUT' | translate }}</a></li>
+                <li class="dropdown-item"><a href="/repo/profile">{{ 'MENU_ACCOUNT_PROFILE' | translate }}</a></li>
+                <li role="separator" class="dropdown-divider"></li>
+                <li class="dropdown-item"><a href="/repo/logout">{{ 'MENU_ACCOUNT_LOGOUT' | translate }}</a></li>
               </ul>
             </li>
           </ul>
 
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+      </div><!-- /.navbar-collapse -->
+  </nav>

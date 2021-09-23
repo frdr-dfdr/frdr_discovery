@@ -139,6 +139,10 @@ i.icon-flickr:before {
     display: none !important;
 }
 
+// Fix for Angular 1 and Boostrap 4 dropdown menus
+.dropdown.open .dropdown-menu {
+  display: block;
+}
 
 
 

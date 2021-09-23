@@ -5,18 +5,15 @@
     <title>Advanced Search | Recherche avancée </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="FRDR-DFDR Advanced Search | Recherche avancée"/>
-    <!-- bootstrap & fontawesome -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- OC Styles -->
+    <!--Style libraries -->
+    <link href="/static/fonts/latest/fontawesome-5.15.4/css/all.css" rel="stylesheet"/>
+    <link href="/static/css/latest/boostrap-4.6.0/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Local styles -->
+    <link href="/discover/stylesheets/css/discovery-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/latest/frdr-theme.css" rel="stylesheet" type="text/css"/>
     <link href="/discover/stylesheets/css/adv-search.css" rel="stylesheet" type="text/css">
-    <link href="/discover/stylesheets/css/frdr.css" rel="stylesheet" type="text/css">
-    <link href="/discover/stylesheets/css/frdr_discovery.css" rel="stylesheet" type="text/css">
     <!--js-->
     <script type="text/javascript" src="/discover/js/config-vars.js"></script>
-    <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"-->
-    <!--integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>-->
     <script type="text/javascript" src="/discover/js/build/vendor/requirejs/require.js"></script>
     <script>
         try {
@@ -35,15 +32,14 @@
 <search-header></search-header>
 
 <div class="dl expand" role="main">
-    <div id="filler"></div>
     <div class="dl-masthead expand row-fluid">
         <div class="dl-header expand dl-thm-solid-base">
             <h2><span translate>ADVSEARCH_HEADER</span></h2>
         </div>
     </div>
 
-    <div class="expand dl-content dl-advs-wrapper"> <!-- Main Content Area Start -->
-        <!-- start main DL Content -->
+    <div class="expand dl-content dl-advs-wrapper container">
+        <!-- Main Content Area Start -->
 
         <search-builder></search-builder>
 
