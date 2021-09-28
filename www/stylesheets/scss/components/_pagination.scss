@@ -14,7 +14,7 @@
         display: inline-block;
         width: 40px;
         font-size: 20px;
-        padding-top: 3px;
+        padding: 3px 0;
     }
 
     .disabled button, .disabled button:hover {
@@ -30,12 +30,10 @@
         color: $white;
     }
     select {
-        height: 32px;
+        height: 28px;
         font-size: 14px;
         line-height: 14px;
         margin: 0;
         width: auto;
-        border-radius: 3px;
-        padding: 5px;
     }
 }

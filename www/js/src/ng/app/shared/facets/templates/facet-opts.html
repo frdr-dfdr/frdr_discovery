@@ -1,5 +1,5 @@
 <div class="dl-facet-opts dl-f-behavior" ng-hide="1" ng-if="f">
-	<strong class="opts-top">{{ 'OPTIONS' | translate }}: <i class="fas fa-info-circle" ng-click="optsHelp=!optsHelp" ga-event="facet_opts,info_toggle"></i></strong>
+	<strong class="opts-top">{{ 'OPTIONS' | translate }}: <i class="fa fa-info-circle" ng-click="optsHelp=!optsHelp" ga-event="facet_opts,info_toggle"></i></strong>
 	<div class="row-fluid dl-ani-hide opts-help" ng-show="optsHelp">
 		<p><strong>{{ 'DRILL_DOWN' | translate }}:</strong> {{ 'DRILL_DOWN_DESC' | translate }}</p>
 		<p><strong>{{ 'FACET' | translate }}:</strong> {{ 'FACET_DESC' | translate }}</p>
@@ -11,7 +11,7 @@
 
 	<div class="row-fluid btns">
 	    <button class="dl-sbtn-sm" ng-click="keepFiltersToggle()">
-	        <i class="fa fa-check-square" ng-show="keepFilters"></i> <i class="fa fa-square" ng-show="!keepFilters"></i>{{ 'FACET_KEEP_FILTERS' | translate }}
+	        <i class="fa fa-check-square-o" ng-show="keepFilters"></i> <i class="fa fa-square-o" ng-show="!keepFilters"></i>{{ 'FACET_KEEP_FILTERS' | translate }}
 	    </button>
 	    <button class="dl-sbtn-sm" ng-click="clearAllFilters()" ga-event="facet_opts,clear_all_filters">{{ 'FACET_CLEAR_FILTERS' | translate }}</button>
     </div>

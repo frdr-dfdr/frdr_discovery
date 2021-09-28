@@ -42,12 +42,12 @@
             <dl class="dl-f-options dl-ani-hide" ng-hide="!isOpen">
                 <div class="dl-f-sort" ng-hide="ff.buckets.length < 2">
                     <div class="alpha" ng-click="sortBy('title')" ng-class="{current : orderField === 'title'}">
-                        <i ng-hide="trackReverse.title" class="fas fa-caret-down"></i>
-                        <i ng-hide="!trackReverse.title" class="fas fa-caret-up"></i>
+                        <i ng-hide="trackReverse.title" class="fa fa-caret-down"></i>
+                        <i ng-hide="!trackReverse.title" class="fa fa-caret-up"></i>
                     </div> 
                     <div class="num" ng-click="sortBy('doc_count')" ng-class="{current : orderField === 'doc_count'}">
-                        <i ng-hide="!trackReverse.doc_count" class="fas fa-caret-down"></i>
-                        <i ng-hide="trackReverse.doc_count" class="fas fa-caret-up"></i>
+                        <i ng-hide="!trackReverse.doc_count" class="fa fa-caret-down"></i>
+                        <i ng-hide="trackReverse.doc_count" class="fa fa-caret-up"></i>
                     </div>
                 </div>
                 <dd ng-repeat="t in ff.buckets | orderBy : orderField : trackReverse[orderField] track by $index"
@@ -82,12 +82,12 @@
         <div class="dl-f-expand">
             <div class="dl-f-sort dl-ani-hide" ng-hide="ff.buckets.length < 2 || !isOpen">
                 <div class="alpha" ng-click="sortBy('key')" ng-class="{current : orderField === 'key'}">
-                    <i ng-hide="trackReverse.key" class="fas fa-caret-down"></i>
-                    <i ng-hide="!trackReverse.key" class="fas fa-caret-up"></i>
+                    <i ng-hide="trackReverse.key" class="fa fa-caret-down"></i>
+                    <i ng-hide="!trackReverse.key" class="fa fa-caret-up"></i>
                 </div> 
                 <div class="num" ng-click="sortBy('doc_count')" ng-class="{current : orderField === 'doc_count'}">
-                    <i ng-hide="!trackReverse.doc_count" class="fas fa-caret-down"></i>
-                    <i ng-hide="trackReverse.doc_count" class="fas fa-caret-up"></i>
+                    <i ng-hide="!trackReverse.doc_count" class="fa fa-caret-down"></i>
+                    <i ng-hide="trackReverse.doc_count" class="fa fa-caret-up"></i>
                 </div>
             </div>
             <dl class="dl-f-options dl-ani-hide" ng-hide="!isOpen">
