@@ -114,16 +114,15 @@ define(function(require){
                     postObject.offset = parseInt(input.from, 10);
                 }
 
+                postObject.q = replaceFriendlyTerms(globusEscapeQuerystring(searchString.vars.query));
+
                 if (postObject.q == "(*)") {
                     postObject.q = "*";
                 }
 
                 if (postObject.q == "*") {
-                        postObject.advanced = false;
-                } else {
-                    postObject.q = replaceFriendlyTerms(globusEscapeQuerystring(searchString.vars.query));
+                    postObject.advanced = false;
                 }
-
 
                 // The date histogram will need the start and end dates
                 var beginString = "0001-01-01"; // Is this earliest date for which we have research data?
