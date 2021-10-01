@@ -49,9 +49,8 @@ define(function(require){
                 });   
 
             } else {
-                // if cIRcle only, dsp index, otherwise main index
 
-                input.searchIndex = (searchString.dspOnly === "y") ? 'dsp' : elasticsearch_main;
+                input.searchIndex = elasticsearch_main;
                 return doSearch();
 
             }
@@ -113,6 +112,10 @@ define(function(require){
 
                 if (input.hasOwnProperty('from') && input.from != "0") {
                     postObject.offset = parseInt(input.from, 10);
+                }
+
+                if (postObject.q == "(*)") {
+                    postObject.q = "*";
                 }
 
                 if (postObject.q == "*") {
