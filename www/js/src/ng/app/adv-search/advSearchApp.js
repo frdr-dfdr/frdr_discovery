@@ -110,6 +110,8 @@ define(function(require){
             'REPOSITORY_NAME': 'Repository Name',
             'SEARCH': 'Search',
             'SOURCE': 'Source',
+            'SURVEY_URL': 'https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=EN',
+            'SURVEY_TEXT': 'FRDR Full Survey',
             'WEBSITE': 'Website'
         });
              
@@ -187,7 +189,9 @@ define(function(require){
             'REPOLIST_TOTAL_FOOTER': 'Nombre total de sources ',
             'REPOSITORY_NAME': 'Nom du dépôt de données',
             'SEARCH': 'Recherche',
-            'SOURCE': 'Source ',
+            'SOURCE': 'Source',
+            'SURVEY_URL': 'https://form.simplesurvey.com/f/s.aspx?s=6bd56233-dfa4-42dc-9a91-a2a63bacf544&lang=FR',
+            'SURVEY_TEXT': 'Sondage complet du DFDR',
             'Title': 'Titre',
             'WEBSITE': 'Site Internet'
         });
