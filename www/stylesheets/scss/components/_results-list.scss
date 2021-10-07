@@ -38,6 +38,9 @@
     font-style: italic;
     color: $creator-c;
   }
+  .dl-r-collection {
+    line-height: 24px;
+  }
   .dl-r-collection, a:visited.dl-r-collection {
     color: $collection-c;
   }
@@ -197,6 +200,10 @@
   a:visited {
     color: black;
   }
+}
+
+.dl-r-metadata-short {
+  line-height:1.3em;
 }
 
 .dl-result.dl-r-expanded {
