@@ -22,12 +22,9 @@ $base-line-height: 20px;
 
 %dl-small-txt {
   font-family: $smallfont;
-  //@include adjust-font-size-to(12px);
-  font-size: 12px;
+  font-size: 13px;
   @media #{$ipad-and-smaller} {
-    // font-size: 13px;
-    //@include adjust-font-size-to(13px);
-    font-size: 13px;
+    font-size: 14px;
   }
 
 }
@@ -128,11 +125,6 @@ $base-line-height: 20px;
     &:visited {
       color: $linkpurple;
     }
-  }
-
-  tr {
-    //@include adjust-font-size-to(13px);
-    font-size: 13px;
   }
 
   tr:nth-child(odd) {
