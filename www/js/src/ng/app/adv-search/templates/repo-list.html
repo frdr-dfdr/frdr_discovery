@@ -8,17 +8,18 @@
                         <th></th>
                         <th><span translate>REPOSITORY_NAME</span></th>
                         <th><span translate>ITEM_COUNT</span></th>
-                        <th><span translate>WEBSITE</span></th>
+                        <th class="d-none d-sm-inline"><span translate>WEBSITE</span></th>
                     </tr>
 
                     <tr ng-repeat="row in repoList">
                         <td><img ng-if="row.icon_url" ng-src="{{::row.icon_url}}" class="repologo"/></td>
-                        <td>{{::row.label}}</td>
+                        <td class="d-inline d-sm-none"><a link-out ng-href="{{ ::row.repo_url }}" class="repolinknormal">{{::row.label}}</a></td>
+                        <td class="d-none d-sm-inline">{{::row.label}}</td>
                         <td style="text-align:right;padding-right:10px"><span ng-if="row.item_count > 0"><a 
                         link-out ng-href="/discover/html/discovery-ui.html?q=*&Collection={{::row.label}}">{{::row.item_count}}</a></span>
                         <span ng-if="row.item_count == 0">0</span>
                         </td>
-                        <td><span ng-if="row.repo_url"><a link-out ng-href="{{ ::row.repo_url }}" class="repolinknormal">{{ ::row.repo_url }}</a></span></td>
+                        <td class="d-none d-sm-inline"><span ng-if="row.repo_url"><a link-out ng-href="{{ ::row.repo_url }}" class="repolinknormal">{{ ::row.repo_url }}</a></span></td>
                     </tr>
                     
                 </table>
