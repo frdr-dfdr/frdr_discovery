@@ -159,7 +159,6 @@
         label{
             color: white;
             @extend .dl-small-txt;
-            // font-size: 0.85em;
             font-weight: 400;
             vertical-align: bottom;
         }
@@ -189,7 +188,6 @@
 .dl-adv-search {
     float: right;
     @extend .dl-small-txt;
-    // font-size: 0.85em;
 
     a {
         color:white;

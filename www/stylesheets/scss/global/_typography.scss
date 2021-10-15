@@ -26,7 +26,6 @@ $base-line-height: 20px;
   @media #{$ipad-and-smaller} {
     font-size: 14px;
   }
-
 }
 
 %dl-label {
@@ -184,8 +183,7 @@ $base-line-height: 20px;
 
 .dl-small-txt {
   @extend %dl-small-txt;
-  //@include rhythm(0, 0.1, 0.1, 0.0, 11px);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 
