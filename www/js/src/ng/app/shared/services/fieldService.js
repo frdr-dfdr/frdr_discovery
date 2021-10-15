@@ -17,7 +17,7 @@ define(function(require){
                 // 'genre',
                 // 'genre',
                 'keyword',
-                'subject',
+                //'subject',
                 //'creator',
                 'author',
                 'Collection', // needs special treatment: field needs to be 'nick'
