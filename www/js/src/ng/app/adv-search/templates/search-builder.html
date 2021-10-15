@@ -20,7 +20,7 @@
                     <div class="dl-advs-inputs">
                         <select class="anyall" ng-model="s.anyAll.selected" ng-options="o as (o | translate | capitalize) for o in s.anyAll.opts" aria-label="{{ 'LIMIT_BY' | translate }}" ng-change="selectEvent('select_anyall', s.anyAll.selected)"></select>
 
-                        <input type="text" ng-model="s.keywords" onclick="this.select();" ng-enter="search()" aria-label="{{ 'KEYWORDS' | translate }}">
+                        <input type="text" ng-model="s.keywords" onclick="this.select();" ng-enter="search()" aria-label="{{ 'KEYWORD' | translate }}">
 
                         <span class="in"><span translate>IN</span></span>
 

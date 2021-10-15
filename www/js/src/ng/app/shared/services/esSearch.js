@@ -315,6 +315,8 @@ define(function(require){
                                 facetName = "type";
                             } else if (facetName == 'frdr_subject_multi') {
                                 facetName = "subject";
+                            } else if (facetName == 'frdr_keyword_multi') {
+                                facetName = "keyword";
                             } else if (facetName == 'frdr_origin_id') {
                                 facetName = "Collection";
                             }

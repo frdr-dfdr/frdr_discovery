@@ -37,7 +37,7 @@ define(function(require) {
             'FACET_DESC': 'All filter terms for the current search query will remain visible regardless filters added. Many filters can be added, but conflicting selections may yield no results.',
             'FILTER_APPLY': 'Apply Filter',
             'GENRE': 'Genre',
-            'KEYWORDS': 'Keywords',
+            'KEYWORD': 'Keyword',
             'LOAD_MORE': 'Load More',
             'OPTIONS': 'Options',
             'PROGRAM': 'Program',
@@ -64,7 +64,7 @@ define(function(require) {
             'FACET_DESC': 'Tous les termes de filtre pour la requête de recherche en cours resteront visibles, indépendamment des filtres ajoutés. De nombreux filtres peuvent être ajoutés, mais les sélections contradictoires peuvent donner aucun résultat.',
             'FILTER_APPLY': 'Appliquer le filtre',
             'GENRE': 'Genre',
-            'KEYWORDS': 'Mots clés',
+            'KEYWORD': 'Mot clé',
             'LOAD_MORE': 'Montre plus',
             'OPTIONS': 'Options',
             'PROGRAM': 'Programme',
@@ -517,8 +517,6 @@ define(function(require) {
 
                 facetService.columns = false;
 
-                // replace this with an array to only display certain facets.
-                facetService.showOnly = false;
                 // number of options to show by default
                 facetService.optsCount = 10;
                 // which field to order on
@@ -570,7 +568,7 @@ define(function(require) {
                 facetService.makeFacetsObj = function(){
                     return fieldService.getFields().then(function(){
                         // if 'show only' array exists, use that, otherwise use all fields defined in fieldservice.facetFields
-                        var fArray = (facetService.showOnly) ? facetService.showOnly : fieldService.facetFields;
+                        var fArray = fieldService.facetFields;
                         var obj = {};
 
                         function setFacetDisplay(facetName) {

@@ -66,7 +66,7 @@ define(function(require){
             'FOOTER_NDRIO_URL': 'https://engagedri.ca/',
             'IN':'in',
             'ITEM_COUNT': 'Item Count',
-            'KEYWORDS': 'Keywords',
+            'KEYWORD': 'Keyword',
             'LIMIT_BY':'Limit by',
             'MAINPAGE_HEADER': 'Research Discovery',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
@@ -146,8 +146,7 @@ define(function(require){
             'FOOTER_NDRIO_URL': 'https://engagedri.ca/fr/',
             'IN':'dans',
             'ITEM_COUNT': 'Nombre d\'éléments',
-            'KEYWORDS': 'Mots-clés',
-            'Keyword': 'Mots-clés',
+            'KEYWORD': 'Mot clé',
             'LIMIT_BY':'Limite par',
             'MAINPAGE_HEADER': 'Découverte de la recherche',
             'MAINPAGE_LOGO_ALT': 'FRDR-DFDR',
@@ -551,7 +550,6 @@ define(function(require){
                         fields = '',
                         escapes = ['+', '-', '&&', '||', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':'],
                         re;
-                    // keywords = v.keywords || '*';
 
                     if (v.keywords === '') { keywords = '*'; } else { keywords = v.keywords; }
                     
@@ -567,7 +565,6 @@ define(function(require){
                         if(keywords !== '*'){
                             v.keywords = v.keywords.replace(/\\/g, "\\\\");
                             for (var i = 0, len = escapes.length; i < len; i++){
-                                // keywords = keywords.replace(re, '\\' + escapes[i], 'g');  global flag doesn't work in Chrome.
                                 keywords = keywords.split(escapes[i]).join('\\' + escapes[i]);
                             }
                         }

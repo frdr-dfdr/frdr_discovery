@@ -51,30 +51,6 @@ define(function(require){
             return arr;
         };
 
-
-        // obsolete.
-        // apifields.selections = function(){
-        //     var objArr = [];
-        //     for (var i = 0; i < apifields.fields.length; i++) {
-        //         var obj = {
-        //             field: apifields.fields[i],
-        //             selected: defaults.indexOf(apifields.fields[i]) > -1 ? true : false
-        //         };
-        //         objArr.push(obj);
-        //     }
-        //     return objArr;
-        // };
-
-        // apifields.selected = function(input){
-        //     var arr = [];
-        //     angular.forEach(input, function(d,i){
-        //         if (d.selected){
-        //             arr.push(d.field);
-        //         }
-        //     });
-        //     return arr;
-        // };
-
         return apifields;
     }]);
 
