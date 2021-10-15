@@ -326,7 +326,8 @@ define(function(require){
                             aggsObject[facetName].buckets = [];
                             var bn = 0;
                             for (var b in response.data["facet_results"][facetNum]["buckets"]) {
-                                if (!(facetName =="subject" && response.data["facet_results"][facetNum]["buckets"][b]["value"] == "Other")) {
+                                if (!(facetName =="subject" && response.data["facet_results"][facetNum]["buckets"][b]["value"] == "Other") &&
+                                    response.data["facet_results"][facetNum]["buckets"][b]["value"] != "") {
                                     aggsObject[facetName].buckets[bn]={};
                                     if (facetName == "sortDate") {
                                         var d = new Date(response.data["facet_results"][facetNum]["buckets"][b]["value"]);
