@@ -326,20 +326,22 @@ define(function(require){
                             aggsObject[facetName].buckets = [];
                             var bn = 0;
                             for (var b in response.data["facet_results"][facetNum]["buckets"]) {
-                                aggsObject[facetName].buckets[bn]={};
-                                if (facetName == "sortDate") {
-                                    var d = new Date(response.data["facet_results"][facetNum]["buckets"][b]["value"]);
-                                    if (isNaN(d)) {
-                                        aggsObject[facetName].buckets[bn].key = new Date().getTime();
+                                if (!(facetName =="subject" && response.data["facet_results"][facetNum]["buckets"][b]["value"] == "Other")) {
+                                    aggsObject[facetName].buckets[bn]={};
+                                    if (facetName == "sortDate") {
+                                        var d = new Date(response.data["facet_results"][facetNum]["buckets"][b]["value"]);
+                                        if (isNaN(d)) {
+                                            aggsObject[facetName].buckets[bn].key = new Date().getTime();
+                                        } else {
+                                            aggsObject[facetName].buckets[bn].key = d.getTime();
+                                        }
                                     } else {
-                                        aggsObject[facetName].buckets[bn].key = d.getTime();
+                                        aggsObject[facetName].buckets[bn].key = response.data["facet_results"][facetNum]["buckets"][b]["value"];
                                     }
-                                } else {
-                                    aggsObject[facetName].buckets[bn].key = response.data["facet_results"][facetNum]["buckets"][b]["value"];
+                                    aggsObject[facetName].buckets[bn].key_as_string = response.data["facet_results"][facetNum]["buckets"][b]["value"];
+                                    aggsObject[facetName].buckets[bn].doc_count = response.data["facet_results"][facetNum]["buckets"][b]["count"];
+                                    bn++;
                                 }
-                                aggsObject[facetName].buckets[bn].key_as_string = response.data["facet_results"][facetNum]["buckets"][b]["value"];
-                                aggsObject[facetName].buckets[bn].doc_count = response.data["facet_results"][facetNum]["buckets"][b]["count"];
-                                bn++;
                             }
                         }
 
