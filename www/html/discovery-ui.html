@@ -13,7 +13,6 @@
     <link href="/static/css/latest/frdr-theme.css" rel="stylesheet" type="text/css"/>
     <!--js-->
     <script type="text/javascript" src="/discover/js/config-vars.js"></script>
-    <script src="/stats/js/script.js" data-api="/stats/api/event" data-domain="{[{plausible_domain}]}" defer></script>
     <script type="text/javascript" src="/discover/js/build/vendor/requirejs/require.js"></script>
     <script>
         try {
@@ -111,6 +110,15 @@
     </div>
 
     <mainpage-footer></mainpage-footer>
+
+    <script>
+        var p_script = document.createElement("script");
+        p_script.src = "/stats/js/script.js";
+        p_script.setAttribute("data-api", "/stats/api/event");
+        p_script.setAttribute("data-domain", stats_domain);
+        p_script.setAttribute("defer", "");
+        document.write(p_script.outerHTML);
+    </script>
 
 </body>
  
