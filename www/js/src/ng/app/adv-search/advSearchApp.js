@@ -95,7 +95,7 @@ define(function(require){
             'NOT': 'NOT',
             'OR': 'OR',
             'PRIVACY_POLICY': 'Privacy Policy',
-            'PRIVACY_POLICY_URL': '/policies/en/privacy_policy/',
+            'PRIVACY_POLICY_URL': '/policies/en/privacy/',
             'REPOLIST_HEADER':'Canadian Research Data Repositories',
             'REPOLIST_BLURB_1': 'This is the list of research data repositories currently included in the discovery results.  Please',
             'REPOLIST_BLURB_2': 'contact support',
