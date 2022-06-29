@@ -8,20 +8,27 @@
         <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent" uib-collapse="isCollapsed">
 
           <ul class="nav navbar-nav navbar-right">
+            
+            <!-- Contact Us -->
+            <li class="nav-item"><a href="{{ 'MENU_FEEDBACK_URL' | translate }}">{{ 'MENU_FEEDBACK' | translate }}</a></li>
+
+            <!-- Publish Dashboard -->
+            <li class="nav-item"><a href="{{ 'MENU_ACCOUNT_DEPOSIT_URL' | translate }}">{{ 'MENU_ACCOUNT_DEPOSIT' | translate }}</a></li>
+
+            <!-- Account -->
             <li class="nav-item dropdown" uib-dropdown>
-              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }}</a>
-              <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                <li class="dropdown-item"><a role="menuitem" id="nav_switch_en" ng-href="#" ng-click="changeLanguage('en')">English</a></li>
-                <li class="dropdown-item"><a role="menuitem" id="nav_switch_fr" ng-href="#" ng-click="changeLanguage('fr')">Français</a></li>
+              <a href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_ACCOUNT' | translate }}</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="/repo/settings/profile">{{ 'MENU_ACCOUNT_PROFILE' | translate }}</a></li>
+                <li role="separator" class="dropdown-divider"></li>
+                <li class="dropdown-item"><a href="/repo/logout">{{ 'MENU_ACCOUNT_LOGOUT' | translate }}</a></li>
               </ul>
             </li>
-          </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a href="{{ 'MENU_HELP_ABOUT_URL' | translate }}">{{ 'MENU_HELP_ABOUT' | translate }}</a></li>
-          </ul>
+            <!-- Site Metrics -->
+            <li class="nav-item"><a href="{{ 'MENU_SITE_METRICS_URL' | translate }}">{{ 'MENU_SITE_METRICS' | translate }}</a></li>
 
-          <ul class="nav navbar-nav navbar-right">
+            <!-- Help -->
             <li class="nav-item dropdown" uib-dropdown>
               <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_HELP' | translate }} <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -31,25 +38,18 @@
                 <li class="dropdown-item"><a ng-href="{{ 'MENU_HELP_VIDEOS_URL' | translate }}">{{ 'MENU_HELP_VIDEOS' | translate }}</a></li>
               </ul>
             </li>
-          </ul>
 
-          <ul class="nav navbar-nav navbar-right">
+            <!-- About -->
+            <li class="nav-item"><a href="{{ 'MENU_HELP_ABOUT_URL' | translate }}">{{ 'MENU_HELP_ABOUT' | translate }}</a></li>
+
+            <!-- Locale -->
             <li class="nav-item dropdown" uib-dropdown>
-              <a href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_ACCOUNT' | translate }}</a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item"><a href="/repo/profile">{{ 'MENU_ACCOUNT_PROFILE' | translate }}</a></li>
-                <li role="separator" class="dropdown-divider"></li>
-                <li class="dropdown-item"><a href="/repo/logout">{{ 'MENU_ACCOUNT_LOGOUT' | translate }}</a></li>
+              <a ng-href="#" class="dropdown-toggle" uib-dropdown-toggle aria-haspopup="true" aria-expanded="false">{{ 'MENU_LOCALE' | translate }}</a>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li class="dropdown-item"><a role="menuitem" id="nav_switch_en" ng-href="#" ng-click="changeLanguage('en')">English</a></li>
+                <li class="dropdown-item"><a role="menuitem" id="nav_switch_fr" ng-href="#" ng-click="changeLanguage('fr')">Français</a></li>
               </ul>
             </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a href="{{ 'MENU_ACCOUNT_DEPOSIT_URL' | translate }}">{{ 'MENU_ACCOUNT_DEPOSIT' | translate }}</a></li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a href="{{ 'MENU_FEEDBACK_URL' | translate }}">{{ 'MENU_FEEDBACK' | translate }}</a></li>
           </ul>
 
       </div><!-- /.navbar-collapse -->
