@@ -149,7 +149,7 @@ define(function(require){
             'MENU_ACCOUNT_DEPOSIT_URL': '/repo/PublishDashboard',
             'MENU_ACCOUNT_LOGOUT': 'Se déconnecter',
             'MENU_ACCOUNT_LOGOUT_URL': '/repo/logout',
-            'MENU_ACCOUNT_PROFILE': 'Réglages',
+            'MENU_ACCOUNT_PROFILE': 'Paramètres',
             'MENU_FEEDBACK': 'Contactez-nous',
             'MENU_FEEDBACK_URL': '/repo/contactus?locale=fr',
             'MENU_HELP': 'Aider',
