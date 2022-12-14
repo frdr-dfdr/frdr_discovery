@@ -181,7 +181,7 @@ define(function (require) {
             'FOOTER_ALLIANCE': 'Alliance de recherche numérique du Canada',
             'FOOTER_ALLIANCE_LOGO': '/static/images/latest/logos/alliance_logo_french-first.svg',
             'FOOTER_ALLIANCE_URL': 'https://alliancecan.ca/fr',
-            'FOOTER_DISCLAIMER': 'Alliance de recherche numérique du Canada respectent la vie privée des personnes et ne collecteront, utiliseront et ne divulgueront les renseignements personnels que dans le respect des lois sur l\'accès à l\'information et la protection de la vie privée.',
+            'FOOTER_DISCLAIMER': 'L’Alliance de recherche numérique du Canada respecte votre vie privée et ne recueillera, n’utilisera ni ne divulguera vos renseignements personnels que conformément aux lois sur l’accès à l’information et la protection des renseignements personnels.',
             'FOUND': 'trouvé',
             'ITEM_AUTHOR_UNKNOWN': 'Auteur Inconnu',
             'ITEM_DESCRIPTION': 'Description',
