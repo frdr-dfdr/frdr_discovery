@@ -2,6 +2,8 @@ var excludedModules = [
     'jquery'
 ];
 
+const sass = require('node-sass');
+
 // create unique time-based hash for cache-busting
 // keep the prefix so it is coerced to a string.
 var cacheDate = '-' + (new Date()).getTime();
@@ -21,6 +23,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         sass : {
             options: {
+                implementation: sass,
                 sourceMap: true,
                 sourceMapContents: true,
                 outputStyle : 'compressed'
